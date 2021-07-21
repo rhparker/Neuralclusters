@@ -17,8 +17,10 @@ markerSize = 50;
 N = 20;
 Nc = 1;
 p = 16;
+Ne = p;
 mee = 0.7;
 mei = mee;
+mei = 1.0
 mie = -a*mee;
 mii = -a*mee;
 H = cluster(N, Nc, p, mee, mei, mie, mii); 
@@ -34,7 +36,7 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-labels = {'$\lambda_E$', '$\lambda + i \omega$', '$\lambda_I$', '$\lambda - i \omega$'};
+labels = {'$\lambda_E$', '$\lambda_0 + i \omega_0$', '$\lambda_I$', '$\lambda_0 - i \omega_0$'};
 plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
 labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 ax = gca;
@@ -44,7 +46,12 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-2 6 -10 10]);
+axis([-2 6 -15 15]);
+
+lambdaE = -mee;
+lambdaI = a*mee;
+lambda = mee*(a-1)/2;
+omega = mee*sqrt(a+1)*sqrt(Ne - (1+a)/4);
 
 
 %% E clusters, balance restored
@@ -70,7 +77,7 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-labels = {'$\lambda_E$', '$\lambda + i \omega$', '$\lambda_I$', '$\lambda_C$', '$\lambda - i \omega$'};
+labels = {'$\lambda_E$', '$\lambda_0 + i \omega_0$', '$\lambda_I$', '$\lambda_C$', '$\lambda_0 - i \omega_0$'};
 plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
 labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 ax = gca;
@@ -107,7 +114,7 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-labels = {'$\lambda_C$', '$\lambda_E$', '$\lambda_I$', '$\lambda + i \omega$', '$\lambda - i \omega$'};
+labels = {'$\lambda_C$', '$\lambda_E$', '$\lambda_I$', '$\lambda_0 + i \omega_0$', '$\lambda_0 - i \omega_0$'};
 plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
 labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 ax = gca;
@@ -144,7 +151,7 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-labels = {'$\lambda_{CI}$', '$\lambda_E$', '$\lambda_I$', '$\lambda + i \omega$', '$\lambda_{CE}$', '$\lambda - i \omega$'};
+labels = {'$\lambda_{CI}$', '$\lambda_E$', '$\lambda_I$', '$\lambda_0 + i \omega_0$', '$\lambda_{CE}$', '$\lambda_0 - i \omega_0$'};
 plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
 labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 ax = gca;
