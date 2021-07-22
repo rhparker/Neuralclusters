@@ -315,12 +315,15 @@ which is $x_I$ multiplied by a quadratic in $x_I^2$. To find the nonzero solutio
 \begin{align}\label{eq:xIapprox5}
 x_I &= \frac{1}{2} \sqrt{ \frac{5}{g^2} - \frac{\sqrt{ 5 g^5( 24 g_0 - 19 g) }}{g^5}} && g \geq g_0.
 \end{align}
-Comparison between the third-order approximation, the fifth-order approximation, and the numerical solution obtained by parameter continuation is shown in \cref{fig:xIapprox}.
+Comparison between the third-order approximation, the fifth-order approximation, and the numerical solution obtained by parameter continuation is shown in the left panel of \cref{fig:xIapprox}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=10cm]{images/Xiapprox.eps}
-    \caption{Approximation to $x_I$ on the $I_1=I_2$ branch of fixed points. $N = 20$ cells, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/Xiapprox.eps} &
+    \includegraphics[width=8cm]{images/Xiapproxbeta3.eps} 
+    \end{tabular}
+    \caption{Third order approximation \cref    {eq:xIapprox} and fifth order approximation \cref{eq:xIapprox5} to $x_I$ on the $I_1=I_2$ branch of fixed points (left panel). Third order approximation \cref{eq:XI1} to $X_{I_1}$ on the $\beta=3$ branch (right panel). $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:xIapprox}
 \end{figure}
 
@@ -350,9 +353,20 @@ Substituting \cref{eq:I1I2asymp} into this as an ansatz, expanding the $\tanh$ t
  \begin{align}\label{eq:XI1}
  x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_0.
 \end{align}
-Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$.
+Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison between this approximation and the numerical solution obtained by parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
 
-\subsection{Hopf bifurcations on the $I_1/I_2$ branch}
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/bdnoclusters20E.eps}
+    \includegraphics[width=8cm]{images/bdnoclusters20I.eps}
+    \end{tabular}
+    \caption{Bifurcation diagram showing both $I_1/I_2$ branches ($\beta = 1$ and $\beta = 3$) of fixed point solutions to \cref{eqn:sys_Basic}. Left panel plots $X_E$ vs $g$, right panel plots $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. 
+    $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:noclusterBD1}
+\end{figure}
+
+\subsection{Hopf bifurcations on $I_1/I_2$ branches}
 
 Along each branch of fixed points that emerges from the pitchfork bifurcation, there is a Hopf bifurcation. We can find an leading order formula for its location for large $N$. Choose any $\beta \geq 1$, and let $(x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. Linearizing \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$, the Jacobian is:
 \[
@@ -382,10 +396,10 @@ g_{H,\beta} = \frac{
 }
 + \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
 \end{equation}
-This formula, and the order of the remainder term, agrees with the numerical results (CAN PUT PLOT OF THIS IN IF WE WANT). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in numerator and denominator of \cref{eq:gHbeta} dominate, thus $g_H(g) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:periodvsg}). Substituting $g_0 = \sqrt{N}/\alpha \mu_{EE}$ and simplifying, equation \cref{eq:gHbeta} becomes
+A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. This formula, and the order of the remainder term, agrees with results from numerical parameter continuation (see \cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:gHbeta} dominate, thus $g_H(g) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Substituting $g_0 = \sqrt{N}/\alpha \mu_{EE}$ and simplifying, equation \cref{eq:gHbeta} becomes
 \begin{equation}\label{eq:ghopfformula}
 g_{H,\beta} = 
-\frac{\sqrt{N}}{\mu_E} 
+\frac{\sqrt{N}}{\mu_{EE}} 
 \frac{ 3 \beta n_I  + 2(1 - \beta + \beta^2 ) }
 { 3 \alpha \beta n_I + (\alpha - 1)(1 - \beta + \beta^2 ) }
 + \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
@@ -399,7 +413,27 @@ g_{H,\beta}' =
     {
     \left(\alpha \left(\beta^2+\beta (3 n_I -1)+1\right)-\beta^2+\beta-1\right)^2},
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$. This confirms the ordering of the Hopf bifurcations in $g$ seen in \cref{eq:I1I2asymp}. 
+which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$. This confirms the ordering of the Hopf bifurcations in $\beta$ seen in \cref{fig:Hopfplots}. 
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/Hopfapproxbeta1.eps}
+    \includegraphics[width=8cm]{images/Hopfapproxerror.eps}
+    \end{tabular}
+    \caption{Left panel plots compares approximation \cref{eq:ghopfformula} to computed location of Hopf bifurcation for $I_1/I_2$ branch with $\beta = 1$. Right panel plots log of absolute error of approximation \cref{eq:ghopfformula} vs $\log N$ for $\beta = 1$, 3, and 4. Slope of line is approximately -1.5 for all three $\beta$. $\alpha = 4$, $\mu_{EE}= 0.7$. }
+    \label{fig:Hopferror}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/HopfNvsg.eps}
+    \includegraphics[width=8cm]{images/HopflogNvslogg.eps}
+    \end{tabular}
+    \caption{Left panel shows location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$). Right panel is same data on a log-log plot.}
+    \label{fig:Hopfplots}
+\end{figure}
 % At the Hopf bifurcation, the imaginary part of eigenvalue scales as $\sqrt{N}$, which is the frequency of oscillation of the limit cycle.
 
 \subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
