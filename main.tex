@@ -396,7 +396,7 @@ g_{H,\beta} = \frac{
 }
 + \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
 \end{equation}
-A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. This formula, and the order of the remainder term, agrees with results from numerical parameter continuation (see \cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:gHbeta} dominate, thus $g_H(g) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Substituting $g_0 = \sqrt{N}/\alpha \mu_{EE}$ and simplifying, equation \cref{eq:gHbeta} becomes
+A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). This formula, and the order of the remainder term, agrees with results from numerical parameter continuation (see \cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:gHbeta} dominate, thus $g_H(g) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Substituting $g_0 = \sqrt{N}/\alpha \mu_{EE}$ and simplifying, equation \cref{eq:gHbeta} becomes
 \begin{equation}\label{eq:ghopfformula}
 g_{H,\beta} = 
 \frac{\sqrt{N}}{\mu_{EE}} 
@@ -413,7 +413,7 @@ g_{H,\beta}' =
     {
     \left(\alpha \left(\beta^2+\beta (3 n_I -1)+1\right)-\beta^2+\beta-1\right)^2},
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$. This confirms the ordering of the Hopf bifurcations in $\beta$ seen in \cref{fig:Hopfplots}. 
+which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$). 
 
 \begin{figure}
     \centering
@@ -435,6 +435,35 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ incre
     \label{fig:Hopfplots}
 \end{figure}
 % At the Hopf bifurcation, the imaginary part of eigenvalue scales as $\sqrt{N}$, which is the frequency of oscillation of the limit cycle.
+
+\subsection{Periodic solutions}
+
+Periodic orbits arise from each Hopf bifurcation as $g$ increases through the bifurcation point. The periodic orbits associated with each $I_1/I_2$ branch have the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For the periodic orbit arising from the Hopf bifurcation at the origin at $g = g_H$, there is single excitatory cluster and a single inhibitory cluster (\cref{fig:limitcycleorigin}). 
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/limitcycle1.eps}
+    \includegraphics[width=8cm]{images/limitcycle2.eps}
+    \end{tabular}
+    \caption{Limit cycle arising from Hopf bifurcation at origin. Single excitatory cluster with activity $x_E(t)$, single inhibitory cluster with activity $x_I(t)$. $g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. Period of limit cycle is 1.62.} 
+    \label{fig:limitcycleorigin}
+\end{figure}
+
+A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite{Barreiro2017}*{Figure 2}). 
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/periodvsg}
+    \includegraphics[width=8cm]{images/floquet1.eps}
+    \end{tabular}
+    \caption{Left panel shows period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along the branch from origin is shown in right panel.
+    $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:periodvsg}
+\end{figure}
+
+There is a critical value $g = g_c$ where all the limit cycle branches meet. After that point, there is a single limit cycle with a single excitatory cluster and a single inhibitory cluster. This is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to the single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
 We have characterized the three-cluster fixed point solutions near their origin $g=g_0$; next, we describe how they behave for large $g$. We summarize the main points here; detailed calculations can be found in an Appendix.
@@ -491,8 +520,6 @@ If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \
 
 
 
-
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{images/20largeg22.eps} 
@@ -520,42 +547,6 @@ If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \
     \includegraphics[width=12cm]{images/BDsingle20_E07.eps}
     \caption{Bifurcation diagram (for $\mu_{EE} = 0.7$)}
     \label{fig:20nocluster}
-\end{figure}
-
-\subsection{Periodic solutions}
-We can also use AUTO to find the periodic solutions arising from the 3 Hopf bifurcations (squares in \cref{fig:20nocluster}. Below is plot of period of limit cycle vs $g$, with stable limit cycle indicated by solid line. This is identical to \cite{Barreiro2017}*{Figure 2}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=14cm]{images/periodvsg}
-    \caption{Period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines.}
-    \label{fig:periodvsg}
-\end{figure}
-
-There is a critical value of $g$ where all the limit cycle branches come together, and after that point, there is one stable limit cycle where all the E-cells and I-cells are synchronized.
-\textbf{This pattern appears to hold for all $N$.}
-
-The plot shows location in $g$ of important points (pitchfork bifurcation, Hopf bifurcations, and point where limit cycles meet) for increasing $N$. This is done by continuing the bifurcations in a reduced three-dimensional system of one excitatory, two inhibitory populations.  
-Of course, the indicated Hopf bifurcations would only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for 3:1, the total number of inhibitory cells must be a multiple of 4). The location of the pitchfork bifurcation on the zero solution is given by \cref{eq:pitchlocation}, which is confirmed on the plot below. The location of the Hopf bifurcation on the zero solution is given by \cref{eq:0hopflocation}, which is confirmed on the plot below. If the Hopf bifurcation ratio is written as $m:1$, the Hopf bifurcations appears to be ordered by increasing $m$ as $g$ increases \textbf{proof? This follows from \cref{eq:ghopfformula} and \cref{eq:gprime}}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=15cm]{images/noclustersNvsg.eps}
-    \includegraphics[width=15cm]{images/noclusterslogNvslogg.eps}
-    \caption{Location in $g$ of pitchfork bifurcation, select Hopf bifurcations, and point where limit cycles meet for varying $N$. Lines are labeled from left to right.}
-    \label{fig:periodvsg}
-\end{figure}
-
-
-Next plot is of stable limit cycle for case where all E-cells and I-cells are in sync, for large $g$. Plot is over one period (period is normalized to 1).
-
-\begin{figure}[H]
-    \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/limitcycle1.eps}
-    \includegraphics[width=8cm]{images/limitcycle2.eps}
-    \end{tabular}
-    \label{fig:limitcyclelargeg}
 \end{figure}
 
 
