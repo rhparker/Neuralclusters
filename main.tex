@@ -142,6 +142,7 @@ We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed a
 
 \section{Model simplification}
 
+[CONSIDER MOVING THIS SECTION TO END AS APPENDIX, SINCE THIS IS MAINLY USED TO SIMPLIFY NUMERICAL SIMULATIONS.]
 Since we are interested in locating fixed points and periodic orbits, we can simplify the model by using the fact that all excitatory cells within each cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster, if $x_1$ and $x_2$ are the activities of two excitatory cells, then it follows from \cite{Barreiro2017} that
 \begin{align}\label{eq:dt_x1t2diff}
 \frac{d}{dt}|x_1 - x_2|^2 \leq -2 |x_1 - x_2 |^2.
@@ -210,20 +211,28 @@ As $g$ is further increased, the complex pair of eigenvalues crosses the imagina
 \end{equation}
 The origin $\xvec = 0$ is a stable equilibrium for $g < g_0$, at which point it loses stability in a symmetric pitchfork bifurcation, where $n_I -1$ eigenvalues cross the imaginary axis simultaneously. 
 
-At $g = g_H$, the origin undergoes a Hopf bifurcation. For $g > g_H$, numerical computation shows that there is a limit cycle for which all excitatory cells are synchronized and all inhibitory cells are synchronized. [THIS PART NEEDS WORK]. We can show that such a limit cycle exists for $g > g_H$ by reducing \cref{eqn:sys_Basic} to the two-dimensional system
+At $g = g_H$, the origin undergoes a Hopf bifurcation. For $g > g_H$, numerical computation shows that there is a limit cycle for which all excitatory cells are synchronized and all inhibitory cells are synchronized. We can argue that such a limit cycle exists for $g > g_H$ by reducing \cref{eqn:sys_Basic} to the two-dimensional system
 \begin{equation}\label{eq:2dsystem}
 \begin{aligned}
-\dot{x} &= f(x, y) := -x + \frac{\mu_{EE}}{\sqrt{N}}\left((\alpha n_I - 1) \tanh(g x) - \alpha n_I \tanh(g y) \right) \\
-\dot{y} &= g(x, y) := -y + \frac{\mu_{EE}}{\sqrt{N}}\left( \alpha n_I \tanh(g x) - \alpha (n_I - 1) \tanh(g y) \right), 
+\dot{x} &= f(x, y) := -x + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) \tanh(g x) - \alpha n_I \tanh(g y) \right) \\
+\dot{y} &= g(x, y) := -y + \frac{\mu_{EE}}{\sqrt{N}}\left( n_E \tanh(g x) - \alpha (n_I - 1) \tanh(g y) \right), 
 \end{aligned}
 \end{equation}
-where $x$ represents the synchronized excitatory cell activity and $y$ represents the synchronized inhibitory cell activity, and we used $n_E = \alpha n_I$. Since $-1 < \tanh x < 1$, we can solve $f(x, y) = 0$ for $y$ in terms of $x$ when $|x| < 2 n_E -1$ to get
-\[
-x = 
-\]
+where $x$ represents the synchronized excitatory cell activity and $y$ represents the synchronized inhibitory cell activity. $(x, y) = (0, 0)$ is always a fixed point of \cref{eq:2dsystem}. Since $-1 < \tanh x < 1$, we can solve $f(x, y) = 0$ for $y$ in terms of $x$ when $|x| < \frac{\mu_{EE}}{\sqrt{N}}( 2 \alpha n_I - 1)$ to get the equation for the $x$-nullcline.
+\begin{align*}
+y = \frac{1}{g} \tanh ^{-1} \left( \tanh (g x) - \frac{ \mu_{EE} \tanh (g x) + \sqrt{N} x}{\alpha \mu_{EE} n_I} \right).
+\end{align*}
+Similarly we can solve $g(x, y) = 0$ for $x$ in terms of $y$ when $|y| < \frac{\alpha \mu_{EE}}{\sqrt{N}}$ to get the equation for the $y$-nullcline. The two nullclines are plotted in the left panel of \cref{fig:nullclines}. We will assume that the nullclines intersect only at the origin as in \cref{fig:nullclines}. This implies that $(x,y) = (0,0)$ is the only equlibrium point of \cref{eq:2dsystem}. 
 
-First, we note that the origin is the only fixed point of this system for all $N$ and all $g > 0$. \textbf{(This may be difficult to show analytically)}.  Figure \ref{fig:nullclines} shows the $x$ and $y$ nullclines (the surfaces where $\dot{x} = 0$ and $\dot{y} = 0$, respectively) for \cref{eq:2dsystem}. \textbf{(This should look qualitatively the same for all values of $N$ and $g > 0$)}. 
-The only intersection point of the nullclines is at the origin. Linearizing about the origin, there is a single complex pair of eigenvalues which crosses the imaginary axis at $g = g_H$, given by \cref{eq:0hopflocation}. For $g > g_H$, the origin is an unstable fixed point. To show there is a limit cycle for $g > g_H$, we use the Poincare-Bendixson theorem. We draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large, 
+Linearizing about the origin \cref{eq:2dsystem} yields the $2 \times 2$ matrix
+\[
+\frac{g \mu_{EE}}{\sqrt{N}}
+\begin{bmatrix} 
+n_E - 1 & -\alpha n_I \\
+n_E & -\alpha(n_I - 1)
+\end{bmatrix} - I_2
+\]
+which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 \pm \omega_0) - 1$, where $\lambda_0$ and $\omega_0$ are defined above. Thus the origin is unstable for $g > g_H$, which is the Hopf bifurcation point defined by \cref{eq:0hopflocation}. To show there is a limit cycle for $g > g_H$, we use the Poincare-Bendixson theorem. We draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large, 
 \[
 \dot{x} \leq -a + \frac{2 n_E}{\sqrt{N}} = -a + 2 f \sqrt{N},
 \]
@@ -235,7 +244,7 @@ which can be made negative by taking $a$ sufficiently large. Similarly, we can t
     \includegraphics[width=8cm]{images/nullclines.eps} &
     \includegraphics[width=8cm]{images/trappingregion.eps}
     \end{tabular}
-    \caption{Left panel shows $x$ and $y$ nullclines for the system \cref{eq:2dsystem}. Right panel shows the slope fields for \cref{eq:2dsystem}. Slope field point inward on black box. Small limit cycle visible in center of figure. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
+    \caption{Left panel shows $x$ and $y$ nullclines for the system \cref{eq:2dsystem}. Right panel shows the slope fields for \cref{eq:2dsystem}, with a small limit cycle visible in center.  Slope field points inward on black box. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
     \label{fig:nullclines}
 \end{figure}
 
@@ -450,8 +459,6 @@ Periodic orbits arise from each Hopf bifurcation as $g$ increases through the bi
     \label{fig:limitcycleorigin}
 \end{figure}
 
-A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite{Barreiro2017}*{Figure 2}). 
-
 \begin{figure}
     \centering
     \begin{tabular}{cc}
@@ -463,10 +470,10 @@ A plot of the period of these limit cycles with increasing $g$ is shown in \cref
     \label{fig:periodvsg}
 \end{figure}
 
-There is a critical value $g = g_c$ where all the limit cycle branches meet. After that point, there is a single limit cycle with a single excitatory cluster and a single inhibitory cluster. This is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to the single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
+A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite{Barreiro2017}*{Figure 2}). There is a critical value $g = g_c$ where all the limit cycle branches meet. After that point, there is a single limit cycle with a single excitatory cluster and a single inhibitory cluster. This is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to the single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
-We have characterized the three-cluster fixed point solutions near their origin $g=g_0$; next, we describe how they behave for large $g$. We summarize the main points here; detailed calculations can be found in an Appendix.
+We have characterized the three-cluster fixed point solutions near their origin at the symmetric picthfork bifurcation point $g=g_0$; next, we describe how they behave for large $g$. We summarize the main points here; detailed calculations can be found in an Appendix.
 
 Defining $y_E = \tanh(gx_E)$, etc., the equations defining a fixed point are:
 
