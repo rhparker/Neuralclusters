@@ -124,7 +124,20 @@ H =
 \end{equation}
 where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$.
 
-The dynamics of the system can be understood in terms of the eigenvalues of $H$. (See \cref{fig:Heigpattern} for the eigenvalue pattern of $H$ for four different network models).  In particular, the multiplicities of the eigenvalues of $H$ are forced by symmetries in \cref{eqn:sys_Basic}, which lead to symmetric bifurcations. Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$, even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. 
+The dynamics of the system can be understood in terms of the eigenvalues of $H$. (See \cref{fig:Heigpattern} for the eigenvalue pattern of $H$ for four different network models). In particular, the multiplicities of the eigenvalues of $H$ are forced by symmetries in \cref{eqn:sys_Basic}, which lead to symmetric bifurcations. The linearization of \cref{eqn:sys_Basic} about $\xvec = 0$ is the matrix
+\begin{equation}\label{eq:DF0}
+DF(0) = \frac{g}{\sqrt{N}}H - I_N
+\end{equation}
+where $I_N$ is the $N \times N$ identity matrix. The eigenvalues of $DF(0)$ are then given by $\frac{g}{\sqrt{N}}\lambda - 1$ for all eigenvalues $\lambda$ of $H$. For eigenvalues of $H$ with negative real part, the corresponding eigenvalues of $DF(0)$ will always have negative real part, irrespective of $g$. On the other hand, for eigenvalues of $H$ with positive real part, the sign of the real part of the corresponding eigenvalue of $DF(0)$ depends on the bifurcation parameter $g$. Thus, all bifurcations of $\xvec = 0$ involve the eigenvalues of $H$ with positive real part. For nonzero fixed points $\xvec^*$ of \cref{eqn:sys_Basic}, the linearization about $\xvec^* = (x_1^*, \dots, x_N^*)^T$ is the matrix
+\begin{equation}\label{eq:DFxstar}
+    DF(\xvec^*) = \frac{g}{\sqrt{N}}H(\xvec^*)  - I_N
+\end{equation}
+where 
+\begin{equation}\label{eq:Hxstar}
+H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))\end{equation}
+is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. 
+
+Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$, even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. 
 
 \begin{figure}
     \centering
@@ -140,9 +153,10 @@ The dynamics of the system can be understood in terms of the eigenvalues of $H$.
 
 We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks. In this paper, we first flesh out some details about that system (say more). We then extend the analysis to several families of networks, which share...
 
+For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
+
 \section{Model simplification}
 
-[CONSIDER MOVING THIS SECTION TO END AS APPENDIX, SINCE THIS IS MAINLY USED TO SIMPLIFY NUMERICAL SIMULATIONS.]
 Since we are interested in locating fixed points and periodic orbits, we can simplify the model by using the fact that all excitatory cells within each cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster, if $x_1$ and $x_2$ are the activities of two excitatory cells, then it follows from \cite{Barreiro2017} that
 \begin{align}\label{eq:dt_x1t2diff}
 \frac{d}{dt}|x_1 - x_2|^2 \leq -2 |x_1 - x_2 |^2.
@@ -158,9 +172,9 @@ For the case where there is a single cluster of inhibitory cells ($n_{CI} = 1$),
 \end{equation}
 $x_{Ej}$ is the activity for the excitatory cluster $j$, and $x_{Ij}$ is activity for the inhibitory cell $j$. In matrix form, equations \cref{eq:reducedsystem} can be written
 \begin{equation}\label{eq:reducedmatrixform}
-\dot{\xvec} = -\xvec + \frac{1}{\sqrt{N}} \tilde{H} \tanh(g \xvec),
+\dot{\xvec} = \tilde{F}(\xvec, g) := -\xvec + \frac{1}{\sqrt{N}} \tilde{H} \tanh(g \xvec),
 \end{equation}
-where $\xvec = (x_{E1}, \dots, x_{En_C}, x_{I1}, \dots, x_{In_I})^T$, and 
+where $\xvec = (x_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$, and $\tilde{H}$ is the $(n_C + n_I) \times (n_C + n_I)$ matrix
 \[
 \tilde{H} = \left[ \begin{array}{c|c}
     \\
@@ -173,7 +187,15 @@ where $\xvec = (x_{E1}, \dots, x_{En_C}, x_{I1}, \dots, x_{In_I})^T$, and
     \end{array}
     \right]
 \]
-For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
+Let $\xvec^* = (x_{E_1}^*, \dots, x_{E_{n_C}}^*, x_{I_1}^*, \dots, x_{I_{n_I}}^*)^T$ be a fixed point of \cref{eq:reducedmatrixform}. The linearization of \cref{eq:reducedmatrixform} about $\xvec^*$ is the matrix
+\begin{equation}\label{eq:DtildeFxstar}
+    D\tilde{F}(\xvec^*) = \frac{g}{\sqrt{N}}\tilde{H}(\xvec^*) - I_{n_C+n_I}
+\end{equation}
+where 
+\begin{equation}\label{eq:tildeHxstar}
+\tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* ))
+\end{equation}
+There is a corresponding fixed point $\xvec_0^*$ to \cref{eqn:sys_Basic}, where each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. Let $\vvec = (v_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$ be an eigenvector of $\tilde{H}(\xvec^*)$ with eigenvalue $\lambda$. By comparing $\tilde{H}(\xvec^*)$ and $H(\xvec_0^*)$, there is a corresponding eigenvector $\vvec_0$ to $H(\xvec_0^*)$ with eigenvalue $\lambda$, where $\vvec_0$ is obtained from $\vvec$ by repeating each entry $v_{E_j}$ $p$ times. The matrix $H(\xvec_0^*)$ has $n_E - n_C = (p-1)n_C$ eigenvalues which are not eigenvalues of $\tilde{H}(\xvec^*)$. For each $j=1,\dots,n_C$, it is straightforward to show that $H(\xvec_0^*)$ has an eigenvalue at $\lambda = -\sech^2(x_{E_j}) \mu_{EE}$ with multiplicity $p-1$. (For $j=1$, for example, the $p-1$ eigenvectors are $\vvec^1, \dots, \vvec^{p-1}$, where $v^k_1 = -1$, $v^k_{j+1} = 1$, and all other components are 0). Since $\mu_{EE} > 0$, these eigenvalues are always negative. The corresponding eigenvalues of $DF(\xvec_0^*)$ will be negative for all $g$ and will have no effect on the stability of $x_0^*$. It therefore suffices to use the reduced system to determine stability of fixed points.
  
 \section{Single excitatory and inhibitory cluster}
 
@@ -197,7 +219,7 @@ We choose the weights so that the network is \emph{balanced}; that is, the excit
     \item $\lambda_E := -\mu_{EE} < 0$ with multiplicity $n_E - 1$
     \item One complex pair $\lambda_0 \pm i \omega_0$, with $\lambda_0 := \mu_{EE}\frac{\alpha - 1}{2}$ and $\omega_0 := \mu_{EE}\sqrt{\alpha+1}\sqrt{n_E - \frac{\alpha+1}{4}}$. 
 \end{itemize}
-It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. The linearization about the equilibrium point $\xvec = 0$ is the constant matrix $DF(0) = \frac{g}{\sqrt{N}}H - I_n$, thus the eigenvalues of $DF(0)$ are given by $\frac{g}{\sqrt{N}}\lambda - 1$ for all eigenvalues $\lambda$ of $H$. For eigenvalues of $H$ with negative real part, the corresponding eigenvalues of $DF(0)$ will always have negative real part, irrespective of $g$. On the other hand, for eigenvalues of $H$ with positive real part, the sign of the real part of the corresponding eigenvalue of $DF(0)$ depends on the bifurcation parameter $g$. This means that all bifurcations of $\xvec = 0$ involve only the eigenvalues of $H$ with positive real part. For this specific case, the bifurcations will involve only $\lambda_I$ and $\lambda_0$.
+It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. As discussed above, all bifurcations of $\xvec = 0$ involve only $\lambda_0 \pm i \omega_0$ and $\lambda_I$, which are the eigenvalues of $H$ with positive real part.
 
 \subsection{Bifurcations of the origin}
 
