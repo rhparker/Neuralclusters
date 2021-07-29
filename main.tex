@@ -195,9 +195,9 @@ where
 \begin{equation}\label{eq:tildeHxstar}
 \tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* ))
 \end{equation}
-There is a corresponding fixed point $\xvec_0^*$ to \cref{eqn:sys_Basic}, where each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. Let $\vvec = (v_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$ be an eigenvector of $\tilde{H}(\xvec^*)$ with eigenvalue $\lambda$. By comparing $\tilde{H}(\xvec^*)$ and $H(\xvec_0^*)$, there is a corresponding eigenvector $\vvec_0$ to $H(\xvec_0^*)$ with eigenvalue $\lambda$, where $\vvec_0$ is obtained from $\vvec$ by repeating each entry $v_{E_j}$ $p$ times. The matrix $H(\xvec_0^*)$ has $n_E - n_C = (p-1)n_C$ eigenvalues which are not eigenvalues of $\tilde{H}(\xvec^*)$. For each $j=1,\dots,n_C$, it is straightforward to show that $H(\xvec_0^*)$ has an eigenvalue at $\lambda = -\sech^2(x_{E_j}) \mu_{EE}$ with multiplicity $p-1$. (For $j=1$, for example, the $p-1$ eigenvectors are $\vvec^1, \dots, \vvec^{p-1}$, where $v^k_1 = -1$, $v^k_{j+1} = 1$, and all other components are 0). Since $\mu_{EE} > 0$, these eigenvalues are always negative. The corresponding eigenvalues of $DF(\xvec_0^*)$ will be negative for all $g$ and will have no effect on the stability of $x_0^*$. It therefore suffices to use the reduced system to determine stability of fixed points.
+There is a corresponding fixed point $\xvec_0^*$ to \cref{eqn:sys_Basic}, where each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. Let $\vvec = (v_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$ be an eigenvector of $\tilde{H}(\xvec^*)$ with eigenvalue $\lambda$. By comparing $\tilde{H}(\xvec^*)$ and $H(\xvec_0^*)$, there is a corresponding eigenvector $\vvec_0$ to $H(\xvec_0^*)$ with eigenvalue $\lambda$, where $\vvec_0$ is obtained from $\vvec$ by repeating each entry $v_{E_j}$ $p$ times. The matrix $H(\xvec_0^*)$ has $n_E - n_C = (p-1)n_C$ eigenvalues which are not eigenvalues of $\tilde{H}(\xvec^*)$. For each $j=1,\dots,n_C$, it is straightforward to show that $H(\xvec_0^*)$ has an eigenvalue at $\lambda = -\sech^2(x_{E_j}) \mu_{EE}$ with multiplicity $p-1$. (For $j=1$, for example, the $p-1$ eigenvectors are $\vvec^1, \dots, \vvec^{p-1}$, where $v^k_1 = -1$, $v^k_{k+1} = 1$, and all other components are 0). Since $\mu_{EE} > 0$, these eigenvalues are always negative. The corresponding eigenvalues of $DF(\xvec_0^*)$ will be negative for all $g$ and will have no effect on the stability of $x_0^*$. It therefore suffices to use the reduced system to determine stability of fixed points.
  
-\section{Single excitatory and inhibitory cluster}
+\section{Single excitatory and inhibitory cluster}\label{sec:E1I1}
 
 The simplest case (considered in \cite{Barreiro2017}) involves a single excitatory cluster and a single inhibitory cluster. The matrix $H$ reduces to
 \[
@@ -363,14 +363,14 @@ For $\beta \neq 1$, we find the solution along each $I_1/I_2$ branch by reducing
  \begin{aligned}
  \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
  &= \frac{\mu_E}{\sqrt{N}} 
- \begin{bmatrix} (n_E - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
- n_E  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
- n_E  & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
+ \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
  \end{bmatrix}
  \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
  \end{aligned}
  \end{equation}
- where $x_E$ is the activity of the excitatory cells (which are all synchronized), and $x_{I_1}$ and $x_{I_2}$ are the activities of the two inhibitory clusters. As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:otherbranchmatrixeq} has a solution
+ where $x_E$ is the activity of the excitatory cells (which are all synchronized), $x_{I_1}$ and $x_{I_2}$ are the activities of the two inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, \dots, x_E, x_{I_1}, \dots, , x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eqn:sys_Basic}, where $x_E$, $x_{I_1}$, and $x_{I_2}$ are repeated $n_E$, $n_{I_1}$, and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:otherbranchmatrixeq} has a solution
 \begin{equation}\label{eq:I1I2asymp}
     x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
     x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
@@ -397,54 +397,85 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
     \label{fig:noclusterBD1}
 \end{figure}
 
-\subsection{Hopf bifurcations on $I_1/I_2$ branches}
+\subsection{Stability and bifurcations along $I_1/I_2$ branches}
 
-Along each branch of fixed points that emerges from the pitchfork bifurcation, there is a Hopf bifurcation. We can find an leading order formula for its location for large $N$. Choose any $\beta \geq 1$, and let $(x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. Linearizing \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$, the Jacobian is:
+Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$.To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. As above, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$.
+
+Linearizing the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$, the Jacobian is
 \[
- \frac{\mu_{EE} g}{\sqrt{N}} 
- \begin{bmatrix} (n_E - 1) \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & - \alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
- n_E \sech^2(g x_E) & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) \sech^2(g x_{I_1}) & -\alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
- n_E \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & -\alpha \left(\frac{1}{\beta+1} n_I-1 \right) \sech^2(g x_{I_2})
- \end{bmatrix} - I_3
+J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
 \]
-where $I_3$ is the $3 \times 3$ identity matrix. Using the Taylor expansion $\sech^2(g x) = 1 - (g x)^2 + \mathcal{O}( x^4 )$, keeping terms up to quadratic order, and substituting \cref{eq:I1I2asymp}, the Jacobian matrix above has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where, to leading order,
+where 
+\[
+H_3(\xvec) = \mu_{EE}
+ \begin{bmatrix} (\alpha n_I - 1) \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & - \alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
+    \alpha n_I \sech^2(g x_E) & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) \sech^2(g x_{I_1}) & -\alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
+    \alpha n_I \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & -\alpha \left(\frac{1}{\beta+1} n_I-1 \right) \sech^2(g x_{I_2})
+ \end{bmatrix}
+\]
+and $I_3$ is the $3 \times 3$ identity matrix. If $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\vvec = (v_E, v_{I_1}, v_{I_2})$, then $\lambda$ is also an eigenvalue of $\tilde{H}(\xvec^*)$ with eigenvector $\vvec = (v_E, v_{I_1}, \dots, v_{I_1}, v_{I_2}, \dots, v_{I_2})$, where $v_{I_1}$ and $v_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. $\tilde{H}(\xvec^*)$ has $(n_{I_1}-1)+(n_{I_2}-1)$ additional eigenvalues. If $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$. The corresponding eigenvectors are $\vvec^1, \dots, \vvec^{n_{I_1}-1}$, where $v^k_2 = -1$, $v^k_{k+2} = 1$, and all other components are 0. Similarly, if $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_2} = \mu_{EE} \alpha \sech^2(g x_{I_2})$ with multiplicity $n_{I_2}-1$.
+
+For $\beta = 1$, $x_{I_2} = -x_{I_1}$, thus $\lambda_{I_1} = \lambda_{I_2}$. Substituting \cref{eq:xIapprox} for $x_{I_1}$, using the Taylor expansion $\sech^2 (g x_{I_1}) = 1 - g^2 x_{I_1}^2 + \mathcal{O}(x_{I_1})$ and keeping terms up to quadratic order, and simplifying, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ is located, to leading order, at
+\begin{align*}
+    -&\frac{2}{g_0} \left( g - g_0 \right) && g \geq g_0
+\end{align*}
+which is negative for $g > g_0$. For $\beta > 1$, substituting \cref{eq:XI1} for $x_{I_1}$, using the same Taylor expansion, and simplifying, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ is located, to leading order, at
+\begin{align*}
+    \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right)
+\end{align*}
+which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. Similarly, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located, to leading order, at 
+\begin{align*}
+    \frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right)
+\end{align*}
+which is negative for $\beta > 1/2$. This eigenvalue will never affect stability.
+
+It remains to find the eigenvalues of $H_3(\xvec)$. 
+
+When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$, which is expected since $\xvec = 0$.
+
+For $\xvec$ small, we use the Taylor expansion $\sech^2(g x) = 1 - (g x)^2 + \mathcal{O}( x^4 )$, keeping only terms up to quadratic order. We then substitute the expressions \cref{eq:I1I2asymp}, keeping only terms of up to order $1/N$, so that the expression for $H_3(\xvec)$ only involves $x_{I_1}$. For each eigenvalue $\lambda$ of $H_3(0)$, we use a power series ansatz $\lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4$. We then substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). 
+
+
+Along each branch of fixed points that emerges from the pitchfork bifurcation, there is a Hopf bifurcation. We can find an leading order formula for its location for large $N$. 
+
+
+Using this method for $\lambda = \lambda_I$, $H_3(\xvec)$ has a real eigenvalue located at $\mu_{EE} \alpha(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2$, to leading order. Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, $H_3(\xvec)$ has a real eigenvalue at 
+\[
+\alpha \mu_{EE} \left( 1 - \frac{3(g-g_0)}{g}\right)
+\]
+which corresponds to an eigenvalue of $J_3(\xvec)$ at 
+\[
+\frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1
+\]
+which is negative for sufficiently large $N$. 
+
+Using this method for $\lambda = \lambda_0 \pm \omega_0$, $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
 \begin{equation}
-\lambda(g) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha \beta g^2 n_I x_{I_1}^2 \right) - 1.
+\lambda(g) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 \right)
 \end{equation}
-(This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). 
-When $x_{I_1} = 0$, i.e. we are linearizing about the origin, this reduces to $\lambda(g) = \frac{g}{\sqrt{N}}\lambda_0 - 1$, as required. Substituting \cref{eq:XI1} for $x_{I_1}$ gives us
+to leading order. Substituting \cref{eq:XI1} and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where
 \begin{equation*}
-\lambda(g) = \frac{\mu_E g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha \beta n_I \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right) - 1.
+\lambda(g) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right) - 1.
 \end{equation*}
-To locate the Hopf bifurcation, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g) = 0$ to get
-\begin{equation}\label{eq:gHbeta}
-g_{H,\beta} = \frac{ 
-\frac{ 3 \alpha \beta n_I }{ (1 - \beta + \beta^2 ) } g_0
-+ \frac{2 \sqrt{N}}{\mu_{EE}} 
-}
-{
-\frac{ 3 \alpha \beta n_I }{ (1 - \beta + \beta^2 ) } + \alpha - 1
-}
-+ \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
-\end{equation}
-A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). This formula, and the order of the remainder term, agrees with results from numerical parameter continuation (see \cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:gHbeta} dominate, thus $g_H(g) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Substituting $g_0 = \sqrt{N}/\alpha \mu_{EE}$ and simplifying, equation \cref{eq:gHbeta} becomes
+To locate the Hopf bifurcation, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g) = 0$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
 \begin{equation}\label{eq:ghopfformula}
-g_{H,\beta} = 
-\frac{\sqrt{N}}{\mu_{EE}} 
-\frac{ 3 \beta n_I  + 2(1 - \beta + \beta^2 ) }
-{ 3 \alpha \beta n_I + (\alpha - 1)(1 - \beta + \beta^2 ) }
-+ \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
+    g_{H,\beta} = 
+    \frac{\sqrt{N}}{\mu_{EE}} 
+    \frac{ 3 n_I + 2 \beta^2 - 2 \beta - 1 }
+    { 3 \alpha n_I + \beta(\beta-1)(\alpha-1) - 2 \alpha - 1}
+    + \mathcal{O}\left( \frac{1}{N^{3/2}} \right)
 \end{equation}
-Differentiating \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
+A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). This formula, and the order of the remainder term, agrees with results from numerical parameter continuation (see \cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H,\beta}  \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}).Differentiating \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
 \begin{equation}\label{eq:gprime}
-g_{H,\beta}' = 
+g_{H,\beta}' = \frac{ \sqrt{N} }{ \mu_{EE} }
     \frac{ 
-    3 (\alpha+1) \left(\beta^2-1\right) n_I
+    3(\alpha+1)(2\beta-1)(n_I-1)
     }
-    {
-    \left(\alpha \left(\beta^2+\beta (3 n_I -1)+1\right)-\beta^2+\beta-1\right)^2},
+    { 
+        \left( \alpha(3 n_I + \beta^2 - \beta - 2) - \beta^2 + \beta - 1 \right)^2
+    },
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$). 
+which is 0 at $\beta = 1/2$ and positive for $\beta > 1/2$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$). 
 
 \begin{figure}
     \centering
