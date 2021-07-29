@@ -70,10 +70,10 @@ beta4N = br{7}.parN;
 beta9g = br{8}.parG;
 beta9N = br{8}.parN;
 
-beta1gcalc = gh(alpha,1,beta1N,mee);
-beta3gcalc = gh(alpha,3,beta3N,mee);
-beta4gcalc = gh(alpha,4,beta4N,mee);
-beta9gcalc = gh(alpha,9,beta9N,mee);
+beta1gcalc = gh_old(alpha,1,beta1N,mee);
+beta3gcalc = gh_old(alpha,3,beta3N,mee);
+beta4gcalc = gh_old(alpha,4,beta4N,mee);
+beta9gcalc = gh_old(alpha,9,beta9N,mee);
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -139,28 +139,34 @@ for k = 1:length(beta1xi)
     beta1eig = [beta1eig eig(H)];
 end
 
-beta1eig1calc  = (mee*a)*(1 - (beta1g.^2).*( beta1xi.^2 ));
 beta1eig1calca = (mee*a)*(1 - 3*(beta1g - g0)./beta1g);
 
 beta1eigrcalc = (mee/2)*( (a-1) + a*b*(beta1g.^2).*(0.2*beta1N).*( beta1xi.^2 ) );
-beta1eigrcalc = (mee/2)*( (a-1) + a*b*(beta1g.^2).*(0.2*beta1N).*( beta1xicalc.^2 ) );
+% beta1eigrcalc = (mee/2)*( (a-1) + a*b*(beta1g.^2).*(0.2*beta1N).*( beta1xicalc.^2 ) );
 beta1eigrcalc2 = (mee/2)*( (a-1) + a*(beta1g.^2).*(0.2*beta1N - 1).*( beta1xi.^2 ) );
 
 beta1eigrcalc2a = (mee/6)*( -3 + a*(3 + 3*(beta1g.^2).*(-1 + 0.2*beta1N).*(beta1xi.^2) - 2*beta1g.^4.*(-1 + 0.2*beta1N).*(beta1xi.^4) ) ) ;
+
+beta1Ni = 0.2*beta1N;
+beta1eigrcalc2b = (mee/2)*( (a-1) + a*(beta1g.^2).*(beta1Ni - 1).*( beta1xi.^2 ) ...
+    -(2/3)*(a*(beta1g.^4).*(beta1Ni - 1).*(beta1xi.^4) ) );
 
 beta1eigrcalc3 = mee*0.25*sech(beta1g.*beta1xi).^2 .* ...
     (-1 + 2*a - a*0.2*beta1N - cosh(2*beta1g.*beta1xi) + a*0.2*beta1N.*cosh(2*beta1g.*beta1xi) );
 
 beta1eigIcalc = mee*a*(1 - (beta1g.^2).*( beta1xi.^2 ) );
 
-plot( beta1N, beta1eig(3,:), beta1N, beta1eig1calc, beta1N, beta1eig1calca);
+% plot( beta1N, beta1eig(3,:), beta1N, beta1eig1calc, beta1N, beta1eig1calca);
 
-% plot(beta1N, real(beta1eig(1,:)), beta1N, beta1eigrcalc2, beta1N, beta1eigrcalc2a, beta1N, beta1eigrcalc3  );
+plot(beta1N, real(beta1eig(1,:)), beta1N, beta1eigrcalc2b );
 % plot(beta1N, real(beta1eig(1,:)), beta1N, real(beta1eig(3,:)) );
 
 % plot(beta1N, real(beta1eig(3,:)), beta1N, beta1eigIcalc );
 % plot(beta1N, real(beta1eig(3,:)) - beta1eigIcalc );
 % plot(beta1N,beta1xi, '-', beta1N, beta1xicalc, '--', 'LineWidth', 3);
+
+% plot( log(beta1g.*beta1xi.*sqrt(0.2*beta1N-1) ), log( real(beta1eig(1,:))-(1/2)*mee*(a-1) ) ); 
+% pp = polyfit( (beta1g.*beta1xi.*sqrt(0.2*beta1N - 1) ), log( real(beta1eig(1,:))-(1/2)*mee*(a-1) ), 1);
 
 
 %%
@@ -171,15 +177,21 @@ beta3xe = br{6}.xE;
 beta3xi = br{6}.xI1;
 beta3xi2 = br{6}.xI2;
 
+beta3g = br{3}.parG;
+beta3N = br{3}.parN;
+beta3xe = br{3}.xE;
+beta3xi = br{3}.xI1;
+beta3xi2 = br{3}.xI2;
+
 g0 = sqrt(beta3N)/(a*mee);
 
-b = 3;
+b = 1;
 
 beta3xicalc = beta3xi;
 beta3eig = [];
 for k = 1:length(beta3xi)
-    beta3xicalc(k) = xicalc(a, 3, beta3g(k), beta3N(k), mee);
-    H = clustersymm( beta3N(k), 1, 0.8*beta3N(k), mee, -a*mee, mee, -a*mee, a, 3);
+    beta3xicalc(k) = xicalc(a, b, beta3g(k), beta3N(k), mee);
+    H = clustersymm( beta3N(k), 1, 0.8*beta3N(k), mee, -a*mee, mee, -a*mee, a, b);
     H = H*diag( sech(beta3g(k)*[beta3xe(k), beta3xi(k), beta3xi2(k)]).^2 );
     beta3eig = [beta3eig eig(H)];
 end
@@ -192,12 +204,17 @@ set(groot,'defaultLegendInterpreter','latex');
 
 % plot(beta3N,beta3xi, '-', beta3N, beta3xicalc, '--', 'LineWidth', 3);
 
-% beta3eigIcalc = mee*a*(1 - (beta3g.^2).*( beta3xi.^2 ) );
-% plot(beta3N, real(beta3eig(3,:)), beta3N, beta3eigIcalc );
+beta3eigIcalc = (mee/2)*( (a-1) + a*b*(beta3g.^2).*(0.2*beta3N).*( beta3xi.^2 ) );
 
-beta3eig1calc  = (mee*a)*(1 - (beta3g.^2).*( beta3xi.^2 ));
-beta3eig1calca = (mee*a)*(1 - 3*(beta3g - g0)./beta3g);
-plot( beta3N, beta3eig(3,:), beta3N, beta3eig1calc, beta3N, beta3eig1calca);
+beta3Ni = 0.2*beta3N;
+beta3eigIcalca = (mee/2)*( (a-1) + a*(beta3g.^2).*(beta3Ni - 1).*( beta3xi.^2 ) ...
+    -(2/3)*(a*(beta3g.^4).*(beta3Ni - 1).*(beta3xi.^4) ) );
+
+plot(beta3N, real(beta3eig(1,:)), beta3N, beta3eigIcalca );
+
+% beta3eig1calca = (mee*a)*(1 - 3*(beta3g - g0)./beta3g);
+% plot( beta3N, beta3eig(3,:), beta3N,  beta3eig1calca);
+
 
 %%
 
