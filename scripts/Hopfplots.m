@@ -13,6 +13,8 @@ labelFontSize = 18;
 markerSize = 50;
 lw = 2;
 
+%% Hopf locations g vs N (numerical results from AUTO)
+
 load Hopfdata;
 g0g = br{1}.parG;
 g0N = br{1}.parN;
@@ -38,7 +40,8 @@ axis([20,500,1,13]);
 
 labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_h$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
 legend(labels,'location','NorthEast');
-%%
+%% Hopf locations log vs log N (numerical results from AUTO)
+
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
 set(groot,'defaultAxesTickLabelInterpreter','latex');  
@@ -70,10 +73,10 @@ beta4N = br{7}.parN;
 beta9g = br{8}.parG;
 beta9N = br{8}.parN;
 
-beta1gcalc = gh_old(alpha,1,beta1N,mee);
-beta3gcalc = gh_old(alpha,3,beta3N,mee);
-beta4gcalc = gh_old(alpha,4,beta4N,mee);
-beta9gcalc = gh_old(alpha,9,beta9N,mee);
+beta1gcalc = gh(alpha,1,beta1N,mee);
+beta3gcalc = gh(alpha,3,beta3N,mee);
+beta4gcalc = gh(alpha,4,beta4N,mee);
+beta9gcalc = gh(alpha,9,beta9N,mee);
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -82,11 +85,11 @@ set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
 hold on;
-% plot(beta1N, beta1g, '-', beta1N, beta1gcalc, '--', 'LineWidth', lw);
-plot(beta3N, beta3g, '-', beta3N, beta3gcalc, '--', 'LineWidth', lw);
+plot(beta1N, beta1g, '-', beta1N, beta1gcalc, '--', 'LineWidth', lw);
+% plot(beta3N, beta3g, '-', beta3N, beta3gcalc, '--', 'LineWidth', lw);
 % plot(beta4N, beta4g, '-', beta4N, beta4gcalc, '--', 'LineWidth', lw);
 
-axis([20,50,1.5,3]);
+axis([20,50,1.5,2.75]);
 xlabel('$N$');
 ylabel('$g$');
 labels = {'Hopf bifurcation ($\beta = 1$)', 'Approximation $g_{H,\beta}$ ($\beta = 1$)' };
@@ -106,7 +109,7 @@ yp1 = log( abs( beta1gcalc(s1:end) - beta1g(s1:end) ) );
 s3 = 50;
 xp3 = log( beta3N(s3:end) );
 yp3 = log( abs( beta3gcalc(s3:end) - beta3g(s3:end) ) );
-s4 = 55;
+s4 = 50;
 xp4 = log( beta4N(s4:end)  );
 yp4 = log( abs( beta4gcalc(s4:end)  - beta4g(s4:end)  ) );
 p1 = polyfit(xp1,yp1,1);
@@ -119,7 +122,8 @@ legend(labels,'location','NorthEast');
 xlabel('$\log N$');
 ylabel('log absolute error');
 
-%% Plot of solution branches vs N
+%% Plot of solution branches and eigenvalues vs N
+% beta = 1 branch
 
 beta1g  = br{3}.parG;
 beta1N  = br{3}.parN;
@@ -139,37 +143,21 @@ for k = 1:length(beta1xi)
     beta1eig = [beta1eig eig(H)];
 end
 
-beta1eig1calca = (mee*a)*(1 - 3*(beta1g - g0)./beta1g);
-
-beta1eigrcalc = (mee/2)*( (a-1) + a*b*(beta1g.^2).*(0.2*beta1N).*( beta1xi.^2 ) );
-% beta1eigrcalc = (mee/2)*( (a-1) + a*b*(beta1g.^2).*(0.2*beta1N).*( beta1xicalc.^2 ) );
-beta1eigrcalc2 = (mee/2)*( (a-1) + a*(beta1g.^2).*(0.2*beta1N - 1).*( beta1xi.^2 ) );
-
-beta1eigrcalc2a = (mee/6)*( -3 + a*(3 + 3*(beta1g.^2).*(-1 + 0.2*beta1N).*(beta1xi.^2) - 2*beta1g.^4.*(-1 + 0.2*beta1N).*(beta1xi.^4) ) ) ;
-
 beta1Ni = 0.2*beta1N;
-beta1eigrcalc2b = (mee/2)*( (a-1) + a*(beta1g.^2).*(beta1Ni - 1).*( beta1xi.^2 ) ...
+
+% real part of complex pair
+% second order
+beta1eigrcalc2 = (mee/2)*( (a-1) + a*(beta1g.^2).*(beta1Ni - 1).*( beta1xi.^2 ) );
+% fourth order
+beta1eigrcalc4 = (mee/2)*( (a-1) + a*(beta1g.^2).*(beta1Ni - 1).*( beta1xi.^2 ) ...
     -(2/3)*(a*(beta1g.^4).*(beta1Ni - 1).*(beta1xi.^4) ) );
+plot( beta1N, real(beta1eig(1,:)), beta1N, beta1eigrcalc2, beta1N, beta1eigrcalc4  );
 
-beta1eigrcalc3 = mee*0.25*sech(beta1g.*beta1xi).^2 .* ...
-    (-1 + 2*a - a*0.2*beta1N - cosh(2*beta1g.*beta1xi) + a*0.2*beta1N.*cosh(2*beta1g.*beta1xi) );
-
+% third eigenvalue
 beta1eigIcalc = mee*a*(1 - (beta1g.^2).*( beta1xi.^2 ) );
 
-% plot( beta1N, beta1eig(3,:), beta1N, beta1eig1calc, beta1N, beta1eig1calca);
-
-plot(beta1N, real(beta1eig(1,:)), beta1N, beta1eigrcalc2b );
-% plot(beta1N, real(beta1eig(1,:)), beta1N, real(beta1eig(3,:)) );
-
-% plot(beta1N, real(beta1eig(3,:)), beta1N, beta1eigIcalc );
-% plot(beta1N, real(beta1eig(3,:)) - beta1eigIcalc );
-% plot(beta1N,beta1xi, '-', beta1N, beta1xicalc, '--', 'LineWidth', 3);
-
-% plot( log(beta1g.*beta1xi.*sqrt(0.2*beta1N-1) ), log( real(beta1eig(1,:))-(1/2)*mee*(a-1) ) ); 
-% pp = polyfit( (beta1g.*beta1xi.*sqrt(0.2*beta1N - 1) ), log( real(beta1eig(1,:))-(1/2)*mee*(a-1) ), 1);
-
-
-%%
+%% Plot of solution branches and eigenvalues vs N
+% beta = 3 branch
 
 beta3g = br{6}.parG;
 beta3N = br{6}.parN;
@@ -177,15 +165,8 @@ beta3xe = br{6}.xE;
 beta3xi = br{6}.xI1;
 beta3xi2 = br{6}.xI2;
 
-beta3g = br{3}.parG;
-beta3N = br{3}.parN;
-beta3xe = br{3}.xE;
-beta3xi = br{3}.xI1;
-beta3xi2 = br{3}.xI2;
-
 g0 = sqrt(beta3N)/(a*mee);
-
-b = 1;
+b = 3;
 
 beta3xicalc = beta3xi;
 beta3eig = [];
@@ -202,36 +183,25 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-% plot(beta3N,beta3xi, '-', beta3N, beta3xicalc, '--', 'LineWidth', 3);
-
-beta3eigIcalc = (mee/2)*( (a-1) + a*b*(beta3g.^2).*(0.2*beta3N).*( beta3xi.^2 ) );
-
 beta3Ni = 0.2*beta3N;
-beta3eigIcalca = (mee/2)*( (a-1) + a*(beta3g.^2).*(beta3Ni - 1).*( beta3xi.^2 ) ...
-    -(2/3)*(a*(beta3g.^4).*(beta3Ni - 1).*(beta3xi.^4) ) );
 
-plot(beta3N, real(beta3eig(1,:)), beta3N, beta3eigIcalca );
+% real part of complex pair
+% 2nd order
+beta3eigIcalc12 = (mee/2)*( (a-1) + a*b*(beta3g.^2).*(beta3Ni - 1).*( beta3xi.^2 ) );
+plot(beta3N, real(beta3eig(1,:)), beta3N, beta3eigIcalc12 );
 
-% beta3eig1calca = (mee*a)*(1 - 3*(beta3g - g0)./beta3g);
+% 3rd eigenvalue
+beta1eigIcal = (mee*a)*(1 - 3*(beta3g - g0)./beta3g);
 % plot( beta3N, beta3eig(3,:), beta3N,  beta3eig1calca);
 
 
 %%
 
-function g = gh_old(a,b,N,mee)
-    ni = 0.2*N;
-    numer = 3*b*ni + 2*(1 - b + b^2);
-    denom = 3*a*b*ni + (a-1)*(1 - b + b^2);
-    g = (sqrt(N) / mee).*(numer./denom);
-%     g = (sqrt(N) / (a*mee));
-end
-
 function g = gh(a,b,N,mee)
     ni = 0.2*N;
-    numer = 3*ni + 2*b.^2 - 2*b - 1;
-    denom = 3*a*ni + a*b.^2 - b.^2 - a*b + b - 2*a - 1;
+    numer = 2 - 5*b + 2*b^2 + 3*b*ni;
+    denom = a*(1-4*b+b^2) - (1-b+b^2) + 3*a*b*ni;
     g = (sqrt(N) / mee).*(numer./denom);
-%     g = (sqrt(N) / (a*mee));
 end
 
 function x = xicalc(a, b, g, N, mee)
