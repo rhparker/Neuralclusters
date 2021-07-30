@@ -393,19 +393,20 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/bdnoclusters20E.eps}
-    \includegraphics[width=8cm]{images/bdnoclusters20I.eps}
+    \includegraphics[width=8cm]{images/bdnoclusters20E.eps} &
+    \includegraphics[width=8cm]{images/bdnoclusters20I.eps} \\
+    \includegraphics[width=8cm]{images/bdnoclusters50E.eps} &
+    \includegraphics[width=8cm]{images/bdnoclusters50I.eps}
     \end{tabular}
-    \caption{Bifurcation diagram showing both $I_1/I_2$ branches ($\beta = 1$ and $\beta = 3$) of fixed point solutions to \cref{eqn:sys_Basic}. Left panel plots $X_E$ vs $g$, right panel plots $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. 
-    $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Bifurcation diagram showing $I_1/I_2$ branches of equlibria of \cref{eqn:sys_Basic} for all valid values of $\beta$. Top panels show $N=20$, with top left plotting $X_E$ vs $g$, and top right plotting $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Bottom panels show $N=50$, with bottom left plotting $X_E$ vs $g$, and bottom right plotting $X_{I_2}$ only vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:noclusterBD1}
 \end{figure}
 
 \subsection{Stability and bifurcations along $I_1/I_2$ branches}
 
-Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$.To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. As above, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. We will also find a Hopf bifurcation along each $I_1/I/2$ branch, and can find an leading order formula for its location for large $N$.
+Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$.To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. As above, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. In doing this, we will also find a Hopf bifurcation along each $I_1/I/2$ branch, and can find an leading order formula for its location for large $N$.
 
-Linearizing the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$, the Jacobian is
+First, we linearize the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
 \[
 J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
 \]
@@ -417,7 +418,7 @@ H_3(\xvec) = \mu_{EE}
     \alpha n_I \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & -\alpha \left(\frac{1}{\beta+1} n_I-1 \right) \sech^2(g x_{I_2})
  \end{bmatrix}
 \]
-and $I_3$ is the $3 \times 3$ identity matrix. If $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\vvec = (v_E, v_{I_1}, v_{I_2})$, then $\lambda$ is also an eigenvalue of $\tilde{H}(\xvec^*)$ with eigenvector $\vvec = (v_E, v_{I_1}, \dots, v_{I_1}, v_{I_2}, \dots, v_{I_2})$, where $v_{I_1}$ and $v_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. $\tilde{H}(\xvec^*)$ has $(n_{I_1}-1)+(n_{I_2}-1)$ additional eigenvalues. If $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$. The corresponding eigenvectors are $\vvec^1, \dots, \vvec^{n_{I_1}-1}$, where $v^k_2 = -1$, $v^k_{k+2} = 1$, and all other components are 0. Similarly, if $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_2} = \mu_{EE} \alpha \sech^2(g x_{I_2})$ with multiplicity $n_{I_2}-1$.
+and $I_3$ is the $3 \times 3$ identity matrix. If $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\vvec = (v_E, v_{I_1}, v_{I_2})$, then $\lambda$ is also an eigenvalue of $\tilde{H}(\xvec^*)$ with eigenvector $\vvec = (v_E, v_{I_1}, \dots, v_{I_1}, v_{I_2}, \dots, v_{I_2})$, where $v_{I_1}$ and $v_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. $\tilde{H}(\xvec^*)$ has $(n_{I_1}-1)+(n_{I_2}-1)$ additional eigenvalues, which we can locate. If $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$. The corresponding eigenvectors are $\vvec^1, \dots, \vvec^{n_{I_1}-1}$, where $v^k_2 = -1$, $v^k_{k+2} = 1$, and all other components are 0. Similarly, if $n_{I_2} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_2} = \mu_{EE} \alpha \sech^2(g x_{I_2})$ with multiplicity $n_{I_2}-1$.
 
 For $\beta = 1$, $x_{I_2} = -x_{I_1}$, thus $\lambda_{I_1} = \lambda_{I_2}$. Using the formula \cref{eq:xIbrancheq} together with the identity $\sech^2(g x_{I_1}) = 1 - \tanh^2(g x_{I_1})$, substituting \cref{eq:xIapprox} for $x_{I_1}$, and simplifying, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ is located, to leading order, at
 \begin{align*}
@@ -429,7 +430,7 @@ For $\beta > 1$, substituting \cref{eq:XI1} for $x_{I_1}$, using the same Taylor
 \begin{align*}
     \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right)
 \end{align*}
-which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. Similarly, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located, to leading order, at 
+which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. This implies that the fixed point on the $I_1/I_2$ branch is unstable for $\beta>2$ (see {fig:noclusterBD1}). Similarly, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located, to leading order, at 
 \begin{align*}
     \frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right)
 \end{align*}
@@ -437,7 +438,7 @@ which is negative for $\beta > 1/2$. This eigenvalue will never affect stability
 
 It remains to find the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$, which is expected since $\xvec = 0$.
 
-For $\xvec$ small, we use the Taylor expansion $\sech^2(g x) = 1 - (g x)^2 + \mathcal{O}( x^4 )$, keeping only terms up to quadratic order. We then substitute the expressions \cref{eq:I1I2asymp}, keeping only terms of up to order $1/N$, so that the expression for $H_3(\xvec)$ only involves $x_{I_1}$. For each eigenvalue $\lambda$ of $H_3(0)$, we use a power series ansatz $\lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4$. We then substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). 
+For $\xvec$ small, we use the Taylor expansion $\sech^2(g x) = 1 - (g x)^2 + \mathcal{O}( x^4 )$, keeping only terms up to quadratic order. We then substitute the expressions \cref{eq:I1I2asymp}, keeping only terms of up to order $1/N$, so that the expression for $H_3(\xvec)$ only involves $x_{I_1}$. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz $\lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4$. We substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). 
  
 Using this method for $\lambda = \lambda_I$, $H_3(\xvec)$ has a real eigenvalue located at 
 \[
@@ -451,17 +452,23 @@ to leading order, which corresponds to an eigenvalue of $J_3(\xvec)$ at
 \begin{align*}
 \frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right)  && g \geq g_0
 \end{align*}
-which is always negative. This eigenvalue will also never affect stability.
+which is always negative. This eigenvalue will not affect stability.
 
-Finally, we use this method for $\lambda = \lambda_0 \pm \omega_0$. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
+Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda = \lambda_0 \pm \omega_0$. We find that $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
 \begin{equation}
-\lambda(g) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right)
+\lambda(g, \beta) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right)
 \end{equation}
-to leading order. Substituting \cref{eq:XI1} and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where
-\begin{equation*}
-\lambda(g) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right) - 1
-\end{equation*}
-to leading order. To locate the Hopf bifurcation, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g) = 0$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
+to leading order. We note that we can get more accurate approximations for $\lambda(g, \beta)$ by taking higher powers of $x_{I_1}$ in our asymptotic series. For example, for $\beta=1$, we can obtain the fourth-order approximation
+\[
+\lambda(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right)
+\]
+A similar fourth-order approximation can be obtained for $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is too complicated to be of much use.
+
+Substituting \cref{eq:XI1} and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where
+\begin{equation}\label{eq:lambdagbeta}
+\lambda(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right) - 1
+\end{equation}
+to leading order. To locate the Hopf bifurcation, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
 \begin{equation}\label{eq:ghopfformula}
     g_{H,\beta} = 
     \frac{\sqrt{N}}{\mu_{EE}} 
@@ -479,7 +486,7 @@ g_{H,\beta}' = \frac{ \sqrt{N} }{ \mu_{EE} }
         \left[ \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I \right]^2
     }\:,
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$). 
+which is 0 at $\beta = 1$ and positive for $\beta > 1$. Thus $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$, as well as \cref{fig:noclusterBD1}). 
 
 \begin{figure}
     \centering
