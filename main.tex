@@ -603,7 +603,7 @@ If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \
 % where $C = \frac{\mu_E}{\sqrt{N}}\left(n_E y_E -\alpha n_{I_1} %y_{I_1} - \alpha n_{I_2} y_{I_2} \right)$.
 
 
-\section{Excitatory clusters, weight parameters unchanged}
+\section{Excitatory clusters, weight parameters balanced}
 
 We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. Cells will be connected within, but not between, clusters. The matrix $H$ is now
 \[
@@ -693,9 +693,22 @@ Following the same procedure as in the previous section, we obtain the formula f
 \end{align}
 for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
 
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/bdclusters20c4E.eps} &
+    \includegraphics[width=8cm]{images/bdclusters20c4I.eps}
+    \end{tabular}
+    \caption{Bifurcation diagram showing $C_1/C_2$ branches of equlibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Symmetric pitchfork bifurcation at $g = g_C$ indicated with filled circle. Further bifurcations along branches are not shown to avoid clutter. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, 
+    $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:clusterBD1}
+\end{figure}
+
 \subsection{Stability and bifurcations along $C_1/C_2$ branch}
 
-Choose any $\beta_C \geq 1$, so that $n_{E_1} = \frac{\beta_C}{\beta_C+1}n_I$ and $n_{E_2} = \frac{1}{\beta_C+1}n_I$. For stability of solutions on the $C_1/C_2$ branches, we follow the same procedure as with the $I_1/I_2$ branches in the previous section.  We linearize the reduced system \cref{eq:cluster3system} about the branch $(x_{E_1}, x_{E_2}, x_{I})$ to get the Jacobian
+Choose any $\beta_C \geq 1$, so that $n_{E_1} = \frac{\beta_C}{\beta_C+1}n_C$ and $n_{E_2} = \frac{1}{\beta_C+1}n_C$. Let $\xvec = (x_{E_1}, x_{E_2}, x_{I})$ be a solution to \cref{eq:cluster3system}. We look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_{E_1}, \dots, x_{E_1}, x_{E_2}, \dots, x_{E_1}, x_{I}, \dots, x_{I})^T$, where $x_{E_1}$ and $x_{E_2}$ are repeated $n_{E_1}$ and $n_{E_2}$ times, respectively, and $x_I$ is repeated $n_I$ times. Stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. 
+
+We follow the same procedure as with the $I_1/I_2$ branches in the previous section.  We linearize the reduced system \cref{eq:cluster3system} about the branch $(x_{E_1}, x_{E_2}, x_{I})$ to get the Jacobian
 \[
 J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
 \]
@@ -710,7 +723,27 @@ H_3(\xvec) = \mu
     -\alpha (n_I - 1) \sech^2(g x_{I})
  \end{bmatrix}
 \]
-and $I_3$ is the $3 \times 3$ identity matrix. 
+and $I_3$ is the $3 \times 3$ identity matrix. As in the previous section, the three eigenvalues of $H_3(\xvec)$ are also eigenvalues of $\tilde{H}(\xvec^*)$. Following the same procedure as in the previous section, there are $(n_{C_1}-1) + (n_{C_2}-1) + (n_I - 1)$ additional eigenvalues which are grouped as follows:
+\begin{align*}
+(p-1) n_C \mu &\sech^2(g x_{E_1}) &&\text{multiplicity }n_{C_1} - 1\\
+(p-1) n_C \mu &\sech^2(g x_{E_1})&&\text{multiplicity }n_{C_2} - 1\\
+\alpha \mu &\sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1
+\end{align*}
+These correspond to eigenvalues of $D\tilde{F}(\xvec^*)$ which are located, to leading order, at 
+\begin{align*}
+&\frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right) \\
+&\frac{g-g_0}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right) \\
+&\frac{\alpha \mu g}{\sqrt{N}} - 1
+\end{align*}
+for $g$ close to $g_C$. As in the previous section, the first is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The second is negative for $\beta_C  > 1/2$, and the third is negative for all $\beta$ for $N$ sufficiently large. This implies that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$. 
+
+It remains to determine the eigenvalues of $H_3(\xvec)$. As in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
+\begin{align*}
+    -2\left( \frac{g - g_0}{g_0} \right)  && g \geq g_0
+\end{align*}
+for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not affect stability.
+
+
 
 \subsection{Symmetric branch, small $N_c$}
 \begin{itemize}
