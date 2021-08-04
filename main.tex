@@ -922,30 +922,46 @@ We can also choose the weights as in the previous section, i.e. $\mu_{EI} = -\al
 
 \section{Inhibitory clusters}
 
-We can also allow the inhibitory cells to be clustered, while the excitatory cells remain unclustered. Briefly, supposed the inhibitory cells are grouped into $n_{C_i}$ inhibitory clusters of size $p_i$.
-
-
-To get this, all you have to do is exchange the Is and the Es in the previous case. This means that the eigenvalue pattern of the linearization about 0 is known, since we can use the same formulas as in the previous case, with the Is and Es switched.
-
-In this case, we have
+We can also allow the inhibitory cells to be clustered, while the excitatory cells remain unclustered. Briefly, suppose the inhibitory cells are grouped into $n_{C_I}$ inhibitory clusters of size $p_i$. For the choice of weights $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$, the eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitatory and inhibitory cells in the previous section:
 \begin{itemize}
-    \item $N_{ci}$ inhibitory clusters of size $p_i$, so $N_I = N_{ci} p_i$.
-    \item Everything else is the same.
+\item $\lambda_I := \alpha \mu_{EE} > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
+\item $\lambda_E = -\mu_{EE} < 0$ with multiplicity $n_E - 1$
+\item $\lambda_{C_I} = -(p_I-1)\alpha \mu_{EE} < 0$, with multiplicity $n_{C_I}-1$.
+\item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
+\begin{align*}
+    \lambda_0 &:= \frac{1}{2}\mu_{EE} \left[ \alpha( 1 + p_I(n_{C_I}-1)) -1 \right]
+      \\
+    \omega_0 &:= \sqrt{a^2 \left(\left(-3 n_{C_I}^2+2 n_{C_I}+1\right) p_I^2-2 (n_{C_I}+1) p_I+1\right)-2 a
+    (n_{C_I}p_I +p_I -1)+1}
+\end{align*}
+where we used the fact that $n_E = \alpha n_{C_I} p_I$.
+\end{itemize}
+The only two eigenvalues with positive real part are $\lambda_I$ and $\lambda_0 + i \omega_0$, so those are the only ones which will cause bifurcations as $g$ is varied. We note that $\lambda_0 > \lambda_I$, thus the first bifurcation which will occur at the origin as $g$ is increased from 0 is a Hopf bifurcation at 
+\[
+g_H = \frac{2 \sqrt{N}}{\mu_{EE} \left[ \alpha( 1 + p_I(n_{C_I}-1)) -1 \right] }
+\]
+We are interested in what occurs for large $N$ and large $N_{C_I}$. As an example, let $N_{C_I}$ scale with $\sqrt{N}$, so that $N_{C_I} = p_I = \sqrt{N}$. For this scaling, as $N$ increases, the Hopf bifurcation takes place at $g_H \approx \frac{2}{f \mu_{EE} \sqrt{N}}$. For large $N$, we also have $\omega_0 \approx \frac{\sqrt{3}}{2}f N \mu_{EE}$. Thus, at $g = g_H$, $DF(0)$ has a complex conjugate pair of eigenvalues with real part of 0 and imaginary part of $\sqrt{3}$. This implies that for large $N$, the frequency of the limit cycle emerging at the Hopf bifuration of the origin is asymptotically constant as $N$ increases.
+
+
+We can also choose the weights so that the network is balanced, as in the previous section. In that case, the eigenvalues of $\Hvec$ are
+\begin{align*}
+\mu_{EE} &= \mu && \mu_{IE} = \mu \\
+\mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha n_{C_I} \mu
+\end{align*}
+The eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitatory and inhibitory cells in the previous section:
+\begin{itemize}
+\item $\lambda_I := \alpha n_{C_I} \mu > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
+\item $\lambda_E = -\mu < 0$ with multiplicity $n_E - 1$
+\item $\lambda_{C_I} = -(p_I-1) \alpha n_{C_I} \mu < 0$, with multiplicity $n_{C_I} -1$.
+\item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
+\begin{align*}
+    \lambda_0 &:= \frac{1}{2}\mu(\alpha n_{C_I} - 1)
+      \\
+    \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha n_{C_I}+1} \sqrt{\alpha n_{C_I}(4p_I - 1) - 1}
+\end{align*}
 \end{itemize}
 
-\noindent For the linearization about 0, the eigenvalues of the matrix $H$ are (real part from L to R):
-\begin{itemize}
-    \item $\lambda_{ci} = (p_i - 1)\mu_{II}$ (multiplicity $p_i - 1$)
-    \item $\lambda_E = -\mu_{EE}$ (multiplicity $N_E - 1$)
-    \item $\lambda_I = -\mu_{II}$ (multiplicity $N_i - N_{ci}$.
-    \item pair of complex eigenvalues which are the eigenvalues of
-    \[
-    \tilde{J}_i = \begin{pmatrix}
-    (p_i - 1)\mu_{II} & N_{E} \mu_{IE} \\
-    N_I \mu_{EI} & (N_E - 1)\mu_{EE}
-    \end{pmatrix}
-    \]
-\end{itemize}
+
 
 Key here is that the complex pair crosses the imaginary axis first as $g$ is increased, leading to a Hopf bifurcation and a stable limit cycle. The real part of this complex pair $\lambda \pm i \omega$ is given by
 \begin{align*}
