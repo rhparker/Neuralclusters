@@ -468,7 +468,7 @@ A similar fourth-order approximation can be obtained for $\beta>1$, but the resu
 
 Substituting \cref{eq:XI1} and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where
 \begin{equation}\label{eq:lambdagbeta}
-\lambda(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left( \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right) - 1
+\lambda(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1
 \end{equation}
 to leading order. To locate the Hopf bifurcation, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
 \begin{equation}\label{eq:ghopfformula}
@@ -605,7 +605,7 @@ If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \
 
 \section{Excitatory clusters, weight parameters balanced}
 
-We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. Cells will be connected within, but not between, clusters. The matrix $H$ is now
+We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. In addition, we will take $n_C \geq \alpha$ (e.g. $n_C > 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $N_c$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. The matrix $H$ is now
 \[
 H = \frac{1}{\sqrt{N}}
 \left[ 
@@ -639,12 +639,13 @@ The expression for $\mu_{EE}$ compensates for the fact that each excitatory cell
 \item $\lambda_C = (p-1) n_C \mu > 0$, with multiplicity $n_C - 1$.
 \item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
 \begin{align*}
-    \lambda_0 &:= \frac{1}{2}\mu[n_C(p-1)-\alpha(n_I-1)] \\
-    \omega_0 &:= \frac{1}{2}\mu \sqrt{ 4 \alpha n_C(n_I+p-1) - [(\alpha(n_I - 1) - n_C(p-1) ]^2 }
+    \lambda_0 &:= \frac{1}{2}\mu(\alpha - n_C)
+      \\
+    \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha + n_C} \sqrt{ n_C(4 p - 1) - \alpha }
 \end{align*}
-In particular, we note that $\lambda_0 = 0$ by our choice of weights. [SHOULD ALSO TRY TO SHOW THAT $\omega_0$ IS REAL.]
+where we used the fact that $\alpha n_I = n_E = p n_C$.
 \end{itemize}
-Since $\lambda_E < 0$ and $\lambda_0 = 0$, the corresponding eigenvalues of $DF(0)$ will always be negative, and thus will not affect stability of the fixed point at 0. The eigenvalues which determine stability of the origin are $\lambda_I$ and $\lambda_C$. We note that for $p > 1$, i.e. we have more than one excitatory cluster, $\lambda_I < \lambda_C$.
+Since $\lambda_E < 0$ and $\lambda_0 \leq 0$ (since we are taking $n_C \geq \alpha$), the corresponding eigenvalues of $DF(0)$ will always be negative, and thus will not affect stability of the fixed point at 0. In particular, there will be no Hopf bifurcation at the origin. The eigenvalues which determine stability of the origin are $\lambda_I$ and $\lambda_C$. We note that for $p > 1$, i.e. we have more than one excitatory cluster, $\lambda_I < \lambda_C$.
 
 As the bifurcation parameter $g$ increases from 0, the eigenvalue of $DF(0)$ corresponding to $\lambda_C$ crosses the imaginary axis first at 
 \begin{equation}
@@ -672,16 +673,16 @@ For $\beta_C > 1$, we find the solution along each $C_1/C_2$ branch by reducing 
  \begin{bmatrix} x_{E_1} \\ x_{E_2} \\ x_{I} \end{bmatrix} 
  &= \frac{\mu}{\sqrt{N}} 
  \begin{bmatrix} 
-    (p-1)n_C & 0 & -\alpha n_I  \\
-    0  & (p-1)n_C & -\alpha n_I \\
+    (p-1)n_C & 0 & -p n_C  \\
+    0  & (p-1)n_C & -p n_C \\
     p n_C \frac{\beta_C}{\beta_C+1} &
     p n_C \frac{1}{\beta_C+1} &
-    -\alpha (n_I - 1)
+    -(p n_C - \alpha)
  \end{bmatrix}
  \begin{bmatrix} \tanh(g x_{E_1}) \\\tanh ( g x_{E_2} ) \\\tanh(g x_{I})\end{bmatrix},
  \end{aligned}
  \end{equation}
- $x_{E_1}$ and $x_{E_2}$ are the activities of the two groups of excitatory clusters, and $x_I$ is the activity of the inhibitory cells (which are all synchronized). As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:cluster3system} has a solution
+ where we used $\alpha n_I = n_E = p n_C$. The variables $x_{E_1}$ and $x_{E_2}$ are the activities of the two groups of excitatory clusters, and $x_I$ is the activity of the inhibitory cells (which are all synchronized). As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:cluster3system} has a solution
 \begin{equation}\label{eq:I1I2asymp}
     x_{E_2} = -\beta_C x_{E_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
     x_{E_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
@@ -697,10 +698,11 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
     \centering
     \begin{tabular}{cc}
     \includegraphics[width=8cm]{images/bdclusters20c4E.eps} &
-    \includegraphics[width=8cm]{images/bdclusters20c4I.eps}
+    \includegraphics[width=8cm]{images/bdclusters20c4I.eps} \\
+    \includegraphics[width=8cm]{images/bdclusters20c4Ebetac1.eps} &
+    \includegraphics[width=8cm]{images/bdclusters20c4Ibetac1.eps}
     \end{tabular}
-    \caption{Bifurcation diagram showing $C_1/C_2$ branches of equlibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Symmetric pitchfork bifurcation at $g = g_C$ indicated with filled circle. Further bifurcations along branches are not shown to avoid clutter. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, 
-    $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated wit filled circle. After symmetric pitchfork bifurcation on $C_1/C_2$ branch, only branch shown is the one with $\beta=\beta_C$ to avoid clutter. Bottom panel shows $I_1/I_2$ branches off of the $\beta_C = 1$ branch. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD1}
 \end{figure}
 
@@ -716,17 +718,17 @@ where
 \[
 H_3(\xvec) = \mu
 \begin{bmatrix} 
-    (p-1)n_C \sech^2(g x_{E_1}) & 0 & -\alpha n_I \sech^2(g x_{I}) \\
-    0  & (p-1)n_C \sech^2(g x_{E_2}) & -\alpha n_I \sech^2(g x_{I}) \\
+    (p-1)n_C \sech^2(g x_{E_1}) & 0 & -p n_C \sech^2(g x_{I}) \\
+    0  & (p-1)n_C \sech^2(g x_{E_2}) & -p n_C \sech^2(g x_{I}) \\
     p n_C \frac{\beta_C}{\beta_C+1} \sech^2(g x_{E_1}) &
     p n_C \frac{1}{\beta_C+1} \sech^2(g x_{E_2}) &
-    -\alpha (n_I - 1) \sech^2(g x_{I})
+    -(p n_C - \alpha) \sech^2(g x_{I})
  \end{bmatrix}
 \]
 and $I_3$ is the $3 \times 3$ identity matrix. As in the previous section, the three eigenvalues of $H_3(\xvec)$ are also eigenvalues of $\tilde{H}(\xvec^*)$. Following the same procedure as in the previous section, there are $(n_{C_1}-1) + (n_{C_2}-1) + (n_I - 1)$ additional eigenvalues which are grouped as follows:
 \begin{align*}
 (p-1) n_C \mu &\sech^2(g x_{E_1}) &&\text{multiplicity }n_{C_1} - 1\\
-(p-1) n_C \mu &\sech^2(g x_{E_1})&&\text{multiplicity }n_{C_2} - 1\\
+(p-1) n_C \mu &\sech^2(g x_{E_2})&&\text{multiplicity }n_{C_2} - 1\\
 \alpha \mu &\sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1
 \end{align*}
 These correspond to eigenvalues of $D\tilde{F}(\xvec^*)$ which are located, to leading order, at 
@@ -737,189 +739,21 @@ These correspond to eigenvalues of $D\tilde{F}(\xvec^*)$ which are located, to l
 \end{align*}
 for $g$ close to $g_C$. As in the previous section, the first is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The second is negative for $\beta_C  > 1/2$, and the third is negative for all $\beta$ for $N$ sufficiently large. This implies that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$. 
 
-It remains to determine the eigenvalues of $H_3(\xvec)$. As in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
+It remains to determine the eigenvalues of $H_3(\xvec)$. Following the same procedure as in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
 \begin{align*}
     -2\left( \frac{g - g_0}{g_0} \right)  && g \geq g_0
 \end{align*}
-for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not affect stability.
+for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not affect stability. $H_3(\xvec)$ also has a complex conjugate pair of eigenvalues, where the real part is given by
+\begin{equation*}
+\lambda(g, \beta_C) = \frac{\mu}{2}\left[ (\alpha - n_C) - \beta_C g^2 n_C (p - 1) x_{E_1}^2 \right]
+\end{equation*}
+to leading order. Since we are taking $n_C \geq \alpha$, this is always negative, thus there cannot be any Hopf bifurcations on the $C_1/C_2$ branch since the corresponding complex conjugate pair of eigenvalues for $J_3(\xvec)$ cannot cross the imaginary axis.
 
+As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch in which the group of $(n_I-1)$ eigenvalues of $D\tilde{F}(\xvec^*)$ cross the origin (see \cref{fig:clusterBD1}). The behavior at this symmetric pitchfork bifurcation is the same as in the previous section. There is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I/2}$, as in the previous section.
 
+WE MAY BE ABLE TO FIND WHERE THE SECOND PITCHFORK BIFURCATION TAKES PLACE. IT INVOLVES $x_I$, SO DOING THIS WOULD INVOLVE A HIGHER ORDER APPROXIMATION FOR THE SOLUTIONS ON THE $C_1/C_2$ BRANCH.
 
-\subsection{Symmetric branch, small $N_c$}
-\begin{itemize}
-    \item $\lambda_c > \lambda_I$, so $\lambda_c$ crosses imaginary axis first as $g$ increases. 
-    \item Excitatory neurons branch off from 0 first when $g = g_c$, then inhibitory neurons branch off from 0 when $g = g_i$. (This is unlike the no clustering case, where inhibitory neurons branch off first).
-    \item For symmetric branch, get equal numbers of clusters with opposite signs.
-    \item Excitatory neurons branch off first when $g = g_c$. At this point, inhibitory neurons are still 0. For symmetric branch, will have equal numbers of clusters with opposite signs $\pm X_E$, so \cref{eq:reducedsystem} simplifies to the single equation
-    \[
-    -x_E + \frac{p-1}{\sqrt{N}} \mu_{EE} \tanh(g x_E) = 0
-    \]
-    Using the definition of $g_c$, this further simplifies to
-    \begin{equation}\label{eq:Xesymm}
-    \tanh(g x_E) = g_c x_E
-    \end{equation}
-    \item Write this as 
-    \[
-    f(x, g) = \tanh(g x) - g_c x
-    \]
-    and change variables by letting $y =  g x$, $h = g_c/g$ to get
-    \[
-    f(y, h) = \tanh y - h y = 0
-    \]
-    which is smooth in $y$ and $h$. $f(0, h) = 0$ for all $h$, and for $h > 0$, 
-    \[
-    \lim_{h\rightarrow\infty}f(y,h) = -\infty
-    \]
-    Since
-    \[
-    f_y(y, h) = \sech^2 y - h
-    \]
-    when $h > 1$, $f_y(y, h) < 0$ for all $y > 0$, which implies that $f(y, h) < 0$ for all $y > 0$, so $y = 0$ is the only solution to $f(y, h) = 0$. When $0 < h < 1$, $f_y(0, h) = 1 - h > 0$, so $f(y, h)$ is increasing at $y = 0$. By the smoothness of $f$ (and the IVT), $f(y_E, h) = 0$ for some $y_E > 0$. Since for fixed $h < 1$  and for $y>0$, $f(y,h)$ has a singe local maximum at $y = \cosh^{-1} \frac{1}{\sqrt{h}}$, $y_E$ is the unique, positive solution to $f(y, h) = 0$.  Undoing the change of variables, if $g > g_c$, $f(x, g) = 0$ has a unique positive solution $X_E$, which is what we want.
-    
-    \item We also note here that as $g \rightarrow \infty$, $\tanh(g x) \rightarrow 1$ for $x > 0$, thus we have 
-    \[
-    x_E \rightarrow \frac{1}{g_c} \text{ as }g \rightarrow \infty
-    \]
-    
-    \item To leading order,
-    \[
-    x_E = \sqrt{ \frac{3(g-g_c)}{g^3} }
-    \]
-    for $g$ greater than, but close to $g_c$. This follows by Taylor expansion as in the single cluster case, replacing $g_0$ is replaced by $g_c$.
-    
-    \item Using the same argument, the inhibitory neurons branch off when $g = g_i$. If either all excitatory clusters are 0 or we have equal numbers of excitatory cluster with opposite activity, the excitatory terms do not contribute to the equations for the inhibitory neurons in \cref{eq:reducedsystem}. For the symmetric branch, there will be two populations of inhibitory neurons with opposite signs $\pm x_I$. By the same argument above, $x_I$ solves
-    \[
-    \tanh(g x_I) = g_i x_I
-    \]
-    which has a nonzero solution for $g > g_I$. 
-    \item If both excitatory and inhibitory neurons are symmetric, the two populations behave independently, since the contribution from the other population in \cref{eq:reducedsystem} cancels.
-\end{itemize}
-
-Now that we know these symmetric solutions exist for $g > g_c$, we can analyse their stability. First look at the region $g_c < g < g_i$, where we have symmetric branch of excitatory neurons only.
-\begin{itemize}
-    \item Linearization about symmetric $x_E$ solution same as linearization about origin, except parameter $\mu_{EE}$ is replaced with
-    \[
-    \mu_{EE} \mapsto \sech^2( g x_E ) \mu_{EE}
-    = (1 - g_c^2 x_E^2 )\mu_{EE} 
-    \]
-    \item Will denote eigenvalues of linearization about this solution by $\lambda^*$ with appopriate subscripts.
-    \item Conjugate pair still has negative real part, $\lambda^*_e$ still negative, $\lambda^*_i$ unchanged, so only need to look at $\lambda^*_c$ which is given by
-    \[
-    \lambda^*_c(g) = \frac{g}{\sqrt{N}}(p-1)(1 - g_c^2 x_E(g)^2 )\mu_{EE} - 1= \frac{g}{g_c}(1 - g_c^2 x_E(g)^2) - 1
-    \]
-    \item When $g = g_c$, $x_E(g) = 0$, so $\lambda_c(g) = 0$
-    \item As $g \rightarrow \infty$, $x_E(g) \rightarrow 1/g_c$ (see above), thus since $\lambda^*_c(g)$ is smooth,
-    \[
-    \lambda^*_c(g) \rightarrow -1 \text{ as } g \rightarrow \infty
-    \]
-    \item If $\lambda^*_c(g) > 0$ for any $g > g_c$, then by the IVT would need $\lambda^*_c(g) = 0$ for some $g > g_c$. We will show that cannot happen, i.e. $\lambda^*(g) = 0$ implies $g = g_c$.
-    \item Assume $\lambda^*_c(g) = 0$ for some $g > g_c$. Then 
-    \[
-    \lambda^*_c(g) = \frac{g}{g_c}\sech^2(g x_E(g) ) - 1 = 0
-    \]
-    which we can rearrange and solve for $g x_E$ to get
-    \[
-    g x_E = \cosh^{-1} \sqrt{\frac{g}{g_c}}
-    \]
-    Since $x_E$ solves $\tanh g x_E = g_c x_E$, substitute the expression for $g x_E$ into this and simplify to get
-    \[
-    \frac{g}{g_c} \tanh\left( \cosh^{-1} \sqrt{\frac{g}{g_c}} \right) = \cosh^{-1} \sqrt{\frac{g}{g_c}}
-    \]
-    Letting $h = \sqrt{g/g_c}$ and simplifying (thanks, Mathematica!) gives us
-    \[
-    \cosh( h \sqrt{h^2 - 1} ) = h
-    \]
-    This only has a solution when $h = 1$. There are many ways to see this, e.g. for $f(h)$ defined by 
-    \[
-    f(h) = \cosh( h \sqrt{h^2 - 1} ) - h,
-    \]
-    $f(1) = 0$ and the only critical point of $f(h)$ on $(0, \infty)$ is a local minimum at $h = 1$, which corresponds to $g = g_c$.
-    \item We have shown that $\lambda_c^*(g) < 0$ for $g > g_c$. This solution loses stability when $\lambda_i^*$ crosses the imaginary axis, which occurs when $g = g_i$.
-    
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=14cm]{images/BD2_c20_E07.eps}
-\end{figure}
-
-Now we look at the region $g > g_i$, where we have symmetric branch of excitatory neurons at $x_E = x_E(g)$ and symmetric branch of inhibitory neurons at $x_I = x_I(g)$. Using the same argument as we did for $g_c < g < g_i$, this branch is stable for all $g > g_i$.
-
-\subsection{Symmetric case, large $N_c$}
-\begin{itemize}
-    \item Symmetric branch: For $N_c > \frac{fN}{\alpha+1
-    }$, $\lambda_i > \lambda_c$, so $\lambda_i$ crosses first as $g$ increases, leading to a symmetric branch of inbibitory neurons. $\lambda_c$ crosses next, leading to a symmetric branch of excitatory neurons. These symmetric branches are stable, by the same argument as the small $N_c$ case.
-    
-    \begin{figure}[H]
-    \centering
-    \includegraphics[width=14cm]{images/BD4_c20_E07.eps}
-    \end{figure}
-     
-    \item In all cases, there is always a stable fixed point. Should be able to prove this, and that no Hopf bifurcations can happen on the symmetric branches. Numerical timestepping from random initial conditions confirms this.
-
-\end{itemize}
-
-\section{Excitatory clusters, parameter changed to restore balance}
-Idea is to compensate for fewer excitatory connections by taking
-\[
-\mu_{EE} = -\frac{N_c}{\alpha} \mu_{EI}
-\]
-In this case, if we take $\mu_{EI} = \mu_{II}$, we have
-\begin{align*}
-g_i &= -\frac{\sqrt{N}}{\mu_{II}} \\
-g_c &= -\frac{\alpha N}{(p-1)N_c \mu_{II}} 
-= \frac{\alpha}{(p-1)N_c} g_i = 
-\frac{N_E}{N_I( N_E - N_c)} g_i < g_i
-\end{align*}
-The excitatory clusters always branch off first since $g_c < g_i$. As above, there is always a stable, symmetric solution. This follows from the exact same argument.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{images/BD4a_c20.eps}
-\end{figure}
-
-\begin{itemize}
-    \item From one example $N = 20$, 4 clusters: there is always a stable fixed point at a symmetric solution.
-    
-    \item For larger $g$, the symmetric fixed point coexists with asymmetric fixed points. This can be verified by timestepping from random initial conditions. Stable asymmetric fixed point is on a different branch from stable symmetric fixed point. There is a region of $g$ after $g$ passes $g_i$ for which only stable fixed point is the symmetric one.
-    
-    \item Same behavior occurs for higher $N$ and larger $N_c$, the main difference being that there are more stable, asymmetric fixed points for large $g$.
-\end{itemize}
-
-What happens for large $g$
-\begin{itemize}
-    \item The $\tanh(g x_j)$ are 0 if $x_j = 0$, otherwise are 1 if $x_j > 0$ and -1 if $x_j < 0$.
-    \item This means that the equilbrium equation for each $x_j$ involves only the variable $x_j$, so for any given symmetry and set of signs, we can solve for the limiting equilibrium solution as $g$ gets large.
-    \item Example: For the asymmetric stable equilibrium solutions above, the excitatory clusters are 3+/1-, and the inhibitory cells are also 3+/1-. Using this, we can solve for the limiting $x_j$, which agrees with the numerics.
-    \begin{align*}
-        x_{E1} &= \frac{1}{\sqrt{N}}\left( (p-1)\mu_{EE} + (3-1) \mu_{EI} \right) \\
-        x_{E2} &= \frac{1}{\sqrt{N}}\left( -(p-1)\mu_{EE} + (3-1) \mu_{EI} \right) \\
-        x_{I1} &= \frac{1}{\sqrt{N}}\left( (3-1)p\mu_{IE} + (2-1) \mu_{II} \right) \\
-        x_{I2} &= \frac{1}{\sqrt{N}}\left( (3-1)p\mu_{IE} + 3 \mu_{II} \right) 
-    \end{align*}
-    None of these are 0.
-    
-    \item For another equilibrium solution: excitatory 4+, inhibitory 1+/3-, but solving these
-        \begin{align*}
-        x_{E} &= \frac{1}{\sqrt{N}}\left( (p-1)\mu_{EE} + (1-3) \mu_{EI} \right) \\
-        x_{I1} &= \frac{1}{\sqrt{N}}\left( 4 p\mu_{IE} + (-3) \mu_{II} \right) \\
-        x_{I2} &= \frac{1}{\sqrt{N}}\left( 4 p\mu_{IE} + (1-2) \mu_{II} \right) 
-    \end{align*}
-    does not give the solution we see. Likely what is happening here is that $X_{I1}$ has a nonzero limit, but the other two have limit of 0.
-    
-\end{itemize}
-
-Which limiting solutions are stable?
-\begin{itemize}
-    \item For the stability analysis as $g \rightarrow \infty$, if the limiting value of any of the $x_j$ is nonzero, the corresponding $g \sech^2 g x_j$ term in the linearization goes to 0. In particular, if \emph{all} of the $x_j$ have nonzero limiting value, the Jacobian matrix has a limiting value of $-I$, thus all the eigenvalues have a limiting value of $-1$, which means that all of these solutions are stable. 
-    
-    \item The only way to have an unstable solution in the limit as $g \rightarrow \infty$ is to have at $x_j \rightarrow 0$ for at least one of the $x_j$.
-    
-    \item Hypothesis: If $x_j \rightarrow 0$ for at least one of the $x_j$, the corresponding equlibrium is unstable.
-\end{itemize}
-
-\subsection{A characterization of all large $g$ solutions}
-Idea: use a matrix to determine valid solutions for large $g$.
+\subsection{Behavior for large $g$}
 
 Let $\mathbf{I}_n$ denote the $n\times n$ identity matrix, $\mathbf{1}_{m \times n}$ the $m\times n$ matrix of ones, and $\mathbf{K}_n$ the $n\times n$ matrix with all ones off the diagonal; i.e. $\mathbf{K}_n = \mathbf{1}_{n \times 1} \left( \mathbf{1}_{n \times 1}\right)^T - \mathbf{I}_n$. 
 \begin{itemize}
@@ -1082,21 +916,14 @@ A final possibility is that there are degrees of freedom for which $x_k \rightar
 
 Instead of proceeding along these lines, we will show that all such solutions are unstable.
 
-\subsection{Plots}
+\subsection{Excitatory clusters with weight parameters unchanged}
 
-Plots below illustrate these large $g$ results. Stable solutions for large $g$ are those predicted. (Exception: there is symmetric solution for $N=37$ for which one I-cell is 0. This one is also eventually stable. Should not be hard to show this, since symmetric). Can do this for more complicated arrangements, but the plots get cluttered.
+We can also choose the weights as in the previous section, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=14cm]{images/bifdiagc4p4i4.eps}
-\end{figure}
+\section{Inhibitory clusters}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=14cm]{images/bifdiagc4p7i7.eps}
-\end{figure}
+We can also allow the inhibitory cells to be clustered, while the excitatory cells remain unclustered. Briefly, supposed the inhibitory cells are grouped into $n_{C_i}$ inhibitory clusters of size $p_i$.
 
-\section{Inhibitory clusters, all excitatory cells connected}
 
 To get this, all you have to do is exchange the Is and the Es in the previous case. This means that the eigenvalue pattern of the linearization about 0 is known, since we can use the same formulas as in the previous case, with the Is and Es switched.
 
@@ -1148,17 +975,6 @@ Appears that this periodic orbit is stable for all $g > g_0$. For this orbit, al
 \begin{tabular}{cc}
 \includegraphics[width=8cm]{images/Iclustertimestep400_1.eps} &
 \includegraphics[width=8cm]{images/Iclustertimestep400_2.eps}
-\end{tabular}
-\end{figure}
-
-\section{Excitatory clusters, balance restored, self-interactions allowed}
-
-Self-interactions allowed in both E-clusters and I-cells. These are at least some of the stable fixed points. There may be others that AUTO did not find.
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{c}
-\includegraphics[width=12cm]{images/bifdiagc4p4i4selfint.eps}
 \end{tabular}
 \end{figure}
 
