@@ -233,7 +233,7 @@ As $g$ is further increased, the complex pair of eigenvalues of $DF(0)$ crosses 
 \end{equation}
 The origin $\xvec = 0$ is a stable equilibrium for $g < g_0$, at which point it loses stability in a symmetric pitchfork bifurcation, where $n_I -1$ eigenvalues cross the imaginary axis simultaneously. 
 
-At $g = g_H$, the origin undergoes a Hopf bifurcation. The frequency of the limit cycle which emerges at the Hopf bifurcation is given by the imaginary part of the complex pair of eigenvalues at $g = g_H$, which is $\omega_H(N) = \frac{2}{\alpha-1}\sqrt{\alpha+1}\sqrt{f N- \frac{\alpha+1}{4}} -1$, where we used $n_E = f N$. In particular, we note that $\omega_H(N) \rightarrow \infty$ as $N \rightarrow \infty$.
+At $g = g_H$, the origin undergoes a Hopf bifurcation. The frequency of the limit cycle which emerges at the Hopf bifurcation is given by the imaginary part of the complex pair of eigenvalues at $g = g_H$, which is $\omega_H(N) = \frac{2}{\alpha-1}\sqrt{\alpha+1}\sqrt{f N- \frac{\alpha+1}{4}} = \mathcal{O}(\sqrt{N})$, where we used $n_E = f N$. In particular, we note that $\omega_H(N) \rightarrow \infty$ as $N \rightarrow \infty$.
 
 For $g > g_H$, numerical computation shows that there is a limit cycle for which all excitatory cells are synchronized and all inhibitory cells are synchronized. We can argue that such a limit cycle exists for $g > g_H$ by reducing \cref{eqn:sys_Basic} to the two-dimensional system
 \begin{equation}\label{eq:2dsystem}
@@ -400,7 +400,7 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
     \includegraphics[width=8cm]{images/bdnoclusters50E.eps} &
     \includegraphics[width=8cm]{images/bdnoclusters50I.eps}
     \end{tabular}
-    \caption{Bifurcation diagram showing $I_1/I_2$ branches of equlibria of \cref{eqn:sys_Basic} for all valid values of $\beta$. Top panels show $N=20$, with top left plotting $X_E$ vs $g$, and top right plotting $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Bottom panels show $N=50$, with bottom left plotting $X_E$ vs $g$, and bottom right plotting $X_{I_2}$ only vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Bifurcation diagram showing $I_1/I_2$ branches of equilibria of \cref{eqn:sys_Basic} for all valid values of $\beta$. Top panels show $N=20$, with top left plotting $X_E$ vs $g$, and top right plotting $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Bottom panels show $N=50$, with bottom left plotting $X_E$ vs $g$, and bottom right plotting $X_{I_2}$ only vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:noclusterBD1}
 \end{figure}
 
@@ -581,7 +581,7 @@ Our task is facilitated by the following observations about the behavior of the 
 \end{matrix} \right.
 \] 
 When this is the case Eqn. \eqref{eq:3cluster_solution} becomes linear.
-If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \approx \frac{\hat{x}}{g}$, then $\tanh(gx_E) \rightarrow \tanh(\hat{x}) := y_E \not= 0$.  However, we will show it is possible to solve for the limiting coordinates and thus to characterize the stability. It turns out to be most convenient to characterize solutions by the number of coordinates that have saturating non-linearities: we itemize them as $\textbf{S0}, \textbf{S1}, \cdots$ below.
+If $x_E \rightarrow 0$, the limiting behavior may be more complicated; if $x_E \approx \frac{\hat{x}}{g}$, then $\tanh(gx_E) \rightarrow \tanh(\hat{x}) := y_E \not= 0$.  However, we will show it is possible to solve for the limiting coordinates and thus to characterize the stability. It turns out to be most convenient to characterize solutions by the number of coordinates that have saturating nonlinearities: we itemize them as $\textbf{S0}, \textbf{S1}, \cdots$ below.
 
 \begin{enumerate}
     \item[\textbf{S3}] If $(y_E,y_{I_1},y_{I_2}) = \pm 1$, then the non-identity matrix in Eqn. \eqref{eq:3cluster_Jac} is 0 and the solution will be stable. Unfortunately, this cannot happen; there is no solution for which \textit{all} nonlinearities saturate.
@@ -940,15 +940,25 @@ The only two eigenvalues with positive real part are $\lambda_I$ and $\lambda_0 
 \[
 g_H = \frac{2 \sqrt{N}}{\mu_{EE} \left[ \alpha( 1 + p_I(n_{C_I}-1)) -1 \right] }
 \]
-We are interested in what occurs for large $N$ and large $N_{C_I}$. As an example, let $N_{C_I}$ scale with $\sqrt{N}$, so that $N_{C_I} = p_I = \sqrt{N}$. For this scaling, as $N$ increases, the Hopf bifurcation takes place at $g_H \approx \frac{2}{f \mu_{EE} \sqrt{N}}$. For large $N$, we also have $\omega_0 \approx \frac{\sqrt{3}}{2}f N \mu_{EE}$. Thus, at $g = g_H$, $DF(0)$ has a complex conjugate pair of eigenvalues with real part of 0 and imaginary part of $\sqrt{3}$. This implies that for large $N$, the frequency of the limit cycle emerging at the Hopf bifuration of the origin is asymptotically constant as $N$ increases.
+We are interested in what occurs for large $N$ and large $N_{C_I}$. As an example, let $N_{C_I}$ scale with $\sqrt{N}$, so that $N_{C_I} = p_I = \sqrt{N}$. For this scaling, as $N$ increases, the Hopf bifurcation takes place at $g_H \approx \frac{2}{f \mu_{EE} \sqrt{N}}$. For large $N$, we also have $\omega_0 \approx \frac{\sqrt{3}}{2}f N \mu_{EE}$. This implies that at $g = g_H$, $DF(0)$ has a complex conjugate pair of eigenvalues with real part of 0 and imaginary part of $\sqrt{3}$. See \cref{fig:limitcycleIC} for an illustration of this limit cycle when $N=1600$, $n_{C_I}=20$, and $g$ is slightly larger than $g_H$. The frequency of the limit cycle is 1.792, which is less than $5\%$ away from $\sqrt{3}$. Thus, for large $N$, the frequency of the limit cycle emerging at the Hopf bifurcation of the origin is asymptotically constant as $N$ increases. This contrasts to the case where the inhibitory and excitatory cells are unclustered, where the frequency of the limit cycle scales as $\sqrt{N}$.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/limitcycleIC1.eps}
+    \includegraphics[width=8cm]{images/limitcycleIC2.eps}
+    \end{tabular}
+    \caption{Limit cycle arising from Hopf bifurcation at origin for \cref{eqn:sys_Basic} with inhibitory cell clustering and $\mu_{II} = -\alpha \mu_{EE}$. Left panel shows activity $x_E$ of synchronized excitatory cells and activity $x_I$ of synchronized inhibitory cells vs $t$. Right panel shows $x_I$ vs $x_E$. $N=1600$, $N_{C_I} = 20$, $p_I = 20$,$\alpha = 4$, $\mu_{EE}= 0.7$, $g = 1.02 g_H$. Period of limit cycle is 1.792.} 
+    \label{fig:limitcycleIC}
+\end{figure}
 
 
-We can also choose the weights so that the network is balanced, as in the previous section. In that case, the eigenvalues of $\Hvec$ are
+We can also choose the weights so that the network is balanced, as in the previous section.
 \begin{align*}
 \mu_{EE} &= \mu && \mu_{IE} = \mu \\
 \mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha n_{C_I} \mu
 \end{align*}
-The eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitatory and inhibitory cells in the previous section:
+In that case, the eigenvalues of $\Hvec$ are
 \begin{itemize}
 \item $\lambda_I := \alpha n_{C_I} \mu > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
 \item $\lambda_E = -\mu < 0$ with multiplicity $n_E - 1$
@@ -960,39 +970,7 @@ The eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitato
     \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha n_{C_I}+1} \sqrt{\alpha n_{C_I}(4p_I - 1) - 1}
 \end{align*}
 \end{itemize}
-
-
-
-Key here is that the complex pair crosses the imaginary axis first as $g$ is increased, leading to a Hopf bifurcation and a stable limit cycle. The real part of this complex pair $\lambda \pm i \omega$ is given by
-\begin{align*}
-\lambda &= -\frac{\mu_{II} (1-f)N}{2}\left( 1 - \frac{1}{N_{ci}} + \frac{1}{N(1-f)}\left( 1 - \frac{1}{\alpha} \right) \right) \\
-&\approx -\frac{\mu_{II} (1-f)N}{2}\left( 1 - \frac{1}{N_{ci}} \right) && \text{for $N$ large } \\
-&\approx -\frac{\mu_{II} (1-f)N}{2} && \text{for $N$ and $N_{ci}$ large } \\
-\end{align*}
-which grows with $N$. This means that the Hopf bifurcation takes place at approximately
-\[
-g \approx g_0 \approx -\frac{2}{(1-f)\mu_{II}\sqrt{N}} 
-\]
-for large $N$ and $N_c$. The frequency of oscillations of the limit cycle is given by the imaginary part of the complex pair, which is approximately
-\begin{align*}
-\omega &\approx -\frac{\mu_{II} (1-f)N}{2 N_{ci} } \sqrt{ 3 N_{ci}^2 - 2 N_{ci} - 1} && \text{for $N$ large } \\
-&\approx -\frac{\sqrt{3} \mu_{II} (1-f)N}{2 } && \text{for $N$ and $N_{ci}$ large }
-\end{align*}
-which also grows with $N$. At the Hopf bifurcation, which is at $g = g_0$, after scaling by $N$ and $g$, we have
-\[
-\omega \rightarrow \sqrt{3} \text{ as } N, N_{ci} \rightarrow \infty
-\]
-which is independent of everything. This assumes the same balance of inhibitory and excitatory neurons as before, as well as $\mu_{II} = -\alpha \mu_{EE}$, etc from the initial excitatory cluster case. 
-
-Appears that this periodic orbit is stable for all $g > g_0$. For this orbit, all inhibitory cells and all excitatory cells synced. Frequency decreases as $g$ increases, also shape of oscillations changes.
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{cc}
-\includegraphics[width=8cm]{images/Iclustertimestep400_1.eps} &
-\includegraphics[width=8cm]{images/Iclustertimestep400_2.eps}
-\end{tabular}
-\end{figure}
+HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
 
 \section{Appendix}
 \subsubsection{Detailed calculations for \S \ref{sec:stab_largeg}}
@@ -1049,7 +1027,7 @@ Next, we consider the possibility that
  $\tanh(gx) \rightarrow y$ but $0 < y < 1$ or $-1 < y < 0$ for each coordinate. In this case 
 \[ x \approx \frac{\tanh^{-1}(y)}{g} \]
 
-However, in Eqn. \eqref{eqn:matSolgLrg} the left-hand side must go to the zero vector as $g \rightarrow \infty$; thus the vector with the limiting values of $y_E$, $y_{I_1}$ and $y_{I_2}$ must be in the nullspace of the matrix in Eqn. \eqref{eqn:matSolgLrg}. 
+However, in Eqn. \eqref{eqn:matSolgLrg} the left-hand side must go to the zero vector as $g \rightarrow \infty$; thus the vector with the limiting values of $y_E$, $y_{I_1}$ and $y_{I_2}$ must be in the null space of the matrix in Eqn. \eqref{eqn:matSolgLrg}. 
 This matrix is full rank! So there is no solution for which $x \rightarrow 0$ but $\tanh(gx) \rightarrow a$, where $0 < |a| < 1$, for all three values $x = x_E, x_{I1}, x_{I2}$. (\textbf{S0}).
 
 Finally we show that the remaining $I_1/I_2$ branches have solutions of the form $\textbf{S1}$.
