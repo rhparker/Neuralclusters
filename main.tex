@@ -21,6 +21,8 @@
 \usepackage{blkarray}
 \usepackage{multirow}
 
+\usepackage{booktabs}
+
 \usepackage[capitalize,nameinlink]{cleveref}
 % Per SIAM Style Manual, "section" should be lowercase
 \crefname{section}{section}{sections}
@@ -736,7 +738,7 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
     \includegraphics[width=8cm]{images/bdclusters20c4Ebetac1.eps} &
     \includegraphics[width=8cm]{images/bdclusters20c4Ibetac1.eps}
     \end{tabular}
-    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated wit filled circle. After symmetric pitchfork bifurcation on $C_1/C_2$ branch, only branch shown is the one with $\beta=\beta_C$ to avoid clutter. Bottom panel shows $I_1/I_2$ branches off of the $\beta_C = 1$ branch. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. After symmetric pitchfork bifurcation on $C_1/C_2$ branch, only branch shown is the one with $\beta=\beta_C$ to avoid clutter. Bottom panel shows $I_1/I_2$ branches off of the $\beta_C = 1$ branch. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD1}
 \end{figure}
 
@@ -787,7 +789,7 @@ As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bi
 
 WE MAY BE ABLE TO FIND WHERE THE SECOND PITCHFORK BIFURCATION TAKES PLACE. IT INVOLVES $x_I$, SO DOING THIS WOULD INVOLVE A HIGHER ORDER APPROXIMATION FOR THE SOLUTIONS ON THE $C_1/C_2$ BRANCH.
 
-\subsection{Behavior for large $g$}
+\subsection{Fixed points for large $g$}
 
 For $g$ sufficiently large, both the excitatory clusters and inhibitory cells have split into two populations at the two symmetric pitchfork bifurcation points. We are interested in stable fixed points when $g$ is large. In particular, we seek solution branches in which the excitatory clusters are split into two populations with ratio $\beta_C = n_{C_1}/n_{C_2}$ and the inhibitory cells are also split into two populations with ratio $\beta = n_{I_1}/n_{I_2}$. This reduces \cref{eqn:sys_Basic} to the system of equations
 \begin{equation}\label{eq:cluster4system}
@@ -807,7 +809,7 @@ For $g$ sufficiently large, both the excitatory clusters and inhibitory cells ha
     \begin{bmatrix} \tanh(g x_{E_1}) \\ \tanh ( g x_{E_2} ) \\\tanh(g x_{I_1}) \\\tanh(g x_{I_2})  \end{bmatrix},
     \end{aligned}
 \end{equation}
-Furthermore, we will require that $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$ as $g \rightarrow \infty$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. Thus $\tanh(g x_{E_1}), \tanh(g x_{I_1}) \rightarrow 1$ and $\tanh(g x_{E_2}), \tanh(g x_{I_2}) \rightarrow -1$ as $g \rightarrow \infty$. This reduces \cref{eq:cluster4system} to 
+Furthermore, we seek solutions for which $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$ as $g \rightarrow \infty$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. Thus $\tanh(g x_{E_1}), \tanh(g x_{I_1}) \rightarrow 1$ and $\tanh(g x_{E_2}), \tanh(g x_{I_2}) \rightarrow -1$ as $g \rightarrow \infty$. This reduces \cref{eq:cluster4system} to 
 \begin{equation}\label{eq:xhat}
     \begin{aligned}
         \hat{x}_{E_1} &= \frac{\mu}{\sqrt{N}}\left[ (p-1)n_C - \alpha \frac{\beta-1}{\beta+1}n_I \right] \\
@@ -816,169 +818,210 @@ Furthermore, we will require that $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightar
         \hat{x}_{I_2} &= \frac{\mu}{\sqrt{N}}\left[  \frac{\beta_C-1}{\beta_C+1} p n_C - \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right) \right] 
     \end{aligned}
 \end{equation}
-Equation \cref{eq:xhat} gives the limiting solutions $(\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_1})$ as long as the consistency conditions $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$ are satisfied.
-
-
-Let $\mathbf{I}_n$ denote the $n\times n$ identity matrix, $\mathbf{1}_{m \times n}$ the $m\times n$ matrix of ones, and $\mathbf{K}_n$ the $n\times n$ matrix with all ones off the diagonal; i.e. $\mathbf{K}_n = \mathbf{1}_{n \times 1} \left( \mathbf{1}_{n \times 1}\right)^T - \mathbf{I}_n$. 
-\begin{itemize}
-\item Since we only have to solve the reduced system (one variable per excitatory cluster), define the $(N_c + N_I) \times (N_c + N_I)$ block matrix \textbf{Used xtra lines in matrix to give space: arraystretch might be better?}
+Equation \cref{eq:xhat} gives the limiting solutions $(\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_1})$ as long as the consistency conditions $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$ are satisfied. Since $\mu > 0$, the consistency conditions reduce to
+\begin{equation}\label{eq:consistency}
+    \begin{aligned}
+        &(p-1)n_C - \alpha \frac{\beta-1}{\beta+1}n_I > 0 \\
+        -&(p-1)n_C - \alpha \frac{\beta-1}{\beta+1}n_I < 0 \\
+        &\frac{\beta_C-1}{\beta_C+1} p n_C - \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) > 0 \\
+        &\frac{\beta_C-1}{\beta_C+1} p n_C - \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right) < 0 
+    \end{aligned}
+\end{equation}
+The first pair of inequalities is satisfied if and only if
 \[
-H_1 = \frac{1}{\sqrt{N}}
-\left[ \begin{array}{c|c}
-\\
-(p-1)\mu_{EE} \mathbf{I}_{N_c} & \mu_{EI}\mathbf{1}_{N_c \times N_I}\\
-\\
-\hline
-\\
-p \mu_{IE} \mathbf{1}_{N_I \times N_C} & \mu_{II} \mathbf{K}_{N_I} \\
-\\
-\end{array}
-\right]
+    \left| \frac{\beta-1}{\beta+1} \right| < \frac{(p-1)n_C}{\alpha n_I} = 1 - \frac{1}{p}
 \]
-
-This is the original matrix $H$ (divided by $\sqrt{N}$) if you treat all excitatory cells in a single cluster as one cell.
-\item For each potential large-$g$ solution, define the ``sign vector'' $\mathbf{v}$ by
+where we used the fact that $n_C p = n_E = \alpha n_I$. This simplifies to 
+\begin{equation}\label{eq:betacond}
+    1 \leq \beta < 2p-1
+\end{equation}
+since we are taking $\beta \geq 1$. Similarly, the second pair of inequalities are satisfied if and only if 
 \[
-\mathbf{v} = (\text{sign}(x_{E1}), \dots, \text{sign} (x_{EN_c}), \text{sign} (x_{I1}), \dots, \text{sign} (x_{IN_I})
+    \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) < \frac{\beta_C-1}{\beta_C+1} p n_C < \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right),
 \]
-where the sign is $1, -1$ or 0.
-\item If a large-$g$ solution exists with that sign vector, then $H_1 \mathbf{v}$ will have the same signs as the sign vector $\mathbf{v}$ and the solution will be $H_1 \mathbf{v}$. For now, this is a necessary (but not sufficient) condition for the large-$g$ solution to exist. Hopefully it is also sufficient.
-\item If all we want to know is whether such a solution can exist, we can use the relationships between the coefficients to simplify the matrix. Specifically, we assume that 
-\[\begin{pmatrix}
-\mu_{EE} & \mu_{EI}\\
-\mu_{IE} & \mu_{II}
-\end{pmatrix} \rightarrow 
-\begin{pmatrix}
-N_c \mu & -\alpha \mu\\
-\mu & -\alpha \mu
-\end{pmatrix}
- \]
- where we have expressed each coefficient in terms of $\mu = \mu_{IE}$, the $E\rightarrow I$ connection weight. Then $H_1$ simplifies 
-to
-\[
-H_2 =
-\left( \begin{array}{c|c}
-(p-1)N_C\mathbf{I}_{N_c} & -\alpha \mathbf{1}_{N_c \times N_I}\\
-\hline
-p \mathbf{1}_{N_I \times N_C} & -\alpha \mathbf{K}_{N_I} 
-\end{array}
-\right)
-\]
-up to a constant.
-%\[
-%H_2 = 
-%\begin{pmatrix}
-%\text{diag}( (p-1)N_c) & -\alpha \\
-%p & \text{offdiag}(-\alpha )
-%\end{pmatrix}
-%\]
+which simplifies to 
+\begin{equation}
+    \frac{2 \beta n_I - \beta - 1}{2 n_I + \beta + 1} < \beta_C < \frac{2 \beta n_I + \beta + 1}{2 n_I - \beta - 1} 
+\end{equation}
+A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. We note that each of these fixed points $\xvec^*$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian approaches $-I$, which has a single eigenvalues of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the top panel of \cref{fig:clusterBD1}; we can see that they are all stable for sufficiently large $g$.
 
-Then a necessary condition for the large-$g$ solution to exist is that $H_2 \mathbf{v}$ and $\mathbf{v}$ have same signs.
+\begin{table}
+    \begin{tabular}{lllll}
+        \toprule
+        $N$ & $n_I$ & $n_C$ & $p$ & $(\beta, \beta_C)$ \\
+        \midrule
+        20 & 4 & 4 & 4 & (1,1), (3,3) \\
+        25 & 5 & 5 & 4 & (3/2, 3/2), (4,4) \\
+        25 & 5 & 4 & 5 & (4, 3) \\
+        35 & 7 & 7 & 4 & (4/3, 4/3), (5/2, 5/2), (6, 6) \\
+        35 & 7 & 4 & 7 & (5/2, 3) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Valid pairs $(\beta, \beta_C)$ for selected small values of $N$. $\alpha = 4$ in all cases.}
+    \label{table:validbeta}
+\end{table}
 
-\item Let $n_I^+$, $n_I^-$, and $n_I^0$ be the number of inhibitory cells which are positive, negative, and 0 in the large-$g$ limit. Let $b(I)$ be the ``balance'' of these, i.e.
-\[
-b(I) = n_I^+ - n_I^-
-\]
-Let $n_E^+$, $n_E^-$, and $n_E^0$ be the same thing for the excitatory clusters, and define the ``balance'' $b(E)$ the same way.
+
+% Let $\mathbf{I}_n$ denote the $n\times n$ identity matrix, $\mathbf{1}_{m \times n}$ the $m\times n$ matrix of ones, and $\mathbf{K}_n$ the $n\times n$ matrix with all ones off the diagonal; i.e. $\mathbf{K}_n = \mathbf{1}_{n \times 1} \left( \mathbf{1}_{n \times 1}\right)^T - \mathbf{I}_n$. 
+% \begin{itemize}
+% \item Since we only have to solve the reduced system (one variable per excitatory cluster), define the $(N_c + N_I) \times (N_c + N_I)$ block matrix \textbf{Used xtra lines in matrix to give space: arraystretch might be better?}
+% \[
+% H_1 = \frac{1}{\sqrt{N}}
+% \left[ \begin{array}{c|c}
+% \\
+% (p-1)\mu_{EE} \mathbf{I}_{N_c} & \mu_{EI}\mathbf{1}_{N_c \times N_I}\\
+% \\
+% \hline
+% \\
+% p \mu_{IE} \mathbf{1}_{N_I \times N_C} & \mu_{II} \mathbf{K}_{N_I} \\
+% \\
+% \end{array}
+% \right]
+% \]
+
+% This is the original matrix $H$ (divided by $\sqrt{N}$) if you treat all excitatory cells in a single cluster as one cell.
+% \item For each potential large-$g$ solution, define the ``sign vector'' $\mathbf{v}$ by
+% \[
+% \mathbf{v} = (\text{sign}(x_{E1}), \dots, \text{sign} (x_{EN_c}), \text{sign} (x_{I1}), \dots, \text{sign} (x_{IN_I})
+% \]
+% where the sign is $1, -1$ or 0.
+% \item If a large-$g$ solution exists with that sign vector, then $H_1 \mathbf{v}$ will have the same signs as the sign vector $\mathbf{v}$ and the solution will be $H_1 \mathbf{v}$. For now, this is a necessary (but not sufficient) condition for the large-$g$ solution to exist. Hopefully it is also sufficient.
+% \item If all we want to know is whether such a solution can exist, we can use the relationships between the coefficients to simplify the matrix. Specifically, we assume that 
+% \[\begin{pmatrix}
+% \mu_{EE} & \mu_{EI}\\
+% \mu_{IE} & \mu_{II}
+% \end{pmatrix} \rightarrow 
+% \begin{pmatrix}
+% N_c \mu & -\alpha \mu\\
+% \mu & -\alpha \mu
+% \end{pmatrix}
+%  \]
+%  where we have expressed each coefficient in terms of $\mu = \mu_{IE}$, the $E\rightarrow I$ connection weight. Then $H_1$ simplifies 
+% to
+% \[
+% H_2 =
+% \left( \begin{array}{c|c}
+% (p-1)N_C\mathbf{I}_{N_c} & -\alpha \mathbf{1}_{N_c \times N_I}\\
+% \hline
+% p \mathbf{1}_{N_I \times N_C} & -\alpha \mathbf{K}_{N_I} 
+% \end{array}
+% \right)
+% \]
+% up to a constant.
+% %\[
+% %H_2 = 
+% %\begin{pmatrix}
+% %\text{diag}( (p-1)N_c) & -\alpha \\
+% %p & \text{offdiag}(-\alpha )
+% %\end{pmatrix}
+% %\]
+
+% Then a necessary condition for the large-$g$ solution to exist is that $H_2 \mathbf{v}$ and $\mathbf{v}$ have same signs.
+
+% \item Let $n_I^+$, $n_I^-$, and $n_I^0$ be the number of inhibitory cells which are positive, negative, and 0 in the large-$g$ limit. Let $b(I)$ be the ``balance'' of these, i.e.
+% \[
+% b(I) = n_I^+ - n_I^-
+% \]
+% Let $n_E^+$, $n_E^-$, and $n_E^0$ be the same thing for the excitatory clusters, and define the ``balance'' $b(E)$ the same way.
  
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Nonzero solutions}
-\begin{itemize}
-\item For now, assume there are excitatory clusters with both positive and negative $X_E$ and inhibitory neurons with both positive and negative $X_I$. (For homogeneous populations of one or the other, should be easier.) Also assume none of them are 0.  That is, we assume
- $n_E^+, n_E^-, n_I^+, n_I^- > 0$ and $n_E^0, = n_I^0 = 0$. Then the simplified equation 
-\[ \text{sign}(H_2 \textbf{v}) = \text{sign}(\textbf{v}) \]
-reduces to the conditions
-\begin{align*}
-&(p-1) N_c - \alpha b(I) > 0 && \text{positive excitatory} \\
--&(p-1) N_c - \alpha b(I) < 0 && \text{negative excitatory} \\
-&p\:b(E) - \alpha (b(I)-1) > 0 && \text{positive inhibitory} \\
-&p\:b(E) - \alpha (b(I)+1) < 0 && \text{negative inhibitory} 
-\end{align*}
+% \subsubsection{Nonzero solutions}
+% \begin{itemize}
+% \item For now, assume there are excitatory clusters with both positive and negative $X_E$ and inhibitory neurons with both positive and negative $X_I$. (For homogeneous populations of one or the other, should be easier.) Also assume none of them are 0.  That is, we assume
+%  $n_E^+, n_E^-, n_I^+, n_I^- > 0$ and $n_E^0, = n_I^0 = 0$. Then the simplified equation 
+% \[ \text{sign}(H_2 \textbf{v}) = \text{sign}(\textbf{v}) \]
+% reduces to the conditions
+% \begin{align*}
+% &(p-1) N_c - \alpha b(I) > 0 && \text{positive excitatory} \\
+% -&(p-1) N_c - \alpha b(I) < 0 && \text{negative excitatory} \\
+% &p\:b(E) - \alpha (b(I)-1) > 0 && \text{positive inhibitory} \\
+% &p\:b(E) - \alpha (b(I)+1) < 0 && \text{negative inhibitory} 
+% \end{align*}
 
-\item The first pair of inequalities are satisfied if and only if
-\[
-|b(I)| < \frac{(p-1) N_c}{\alpha}
-\]
-which constrains how the inhibitory cells can be split up. We can simplify the RHS using
-\begin{align*}
-\frac{(p-1) N_c}{\alpha}
-&= (p-1) N_c \frac{N_I}{N_E}
-= p N_c \frac{N_I}{N_E} - N_c \frac{N_I}{N_E} = N_I - N_c \frac{N_I}{N_E}
-= N_I\left( 1 - \frac{N_c}{N_E} \right) \\
-&= N_I\left( 1 - \frac{1}{p} \right)
-\end{align*}
-so this becomes
-\[
-|b(I)| < N_I\left( 1 - \frac{1}{p} \right)
-\]
-Since $p > 1$, this means that $|b(I)| <  N_I$, i.e. we cannot have $|b(I)| = N_I$, so there cannot be a homogeneous, nonzero population of inhibitory cells.
+% \item The first pair of inequalities are satisfied if and only if
+% \[
+% |b(I)| < \frac{(p-1) N_c}{\alpha}
+% \]
+% which constrains how the inhibitory cells can be split up. We can simplify the RHS using
+% \begin{align*}
+% \frac{(p-1) N_c}{\alpha}
+% &= (p-1) N_c \frac{N_I}{N_E}
+% = p N_c \frac{N_I}{N_E} - N_c \frac{N_I}{N_E} = N_I - N_c \frac{N_I}{N_E}
+% = N_I\left( 1 - \frac{N_c}{N_E} \right) \\
+% &= N_I\left( 1 - \frac{1}{p} \right)
+% \end{align*}
+% so this becomes
+% \[
+% |b(I)| < N_I\left( 1 - \frac{1}{p} \right)
+% \]
+% Since $p > 1$, this means that $|b(I)| <  N_I$, i.e. we cannot have $|b(I)| = N_I$, so there cannot be a homogeneous, nonzero population of inhibitory cells.
 
-\item The second pair of inequalities are satisfied if and only if
-\[
-\frac{\alpha}{p}(b(I)-1) < b(E) < \frac{\alpha}{p}(b(I)+1)
-\]
-Multiply this by $N_I/N_c$ and simplify
-\begin{align*}
-&\frac{N_I \alpha}{N_c p}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_c p}(b(I)+1) \\
-&\frac{N_I \alpha}{N_E}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_E}(b(I)+1) \\
-&b(I)-1 < \frac{N_I}{N_c} b(E) < b(I)+1
-\end{align*}
+% \item The second pair of inequalities are satisfied if and only if
+% \[
+% \frac{\alpha}{p}(b(I)-1) < b(E) < \frac{\alpha}{p}(b(I)+1)
+% \]
+% Multiply this by $N_I/N_c$ and simplify
+% \begin{align*}
+% &\frac{N_I \alpha}{N_c p}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_c p}(b(I)+1) \\
+% &\frac{N_I \alpha}{N_E}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_E}(b(I)+1) \\
+% &b(I)-1 < \frac{N_I}{N_c} b(E) < b(I)+1
+% \end{align*}
 
-\item If $\frac{N_I}{N_c} b(E)$ is an integer, then we can say more, since
-\[
-\frac{N_I}{N_c} b(E) = b(I)
-\]
-which means that
-\[
-\frac{b(E)}{N_c} = \frac{b(I)}{N_I}
-\]
-Since $N_c = N_E^+ + N_E^-$ and $N_I = N_I^+ + N_I^-$, we can do some algebra to get
-\[
-\frac{N_E^+}{N_I^+} = \frac{N_E^-}{N_I^-} =
-\frac{N_c}{N_I}
-\]
-from which it follows that
-\[
-\frac{N_E^+}{N_E^-} = \frac{N_I^+}{N_I^-},
-\]
-i.e. the ratio of positive to negative is the same for inhibitory cells and excitatory clusters!
+% \item If $\frac{N_I}{N_c} b(E)$ is an integer, then we can say more, since
+% \[
+% \frac{N_I}{N_c} b(E) = b(I)
+% \]
+% which means that
+% \[
+% \frac{b(E)}{N_c} = \frac{b(I)}{N_I}
+% \]
+% Since $N_c = N_E^+ + N_E^-$ and $N_I = N_I^+ + N_I^-$, we can do some algebra to get
+% \[
+% \frac{N_E^+}{N_I^+} = \frac{N_E^-}{N_I^-} =
+% \frac{N_c}{N_I}
+% \]
+% from which it follows that
+% \[
+% \frac{N_E^+}{N_E^-} = \frac{N_I^+}{N_I^-},
+% \]
+% i.e. the ratio of positive to negative is the same for inhibitory cells and excitatory clusters!
 
-\item If $\frac{N_I}{N_c} b(E)$ is not an integer, the inequalities still hold, but we no longer have the same ratio.
+% \item If $\frac{N_I}{N_c} b(E)$ is not an integer, the inequalities still hold, but we no longer have the same ratio.
 
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Solutions with some zeros}
+% \subsubsection{Solutions with some zeros}
 
-\textbf{Conjecture:} These may never happen unless the cell is 0 for all $g$.
+% \textbf{Conjecture:} These may never happen unless the cell is 0 for all $g$.
 
-\begin{itemize}
-\item If $N_E^0 \neq 0$, i.e. there is at least one excitatory cluster which is 0 in the large $g$ limit, then we have the additional equation $0(p-1)N_c - \alpha b(I) = 0$, from which it follows that $b(I) = 0$. The inequality for $b(E)$ then becomes
-\[
--\frac{\alpha}{p} < b(E) < \frac{\alpha}{p}
-\]
-Since $\alpha = N_E/N_I = N_c p/N_I$, this becomes
-\[
--\frac{N_c}{N_I} < b(E) < \frac{N_c}{N_I}
-\]
-This means that if $N_c \leq N_I$, we must have $b(E) = 0$ as well. There are more possibilities if $N_c > N_I$.
+% \begin{itemize}
+% \item If $N_E^0 \neq 0$, i.e. there is at least one excitatory cluster which is 0 in the large $g$ limit, then we have the additional equation $0(p-1)N_c - \alpha b(I) = 0$, from which it follows that $b(I) = 0$. The inequality for $b(E)$ then becomes
+% \[
+% -\frac{\alpha}{p} < b(E) < \frac{\alpha}{p}
+% \]
+% Since $\alpha = N_E/N_I = N_c p/N_I$, this becomes
+% \[
+% -\frac{N_c}{N_I} < b(E) < \frac{N_c}{N_I}
+% \]
+% This means that if $N_c \leq N_I$, we must have $b(E) = 0$ as well. There are more possibilities if $N_c > N_I$.
 
-\item If $N_I^0 \neq 0$, i.e. there is at least one inhibitory cluster which is 0 in the large $g$ limit, then we have the additional equation 
-\[
-p b(E) - \alpha b(I) = 0
-\]
-which implies
-\[
-b(E) = \frac{\alpha}{p} b(I) = \frac{N_c}{N_i} b(I)
-\]
+% \item If $N_I^0 \neq 0$, i.e. there is at least one inhibitory cluster which is 0 in the large $g$ limit, then we have the additional equation 
+% \[
+% p b(E) - \alpha b(I) = 0
+% \]
+% which implies
+% \[
+% b(E) = \frac{\alpha}{p} b(I) = \frac{N_c}{N_i} b(I)
+% \]
 
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Solutions with $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$}
+% \subsubsection{Solutions with $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$}
 
-A final possibility is that there are degrees of freedom for which $x_k \rightarrow 0$, but in such as way that $g x_k \rightarrow c$ for some real constant $c$. Then $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$. Deriving such solutions becomes considerably more complicated, as we have not only a linear matrix equation, but nonlinear consistency conditions relating $x_k$ and $\tanh(g x_k)$ \textbf{Actually LHS is zero for large g: still more complicated than $\pm$ 1}
+% A final possibility is that there are degrees of freedom for which $x_k \rightarrow 0$, but in such as way that $g x_k \rightarrow c$ for some real constant $c$. Then $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$. Deriving such solutions becomes considerably more complicated, as we have not only a linear matrix equation, but nonlinear consistency conditions relating $x_k$ and $\tanh(g x_k)$ \textbf{Actually LHS is zero for large g: still more complicated than $\pm$ 1}
 
-Instead of proceeding along these lines, we will show that all such solutions are unstable.
+% Instead of proceeding along these lines, we will show that all such solutions are unstable.
 
 \subsection{Excitatory clusters with weight parameters unchanged}
 
