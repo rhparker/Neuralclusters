@@ -45,6 +45,11 @@ x3bs = sb{9}.xS;
 g3c = br{4}.parS;
 x3c = br{4}.xS;
 
+load EclusterN20Nc4p4beta3a;
+
+g3d = br{6}.parS;
+x3d = br{6}.xS;
+
 load EclusterN20Nc4p4beta1;
 
 g1 = br{1}.parS;
@@ -193,7 +198,7 @@ ylabel('$X_E$');
 text(0.1,2,'$X_{E_1}$','FontSize',labelFontSize,'interpreter','latex');
 text(0.1,-2,'$X_{E_2}$','FontSize',labelFontSize,'interpreter','latex');
 
-%% inhibitory
+% inhibitory
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -236,3 +241,84 @@ ylabel('$X_I$');
 text(0.1,0.7,'$X_{I_1}$','FontSize',labelFontSize,'interpreter','latex');
 text(0.1,-0.7,'$X_{I_2}$','FontSize',labelFontSize,'interpreter','latex');
 
+%% betac=3 branch only
+
+% excitatory
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+hold on;
+% origin
+plot(g00,x0(:,1),'--', 'LineWidth', lw, 'Color', c1 );
+plot([0 g0s],[0 ; g0x(:,1)],'-', 'LineWidth', lw, 'Color', c1 );
+% betac=3
+plot(g3,x3(:,1),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3,x3(:,2),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3a,x3a(:,1),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3a,x3a(:,2),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3as,x3as(:,1),'-', 'LineWidth', lw, 'Color', c3 );
+plot(g3as,x3as(:,2),'-', 'LineWidth', lw, 'Color', c3 );
+plot(g3d,x3d(:,1),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3d,x3d(:,2),'--', 'LineWidth', lw, 'Color', c3 );
+axis([0 5 -4 2]);
+% axis([0 5 -2.5 2.5]);
+% % branch points
+% brg =  [ g3(1) g1beta3(1) ];
+% bre1 = [ 0 x1beta3(1,1) ];
+% bre2 = [ 0 x1beta3(1,3)];
+% plot( brg, bre1, '.k', brg, bre2,  '.k', 'MarkerSize', 40);                   
+% 
+% labels = {'$\beta_C=1$','$\beta = 1$', '$\beta = 3$'};
+% gpos = [ 1 4.5 4.5 ];
+% Elabelpos = [ 0.6 1.65 1.0 ];
+% labelpoints( gpos, Elabelpos, labels,'N',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+% 
+% xlabel('$g$');
+% ylabel('$X_E$');
+% text(0.1,2,'$X_{E_1}$','FontSize',labelFontSize,'interpreter','latex');
+% text(0.1,-2,'$X_{E_2}$','FontSize',labelFontSize,'interpreter','latex');
+
+%% inhibitory
+
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+hold on;
+% origin
+plot(g00,x0(:,end),'--', 'LineWidth', lw, 'Color', c1 );
+plot([0 g0s],[0 ; g0x(:,end)],'-', 'LineWidth', lw, 'Color', c1 );
+% betac=3
+plot(g3,x3(:,5),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3a,x3a(:,5),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3a,x3a(:,6),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3as,x3as(:,5),'-', 'LineWidth', lw, 'Color', c3 );
+plot(g3as,x3as(:,6),'-', 'LineWidth', lw, 'Color', c3 );
+plot(g3d,x3d(:,3),'--', 'LineWidth', lw, 'Color', c3 );
+plot(g3d,x3d(:,4),'--', 'LineWidth', lw, 'Color', c3 );
+
+% % branch points
+% brg =  [ g3(1) sqrt(N)/(mee*Nc) ];
+% bre1 = [ 0 0 ];
+% bre2 = [ 0 0 ];
+% plot( brg, bre1, '.k', brg, bre2,  '.k', 'MarkerSize', 40);  
+% 
+% labels = {'$\beta_C = 1$', '$\beta = 1$', '$\beta = 3$'};
+% gpos = [ 1 4.5 4.5 ];
+% Elabelpos = [ -0.25 .55 .05 ];
+% labelpoints( gpos, Elabelpos, labels,'N',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+
+axis([0 5 -0.9 0.9]);
+
+% labelpoints( gpos, I1labelpos, labels,'NE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+% labelpoints( gpos(1), I2labelpos(1), labels(1),'NE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+% labelpoints( gpos(2), I2labelpos(2), labels(2),'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+
+xlabel('$g$');
+ylabel('$X_I$');
+text(0.1,0.7,'$X_{I_1}$','FontSize',labelFontSize,'interpreter','latex');
+text(0.1,-0.7,'$X_{I_2}$','FontSize',labelFontSize,'interpreter','latex');

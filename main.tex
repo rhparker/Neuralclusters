@@ -94,15 +94,14 @@ Introduction/background goes here.
 
 \section{Mathematical model}
 
-We consider a network in which each node represents the firing rate of a single neuron. The individual neurons are connected by sigmoidal activation functions through a connectivity matrix which specifies both the network of neuronal connections and the weight of each connection, including whether a given neuron is excitatory (E) or inhibitory (I). With noise in the connectivity matrix, this is a idealized model in neuroscience. Here, we will consider the system without noise, but in which the weights have important symmetries. Specifically, we study:
+We consider a network in which each node represents the firing rate of a single neuron. The individual neurons are connected by sigmoidal activation functions through a connectivity matrix, which specifies both the network of neuronal connections and the weight of each connection, including whether a given neuron is excitatory (E) or inhibitory (I). With noise in the connectivity matrix, this is an idealized model in neuroscience. Here, we will consider the system without noise, but in which the connection weights have important symmetries. Specifically, we study:
 \begin{equation}\label{eqn:sys_Basic}
     \dot{\xvec} = 
     F(\xvec, g) := -\xvec  + \frac{1}{\sqrt{N}} H\tanh (g \xvec),
 \end{equation}
-for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. We have a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons. We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory.
+for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons [CONSIDER REFERENCE FOR WHY WE DO THIS]. We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory.
 
-For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} will depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles. In particular, we will consider networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
-
+For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
 H = 
 \left[ 
@@ -122,26 +121,27 @@ H =
 &&&& \vdots & \vdots & \ddots & 0 \\
 &&&& 0 & 0 & \hdots & \mu_{II} \Kvec_{p_I} \\
 \end{blockarray}
-\right]
+\right],
 \end{equation}
-where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$.
+where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ is the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$.
 
-The dynamics of the system can be understood in terms of the eigenvalues of $H$. (See \cref{fig:Heigpattern} for the eigenvalue pattern of $H$ for four different network models). In particular, the multiplicities of the eigenvalues of $H$ are forced by symmetries in \cref{eqn:sys_Basic}, which lead to symmetric bifurcations. The linearization of \cref{eqn:sys_Basic} about $\xvec = 0$ is the matrix
+The linearization of \cref{eqn:sys_Basic} about $\xvec = 0$ is the matrix
 \begin{equation}\label{eq:DF0}
-DF(0) = \frac{g}{\sqrt{N}}H - I_N
+DF(0) = \frac{g}{\sqrt{N}}H - I_N,
 \end{equation}
-where $I_N$ is the $N \times N$ identity matrix. The eigenvalues of $DF(0)$ are then given by $\frac{g}{\sqrt{N}}\lambda - 1$ for all eigenvalues $\lambda$ of $H$. For eigenvalues of $H$ with negative real part, the corresponding eigenvalues of $DF(0)$ will always have negative real part, irrespective of $g$. On the other hand, for eigenvalues of $H$ with positive real part, the sign of the real part of the corresponding eigenvalue of $DF(0)$ depends on the bifurcation parameter $g$. Thus, all bifurcations of $\xvec = 0$ involve the eigenvalues of $H$ with positive real part. 
+where $I_N$ is the $N \times N$ identity matrix. The eigenvalues of $DF(0)$ are then given by $\frac{g}{\sqrt{N}}\lambda - 1$ for all eigenvalues $\lambda$ of $H$. As a consequence, the dynamics of the system can be understood in terms of the eigenvalues of $H$. (See \cref{fig:Heigpattern} for the eigenvalue pattern of $H$ for four different network models). For eigenvalues of $H$ with negative real part, the corresponding eigenvalues of $DF(0)$ will always have negative real part, irrespective of $g$. On the other hand, for eigenvalues of $H$ with positive real part, the sign of the real part of the corresponding eigenvalue of $DF(0)$ will depend on the bifurcation parameter $g$. Thus, the only bifurcations of $\xvec = 0$ involve the eigenvalues of $H$ which have positive real part. Futhermore, the multiplicities of the eigenvalues of $H$ are determined by symmetries in the underlying model \cref{eqn:sys_Basic} and the matrix $H$. These lead to symmetric bifurcations as $g$ is increased from 0. 
 
-For nonzero fixed points $\xvec^*$ of \cref{eqn:sys_Basic}, the linearization about $\xvec^* = (x_1^*, \dots, x_N^*)^T$ is the matrix
+The dynamics near a nonzero fixed point $\xvec^* = (x_1^*, \dots, x_N^*)^T$ of \cref{eqn:sys_Basic} also depend on the matrix $H$. The linearization of \cref{eqn:sys_Basic} about $\xvec^*$ is the matrix
 \begin{equation}\label{eq:DFxstar}
-    DF(\xvec^*) = \frac{g}{\sqrt{N}}H(\xvec^*)  - I_N
+    DF(\xvec^*) = \frac{g}{\sqrt{N}}H(\xvec^*)  - I_N,
 \end{equation}
 where 
 \begin{equation}\label{eq:Hxstar}
-H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))\end{equation}
-is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note here that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. In particular, this implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
+H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))
+\end{equation}
+is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. In particular, this implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
 
-Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$, even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. 
+Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$ [REFERENCE], even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system [SAY MORE]. We then extend the analysis to several families of networks, which share [SAY MORE]. For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
 
 \begin{figure}
     \centering
@@ -155,26 +155,22 @@ Features of the system such as fixed points and periodic orbits remain when the 
     \label{fig:Heigpattern}
 \end{figure}
 
-We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks. In this paper, we first flesh out some details about that system (say more). We then extend the analysis to several families of networks, which share...
-
-For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
-
 \section{Model simplification}\label{sec:simplermodel}
 
-Since we are interested in locating fixed points and periodic orbits, we can simplify the model by using the fact that all excitatory cells within each cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster, if $x_1$ and $x_2$ are the activities of two excitatory cells, then it follows from \cite{Barreiro2017} that
+Since we are primarily interested in locating fixed points and periodic orbits, we can simplify the model by using the fact that all excitatory cells within each excitatly cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster ($n_C = 1$), if $x_1$ and $x_2$ are the activities of two excitatory cells, then it follows from \cite{Barreiro2017} that
 \begin{align}\label{eq:dt_x1t2diff}
 \frac{d}{dt}|x_1 - x_2|^2 \leq -2 |x_1 - x_2 |^2.
 \end{align}
 The only way this can be true for a fixed point (for which $\frac{d}{dt} |x_1 - x_2|^2 =0$) or for a periodic orbit (for which $x_1(t)-x_2(t) = x_1(t+T)-x_2(t+T)$ for some period $T$) is if $x_1(t) = x_2(t)$ for all $t$. If $x_1$ and $x_2$ are the activities of two cells in the same excitatory cluster, equation \cref{eq:dt_x1t2diff} holds by the same argument as in \cite{Barreiro2017}, since both neurons receive the same incoming connections with the same weights. 
 
-For the case where there is a single cluster of inhibitory cells ($n_{CI} = 1$), if there are $n_C$ excitatory clusters containing $p$ cells each, and $n_I$ inhibitory cells ($N = pN_c + N_i$ total cells), equation \cref{eqn:sys_Basic} then reduces to the system of $n_C + n_I$ equations
+We are primarily interested in the case where there is a single cluster of inhibitory cells ($n_{CI} = 1$). We will briefly consider the case of multiple excitatory clusters ($n_{CI} > 1$) in \cref{sec:inhibitoryclusters}. If there are $n_C$ excitatory clusters containing $p$ cells each, and $n_I$ inhibitory cells (for $N = p n_C + n_I$ total cells), equation \cref{eqn:sys_Basic} then reduces to the system of $n_C + n_I$ equations
 \begin{equation}\label{eq:reducedsystem}
 \begin{aligned}
 \dot{x}_{Ej} &= -x_{Ej} + \frac{(p-1)}{\sqrt{N}}\mu_{EE} \tanh(g x_{Ej}) + \frac{1}{\sqrt{N}} \mu_{EI} \sum_k \tanh(g x_{Ik}) && j = 1, \dots, n_C \\
-\dot{x}_{Ij} &= -x_{Ij} + \frac{p}{\sqrt{N}}\mu_{IE} \sum_k \tanh(g x_{Ek}) + \frac{1}{\sqrt{N}} \mu_{II} \sum_{k\neq j}  \tanh(g x_{Ik}) && j = 1, \dots, n_I
+\dot{x}_{Ij} &= -x_{Ij} + \frac{p}{\sqrt{N}}\mu_{IE} \sum_k \tanh(g x_{Ek}) + \frac{1}{\sqrt{N}} \mu_{II} \sum_{k\neq j}  \tanh(g x_{Ik}) && j = 1, \dots, n_I,
 \end{aligned}
 \end{equation}
-$x_{Ej}$ is the activity for the excitatory cluster $j$, and $x_{Ij}$ is activity for the inhibitory cell $j$. In matrix form, equations \cref{eq:reducedsystem} can be written
+where $x_{Ej}$ is the activity for the $j$th, excitatory cluster, and $x_{Ij}$ is activity for the $j$th inhibitory cell. In matrix form, the equations \cref{eq:reducedsystem} can be written
 \begin{equation}\label{eq:reducedmatrixform}
 \dot{\xvec} = \tilde{F}(\xvec, g) := -\xvec + \frac{1}{\sqrt{N}} \tilde{H} \tanh(g \xvec),
 \end{equation}
@@ -189,17 +185,17 @@ where $\xvec = (x_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$, an
     p \mu_{IE} \Onevec_{n_I \times n_C} & \mu_{II} \mathbf{K}_{n_I} \\
     \\
     \end{array}
-    \right]
+    \right].
 \]
 Let $\xvec^* = (x_{E_1}^*, \dots, x_{E_{n_C}}^*, x_{I_1}^*, \dots, x_{I_{n_I}}^*)^T$ be a fixed point of \cref{eq:reducedmatrixform}. The linearization of \cref{eq:reducedmatrixform} about $\xvec^*$ is the matrix
 \begin{equation}\label{eq:DtildeFxstar}
-    D\tilde{F}(\xvec^*) = \frac{g}{\sqrt{N}}\tilde{H}(\xvec^*) - I_{n_C+n_I}
+    D\tilde{F}(\xvec^*) = \frac{g}{\sqrt{N}}\tilde{H}(\xvec^*) - I_{n_C+n_I},
 \end{equation}
 where 
 \begin{equation}\label{eq:tildeHxstar}
-\tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* ))
+\tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* )).
 \end{equation}
-There is a corresponding fixed point $\xvec_0^*$ to \cref{eqn:sys_Basic}, where each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. Let $\vvec = (v_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$ be an eigenvector of $\tilde{H}(\xvec^*)$ with eigenvalue $\lambda$. By comparing $\tilde{H}(\xvec^*)$ and $H(\xvec_0^*)$, there is a corresponding eigenvector $\vvec_0$ to $H(\xvec_0^*)$ with eigenvalue $\lambda$, where $\vvec_0$ is obtained from $\vvec$ by repeating each entry $v_{E_j}$ $p$ times. The matrix $H(\xvec_0^*)$ has $n_E - n_C = (p-1)n_C$ eigenvalues which are not eigenvalues of $\tilde{H}(\xvec^*)$. For each $j=1,\dots,n_C$, it is straightforward to show that $H(\xvec_0^*)$ has an eigenvalue at $\lambda = -\sech^2(x_{E_j}) \mu_{EE}$ with multiplicity $p-1$. (For $j=1$, for example, the $p-1$ eigenvectors are $\vvec^1, \dots, \vvec^{p-1}$, where $v^k_1 = -1$, $v^k_{k+1} = 1$, and all other components are 0). Since $\mu_{EE} > 0$, these eigenvalues are always negative. The corresponding eigenvalues of $DF(\xvec_0^*)$ will be negative for all $g$ and will have no effect on the stability of $x_0^*$. It therefore suffices to use the reduced system to determine stability of fixed points.
+The original equation \cref{eqn:sys_Basic} has a corresponding fixed point $\xvec_0^*$, in which each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. Let $\vvec = (v_{E_1}, \dots, v_{E_{n_C}}, v_{I_1}, \dots, v_{I_{n_I}})^T$ be an eigenvector of $\tilde{H}(\xvec^*)$ with eigenvalue $\lambda$. By comparing $\tilde{H}(\xvec^*)$ and $H(\xvec_0^*)$, there is a corresponding eigenvector $\vvec_0$ to $H(\xvec_0^*)$ with eigenvalue $\lambda$, where $\vvec_0$ is obtained from $\vvec$ by repeating each entry $v_{E_j}$ $p$ times. In addition, the matrix $H(\xvec_0^*)$ has $n_E - n_C = (p-1)n_C$ eigenvalues which are not eigenvalues of $\tilde{H}(\xvec^*)$. For $j=1, \dots, n_C$, $H(\xvec_0^*)$ has an eigenvalue at $\lambda = -\mu_{EE} \sech^2(x_{E_j})$ with multiplicity $p-1$. (This can be verified directly; for $j=1$, for example, the $p-1$ eigenvectors are $\vvec^1, \dots, \vvec^{p-1}$, where $v^k_1 = -1$, $v^k_{k+1} = 1$, and all other components are 0). Since $\mu_{EE} > 0$, these eigenvalues are always negative. The corresponding eigenvalues of $DF(\xvec_0^*)$ will be also negative for all $g$ and will have no effect on the stability of $x_0^*$. It therefore suffices to use the reduced system \cref{eq:reducedmatrixform} not only to locate fixed points of \cref{eqn:sys_Basic} but also to determine their stability.
  
 \section{Single excitatory and inhibitory cluster}\label{sec:E1I1}
 
@@ -217,7 +213,7 @@ H =
 \end{array}
 \right]
 \]
-We choose the weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel (CITE Rajan and Abbott). To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of $H$ is now easy to compute \cite{Barreiro2017}. The eigenvalues of $H$ (top left panel of \cref{fig:Heigpattern}) are
+We choose the weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel [CITE Rajan and Abbott]. To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of $H$ is now easy to compute \cite{Barreiro2017}. The eigenvalues of $H$ (top left panel of \cref{fig:Heigpattern}) are
 \begin{itemize}
     \item $\lambda_I := \alpha \mu_{EE} > 0$ with multiplicity $n_I - 1$
     \item $\lambda_E := -\mu_{EE} < 0$ with multiplicity $n_E - 1$
@@ -1027,7 +1023,7 @@ A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is 
 
 We can also choose the weights as in the previous section, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
-\section{Inhibitory clusters}
+\section{Inhibitory clusters}\label{sec:inhibitoryclusters}
 
 We can also allow the inhibitory cells to be clustered, while the excitatory cells remain unclustered. Briefly, suppose the inhibitory cells are grouped into $n_{C_I}$ inhibitory clusters of size $p_i$. For the choice of weights $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$, the eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitatory and inhibitory cells in the previous section:
 \begin{itemize}
