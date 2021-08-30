@@ -38,6 +38,11 @@ ylabel('$x_I$');
 labels = {'numerical solution', '3rd order approximation', '5th order approximation'};
 legend(labels,'location','NorthWest');
 
+%% error plots for I1=I2 branch
+
+figure;
+plot(g,log(abs(y-y3)),'--','LineWidth',lw);
+
 %% plot of beta=3 branch
 
 % plot parameters
@@ -68,6 +73,11 @@ xlabel('$g$');
 ylabel('$x_{I_1}$');
 labels = {'numerical solution', '3rd order approximation'};
 legend(labels,'location','NorthWest');
+
+%% error plots for I1=I2 branch
+
+figure;
+plot(g,log(abs(y-y3)),'--','LineWidth',lw);
 
 %% plot 
 

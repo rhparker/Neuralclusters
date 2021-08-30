@@ -320,25 +320,25 @@ As a consequence, there is a branch of solutions emerging at the symmetric pitch
 
 \subsection{Solutions along $I_1/I_2$ branches}
 
-The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities. Letting $x_{I_1} = x_I$, substituting these into \cref{eq:otherbranchmatrixeq}, and simplifying, we obtain the single equation (\cite{Barreiro2017}*{Eq. 16})
+First, we derive leading order expressions for the solutions along the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$. The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:otherbranchmatrixeq} and simplifying, we obtain the single equation (\cite{Barreiro2017}*{Eq. 16})
 \[
 -x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
 \]
 which simplifies to 
 \begin{equation}\label{eq:xIbrancheq}
-\tanh(g x_I) = g_0 x_I.
+\tanh(g x_I) - g_0 x_I = 0.
 \end{equation}
-Defining $f(x_I) = \tanh(g x_I) - g_0 x_I$, $f(0) = 0$, $f'(0) = g - g_0$, and $f(x_I) \rightarrow -\infty$ as $x_I \rightarrow \infty$. When $g > g_0$, $f(x_I)$ is initially increasing, thus it follows from the continuity of $f$ and the intermediate value theorem that \cref{eq:xIbrancheq} has a solution with $x_I > 0$ for all $g > g_0$. As $g \rightarrow \infty$, $x_I \rightarrow 1/g_0$. 
+Defining $f(x_I) := \tanh(g x_I) - g_0 x_I$, we have $f(0) = 0$, $f'(0) = g - g_0$, and $f(x_I) \rightarrow -\infty$ as $x_I \rightarrow \infty$. When $g > g_0$, $f(x_I)$ is initially increasing, thus it follows from the continuity of $f$ and the intermediate value theorem that \cref{eq:xIbrancheq} has a solution with $x_I > 0$ for all $g > g_0$, and $x_I \rightarrow 1/g_0$ as $g \rightarrow \infty$.
 
-To obtain an approximation of this solution for $g$ close to $g_0$, we expand the LHS of \cref{eq:xIbrancheq} in Taylor series about $g x_I = 0$ to get
+To obtain an approximation of this solution for $g$ close to $g_0$, we expand the LHS of \cref{eq:xIbrancheq} in Taylor series about $x_I = 0$ and $g = g_0$ and simpify to get
 \begin{equation}\label{eq:tanhTaylor}
-g x_I - \frac{(g x_I)^3}{3} + \frac{2(g x_I)^5}{15} + \mathcal{O}\left( (g x_I)^7 \right) = g_0 x_I
+(g-g_0) x_I - \frac{(g x_I)^3}{3} + \frac{2(g x_I)^5}{15} + \mathcal{O}\left( x_I^7 \right) = 0.
 \end{equation}
-Keeping up to cubic terms, equation \cref{eq:tanhTaylor} simplifies to
+We note that the remainder term in $(g-g_0)$ is transcendentally small in the sense of \cite{Holmes2012}. Keeping up to cubic terms in $x_I$, equation \cref{eq:tanhTaylor} simplifies to
 \[
-x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 \right) = 0,
+x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 \right) = 0.
 \]
-thus for $g$ close to $g_0$, the nonzero solution for $x_I$ is given, to leading order, by
+For $g$ close to $g_0$, the nonzero solution for $x_I$ is given, to leading order, by
 \begin{align}\label{eq:xIapprox}
 x_I &= \sqrt{ \frac{3(g - g_0) }{g^3}} && g \geq g_0.
 \end{align}
@@ -350,7 +350,7 @@ which is $x_I$ multiplied by a quadratic in $x_I^2$. To find the nonzero solutio
 \begin{align}\label{eq:xIapprox5}
 x_I &= \frac{1}{2} \sqrt{ \frac{5}{g^2} - \frac{\sqrt{ 5 g^5( 24 g_0 - 19 g) }}{g^5}} && g \geq g_0.
 \end{align}
-Comparison between the third-order approximation, the fifth-order approximation, and the numerical solution obtained by parameter continuation is shown in the left panel of \cref{fig:xIapprox}.
+Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-order approximation \cref{eq:xIapprox5}, and the numerical solution obtained by parameter continuation is shown in the left panel of \cref{fig:xIapprox}.
 
 \begin{figure}
     \centering
@@ -358,7 +358,7 @@ Comparison between the third-order approximation, the fifth-order approximation,
     \includegraphics[width=8cm]{images/Xiapprox.eps} &
     \includegraphics[width=8cm]{images/Xiapproxbeta3.eps} 
     \end{tabular}
-    \caption{Third order approximation \cref    {eq:xIapprox} and fifth order approximation \cref{eq:xIapprox5} to $x_I$ on the $I_1=I_2$ branch of fixed points (left panel). Third order approximation \cref{eq:XI1} to $X_{I_1}$ on the $\beta=3$ branch (right panel). $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Third order approximation \cref{eq:xIapprox} and fifth order approximation \cref{eq:xIapprox5} to $x_I$ on the $I_1=I_2$ branch of fixed points (left panel). Third order approximation \cref{eq:XI1} to $X_{I_1}$ on the $\beta=3$ branch (right panel). $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:xIapprox}
 \end{figure}
 
@@ -374,21 +374,21 @@ For $\beta \neq 1$, we find the solution along each $I_1/I_2$ branch by reducing
  \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
  \end{aligned}
  \end{equation}
- where $x_E$ is the activity of the excitatory cells (which are all synchronized), $x_{I_1}$ and $x_{I_2}$ are the activities of the two inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, \dots, x_E, x_{I_1}, \dots, , x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eqn:sys_Basic}, where $x_E$, $x_{I_1}$, and $x_{I_2}$ are repeated $n_E$, $n_{I_1}$, and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:otherbranchmatrixeq} has a solution
+ where $x_E$ is the activity of the excitatory cells (which are all synchronized), $x_{I_1}$ and $x_{I_2}$ are the activities of the two inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, \dots, x_E, x_{I_1}, \dots, , x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eqn:sys_Basic}, where $x_E$, $x_{I_1}$, and $x_{I_2}$ are repeated $n_E$, $n_{I_1}$, and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution
 \begin{equation}\label{eq:I1I2asymp}
     x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
     x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
-     x_E = \mathcal{O}\left( \frac{1}{N^2} \right)
+     x_E = \mathcal{O}\left( \frac{1}{N^2} \right).
 \end{equation}
 Subtracting the second and third equations in \cref{eq:otherbranchmatrixeq}, we get
 \[
- x_{I_1} - x_{I_2} = \frac{\alpha}{\mu_{EE}\sqrt{N}}\left( \tanh(g x_{I_1}) - \tanh(g x_{I_2}) \right)
+ x_{I_1} - x_{I_2} = \frac{\alpha}{\mu_{EE}\sqrt{N}}\left( \tanh(g x_{I_1}) - \tanh(g x_{I_2}) \right).
  \]
-Substituting \cref{eq:I1I2asymp} into this as an ansatz, expanding the $\tanh$ terms in a Taylor series to cubic order, and simplifying, we obtain the formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
+Substituting \cref{eq:I1I2asymp} into this as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain an approximate formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
  \begin{align}\label{eq:XI1}
  x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_0.
 \end{align}
-Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison between this approximation and the numerical solution obtained by parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
+Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison between this approximation and the numerical solution obtained by numerical parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
 
 \begin{figure}
     \centering
@@ -404,7 +404,7 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
 
 \subsection{Stability and bifurcations along $I_1/I_2$ branches}
 
-Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$.To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. As above, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. In doing this, we will also find a Hopf bifurcation along each $I_1/I/2$ branch, and can find an leading order formula for its location for large $N$.
+Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find an leading order formula for its location.
 
 First, we linearize the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point branch $(x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
 \[
