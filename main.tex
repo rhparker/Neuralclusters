@@ -221,7 +221,7 @@ We choose the weights so that the network is \emph{balanced}; that is, the excit
 \end{itemize}
 It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. As discussed above, all bifurcations of $\xvec = 0$ involve only $\lambda_0 \pm i \omega_0$ and $\lambda_I$, which are the eigenvalues of $H$ with positive real part.
 
-\subsection{Bifurcations of the origin}
+\subsection{Bifurcations of the origin}\label{sec:biforigin}
 
 As the bifurcation parameter $g$ is increased from 0, the eigenvalues of $DF(0)$ corresponding to $\lambda_I$ crosses the imaginary axis at
 \begin{equation}\label{eq:pitchlocation}
@@ -513,7 +513,7 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H,
 
 \subsection{Periodic solutions}\label{sec:periodic}
 
-Periodic orbits arise from each Hopf bifurcation as $g$ increases through the bifurcation point. The periodic orbits associated with each $I_1/I_2$ branch have the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For the periodic orbit arising from the Hopf bifurcation at the origin at $g = g_H$, there is single excitatory cluster and a single inhibitory cluster (\cref{fig:limitcycleorigin}). 
+Periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. Recall that there is an additional Hopf bifurcation at the fixed point at the origin at $g = g_H$. For this Hopf bifurcation, the associated periodic orbit has a single excitatory cluster and a single inhibitory cluster (\cref{fig:limitcycleorigin}). We proved this periodic orbit exists for $g > g_H$ in \cref{sec:biforigin}.
 
 \begin{figure}
     \centering
@@ -536,7 +536,7 @@ Periodic orbits arise from each Hopf bifurcation as $g$ increases through the bi
     \label{fig:periodvsg}
 \end{figure}
 
-A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite{Barreiro2017}*{Figure 2}). There is a critical value $g = g_c$ where all the limit cycle branches meet. After that point, there is a single limit cycle with a single excitatory cluster and a single inhibitory cluster. This is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to the single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
+A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite{Barreiro2017}*{Figure 2}). There is a critical value $g = g_c$ where all of the limit cycle branches meet. For $g > g_c$, there is only a single stable limit cycle comprising a  single excitatory cluster and a single inhibitory cluster. The point $g = g_c$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
 
