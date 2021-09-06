@@ -776,9 +776,7 @@ When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at $g = \frac{\s
 
 First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large. This behavior will depend on the ratio $\beta_C = n_{C_1}/n_{C_2}$. When $\beta_C = 1$, $x_{E_2} = -x_{E_1} := x_E$, and $x_I = 0$ for all $g \geq g_C$. Numerical parameter continuation with AUTO suggests that  $x_{E} \rightarrow \hat{x}_{E} > 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E}) \rightarrow 1$. It follows from the first row of \cref{eq:cluster3system} that $\hat{x}_{E} = \frac{\mu}{\sqrt{N}}(p-1)n_C$.
 
-For $\beta_C > 1$, numerical parameter continuation with AUTO suggests that while 
-$x_I \rightarrow 0$ as $g \rightarrow \infty$, $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$.
-There are two possibilities for the limiting behavior of $x_{E_1}$ and $x_{E_2}$. If $1 < \beta_C < \beta^*$, where $\beta^*$ will be determined below, $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$. Using this ansatz, we can we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
+For $\beta_C > 1$, numerical parameter continuation with AUTO suggests that while $x_I \rightarrow 0$ as $g \rightarrow \infty$, $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two possibilities for the limiting behavior of $x_{E_1}$ and $x_{E_2}$. If $1 < \beta_C < \beta_C^*$, where $\beta_C^*$ will be determined below, $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$. Using this ansatz, we can we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:yihat}
     \hat{y}_I = \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha},
 \end{equation} 
@@ -787,21 +785,59 @@ from which it follows that
     x_I \rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha} \right) \text{ as } g \rightarrow \infty.
 \end{equation}
 Using \cref{eq:yihat} with rows 1 and 2 of \cref{eq:cluster3system},
-\begin{equation}
+\begin{equation}\label{eq:xEhat12}
 \begin{aligned}
     \hat{x}_{E_1} &= \frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right) \\
     \hat{x}_{E_2} &= \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right).
 \end{aligned}
 \end{equation}
 Since $n_C p = f N \rightarrow \infty$ as $N \rightarrow \infty$, 
-\begin{equation}
+\begin{equation}\label{eq:xEhat12IlargeN}
     \begin{aligned}
         x_{E_1} &\rightarrow\frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
         x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
         x_I &\rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \right)
     \end{aligned}
 \end{equation}
-as $g, N \rightarrow \infty$.
+as $g, N \rightarrow \infty$. For \cref{eq:xEhat12} to be valid, the consistency conditions $\hat{x}_{E_1} > 0$ and $\hat{x}_{E_2} < 0$ must be satisfied. Since $\hat{x}_{E_2} < 0$ is always satisfied, \cref{eq:xEhat12} is consistent as long as
+\[
+(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1}\frac{p^2 n_C^2}{p n_C - \alpha}  > 0.
+\] 
+This reduces to the condition $\beta_C < \beta_C^*$, where
+\begin{equation}\label{eq:betaCstar}
+    \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
+\end{equation}
+As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest valid value of $\beta_C$ is $\beta_C = N_C - 1$, which occurs when $n_{C_1} = N_C - 1$ and $n_{C_2} = 1$. For large $N$, the consistency condition $\beta < \beta_C^*$ is always satisfied, and thus \cref{eq:xEhat12IlargeN} holds, as long as $n_C < 2 p$. If $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$. 
+
+For $\beta_C > \beta_C^*$, numerical parameter continuation with AUTO suggests that as $g \rightarrow 0$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Using this ansatz, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
+\begin{equation}\label{eq:ye1hatyihat}
+    \begin{aligned}
+        \hat{y}_{E_1} &= \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \\
+        \hat{y}_{I} &= \frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)},
+    \end{aligned}
+\end{equation}
+from which it follows that
+\begin{equation}
+    \begin{aligned}
+        x_{E_1} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}  \right) \\
+        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{n_C^2 p^2(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}\right) \\
+        x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left(\frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \right).
+    \end{aligned}
+\end{equation}
+as $g \rightarrow \infty$. As $N \rightarrow \infty$ as well, the second term in the denominator dominates, thus \cref{eq:ye1hatyihat} simplifies to
+\begin{equation}
+        \hat{y}_{E_1} \rightarrow \frac{p}{1 + \beta_C - p}, \quad 
+        \hat{y}_{I} \rightarrow \frac{p-1}{1 + \beta_C - p}.
+\end{equation}
+It follows that as $g, N \rightarrow \infty$,
+\begin{equation}
+    \begin{aligned}
+        x_{E_1} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{p}{1 + \beta_C - p} \right) \\
+        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{p^2 n_C}{1 + \beta_C - p} \right) \\
+        x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{p-1}{1 + \beta_C - p} \right).
+    \end{aligned}
+\end{equation}
+
 
 
 We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$. At this bifurcation, the set of $n_{I} - 1$ eigenvalues of $D\tilde{F}(\xvec^*)$ located at $\frac{g}{\sqrt{N}}\alpha \mu \sech^2(g x_{I}) - 1$ cross through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation is located at 
