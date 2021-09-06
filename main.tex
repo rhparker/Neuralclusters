@@ -770,7 +770,11 @@ for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not af
 to leading order, for $g$ close to $g_c$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. We conclude that for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \geq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (se e the top left panel of \cref{fig:clusterBD1}).
 
 As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch in which the group of $(n_I-1)$ eigenvalues of $D\tilde{F}(\xvec^*)$ cross the origin (see \cref{fig:clusterBD1}). The behavior at this symmetric pitchfork bifurcation is the same as in the previous section. There is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I/2}$, as in the previous section.
-When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at $g = \frac{\sqrt{N}}{\alpha \mu}$. For $\beta_C > 1$, this takes place at $g$ much greater than $g_C$, thus the approximations \cref{eq:XE1E2asymp} and \cref{eq:XE1} do not hold.
+When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
+\begin{equation}\label{eq:gpitchinhbeta1}
+g = \frac{\sqrt{N}}{\alpha \mu}.
+\end{equation}
+For $\beta_C > 1$, this takes place at $g$ much greater than $g_C$, thus the approximations \cref{eq:XE1E2asymp} and \cref{eq:XE1} do not hold.
 
 \subsection{Fixed points for large $g$}
 
@@ -807,7 +811,7 @@ This reduces to the condition $\beta_C < \beta_C^*$, where
 \begin{equation}\label{eq:betaCstar}
     \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
 \end{equation}
-As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest valid value of $\beta_C$ is $\beta_C = N_C - 1$, which occurs when $n_{C_1} = N_C - 1$ and $n_{C_2} = 1$. For large $N$, the consistency condition $\beta < \beta_C^*$ is always satisfied, and thus \cref{eq:xEhat12IlargeN} holds, as long as $n_C < 2 p$. If $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$. 
+As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest valid value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. For large $N$, since $p = f N/n_C$, the consistency condition $\beta < \beta_C^*$ is always satisfied, and thus \cref{eq:xEhat12IlargeN} holds, as long as $n_C < 2 p$. If $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$. 
 
 For $\beta_C > \beta_C^*$, numerical parameter continuation with AUTO suggests that as $g \rightarrow 0$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Using this ansatz, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -824,27 +828,13 @@ from which it follows that
         x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left(\frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \right).
     \end{aligned}
 \end{equation}
-as $g \rightarrow \infty$. As $N \rightarrow \infty$ as well, the second term in the denominator dominates, thus \cref{eq:ye1hatyihat} simplifies to
-\begin{equation}
-        \hat{y}_{E_1} \rightarrow \frac{p}{1 + \beta_C - p}, \quad 
-        \hat{y}_{I} \rightarrow \frac{p-1}{1 + \beta_C - p}.
-\end{equation}
-It follows that as $g, N \rightarrow \infty$,
-\begin{equation}
-    \begin{aligned}
-        x_{E_1} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{p}{1 + \beta_C - p} \right) \\
-        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{p^2 n_C}{1 + \beta_C - p} \right) \\
-        x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{p-1}{1 + \beta_C - p} \right).
-    \end{aligned}
-\end{equation}
+as $g \rightarrow \infty$. For $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
 
-
-
-We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$. At this bifurcation, the set of $n_{I} - 1$ eigenvalues of $D\tilde{F}(\xvec^*)$ located at $\frac{g}{\sqrt{N}}\alpha \mu \sech^2(g x_{I}) - 1$ cross through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation is located at 
-\begin{equation}\label{eq:gbetaC}
-    g_I(\beta_C) = \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} + \mathcal{O}\left(\frac{1}{N^{1/2}}\right)
-\end{equation}
-for $N$ large. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$.
+We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. At this bifurcation, the set of $n_{I} - 1$ eigenvalues of $D\tilde{F}(\xvec^*)$ located at $\frac{g}{\sqrt{N}}\alpha \mu \sech^2(g x_{I}) - 1$ cross through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation is located at 
+\begin{align}\label{eq:gbetaC}
+    g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} + \mathcal{O}\left(\frac{1}{N^{1/2}}\right) && \beta_C > 1
+\end{align}
+for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\alpha \mu}$, which is \cref{eq:gpitchinhbeta1}. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$.
 
 After the symmetric pitchfork bifurcation point on the $C_1/C_2$ branches, both the excitatory clusters and inhibitory cells have split into two populations at the two symmetric pitchfork bifurcation points. We are interested in stable fixed points when $g$ is large. In particular, we seek solution branches in which the excitatory clusters are split into two populations with ratio $\beta_C = n_{C_1}/n_{C_2}$ and the inhibitory cells are also split into two populations with ratio $\beta = n_{I_1}/n_{I_2}$. This reduces \cref{eqn:sys_Basic} to the system of equations
 \begin{equation}\label{eq:cluster4system}
