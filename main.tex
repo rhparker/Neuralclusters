@@ -747,17 +747,17 @@ H_3(\xvec) = \mu
 \]
 and $I_3$ is the $3 \times 3$ identity matrix. As in the previous section, the three eigenvalues of $H_3(\xvec)$ are also eigenvalues of $\tilde{H}(\xvec^*)$, and there are $(n_{C_1}-1) + (n_{C_2}-1) + (n_I - 1)$ additional eigenvalues of $\tilde{H}(\xvec^*)$ which are grouped as follows:
 \begin{align*}
-(p-1) n_C \mu &\sech^2(g x_{E_1}) &&\text{multiplicity }n_{C_1} - 1\\
-(p-1) n_C \mu &\sech^2(g x_{E_2})&&\text{multiplicity }n_{C_2} - 1\\
-\alpha \mu &\sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1
+\lambda_{C_1} &:= (p-1) n_C \mu \sech^2(g x_{E_1}) &&\text{multiplicity }n_{C_1} - 1\\
+\lambda_{C_2} &:= (p-1) n_C \mu \sech^2(g x_{E_2})&&\text{multiplicity }n_{C_2} - 1\\
+\lambda_{I} &:= \alpha \mu \sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1
 \end{align*}
 Substituting \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, these correspond to eigenvalues of $D\tilde{F}(\xvec^*)$ which are located, to leading order, at 
 \begin{align*}
-&\frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right) \\
-&\frac{g-g_0}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right) \\
-&\frac{\alpha \mu g}{\sqrt{N}} - 1
+\frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right), \quad
+\frac{g-g_0}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right), \quad
+\frac{\alpha \mu g}{\sqrt{N}} - 1
 \end{align*}
-for $g$ close to $g_C$. As in the previous section, the first is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The second is negative for $\beta_C  > 1/2$, and the third is negative for all $\beta$ for $N$ sufficiently large. This implies that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$. 
+for $g$ close to $g_C$. As in the previous section, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_1}$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_2}$ is negative for $\beta_C  > 1/2$, and the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I}$ is negative for all $\beta$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see the top panels of \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
 
 It remains to determine the eigenvalues of $H_3(\xvec)$. Following the same procedure as in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
 \begin{align*}
@@ -767,9 +767,9 @@ for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not af
 \begin{equation*}
 \lambda(g, \beta_C) = \frac{\mu}{2}\left[ (\alpha - n_C) - \beta_C g^2 n_C (p - 1) x_{E_1}^2 \right]
 \end{equation*}
-to leading order, for $g$ close to $g_c$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. We conclude that for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \geq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (se e the top left panel of \cref{fig:clusterBD1}).
+to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. We conclude that for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \geq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (se e the top left panel of \cref{fig:clusterBD1}).
 
-As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch in which the group of $(n_I-1)$ eigenvalues of $D\tilde{F}(\xvec^*)$ cross the origin (see \cref{fig:clusterBD1}). The behavior at this symmetric pitchfork bifurcation is the same as in the previous section. There is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I/2}$, as in the previous section.
+As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch in which the group of $(n_I-1)$ eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_I$ cross the origin (see \cref{fig:clusterBD1}). The behavior at this symmetric pitchfork bifurcation is the same as in the previous section. There is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I/2}$, as in the previous section.
 When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
 \begin{equation}\label{eq:gpitchinhbeta1}
 g = \frac{\sqrt{N}}{\alpha \mu}.
