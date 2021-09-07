@@ -720,9 +720,11 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
     \includegraphics[width=8cm]{images/bdclusters20c4E.eps} &
     \includegraphics[width=8cm]{images/bdclusters20c4I.eps} \\
     \includegraphics[width=8cm]{images/bdclusters20c4Ebetac1.eps} &
-    \includegraphics[width=8cm]{images/bdclusters20c4Ibetac1.eps}
+    \includegraphics[width=8cm]{images/bdclusters20c4Ibetac1.eps} \\
+    \includegraphics[width=8cm]{images/bdclusters20c4Ebetac3.eps} &
+    \includegraphics[width=8cm]{images/bdclusters20c4Ibetac3.eps}
     \end{tabular}
-    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. After symmetric pitchfork bifurcation on $C_1/C_2$ branch, only branch shown is the one with $\beta=\beta_C$ to avoid clutter. Bottom panel shows $I_1/I_2$ branches off of the $\beta_C = 1$ branch. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. No $I_1/I_2$ branches after symmetric pitchfork bifurcation on $C_1/C_2$ branch are shown to avoid clutter. Middle panel shows $I_1/I_2$ branches bifurcating from $\beta_C = 1$ branch. Bottom panel shows $I_1/I_2$ branches bifurcating from $\beta_C = 1$ branch (only $x_{E_1}$ is shown to avoid clutter). $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD1}
 \end{figure}
 
@@ -749,7 +751,7 @@ and $I_3$ is the $3 \times 3$ identity matrix. As in the previous section, the t
 \begin{align*}
 \lambda_{C_1} &:= (p-1) n_C \mu \sech^2(g x_{E_1}) &&\text{multiplicity }n_{C_1} - 1\\
 \lambda_{C_2} &:= (p-1) n_C \mu \sech^2(g x_{E_2})&&\text{multiplicity }n_{C_2} - 1\\
-\lambda_{I} &:= \alpha \mu \sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1
+\lambda_{I} &:= \alpha \mu \sech^2(g x_{I})&&\text{multiplicity }n_{I} - 1.
 \end{align*}
 Substituting \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, these correspond to eigenvalues of $D\tilde{F}(\xvec^*)$ which are located, to leading order, at 
 \begin{align*}
@@ -757,7 +759,7 @@ Substituting \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, these corre
 \frac{g-g_0}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right), \quad
 \frac{\alpha \mu g}{\sqrt{N}} - 1
 \end{align*}
-for $g$ close to $g_C$. As in the previous section, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_1}$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_2}$ is negative for $\beta_C  > 1/2$, and the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I}$ is negative for all $\beta$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see the top panels of \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
+for $g$ close to $g_C$. As in the previous section, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_1}$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$. The eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_2}$ is negative for $\beta_C  > 1/2$, and the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I}$ is negative for all $\beta$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see the top panels of \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). For $N=100$ and $n_C = 10$, it is interesting that while the $C_1/C_2$ branches corresponding to $\beta_C = 4$ and $\beta_C = 9$ in \cref{fig:clusterBD2} are initially unstable, they become stable at a value of $g > g_C$ which is indicated with a diamond on the plot. At this point, the $n_{C_1}$ eigenvalues corresponding to $\lambda_{C_1}$ cross through the origin from positive to negative. As $g$ is furhter increased, these branches then lose stability at the symmetric pitchfork bifurcation point. This phenomenon is not observed for $N=20$ and $n_C=4$ (\cref{fig:clusterBD1}).
 
 It remains to determine the eigenvalues of $H_3(\xvec)$. Following the same procedure as in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
 \begin{align*}
@@ -767,7 +769,7 @@ for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not af
 \begin{equation*}
 \lambda(g, \beta_C) = \frac{\mu}{2}\left[ (\alpha - n_C) - \beta_C g^2 n_C (p - 1) x_{E_1}^2 \right]
 \end{equation*}
-to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. We conclude that for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \geq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (se e the top left panel of \cref{fig:clusterBD1}).
+to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. We conclude that for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (se e the top left panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
 
 As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch in which the group of $(n_I-1)$ eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_I$ cross the origin (see \cref{fig:clusterBD1}). The behavior at this symmetric pitchfork bifurcation is the same as in the previous section. There is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I/2}$, as in the previous section.
 When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
@@ -834,7 +836,7 @@ We can use these formulas to find the location of the symmetric pitchfork bifurc
 \begin{align}\label{eq:gbetaC}
     g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} + \mathcal{O}\left(\frac{1}{N^{1/2}}\right) && \beta_C > 1
 \end{align}
-for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\alpha \mu}$, which is \cref{eq:gpitchinhbeta1}. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. See \cref{fig:clusterBD2} (as well as \cref{fig:clusterBD1}) for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches.
+for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\alpha \mu}$, which is \cref{eq:gpitchinhbeta1}. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. See \cref{fig:clusterBD2} (as well as \cref{fig:clusterBD1}) for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches. Note that the location of the symmetric bifurcation points $g$ increases with $\beta_C$, as predicted by \cref{eq:gbetaC}. \cref{fig:pitcherror} plots the location of the pithfork bifurcations in $g$ as $N$ is increased; the right panel of \cref{fig:pitcherror} verifies equation \cref{eq:gbetaC}.
 
 \begin{figure}
     \centering
@@ -844,8 +846,18 @@ for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\al
     \includegraphics[width=8cm]{images/bdclusters100c10Ezoom.eps} &
     \includegraphics[width=8cm]{images/bdclusters100c10Izoom.eps} 
     \end{tabular}
-    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. None of the branches which bifurcate from $C_1/C_2$ branch at the symmetric pitchfork bifurcation are shown to avoid clutter. Bottom panel is the same, but zoomed into a smaller range of $g$ near $g_C$ to show stability of $C_1/C_2$ branches near $g = g_C$. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 10$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Plots show $X_{E_1}$ vs $g$ and $x_I$ vs $g$ ($x_{E_2}$ is not shown). Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. None of the branches which bifurcate from $C_1/C_2$ branch at the symmetric pitchfork bifurcation are shown to avoid clutter. Bottom panel is the same, but zoomed into a smaller range of $g$ near $g_C$ to show stability of $C_1/C_2$ branches near $g = g_C$. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 10$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/Hopfapproxbeta1.eps}
+    \includegraphics[width=8cm]{images/Hopfapproxerror.eps}
+    \end{tabular}
+    \caption{Left panel plots location in $g$ of symmetric pitchfork bifurcation point on $C_1/C_2$ branches vs $N$ for various $\beta_C$. Right panel plots the log of the relative error of approximation \cref{eq:gbetaC} vs $\log N$ for various $\beta_C$. Slope of line is approximately -0.5 for all three $\beta_C$. $n_C = 10$, $\alpha = 4$, $\mu = 0.7$.}
+    \label{fig:pitcherror}
 \end{figure}
 
 
@@ -901,7 +913,7 @@ which simplifies to
 \begin{equation}
     \frac{2 \beta n_I - \beta - 1}{2 n_I + \beta + 1} < \beta_C < \frac{2 \beta n_I + \beta + 1}{2 n_I - \beta - 1} 
 \end{equation}
-A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. We note that each of these fixed points $\xvec^*$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian approaches $-I$, which has a single eigenvalues of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the top panel of \cref{fig:clusterBD1}; we can see that they are all stable for sufficiently large $g$.
+A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. We note that each of these fixed points $\xvec^*$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian approaches $-I$, which has a single eigenvalues of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the middle and bottom panels of \cref{fig:clusterBD1}; we can see from the figure that they are all stable for sufficiently large $g$.
 
 \begin{table}
     \begin{tabular}{lllll}
