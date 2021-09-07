@@ -99,7 +99,7 @@ We consider a network in which each node represents the firing rate of a single 
     \dot{\xvec} = 
     F(\xvec, g) := -\xvec  + \frac{1}{\sqrt{N}} H\tanh (g \xvec),
 \end{equation}
-for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons [CONSIDER REFERENCE FOR WHY WE DO THIS]. We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory.
+for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite{Barreiro2017}*{Section 2.1} for a discussion on why self-coupling of neurons is removed ). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory.
 
 For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
@@ -175,7 +175,7 @@ where $x_{Ej}$ is the activity for the $j$th, excitatory cluster, and $x_{Ij}$ i
 \dot{\xvec} = \tilde{F}(\xvec, g) := -\xvec + \frac{1}{\sqrt{N}} \tilde{H} \tanh(g \xvec),
 \end{equation}
 where $\xvec = (x_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$, and $\tilde{H}$ is the $(n_C + n_I) \times (n_C + n_I)$ matrix
-\[
+\begin{equation}\label{eq:tildeH}
 \tilde{H} = \left[ \begin{array}{c|c}
     \\
     (p-1) \mu_{EE} I_{n_C} & \mu_{EI} \Onevec_{n_C \times n_I}\\
@@ -186,7 +186,7 @@ where $\xvec = (x_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$, an
     \\
     \end{array}
     \right].
-\]
+\end{equation}
 Let $\xvec^* = (x_{E_1}^*, \dots, x_{E_{n_C}}^*, x_{I_1}^*, \dots, x_{I_{n_I}}^*)^T$ be a fixed point of \cref{eq:reducedmatrixform}. The linearization of \cref{eq:reducedmatrixform} about $\xvec^*$ is the matrix
 \begin{equation}\label{eq:DtildeFxstar}
     D\tilde{F}(\xvec^*) = \frac{g}{\sqrt{N}}\tilde{H}(\xvec^*) - I_{n_C+n_I},
@@ -540,6 +540,8 @@ A plot of the period of these limit cycles with increasing $g$ is shown in \cref
 
 \subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
 
+WOULD BE NICE HERE IF WE COULD SHOW NO STABLE FIXED POINTS FOR LARGE G. MIGHT END UP BEING DIFFICULT.
+
 We have characterized the three-cluster fixed point solutions near their origin at the symmetric pitchfork bifurcation point at $g=g_0$. Next, we will show that there are no stable fixed points for large $g$. We use here the simplified model from \cref{sec:simplermodel} since at any fixed point, the excitatory cells must all be synchronized. Let $\xvec^* = (x^*_E, x^*_{I_1}, \dots, x^*_{I_{n_I}})$ be such a fixed point. Then we have
 \[
 \text{Trace }\tilde{H}(\xvec^*) = (n_E-1) \mu_{EE} \sech^2( g x_E),
@@ -628,7 +630,7 @@ However, we will show it is possible to solve for the limiting coordinates and t
 \section{Excitatory clusters, weight parameters balanced}
 
 We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. We will take $p > 1$ to ensure that each excitatory cluster contains more than one cell, and we will also assume $n_C \geq \alpha$ (e.g. $n_C > 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $N_c$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. The matrix $H$ is now
-\[
+\begin{equation}\label{eq:Hcluster}
 H = \frac{1}{\sqrt{N}}
 \left[ 
 \begin{blockarray}{ccccc}
@@ -644,7 +646,7 @@ H = \frac{1}{\sqrt{N}}
 \BAmulticolumn{4}{c|}{\mu_{IE}\Onevec_{n_I \times n_E}} & \mu_{II} \Kvec_{n_I}\\
 \end{blockarray}
 \right]
-\]
+\end{equation}
 which is associated with the symmetry group
 \begin{align*}
 \Gamma &= \underbrace{S_{p} \oplus \cdots  \oplus S_{p}}_{n_C} \oplus \, S_{n_I} && p = fN/n_C.
@@ -1097,6 +1099,10 @@ A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is 
 
 We can also choose the weights as in the previous section, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
+% \subsection{Restored self-coupling}
+
+% We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $\Kvec_{p}$ in \cref{eq:Hcluster} with the $p\times p$ matrix consisting of all 1s. The effect of this in the reduced model \cref{eq:reducedmatrixform} is to replace the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$.
+
 \section{Inhibitory clusters}\label{sec:inhibitoryclusters}
 
 We can also allow the inhibitory cells to be clustered, while the excitatory cells remain unclustered. Briefly, suppose the inhibitory cells are grouped into $n_{C_I}$ inhibitory clusters of size $p_i$. For the choice of weights $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$, the eigenvalues of $\Hvec$ can be obtained by reversing the role of the excitatory and inhibitory cells in the previous section:
@@ -1130,24 +1136,24 @@ We are interested in what occurs for large $N$ and large $N_{C_I}$. As an exampl
 \end{figure}
 
 
-We can also choose the weights so that the network is balanced, as in the previous section.
-\begin{align*}
-\mu_{EE} &= \mu && \mu_{IE} = \mu \\
-\mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha n_{C_I} \mu
-\end{align*}
-In that case, the eigenvalues of $\Hvec$ are
-\begin{itemize}
-\item $\lambda_I := \alpha n_{C_I} \mu > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
-\item $\lambda_E = -\mu < 0$ with multiplicity $n_E - 1$
-\item $\lambda_{C_I} = -(p_I-1) \alpha n_{C_I} \mu < 0$, with multiplicity $n_{C_I} -1$.
-\item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
-\begin{align*}
-    \lambda_0 &:= \frac{1}{2}\mu(\alpha n_{C_I} - 1)
-      \\
-    \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha n_{C_I}+1} \sqrt{\alpha n_{C_I}(4p_I - 1) - 1}
-\end{align*}
-\end{itemize}
-HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
+% We can also choose the weights so that the network is balanced, as in the previous section.
+% \begin{align*}
+% \mu_{EE} &= \mu && \mu_{IE} = \mu \\
+% \mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha n_{C_I} \mu
+% \end{align*}
+% In that case, the eigenvalues of $\Hvec$ are
+% \begin{itemize}
+% \item $\lambda_I := \alpha n_{C_I} \mu > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
+% \item $\lambda_E = -\mu < 0$ with multiplicity $n_E - 1$
+% \item $\lambda_{C_I} = -(p_I-1) \alpha n_{C_I} \mu < 0$, with multiplicity $n_{C_I} -1$.
+% \item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
+% \begin{align*}
+%     \lambda_0 &:= \frac{1}{2}\mu(\alpha n_{C_I} - 1)
+%       \\
+%     \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha n_{C_I}+1} \sqrt{\alpha n_{C_I}(4p_I - 1) - 1}
+% \end{align*}
+% \end{itemize}
+% HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
 
 \section{Appendix}
 \subsection{Detailed calculations for \S \ref{sec:stab_largeg}}
