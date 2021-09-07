@@ -811,7 +811,7 @@ This reduces to the condition $\beta_C < \beta_C^*$, where
 \begin{equation}\label{eq:betaCstar}
     \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
 \end{equation}
-As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest valid value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. For large $N$, since $p = f N/n_C$, the consistency condition $\beta < \beta_C^*$ is always satisfied, and thus \cref{eq:xEhat12IlargeN} holds, as long as $n_C < 2 p$. If $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$. 
+As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest valid value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. For sufficiently large $N$, since $p = f N/n_C$, the consistency condition $\beta < \beta_C^*$ is always satisfied, and thus \cref{eq:xEhat12IlargeN} holds, as long as $n_C < 2 p$. If $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$. 
 
 For $\beta_C > \beta_C^*$, numerical parameter continuation with AUTO suggests that as $g \rightarrow 0$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Using this ansatz, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -834,7 +834,20 @@ We can use these formulas to find the location of the symmetric pitchfork bifurc
 \begin{align}\label{eq:gbetaC}
     g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} + \mathcal{O}\left(\frac{1}{N^{1/2}}\right) && \beta_C > 1
 \end{align}
-for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\alpha \mu}$, which is \cref{eq:gpitchinhbeta1}. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$.
+for $N$ large. When $\beta_C = 1$, this reduces to $g_I(1) = \frac{\sqrt{N}}{\alpha \mu}$, which is \cref{eq:gpitchinhbeta1}. We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. See \cref{fig:clusterBD2} (as well as \cref{fig:clusterBD1}) for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=8cm]{images/bdclusters100c10E.eps} &
+    \includegraphics[width=8cm]{images/bdclusters100c10I.eps} \\
+    \includegraphics[width=8cm]{images/bdclusters100c10Ezoom.eps} &
+    \includegraphics[width=8cm]{images/bdclusters100c10Izoom.eps} 
+    \end{tabular}
+    \caption{Top panel shows bifurcation diagram showing $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. None of the branches which bifurcate from $C_1/C_2$ branch at the symmetric pitchfork bifurcation are shown to avoid clutter. Bottom panel is the same, but zoomed into a smaller range of $g$ near $g_C$ to show stability of $C_1/C_2$ branches near $g = g_C$. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 10$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:clusterBD2}
+\end{figure}
+
 
 After the symmetric pitchfork bifurcation point on the $C_1/C_2$ branches, both the excitatory clusters and inhibitory cells have split into two populations at the two symmetric pitchfork bifurcation points. We are interested in stable fixed points when $g$ is large. In particular, we seek solution branches in which the excitatory clusters are split into two populations with ratio $\beta_C = n_{C_1}/n_{C_2}$ and the inhibitory cells are also split into two populations with ratio $\beta = n_{I_1}/n_{I_2}$. This reduces \cref{eqn:sys_Basic} to the system of equations
 \begin{equation}\label{eq:cluster4system}
