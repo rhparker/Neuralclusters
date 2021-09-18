@@ -1,12 +1,9 @@
-% default MATLAB colors
-c1 = [0 0.4470 0.7410];
-c2 = [0.8500 0.3250 0.0980];
-c3 = [0.9290 0.6940 0.1250];
-c2 = [0.4940 0.1840 0.5560];
+% 3d bifurcation diagram with limit cycles
 
 a = 4;
 mu = 0.7;
 N = 20;
+fontsize = 24;
 
 % load fixed point data
 
@@ -40,6 +37,15 @@ Hopfy = [Hopfy ; yHB(2, :)];
 
 %% E vs I1
 
+% default MATLAB colors
+c1 = [0 0.4470 0.7410];
+c2 = [0.8500 0.3250 0.0980];
+c3 = [0.9290 0.6940 0.1250];
+c2 = [0.4940 0.1840 0.5560];
+
+c2 = 'k';
+c3 = 'r';
+
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
 set(groot,'defaultAxesTickLabelInterpreter','latex');  
@@ -47,8 +53,7 @@ set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 hold on;
 
-skip = 5;
-
+skip = 2;
 load HopfnoclusterN20b1.mat;
 end1 = 208;
 H1end = 569;
@@ -59,9 +64,8 @@ end
 plot3( persols{end1}.g*ones(size(persols{end1}.xi1)), ...
         persols{end1}.xe, persols{end1}.xi1, '-k','LineWidth',4 );
 plot3(g1(1:H1end), -x1E(1:H1end), -x1I1(1:H1end), 'LineWidth',4, 'Color', c2);
-plot3( [Hopfx(2)], [Hopfy(2,1)], [Hopfy(2,3)],'.k','MarkerSize',30);
-plot3( [sqrt(N)/(mu*a)], [0], [0], '.k','MarkerSize',30);
 
+skip = 4;
 load HopfnoclusterN20b3.mat;
 end3 = 201;
 for index = 1:skip:end3
@@ -70,8 +74,8 @@ for index = 1:skip:end3
 end
 H3end = 844;
 plot3(g3(1:H3end), -x3E(1:H3end), -x3I1(1:H3end), 'LineWidth',4, 'Color', c3 );
-plot3( [Hopfx(3)], [-Hopfy(3,1)], [-Hopfy(3,2)],'.k','MarkerSize',30);
 
+skip=2;
 load HopfnoclusterN20b0.mat;
 end0 = length(persols);
 for index = 1:skip:end0
@@ -80,10 +84,22 @@ for index = 1:skip:end0
 end
 H0end = 4252;
 plot3(g00(1:H0end), x0E(1:H0end), x0I1(1:H0end), 'LineWidth',4, 'Color', c1 );
-plot3( [Hopfx(1)], [Hopfy(1,1)], [Hopfy(1,2)],'.k','MarkerSize',30);
 
-view(3);
+% bifurcation points
+plot3( [sqrt(N)/(mu*a)], [0], [0], '.k','MarkerSize',50);
+plot3( [Hopfx(2)], [Hopfy(2,1)], [Hopfy(2,3)],'sk','MarkerSize',20,'MarkerFaceColor','k');
+plot3( [Hopfx(3)], [-Hopfy(3,1)], [-Hopfy(3,2)],'sk','MarkerSize',20,'MarkerFaceColor','k');
+plot3( [Hopfx(1)], [Hopfy(1,1)], [Hopfy(1,2)],'sk','MarkerSize',20,'MarkerFaceColor','k');
 
 xlabel('$g$');
 ylabel('$x_E$');
 zlabel('$x_{I_1}$');
+
+text(13, -.1, -.35,'$\beta = \infty$','FontSize',labelFontSize,'interpreter','latex');
+text(2.0, .4, .3,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
+text(1.90, 0, -.65,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+
+
+pbaspect([2 1 1]);
+view(-31, 5);
+

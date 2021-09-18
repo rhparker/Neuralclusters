@@ -114,7 +114,7 @@ set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 plot(t*period,xE,'--',t*period,xI,'-','LineWidth', 3);
 xlabel('$t$');
-ylabel('activity');
+ylabel('$x$');
 labels = {'$x_E$', '$x_I$'};
 legend(labels,'location','NorthEast');
 axis([0 period -0.5 0.5]);
