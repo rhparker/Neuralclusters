@@ -7,9 +7,9 @@ a = f/(1-f);
 
 % plotting parameters
 
-fontSize = 18;
-labelFontSize = 18;
-markerSize = 50;
+fontSize = 24;
+labelFontSize = 30;
+markerSize = 60;
 
 
 %% no clusters
@@ -107,6 +107,7 @@ l  = eig(H);
 [realvals, idx] = uniquetol(real(l));
 l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))];
+uniquel(2) = -1.2;
 
 figure('DefaultAxesFontSize', fontSize);
 set(gca,'fontname','times');
@@ -124,7 +125,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-3.5 6 -12 12]);
+axis([-3.5 8 -12 12]);
 
 %% I and E clusters
 
