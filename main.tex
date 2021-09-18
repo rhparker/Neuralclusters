@@ -275,18 +275,19 @@ where $\rm{Fix (\Sigma)}$ is the \emph{fixed-point subspace} of $\Sigma$: that i
 The reader can readily check that the right-hand side of \cref{eqn:sys_Basic} is $\Gamma$-equivariant, for $\Gamma = S_{n_E} \times S_{n_I}$, where $S_n$ is the group of permutations on $n$ objects. That is, we can permute the labels on the excitatory cells, and/or the labels on the inhibitory cells, without changing the equations.
 
 At $g=g_0$, $n_I -1$ eigenvalues pass through zero: the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only; i.e. 
-\[ V \equiv  \ker(dF)_{\Zerovec,g^{\ast}}  = {\rm span} \, \{ \left[  
+\[ V \equiv  \ker(dF)_{\Zerovec,g^{\ast}}  = {\rm span} \, \left\{ \left[  
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{E}} \;
-\vvec_{n_{I}} \right] \}, \qquad \vvec_{n_{I}} \perp \Onevec_{n_{I}}.\]
+\vvec_{n_{I}} \right] \right\}, \qquad \vvec_{n_{I}} \perp \Onevec_{n_{I}}.
+\]
 To check that $\Gamma$ acts irreducibly on $V$ it is sufficient to show that the subspace spanned by the \textit{orbit} of a single vector $\vvec$ (defined as the set of all values  $\gamma \vvec$, for $\gamma \in \Gamma$) is full rank; this can be readily confirmed for $\vvec_{n_{I}} = \left[ \begin{array}{ccccc} 1 & -1 & 0 & ... & 0 \end{array} \right]$, for example.   
 
 To find the appropriate subgroup of symmetries, we break the inhibitory cells up into precisely two clusters and retain only permutations within each cluster. This describes a subgroup of $\Gamma$, $\Sigma = S_{n_E} \times S_{n_{I_1}} \times S_{n_{I_2}}$, $n_{I_1} + n_{I_2} = n_I$.
 Assuming that (without loss of generality) the $I_1$ neurons have the indices $n_E+1,...,n_E+n_{I_1}$, and so forth, $\Sigma$ has the fixed point subspace 
 \begin{eqnarray}
-\rm{Fix}(\Sigma) & = & {\rm span} \, \{ \left[  
+\rm{Fix}(\Sigma) & = & {\rm span} \, \left\{ \left[  
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_E} \;
 \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
-\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \}
+\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \right\}.
 \end{eqnarray}
 We can check that $\rm{Fix}(\Sigma)$ is a subspace of $V$. Furthermore $\dim \rm{Fix}(\Sigma) = 1$ because it can be described as the span of a single vector. 
 
@@ -367,31 +368,31 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/bdnoclusters20E.eps} &
-    \includegraphics[width=8cm]{images/bdnoclusters20I.eps} \\
-    \includegraphics[width=8cm]{images/bdnoclusters50E.eps} &
-    \includegraphics[width=8cm]{images/bdnoclusters50I.eps}
+    \includegraphics[width=7.8cm]{images/bdnoclusters20E.eps} &
+    \includegraphics[width=7.8cm]{images/bdnoclusters20I.eps} \\
+    \includegraphics[width=7.8cm]{images/bdnoclusters50E.eps} &
+    \includegraphics[width=7.8cm]{images/bdnoclusters50I.eps}
     \end{tabular}
     \caption{Bifurcation diagram showing $I_1/I_2$ branches of equilibria of \cref{eqn:sys_Basic} for all valid values of $\beta$. Top panels show $N=20$, with top left plotting $X_E$ vs $g$, and top right plotting $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Bottom panels show $N=50$, with bottom left plotting $X_E$ vs $g$, and bottom right plotting $X_{I_2}$ only vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:noclusterBD1}
 \end{figure}
 
-\subsection{Stability and bifurcations along $I_1/I_2 $ branches}
+\subsection{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
 
-Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find an leading order formula for its location.
+Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find an leading order formula for its location.
 
 To locate the eigenvalues of $\tilde{H}(\xvec^*)$, we first linearize the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point $\xvec = (x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
 \[
 J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
 \]
 where 
-\[
+\begin{equation}\label{eq:H3}
 H_3(\xvec) = \mu_{EE}
  \begin{bmatrix} (\alpha n_I - 1) \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & - \alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
     \alpha n_I \sech^2(g x_E) & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) \sech^2(g x_{I_1}) & -\alpha \frac{1}{\beta+1} n_I \sech^2(g x_{I_2}) \\
     \alpha n_I \sech^2(g x_E) & -\alpha \frac{\beta}{\beta+1} n_I \sech^2(g x_{I_1}) & -\alpha \left(\frac{1}{\beta+1} n_I-1 \right) \sech^2(g x_{I_2})
  \end{bmatrix}
-\]
+\end{equation}
 % \[
 % H_3(\xvec) = \mu_{EE} 
 %  \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I \\
@@ -400,21 +401,35 @@ H_3(\xvec) = \mu_{EE}
 %  \end{bmatrix}
 %  \begin{bmatrix} \sech^2(g x_E) & 0 & 0 \\0 & \sech^2(g x_{I_1}) & 0\\0 & 0 & \sech^2(g x_{I_2}) \end{bmatrix} 
 % \]
-and $I_3$ is the $3 \times 3$ identity matrix. If $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\vvec = (v_E, v_{I_1}, v_{I_2})$, then $\lambda$ is also an eigenvalue of $\tilde{H}(\xvec^*)$ with eigenvector $\vvec = (v_E, v_{I_1}, \dots, v_{I_1}, v_{I_2}, \dots, v_{I_2})$, where $v_{I_1}$ and $v_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. Thus the three eigenvalues of $H_3(\xvec)$ are also eigenvalues of $\tilde{H}(\xvec^*)$.
+and $I_3$ is the $3 \times 3$ identity matrix. We have the following proposition concerning the eigenvalues of $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$.
 
-$\tilde{H}(\xvec^*)$ has $(n_{I_1}-1)+(n_{I_2}-1)$ additional eigenvalues, which we will locate first. If $n_{I_1} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$; the corresponding eigenvectors are $\vvec^1, \dots, \vvec^{n_{I_1}-1}$, where $v^k_2 = -1$, $v^k_{k+2} = 1$, and all other components are 0. Similarly, if $n_{I_2} > 1$, $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_2} = \mu_{EE} \alpha \sech^2(g x_{I_2})$ with multiplicity $n_{I_2}-1$.
+\begin{proposition}\label{prop:H3eig}
+Let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a fixed point of \cref{eq:otherbranchmatrixeq} and $\xvec^*$ the corresponding fixed point of \cref{eq:reducedmatrixform}, and let $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$ be defined by \cref{eq:H3} and \cref{eq:tildeHxstar}. Then
+\begin{compactenum}[(i)]
+    \item Every eigenvalue of $H_3(\xvec)$ is an eigenvalue of $\tilde{H}(\xvec^*)$.
+    \item $\tilde{H}(\xvec^*)$ has the following additional eigenvalues:
+    \begin{itemize}
+        \item $\lambda_{I_1} := \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$.
+        \item $\lambda_{I_2} := \mu_{EE} \alpha \sech^2(g x_{I_2})$ with multiplicity $n_{I_2}-1$
+    \end{itemize}
+\end{compactenum}
+\begin{proof}
+For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\vvec = (v_E, v_{I_1}, v_{I_2})$, then $\lambda$ is also an eigenvalue of $\tilde{H}(\xvec^*)$ with eigenvector $\vvec = (v_E, v_{I_1}, \dots, v_{I_1}, v_{I_2}, \dots, v_{I_2})$, where $v_{I_1}$ and $v_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times. For part (ii), if $n_{I_1} > 1$, then it can be verified directly that $\tilde{H}(\xvec^*)$ has an eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I_1})$ with multiplicity $n_{I_1}-1$. The corresponding eigenvectors are $\vvec^1, \dots, \vvec^{n_{I_1}-1}$, where $v^k_2 = -1$, $v^k_{k+2} = 1$, and all other components are 0. If $n_{I_2} > 1$, the eigenvalue $\lambda_{I_2}$ can be similarly obtained.
+\end{proof}
+\end{proposition}
 
-Substituting \cref{eq:XI1} for $x_{I_1}$, using the Taylor series expansion $\sech^2 x = 1 - x^2 + \mathcal{O}(x^4)$, and simplifying, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ is located at
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we start by computing the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. Substituting \cref{eq:XI1} for $x_{I_1}$, using the Taylor series expansion $\sech^2 x = 1 - x^2 + \mathcal{O}(x^4)$, and simplifying, the eigenvalue $\lambda_{I_1}^*(g)$ of $D\tilde{F}(\xvec^*)$ is located at
 \begin{align*}
-    &\frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
+    \lambda_{I_1}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
 \end{align*}
-which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. It follows that the fixed point on the $I_1/I_2$ branch is unstable for $\beta>2$ (see \cref{fig:noclusterBD1}). Similarly, the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located at 
+which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. It follows that for $g$ close to $g_0$, the fixed point on the $I_1/I_2$ branch is unstable for $\beta > 2$ (see \cref{fig:noclusterBD1}). Similarly, the eigenvalue $\lambda_{I_2}^*(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located at 
 \begin{align*}
     &\frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
 \end{align*}
-which is negative for $\beta > 1/2$. This eigenvalue does not affect stability. If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I_1} = \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is located at $-2\left( \frac{g - g_0}{g_0} \right)$, to leading order, which is negative for $g > g_0$.
+which is negative for $\beta > 1/2$ and thus does not affect stability. 
+% If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
 
-It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the expression only involves $x_{I_1}$, and we use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
+It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
 \begin{equation}\label{eq:lambdaansatz}
 \lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4.
 \end{equation}
@@ -424,27 +439,26 @@ Using this method for $\lambda = \lambda_I$, $H_3(\xvec)$ has a real eigenvalue 
 \[
 \alpha \mu_{EE} \left(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
-Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigenvalue of $J_3(\xvec)$ corresponding to $\lambda = \lambda_I$ is located at
+Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigenvalue $\lambda_I^*(g)$ of $J_3(\xvec)$ corresponding to $\lambda_I$ is located at
 \begin{align*}
-\frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g \geq g_0,
+\lambda_I^*(g) = \frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g \geq g_0,
 \end{align*}
-which is always negative. This eigenvalue will not affect stability.
+which is always negative and thus does not affect stability.
 
-Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda = \lambda_0 \pm \omega_0$. This will allow us to find a Hopf bifurcation on each $I_1/I_2$ branch. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
+Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda_0 \pm \omega_0$. In doing so, we will find a Hopf bifurcation on each $I_1/I_2$ branch. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
 \begin{equation}
-\lambda(g, \beta) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N} \right).
+\lambda_0(g, \beta) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N} \right).
 \end{equation}
 We can get more accurate approximations for $\lambda(g, \beta)$ by taking higher powers of $x_{I_1}$ in our power series ansatz \cref{eq:lambdaansatz}. For example, when $\beta=1$, we can obtain the fourth-order approximation
 \[
-\lambda(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
+\lambda_0(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
-A similar fourth-order approximation can be obtained for $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is extremely complicated.
-
-Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda(g) \pm i \omega(g)$, where
+A similar fourth-order approximation can be obtained when $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is extremely complicated.
+Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda_0^*(g) \pm i \omega_0^*(g)$, where
 \begin{equation}\label{eq:lambdagbeta}
-\lambda(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1 + \mathcal{O}\left(\frac{1}{N} \right).
+\lambda_0^*(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1 + \mathcal{O}\left(\frac{1}{N} \right).
 \end{equation}
-To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
+To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda_0^*(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
 \begin{equation}\label{eq:ghopfformula}
     g_{H,\beta} = 
     \frac{\sqrt{N}}{\mu_{EE}} 
@@ -452,7 +466,7 @@ To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the c
     { \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I }
     + \mathcal{O}\left( \frac{1}{N^{3/2}} \right).
 \end{equation}
-A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of this formula, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopferror}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H,\beta}  \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
+A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H,\beta} \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
 \begin{equation}\label{eq:gprime}
 g_{H,\beta}' = \frac{ \sqrt{N} }{ \mu_{EE} }
     \frac{ 
@@ -467,92 +481,89 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H,
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/Hopfapproxbeta1.eps}
-    \includegraphics[width=8cm]{images/Hopfapproxerror.eps}
+    \includegraphics[width=7.8cm]{images/Hopfapproxbeta1.eps} &
+    \includegraphics[width=7.8cm]{images/Hopfapproxerror.eps} \\
+    \includegraphics[width=7.8cm]{images/HopfNvsg.eps} &
+    \includegraphics[width=7.8cm]{images/HopflogNvslogg.eps}
     \end{tabular}
-    \caption{Left panel plots compares approximation \cref{eq:ghopfformula} to computed location of Hopf bifurcation for $I_1/I_2$ branch with $\beta = 1$. Right panel plots log of absolute error of approximation \cref{eq:ghopfformula} vs $\log N$ for $\beta = 1$, 3, and 4. Slope of line is approximately -1.5 for all three $\beta$. $\alpha = 4$, $\mu_{EE}= 0.7$. }
-    \label{fig:Hopferror}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/HopfNvsg.eps}
-    \includegraphics[width=8cm]{images/HopflogNvslogg.eps}
-    \end{tabular}
-    \caption{Left panel shows location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$). Right panel is same data on a log-log plot.}
+    \caption{Top left compares approximation \cref{eq:ghopfformula} to computed location of Hopf bifurcation for $I_1/I_2$ branch with $\beta = 1$. Top right plots log of absolute error of approximation \cref{eq:ghopfformula} vs $\log N$ for $\beta = 1$, 3, and 4. Slope of line is approximately -1.5 for all three $\beta$. Bottom left shows location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$). Right panel is same data on a log-log plot. $\alpha = 4$, $\mu_{EE}= 0.7$. }
     \label{fig:Hopfplots}
 \end{figure}
+
 % At the Hopf bifurcation, the imaginary part of eigenvalue scales as $\sqrt{N}$, which is the frequency of oscillation of the limit cycle.
 
 \subsection{Periodic solutions}\label{sec:periodic}
 
-For $g > g_H$, numerical computation shows that there is a limit cycle for which all excitatory cells are synchronized and all inhibitory cells are synchronized. We can argue that such a limit cycle exists for $g > g_H$ by reducing \cref{eqn:sys_Basic} to the two-dimensional system
+Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO suggests that this limit cycle exists for all $g > g_H$; furthermore, all excitatory cells are synchronized and all inhibitory cells are synchronized within the limit cycle.
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7.85cm]{images/limitcycle1.eps}
+    \includegraphics[width=7.85cm]{images/limitcycle2.eps}
+    \end{tabular}
+    \caption{$\beta = \infty$ limit cycle arising from Hopf bifurcation at $g = g_H$. Single excitatory cluster with activity $x_E(t)$, single inhibitory cluster with activity $x_I(t)$. $g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. Period of limit cycle is 1.62.} 
+    \label{fig:limitcycleorigin}
+\end{figure}
+Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call it the $\beta=\infty$ limit cycle. We can prove that the $\beta = \infty$ limit cycle exists for $g > g_H$ by reducing \cref{eqn:sys_Basic} to the two-dimensional system
 \begin{equation}\label{eq:2dsystem}
 \begin{aligned}
 \dot{x} &= f(x, y) := -x + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) \tanh(g x) - \alpha n_I \tanh(g y) \right) \\
 \dot{y} &= g(x, y) := -y + \frac{\mu_{EE}}{\sqrt{N}}\left( n_E \tanh(g x) - \alpha (n_I - 1) \tanh(g y) \right), 
 \end{aligned}
 \end{equation}
-where $x$ represents the synchronized excitatory cell activity and $y$ represents the synchronized inhibitory cell activity. Since $-1 < \tanh x < 1$, we can solve $f(x, y) = 0$ for $y$ in terms of $x$ when $|x| < \frac{\mu_{EE}}{\sqrt{N}}( 2 \alpha n_I - 1)$ to get the equation for the $x$-nullcline
-\begin{align*}
-y = \frac{1}{g} \tanh ^{-1} \left( \tanh (g x) - \frac{ \mu_{EE} \tanh (g x) + \sqrt{N} x}{\alpha \mu_{EE} n_I} \right).
-\end{align*}
-Similarly we can solve $g(x, y) = 0$ for $x$ in terms of $y$ when $|y| < \frac{\alpha \mu_{EE}}{\sqrt{N}}$ to get the equation for the $y$-nullcline. The two nullclines are plotted in the left panel of \cref{fig:nullclines}. We will assume that the nullclines intersect only at the origin as in \cref{fig:nullclines}, which implies that $(x,y) = (0,0)$ is the only equlibrium point of \cref{eq:2dsystem}. 
+where $x$ represents the synchronized excitatory cell activity and $y$ represents the synchronized inhibitory cell activity. Under the assumption that the system \cref{eq:2dsystem} has a single fixed point at the origin, the following proposition proves that there is a limit cycle solution for $g > g_H$ (\cref{fig:nullclines}, right panel).
 
+\begin{proposition}\label{prop:limitcycle}
+Assume \cref{eq:2dsystem} has a single fixed point at the origin for $g \geq g_H$. Then \cref{eq:2dsystem} has a limit cycle solution for $g > g_H$.
+\begin{proof}
 Linearizing \cref{eq:2dsystem} about the origin yields the $2 \times 2$ matrix
 \[
-\frac{g \mu_{EE}}{\sqrt{N}}
+J = \frac{g \mu_{EE}}{\sqrt{N}}
 \begin{bmatrix} 
 n_E - 1 & -\alpha n_I \\
 n_E & -\alpha(n_I - 1)
 \end{bmatrix} - I_2,
 \]
-which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 \pm \omega_0) - 1$, where $\lambda_0$ and $\omega_0$ are defined above. It follows that the origin is unstable for $g > g_H$, which is the Hopf bifurcation point defined by \cref{eq:0hopflocation}. To show there is a limit cycle for $g > g_H$, we use the Poincar{\'e}-Bendixson theorem \cite[Chapter 16]{Coddington1955}. For a trapping region, we draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large,
+which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 \pm \omega_0) - 1$, where $\lambda_0$ and $\omega_0$ are defined above. It follows that the origin is repelling for $g > g_H$, which is the Hopf bifurcation point \cref{eq:0hopflocation}. To show there is a limit cycle for $g > g_H$, we use the Poincar{\'e}-Bendixson theorem \cite[Chapter 16]{Coddington1955}. For a trapping region, we draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large,
 \[
 \dot{x} \leq -a + \frac{2 n_E}{\sqrt{N}} = -a + 2 f \sqrt{N},
 \]
-which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined by Fig. \ref{eq:2dsystem} points inward at all points on the square (see right panel of \cref{fig:nullclines}). Since the origin is repelling for $g > g_H$, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$ (\cref{fig:nullclines}, right panel). Although we note that this limit cycle is stable for the two-dimensional system \cref{eq:2dsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}. (See \cref{sec:periodic} for numerical results concerning periodic solutions.)
+which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined \cref{eq:2dsystem} points inward at all points on the square (see right panel of \cref{fig:nullclines} for an illustration). Since the origin is repelling for $g > g_H$, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$. 
+\end{proof}
+\end{proposition}
+
+Although we note that the limit cycle from \cref{prop:limitcycle} is stable for the two-dimensional system \cref{eq:2dsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}. A plot of the two nullclines for \cref{eq:2dsystem} is shown in the left panel of \cref{fig:nullclines}, which suggests that the assumption that $(x,y) = (0,0)$ is the only equlibrium point of \cref{eq:2dsystem} is reasonable.
+
+% Since $-1 < \tanh x < 1$, we can solve $f(x, y) = 0$ for $y$ in terms of $x$ when $|x| < \frac{\mu_{EE}}{\sqrt{N}}( 2 \alpha n_I - 1)$ to get the equation for the $x$-nullcline
+% \begin{align*}
+% y = \frac{1}{g} \tanh ^{-1} \left( \tanh (g x) - \frac{ \mu_{EE} \tanh (g x) + \sqrt{N} x}{\alpha \mu_{EE} n_I} \right).
+% \end{align*}
+% Similarly we can solve $g(x, y) = 0$ for $x$ in terms of $y$ when $|y| < \frac{\alpha \mu_{EE}}{\sqrt{N}}$ to get the equation for the $y$-nullcline. The two nullclines are plotted in the left panel of \cref{fig:nullclines}. We will assume that the nullclines intersect only at the origin as in \cref{fig:nullclines}, which implies that $(x,y) = (0,0)$ is the only equlibrium point of \cref{eq:2dsystem}. 
 
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/nullclines.eps} &
-    \includegraphics[width=8cm]{images/trappingregion.eps}
+    \includegraphics[width=7.8cm]{images/nullclines.eps} &
+    \includegraphics[width=7.8cm]{images/trappingregion.eps}
     \end{tabular}
     \caption{Left panel shows $x$ and $y$ nullclines for the system \cref{eq:2dsystem}. Right panel shows the slope fields for \cref{eq:2dsystem}, with a small limit cycle visible in center.  Slope field points inward on black box. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
     \label{fig:nullclines}
 \end{figure}
 
-
-****
-
-Periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. Recall that there is an additional Hopf bifurcation at the fixed point at the origin at $g = g_H$. For this Hopf bifurcation, the associated periodic orbit has a single excitatory cluster and a single inhibitory cluster (\cref{fig:limitcycleorigin}). We proved this periodic orbit exists for $g > g_H$ in \cref{sec:biforigin}.
+In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite[Fig. 2]{Barreiro2017}). There is a critical value $g = g^*$ where all of the limit cycle branches meet. For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which is stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g^*$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/limitcycle1.eps}
-    \includegraphics[width=8cm]{images/limitcycle2.eps}
-    \end{tabular}
-    \caption{Limit cycle arising from Hopf bifurcation at origin. Single excitatory cluster with activity $x_E(t)$, single inhibitory cluster with activity $x_I(t)$. $g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. Period of limit cycle is 1.62.} 
-    \label{fig:limitcycleorigin}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/periodvsg}
-    \includegraphics[width=8cm]{images/floquet1.eps}
+    \includegraphics[width=7.8cm]{images/periodvsg}
+    \includegraphics[width=7.8cm]{images/floquet1.eps}
     \end{tabular}
     \caption{Left panel shows period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along the branch from origin is shown in right panel.
     $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg}
 \end{figure}
 
-A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite[Fig. 2]{Barreiro2017}). There is a critical value $g = g_c$ where all of the limit cycle branches meet. For $g > g_c$, there is only a single stable limit cycle comprising a  single excitatory cluster and a single inhibitory cluster. The point $g = g_c$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the limit cycle branch from the origin (right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\lambda_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\lambda_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\lambda_1$ with multiplicity 1. At $g = g_0$, the $n_I - 1$ Floquet multipliers $\lambda_I$ pass through 1. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, where the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
-
-\subsection{Behavior of the $I_1/I_2$ branch for large $g$} \label{sec:stab_largeg}
+\subsection{Behavior of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}}\label{sec:stab_largeg}
 
 WOULD BE NICE HERE IF WE COULD SHOW NO STABLE FIXED POINTS FOR LARGE G. MIGHT END UP BEING DIFFICULT.
 

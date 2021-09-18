@@ -38,7 +38,7 @@ xlabel('$N$');
 ylabel('$g$');
 axis([20,500,1,13]);
 
-labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_h$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
+labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_H$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
 legend(labels,'location','NorthEast');
 %% Hopf locations log vs log N (numerical results from AUTO)
 
@@ -59,7 +59,7 @@ ylabel('$\log g$');
 xlabel('$\log N$');
 axis([3, 6, 0.4, 3.2]);
 
-labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_h$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
+labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_H$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
 legend(labels,'location','NorthWest');
 
 %% approx location plot
