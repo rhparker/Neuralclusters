@@ -401,3 +401,92 @@ ylabel('$X_I$');
 % labels = {'$\beta_C = 1$','$\beta_C = 3/2$', '$\beta_C = 7/3$', '$\beta_C = 4$', '$\beta_C = 9$'};
 % labelpoints( gpos, Ilabelpos, labels,'NW',0,0,'FontSize',labelFontSize,'interpreter','latex');
 % plot([2 3.1],[0.22 0.4],'-k','Linewidth',2);
+
+%% 3d plot showing stable branches at limit
+
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+hold on;
+% zero solution
+plot3([0 g1(1)], [0 0] , [0 0], '-','LineWidth',lw, 'Color', c1 );
+plot3([g1(1) 3], [0 0] ,[0 0], '--','LineWidth',lw, 'Color', c1 );
+% beta=1
+g1ploc = 41;
+g1ploc = g1ploc + 5;
+plot3(g1(1:g1ploc),x1(1:g1ploc,1),x1(1:g1ploc,11),'--', 'LineWidth', lw, 'Color', c2 );
+plot3(g1s,x1s(:,1),x1s(:,11),'-', 'LineWidth', lw, 'Color', c2 );
+plot3(g1lim,x1lim(:,1),x1lim(:,11),'--', 'LineWidth', lw, 'Color', c2 );
+plot3(g1slim,x1slim(:,1),x1lim(:,11),'-', 'LineWidth', lw, 'Color', c2 );
+% beta=1.5
+g2ploc = 44;
+g2ploc = g2ploc + 5;
+ming2loc = 38;
+[~, ming2sloc] = min(g2slim);
+plot3(g2(1:g2ploc),x2(1:g2ploc,1),x2(1:g2ploc,11),'--', 'LineWidth', lw, 'Color', c3 );
+plot3(g2s,x2s(:,1),x2s(:,11),'-', 'LineWidth', lw, 'Color', c3 );
+plot3(g2lim(1:ming2loc),x2lim(1:ming2loc,1),x2lim(1:ming2loc,[11 30]),'--', 'LineWidth', lw, 'Color', c3 );
+plot3(g2slim(1:ming2sloc),x2slim(1:ming2sloc,1),x2slim(1:ming2sloc,[11 30]),'-', 'LineWidth', lw, 'Color', c3 );
+% beta=7/3
+g3ploc = 41;
+g3ploc = g3ploc + 5;
+ming3loc = 36;
+[~, ming3sloc] = min(g3slim);
+plot3(g3(1:g3ploc),x3(1:g3ploc,1),x3(1:g3ploc,11),'--', 'LineWidth', lw, 'Color', c4 );
+plot3(g3s,x3s(:,1),x3s(:,11),'-', 'LineWidth', lw, 'Color', c4 );
+plot3(g3lim(1:ming3loc),x3lim(1:ming3loc,1),x3lim(1:ming3loc,[11 30]),'--', 'LineWidth', lw, 'Color', c4 );
+plot3(g3slim(1:ming3sloc),x3slim(1:ming3sloc,1),x3slim(1:ming3sloc,[11 30]),'-', 'LineWidth', lw, 'Color', c4 );
+% beta=4
+g4ploc = 45;
+g4ploc = g4ploc + 5;
+ming4loc = 87;
+[~, ming4sloc] = min(g4slim);
+plot3(g4(1:g4ploc),x4(1:g4ploc,1),x4(1:g4ploc,11),'--', 'LineWidth', lw, 'Color', c5 );
+plot3(g4s,x4s(:,1),x4s(:,11),'-', 'LineWidth', lw, 'Color', c5 );
+plot3(g4lim(1:ming4loc),x4lim(1:ming4loc,1),x4lim(1:ming4loc,[11 30]),'--', 'LineWidth', lw, 'Color', c5 );
+plot3(g4slim(1:ming4sloc),x4slim(1:ming4sloc,1),x4slim(1:ming4sloc,[11 30]),'-', 'LineWidth', lw, 'Color', c5 );
+% beta=9
+g5ploc = 44;
+g5ploc = length(g5);
+ming5loc = 160;
+[~, ming5sloc] = min(g5slim);
+plot3(g5(1:g5ploc),x5(1:g5ploc,1),x5(1:g5ploc,11),'--', 'LineWidth', lw, 'Color', c6 );
+plot3([ BP5(1) g5s],[ x5(BP5index2(1), [1]) ; x5s(:,1)],[ x5(BP5index2(1), [11]) ; x5s(:,11)],'-', 'LineWidth', lw, 'Color', c6 );
+plot3(g5lim(1:ming5loc),x5lim(1:ming5loc,1),x5lim(1:ming5loc,[11 30]),'--', 'LineWidth', lw, 'Color', c6 );
+plot3(g5slim(1:ming5sloc),x5slim(1:ming5sloc,1),x5slim(1:ming5sloc,[11 30]),'-', 'LineWidth', lw, 'Color', c6 );
+
+% branch points
+plot3( [g1(1)], [0], [0], '.k', 'MarkerSize', 40); 
+plot3( [BP1], x1(BP1index, [1]), x1(BP1index, [11]), '.k', 'MarkerSize', 40);  
+plot3( [BP2], x2(BP2index, [1]), x2(BP2index, [11]), '.k', 'MarkerSize', 40); 
+plot3( [BP3], x3(BP3index(1), [1]), x3(BP3index(1), [11]), '.k', 'MarkerSize', 40); 
+plot3( [BP4(2)], x4(BP4index(1), [1]), x4(BP4index(1), [11]), '.k', 'MarkerSize', 40); 
+plot3( [BP5(2)], x5(BP5index(1), [1]), x5(BP1index(1), [11]), '.k', 'MarkerSize', 40); 
+% stability switch points
+plot3( [BP4(1)], x4(BP4index2(1), [1]), x4(BP4index2(1), [11]), 'dk', 'MarkerSize', 10, 'LineWidth',3); 
+plot3( [BP5(1)], x5(BP5index2(1), [1]), x5(BP5index2(1), [11]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
+
+% beta labels
+text(11,.4,.33,'$\beta = 9$','FontSize',labelFontSize,'interpreter','latex');
+text(11,1.5,.33,'$\beta = 4$','FontSize',labelFontSize,'interpreter','latex');
+text(11,2.6,.33,'$\beta = 7/3$','FontSize',labelFontSize,'interpreter','latex');
+text(11,3.7,.33,'$\beta = 3/2$','FontSize',labelFontSize,'interpreter','latex');
+text(11,4.8,.33,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+
+% beta_C labels
+% beta labels
+text(.4,.7,.25,'$\beta_C = 9$','FontSize',labelFontSize,'interpreter','latex');
+text(1,2,.58,'$\beta_C = 4$','FontSize',labelFontSize,'interpreter','latex');
+text(-.4,3,.56,'$\beta_C = 7/3$','FontSize',labelFontSize,'interpreter','latex');
+text(-0.3,4,.32,'$\beta_C = 3/2$','FontSize',labelFontSize,'interpreter','latex');
+text(0,4.5,-.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
+
+axis([0 12 0 5 -0.3 0.7]);
+view(-11.5, 35);
+
+xlabel('$g$');
+ylabel('$X_{E_1}$');
+zlabel('$X_{I}$');
