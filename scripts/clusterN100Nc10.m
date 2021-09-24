@@ -26,6 +26,12 @@ labelFontSize = 20;
 markerSize = 50;
 lw = 3;
 
+% plot parameters
+fontSize = 20;
+labelFontSize = 20;
+markerSize = 50;
+lw = 3;
+
 % when loading the data, we flip the excitation values to be consistent 
 % with the notation in the manuscript
 
