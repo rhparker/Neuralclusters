@@ -64,7 +64,7 @@ text(13.4, 1.38, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$', 'Inter
 
 text(2.3, 3.1, '$\beta = 1$', 'Interpreter', 'latex', 'Fontsize', 18);
 text(6.25, 1.9, '$\beta = 3$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(2.0, 1.25, 'branch from origin', 'Interpreter', 'latex', 'Fontsize', 18);
+text(3.5, 1.25, '$\beta = \infty$', 'Interpreter', 'latex', 'Fontsize', 18);
 
 xlabel('$g$');
 ylabel('period of limit cycle');
@@ -75,12 +75,12 @@ ylabel('period of limit cycle');
 %% Floquet multiplier plot
 
 fafter = [.2 .5 1 1.15];
-afterlabels = { '$\lambda_E$', '$\lambda_1$', '$1$', '$\lambda_I$' }
+afterlabels = { '$\rho_E$', '$\rho_1$', '$1$', '$\rho_I$' }
 fduring = [.15 .3 1];
-duringlabels = { '$\lambda_E$', '$\lambda_1$', '$1$' };
+duringlabels = { '$\rho_E$', '$\rho_1$', '$1$' };
 fbefore = [.125 .2 .85 1];
-beforelabels = { '$\lambda_E$', '$\lambda_1$', '$\lambda_I$' , '$1$' };
-lambdalabels = { '$\lambda$','$\lambda$','$\lambda$'};
+beforelabels = { '$\rho_E$', '$\rho_1$', '$\rho_I$' , '$1$' };
+lambdalabels = { '$\rho$','$\rho$','$\rho$'};
 
 figure;
 hold on;

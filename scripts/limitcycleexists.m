@@ -1,9 +1,12 @@
 N = 20;
-g = 5;
+alpha = 1;
+f = alpha/(alpha+1);
 mee = 0.7;
-Ne = N*0.8;
-Ni = N*0.2;
-alpha = 4;
+Ne = N*f;
+Ni = N*(1-f);
+g0 = sqrt(N)/(alpha*mee);
+
+g = 5;
 
 fontSize = 18;
 labelFontSize = 18;
@@ -14,11 +17,15 @@ lw = 3;
 
 xbound = (2*alpha*Ni - 1)*(mee/sqrt(N));
 x1 = linspace(-xbound,xbound,1000);
-y1 = atanh( tanh(g*x1) - ( mee*tanh(g*x1) + sqrt(N)*x1 )/(alpha*mee*Ni)) /g;
+% y1 = atanh( tanh(g*x1) - ( mee*tanh(g*x1) + sqrt(N)*x1 )/(alpha*mee*Ni)) /g;
+xN = @(x) atanh( (tanh(g*x)*mee*(Ne-1) - sqrt(N)*x)/(alpha*mee*Ni) ) / g;
+y1 = xN(x1);
 
-ybound = alpha*mee/sqrt(N);
+ybound = alpha*mee/sqrt(N)+2;
 y2 = linspace(-ybound,ybound,1000);
-x2 = atanh( tanh(g*y2) + ( -alpha*mee*tanh(g*y2) + sqrt(N)*y2 )/(alpha*mee*Ni) ) /g;
+% x2 = atanh( tanh(g*y2) + ( -alpha*mee*tanh(g*y2) + sqrt(N)*y2 )/(alpha*mee*Ni) ) /g;
+yN = @(y) atanh( (tanh(g*y)*alpha*mee*(Ni-1) + sqrt(N)*y)/(mee*Ne) ) / g;
+x2 = yN(y2);
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -26,11 +33,16 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
+hold on;
 plot(x1,y1,'-',x2,y2,'--','LineWidth',2);
 xlabel('$x$');
 ylabel('$y$');
 labels = {'$x$ nullcline', '$y$ nullcline'};
 legend(labels,'location','NorthEast');
+
+xNmax = asech( (N^0.25) / sqrt( g*mee*(Ne-1)) )/g;
+plot( [xNmax], [xN(xNmax)],'.k','MarkerSize',40);
+plot(x1,x1);
 
 
 %% quiver plot for Poincare-Bendixson
