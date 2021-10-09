@@ -1176,6 +1176,37 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
 % \end{itemize}
 % HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
 
+\section{Discussion}
+In this paper, we analyze a family of clustered excitatory-inhibitory neural networks; and in particular, the underlying bifurcation structures that arise because of permutation symmetries in the network. 
+
+For the simplest case (all-to-all connected, except for self-connections), we extend our results from [REFERENCE HERE]. We show that:
+\begin{itemize}
+    \item The origin becomes unstable in a symmetric pitchfork bifurcation at $g=g_0$, at which a new branch of solutions emerges for each possible division of the inhibitory cells into two synchronized clusters (the $I_1/I_2$ branch).
+    \item Along each such solution branch, a Hopf bifurcation creates a branch of periodic orbits.
+    \item All such periodic orbit branches rejoin at a symmetric pitchfork bifurcation of limit cycles, at some large value of the bifurcation parameter $g=g^*$; for $g>g^*$, there is a single stable limit cycle for which the excitatory population and inhibitory population are each synchronized.
+\end{itemize}
+These basic outlines were present in [REFERENCE]. We extend these results with the following:
+\begin{itemize}
+    \item An approximate formula for the solution branch $I_1/I_2$ and for the location of the corresponding Hopf bifurcation. ($g_{H,\beta}$, where $\beta = n_{I_1}/n_{I_2}$).
+    \item A proof that near $g_0$, the $I_1/I_2$ solution branch is stable for $1\leq \beta < 2$, but unstable otherwise ($\beta \ge 2$).
+    \item All $I_1/I_2$ solution branches are unstable for large $g$.
+    \item Stability of limit cycles?
+\end{itemize}
+
+We next consider the case where the excitatory cells are broken into clusters. The E-E weights are normalized so that the network is still approximated balanced. We find that:
+\begin{itemize}
+\item The origin becomes unstable at $g=g_C$: for $g>g_C$ there is a branch of solutions corresponding to each possible division of the \emph{excitatory clusters} into synchronized groups (the $C_1/C_2$ branch): we characterize each branch by the ratio of clusters in each group: $\beta_C = n_{C_1}/n_{C_2}$.
+\item Near $g_C$, each solution branch is stable for  $1 \le \beta_C < 2$, unstable otherwise.
+\item Along each such branch there is a further bifurcation, in which the inhibitory cells split into two clusters.
+\item There are no Hopf bifurcations along these branches.
+\item For large $g$, the only branches that remain stable are those for which $\beta_C$ is close to $\beta$, in the precise sense we describe in (SAY WHERE HERE); i.e. the excitatory clusters and the inhibitory cells must break up in a similar way.
+\end{itemize}
+
+Finally, we consider a network in which the inhibitory cells are clustered, rather than the excitatory cells. Here we find that the origin loses stability in a Hopf bifurcation. 
+\begin{itemize}
+    \item In contrast to the all-to-all case, the frequency does not increase with $N$.
+\end{itemize}
+
 \appendix
 
 \section{Proof of \cref{prop:limitcycle}}\label{sec:limitcycleproof}
