@@ -538,7 +538,7 @@ In the following proposition, we prove that the $\beta=\infty$ limit cycle exist
 For $g > g_H$, the system \cref{eqn:sys_Basic} has a limit cycle in which all excitatory cells are synchronized, and inhibitory cells are synchronized.
 \end{proposition}
 
-In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} (see also \cite[Fig. 2]{Barreiro2017}). There is a critical value $g = g^*$ where all of the limit cycle branches meet. For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the $n_I - 1$ Floquet multipliers $\rho_I$ pass through 1. When this happens, as $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
+In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet. For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the $n_I - 1$ Floquet multipliers $\rho_I$ pass through 1. When this happens, as $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \begin{figure}
     \centering
@@ -549,6 +549,15 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
     % \end{tabular}
     \caption{Top left plots period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along $\beta = \infty$ branch is shown in top right. Bottom panel plots $x_{I_1}$ and $x_E$ vs. $g$ and shows pitchfork bifurcation at $g_0$ (filled circle), Hopf bifurcations for $\beta = 1$, $\beta = 3$, and $\beta = \infty$ (filled squares), and pitchfork bifurcation of limit cycles (dark band) at $g = g^*$. $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \begin{tabular}{cc}
+    \includegraphics[width=16cm]{images/periodvsgN50.eps}
+    % \end{tabular}
+    \caption{Period of limit cycle versus $g$ and $\max \: x_{I_2}$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares. $N = 50$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:periodvsg50}
 \end{figure}
 
 % \subsection{Behavior of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}}\label{sec:stab_largeg}
@@ -784,11 +793,13 @@ Let $\xvec = (x_{E_1}, x_{E_2}, x_{I})$ be a solution to \cref{eq:cluster3system
 \end{proposition}
 
 Using \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, the corresponding eigenvalues of $D\tilde{F}(\xvec^*)$ are located, to leading order, at
-\begin{align*}
-\lambda_{C_1}^*(g) = \frac{g-g_C}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right), \quad
-\lambda_{C_2}^*(g) = \frac{g-g_C}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right), \quad
-\lambda_{I}^*(g) = \frac{\alpha \mu g}{\sqrt{N}} - 1
-\end{align*}
+\begin{equation}\label{eq:DFclustereigs}
+\begin{aligned}
+\lambda_{C_1}^*(g) &= \frac{g-g_C}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right) \\
+\lambda_{C_2}^*(g) &= \frac{g-g_C}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right) \\
+\lambda_{I}^*(g) &= \frac{\alpha \mu g}{\sqrt{N}} - 1
+\end{aligned}
+\end{equation}
 for $g$ close to $g_C$. As in the previous section, $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$; $\lambda_{C_2}(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). For $N = 100$ and $n_C = 10$, it is interesting that while the $C_1/C_2$ branches corresponding to $\beta_C = 4$ and $\beta_C = 9$ in \cref{fig:clusterBD2} are initially unstable, they become stable at a value of $g > g_C$ which is indicated with a diamond on the plot. At this point, the $n_{C_1}$ eigenvalues corresponding to $\lambda_{C_1}$ cross through the origin on the real axis from positive to negative. As $g$ is further increased, these branches lose stability at the symmetric pitchfork bifurcation point. This phenomenon is not observed for $N=20$ and $n_C=4$ (\cref{fig:clusterBD1}).
 
 It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_C$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. We following the same asymptotic procedure as in the previous section. $H_3(\xvec^*)$ has a real eigenvalue corresponding to $\lambda_C$ located at
@@ -813,11 +824,26 @@ For $\beta_C > 1$, this bifurcation takes place at $g$ much greater than $g_C$, 
 
 \subsection{\texorpdfstring{$C_1/C_2$}{C1/C2} branches for large \texorpdfstring{$g$}{g}}
 
-First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large. To do this, we will use numerical parameter continuation with AUTO to find an ansatz which we will then substitute into \cref{eq:cluster3system}. The large $g$ behavior of the $C_1/C_2$ branches will depend on the ratio $\beta_C = n_{C_1}/n_{C_2}$. When $\beta_C = 1$, $x_{E_2} = -x_{E_1} := x_E$, and $x_I = 0$ for all $g \geq g_C$. Numerical parameter continuation suggests that $x_{E} \rightarrow \hat{x}_{E} > 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E}) \rightarrow 1$. It follows from the first row of \cref{eq:cluster3system} that 
+First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large. The large $g$ behavior of the $C_1/C_2$ branches will depend on the ratio $\beta_C = n_{C_1}/n_{C_2}$. When $\beta_C = 1$, $x_{E_2} = -x_{E_1} := x_E$, and $x_I = 0$ for all $g \geq g_C$. Numerical parameter continuation suggests that $x_{E} \rightarrow \hat{x}_{E} > 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E}) \rightarrow 1$. It follows from the first row of \cref{eq:cluster3system} that 
 \begin{equation}\label{eq:xEhat}
 \hat{x}_{E} = \frac{\mu}{\sqrt{N}}(p-1)n_C.
 \end{equation}
-For $\beta_C > 1$, numerical parameter continuation suggests that while $x_I \rightarrow 0$ as $g \rightarrow \infty$, $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two possibilities for the limiting behavior of $x_{E_1}$ and $x_{E_2}$. If $1 < \beta_C < \beta_C^*$, where $\beta_C^*$ will be determined below, then $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Since $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$, we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
+For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$ as $g \rightarrow \infty$, but $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, where $\beta_C^*$ will be determined below. These are illustrated in \cref{fig:betacstar}.\\
+\begin{itemize}
+    \item Case 1: for $1 < \beta_C < \beta_C^*$, $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
+    \item Case 2: for $\beta_C > \beta_C^*$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.\\
+\end{itemize}
+
+\begin{figure}
+    \centering
+    % \begin{tabular}{cc}
+    \includegraphics[width=7.8cm]{images/clusterbeforebetacstar.eps}
+    \includegraphics[width=7.8cm]{images/clusterafterbetacstar.eps}
+    % \end{tabular}
+    \caption{Solutions $x_{E_1}$, $x_{E_2}$, and $x_I$ vs $g$ on $C_1/C_2$ branches for $1 < \beta_C < \beta_C^*$ (left) and $\beta_C > \beta_C^*$ (right). $N = 50$, $n_C = 10$, $p = 4$, $n_I = 10$, $\alpha =4$, $\mu = 0.7$. $\beta_C = 7/3$ (left), and $\beta_C = 9$ (right). $\beta_C^* = 5.15385$.}
+    \label{fig:betacstar}
+\end{figure}
+\noindent For Case 1, since $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$, we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:yihat}
     \hat{y}_I = \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha},
 \end{equation} 
@@ -850,7 +876,7 @@ This reduces to the condition $\beta_C < \beta_C^*$, where
 \end{equation}
 As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. It follows that if $n_C$ is held constant, $\beta_C < \beta_C^*$ will be satisfied for sufficiently large $N$, since $p = f N/n_C$.
 
-For $\beta_C > \beta_C^*$, numerical parameter continuation suggests that as $g \rightarrow 0$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Using this ansatz, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
+For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
     \begin{aligned}
         \hat{y}_{E_1} &= \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \\

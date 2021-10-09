@@ -65,6 +65,41 @@ g5 = br{1}.parS;
 BP5 = BP; 
 % BP5index = find( abs(g5-BP5(2)) < 1e-4);
 
+%% plots for beta=7/3 and beta=9
+
+% beta = 7/3
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+hold on;
+plot(g3(3:end),-x3(3:end,1),'-', 'LineWidth', lw, 'Color', c1 );
+plot(g3(3:end),-x3(3:end,10),'--', 'LineWidth', lw, 'Color', c2 );
+plot(g3(3:end),-x3(3:end,11),'-.', 'LineWidth', lw, 'Color', c3 );
+plot( g3(3),-x3(3,1), '.k', 'MarkerSize', 40); 
+axis([ 0 3 -5 2 ]);
+legend({'$x_{E_1}$','$x_{E_2}$','$x_{I}$'},'Location','SouthWest');
+
+%%
+
+% beta = 9
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+hold on;
+plot(g5(3:end),-x5(3:end,1),'-', 'LineWidth', lw, 'Color', c1 );
+plot(g5(3:end),-x5(3:end,10),'--', 'LineWidth', lw, 'Color', c2 );
+plot(g5(3:end),-x5(3:end,11),'-.', 'LineWidth', lw, 'Color', c3 );
+plot( g5(3),-x5(3,1), '.k', 'MarkerSize', 40);
+axis([ 0 3 -5 1 ]);
+legend({'$x_{E_1}$','$x_{E_2}$','$x_{I}$'},'Location','SouthWest');
+
+
 %%
 
 % excitatory, xE1 and xE2
@@ -101,7 +136,7 @@ plot(g4,x4(:,10),'--', 'LineWidth', lw, 'Color', c5 );
 % beta=9
 plot(g5,x5(:,1),'--', 'LineWidth', lw, 'Color', c6 );
 plot(g5,x5(:,10),'--', 'LineWidth', lw, 'Color', c6 );
-axis([0,4,-4,6]);
+% axis([0,4,-4,6]);
 % branch points
 plot( [BP1(2) BP1(2)], x1(BP1index, [1 10]), '.k', 'MarkerSize', 40);  
 plot( [BP2(2) BP2(2)], x2(BP1index, [1 10]), '.k', 'MarkerSize', 40); 
