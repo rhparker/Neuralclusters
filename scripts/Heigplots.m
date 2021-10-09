@@ -164,31 +164,38 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 axis([-3.5 15 -12 12]);
 
-%% no clusters, nonzero I1/I2 branch
+%% no clusters, nonzero I1/I2 branch; N = 50 case
 
-load noclusterN20beta3;
-b = 3;
-ind = 1000;
+load noclusterN50beta15;
+b = 1.5;
+ind = 70;
 
-N = 20;
+a = 4;
+N = 50;
 Nc = 1;
-p = 16;
+p = 40;
 Ne = p;
 mee = 0.7;
 mei = mee;
-mei = 1.0
 mie = -a*mee;
 mii = -a*mee;
 
-xstar = [ repmat(br{2}.u1(ind),Ne,1) ; repmat(br{2}.u2(ind),3,1) ; ...
-    repmat(br{2}.u3(ind),1,1) ];
+g0 = sqrt(N)/(a * mee);
 
-H = cluster(N, Nc, p, mee, mei, mie, mii) * diag(xstar); 
+xstar = [ repmat(br{1}.xS(ind,1),Ne,1) ; br{1}.xS(ind,2:11)' ];
+g = br{1}.parS(ind);
+
+H = cluster(N, Nc, p, mee, mei, mie, mii) * diag( sech(g*xstar).^2 ); 
 
 l  = eig(H);
 [realvals, idx] = uniquetol(real(l));
 l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))]
+
+% adjust for better cartoon plot
+uniquel(1) = -.9;   % lambdaE
+uniquel(2) = 1.;  % lambdaI1
+uniquel(4) = 3.25;  % lamnbdaI2
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -196,22 +203,74 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
-% labels = {'$\lambda_E$', '$\lambda_0 + i \omega_0$', '$\lambda_I$', '$\lambda_0 - i \omega_0$'};
+labels = {'$\lambda_E$', '$\lambda_{I_2}$', '$\lambda_{I}$', '$\lambda_{I_1}$', '$\lambda_0 + i \omega_0$', '$\lambda_0 - i \omega_0$'};
 plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
-% labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+labelpoints(real(uniquel),imag(uniquel),labels,'S',0.25,1,'FontSize',labelFontSize,'interpreter','latex');
 ax = gca;
 ax.XAxisLocation = 'origin';
 ax.YAxisLocation = 'origin';
 xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
-% set(gca,'xtick',[]);
-% set(gca,'ytick',[]);
-% axis([-2 6 -15 15]);
+set(gca,'xtick',[]);
+set(gca,'ytick',[]);
+axis([-2 6 -11 11]);
 
 lambdaE = -mee;
 lambdaI = a*mee;
 lambda = mee*(a-1)/2;
 omega = mee*sqrt(a+1)*sqrt(Ne - (1+a)/4);
+
+%% E clusters, nonzero C1/C2 branch, N = 50 case
+
+load EclusterN50Nc10beta2;
+
+ind = 30;
+
+N = 50;
+Nc = 10;
+Ni = 10;
+p = 4;
+mee = 0.7*Nc;
+mie = 0.7;
+mii = -a*0.7;
+mei = -a*0.7;
+b = 1.5;
+
+H = cluster(N, Nc, p, mee, mei, mie, mii); 
+
+gc = sqrt(N)/((p-1) * mee);
+xstar = [ repelem(br{1}.xS(ind,1:10)',p) ; br{1}.xS(ind,11:20)' ];
+g = br{1}.parS(ind);
+H = cluster(N, Nc, p, mee, mei, mie, mii) * diag( sech(g*xstar).^2 ); 
+
+l  = eig(H);
+[realvals, idx] = uniquetol(real(l));
+l2 = l(idx);
+uniquel2 = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))];
+% remove second lambdaE since reduced matrix
+uniquel = [uniquel2(1) ; uniquel2(3:end) ];
+% adjust for cartoon
+uniquel(4) = 8;
+uniquel(6) = 16;
+
+figure('DefaultAxesFontSize', fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+labels = {'$\lambda_0 + i \omega_0$', '$\lambda_E$', '$\lambda_I$', ...
+    '$\lambda_{C_2}$','$\lambda_C$','$\lambda_{C_1}$', '$\lambda_0 - i \omega_0$'};
+plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
+labelpoints(real(uniquel),imag(uniquel),labels,'S',0.25,1,'FontSize',labelFontSize,'interpreter','latex');
+ax = gca;
+ax.XAxisLocation = 'origin';
+ax.YAxisLocation = 'origin';
+xlabel('Re $\lambda$');
+ylabel('Im $\lambda$');
+set(gca,'xtick',[]);
+set(gca,'ytick',[]);
+axis([-10 18 -14 14]);
 
 
    
