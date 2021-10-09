@@ -766,15 +766,15 @@ Let $\xvec = (x_{E_1}, x_{E_2}, x_{I})$ be a solution to \cref{eq:cluster3system
 
 Using \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, the corresponding eigenvalues of $D\tilde{F}(\xvec^*)$ are located, to leading order, at
 \begin{align*}
-\lambda_{C_1}^*(g) = \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right), \quad
-\lambda_{C_2}^*(g) = \frac{g-g_0}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right), \quad
+\lambda_{C_1}^*(g) = \frac{g-g_C}{g} \left( 1 - \frac{3}{1-\beta_C+\beta_C^2 }\right), \quad
+\lambda_{C_2}^*(g) = \frac{g-g_C}{g} \left( 1 - \frac{3 \beta_C^3}{1-\beta_C+\beta_C^2 }\right), \quad
 \lambda_{I}^*(g) = \frac{\alpha \mu g}{\sqrt{N}} - 1
 \end{align*}
 for $g$ close to $g_C$. As in the previous section, $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta > 2$; $\lambda_{C_2}(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). For $N = 100$ and $n_C = 10$, it is interesting that while the $C_1/C_2$ branches corresponding to $\beta_C = 4$ and $\beta_C = 9$ in \cref{fig:clusterBD2} are initially unstable, they become stable at a value of $g > g_C$ which is indicated with a diamond on the plot. At this point, the $n_{C_1}$ eigenvalues corresponding to $\lambda_{C_1}$ cross through the origin on the real axis from positive to negative. As $g$ is further increased, these branches lose stability at the symmetric pitchfork bifurcation point. This phenomenon is not observed for $N=20$ and $n_C=4$ (\cref{fig:clusterBD1}).
 
 It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_C$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. Following the same procedure as in the previous section, $H_3(\xvec)$ has a single eigenvalues which is located, to leading order, at 
 \begin{align*}
-    -2\left( \frac{g - g_0}{g_0} \right)  && g \geq g_0
+    -2\left( \frac{g - g_C}{g_C} \right)  && g \geq g_C
 \end{align*}
 for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not affect stability. $H_3(\xvec)$ also has a complex conjugate pair of eigenvalues, where the real part is given by
 \begin{equation*}
@@ -825,7 +825,7 @@ This reduces to the condition $\beta_C < \beta_C^*$, where
 \begin{equation}\label{eq:betaCstar}
     \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
 \end{equation}
-As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. It follows that if $n_C$ is held constant, $\beta < \beta_C^*$ will be satisfied for sufficiently large $N$, since $p = f N/n_C$.
+As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. It follows that if $n_C$ is held constant, $\beta_C < \beta_C^*$ will be satisfied for sufficiently large $N$, since $p = f N/n_C$.
 
 For $\beta_C > \beta_C^*$, numerical parameter continuation suggests that as $g \rightarrow 0$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. Using this ansatz, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -862,7 +862,7 @@ Numerical simulation validates this formula, and suggests that the error term in
     % \includegraphics[width=7.8cm]{images/bdclusters100c10Izoom.eps} 
     \includegraphics[width=16.5cm]{images/bdclusters100c103D.eps}
     % \end{tabular}
-    \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Top left plots $x_{E_1}$ vs $g$. Top right plots $x_I$ vs $g$, zoomed into a narrower range of $g$ to show stability of $C_1/C_2$ branches near $g = g_C$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. No branches are shown after these bifurcations to avoid clutter. Bottom panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches at the symmetric pitchfork bifurcation point. The only $I_1/I_2$ branches shown here is the ones which are eventually stable, which in this case are those with $\beta = \beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 10$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Top left plots $x_{E_1}$ vs $g$. Top right plots $x_I$ vs $g$, zoomed into a narrower range of $g$ to show stability of $C_1/C_2$ branches near $g = g_C$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. No branches are shown after these bifurcations to avoid clutter. Bottom panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches at the symmetric pitchfork bifurcation point. The only $I_1/I_2$ branches shown here is the ones which are eventually stable, which in this case are those with $\beta = \beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 20$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD2}
 \end{figure}
 

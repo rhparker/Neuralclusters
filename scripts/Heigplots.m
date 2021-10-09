@@ -164,6 +164,56 @@ set(gca,'xtick',[]);
 set(gca,'ytick',[]);
 axis([-3.5 15 -12 12]);
 
+%% no clusters, nonzero I1/I2 branch
+
+load noclusterN20beta3;
+b = 3;
+ind = 1000;
+
+N = 20;
+Nc = 1;
+p = 16;
+Ne = p;
+mee = 0.7;
+mei = mee;
+mei = 1.0
+mie = -a*mee;
+mii = -a*mee;
+
+xstar = [ repmat(br{2}.u1(ind),Ne,1) ; repmat(br{2}.u2(ind),3,1) ; ...
+    repmat(br{2}.u3(ind),1,1) ];
+
+H = cluster(N, Nc, p, mee, mei, mie, mii) * diag(xstar); 
+
+l  = eig(H);
+[realvals, idx] = uniquetol(real(l));
+l2 = l(idx);
+uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))]
+
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+% labels = {'$\lambda_E$', '$\lambda_0 + i \omega_0$', '$\lambda_I$', '$\lambda_0 - i \omega_0$'};
+plot(real(uniquel),imag(uniquel), '.', 'MarkerSize', markerSize);
+% labelpoints(real(uniquel),imag(uniquel),labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
+ax = gca;
+ax.XAxisLocation = 'origin';
+ax.YAxisLocation = 'origin';
+xlabel('Re $\lambda$');
+ylabel('Im $\lambda$');
+% set(gca,'xtick',[]);
+% set(gca,'ytick',[]);
+% axis([-2 6 -15 15]);
+
+lambdaE = -mee;
+lambdaI = a*mee;
+lambda = mee*(a-1)/2;
+omega = mee*sqrt(a+1)*sqrt(Ne - (1+a)/4);
+
+
    
 %% functions
 
