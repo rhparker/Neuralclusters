@@ -110,7 +110,7 @@ We consider a network in which each node represents the firing rate of a single 
     \dot{\xvec} = 
     F(\xvec, g) := -\xvec  + \frac{1}{\sqrt{N}} H\tanh (g \xvec),
 \end{equation}
-for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed ). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory.
+for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed ). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. In particular, this implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$.
 
 For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
@@ -311,11 +311,11 @@ Assuming that (without loss of generality) the $I_1$ neurons have the indices $n
 \end{eqnarray}
 We can check that $\rm{Fix}(\Sigma)$ is a subspace of $V$. Furthermore $\dim \rm{Fix}(\Sigma) = 1$ because it can be described as the span of a single vector. 
 
-As a consequence, there is a branch of solutions emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized.
+As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$, which we will ignore for simplicity.
 
 \subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
 
-First, we derive leading order expressions for the solutions along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
+First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
 \[
 -x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
 \]
@@ -369,7 +369,7 @@ For $\beta > 1$, we find the solution along each $I_1/I_2$ branch by reducing \c
  \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
  \end{aligned}
  \end{equation}
- where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem} , where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution of the form
+ where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution of the form
 \begin{equation}\label{eq:I1I2asymp}
     x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
     x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
@@ -697,7 +697,8 @@ As the bifurcation parameter $g$ increases from 0, the set of eigenvalues $\lamb
 \end{equation}
 When this occurs, the origin loses stability in a symmetric pitchfork bifurcation, similar to what occurs with the inhibitory cells in the previous section. As $g$ is further increased, the eigenvalue $\lambda_I^*(g)$ crosses the imaginary axis at $g = g_0$, where $g_0$ is defined by \cref{eq:pitchlocation}. Another symmetric pitchfork bifurcation occurs at this point, this time involving the inhibitory cells. An important distinction from the previous section is that there will be no Hopf bifurcation at the origin, since the complex conjugate pair of eigenvalues cannot cross the imaginary axis.
 
-As in the previous section, it follows from Equivariant Bifurcation Theorem that there is a branch of solutions emerging at the bifurcation point $g = g_C$ for any possible division of excitatory clusters into exactly two groups of clusters. All cells are synchronized within each excitatory cluster. Each such branch may be characterized by the number $\beta_C = n_{C_1}/n_{C_2}$, which gives the ratio of the sizes of the two groups of excitatory clusters. Without loss of generality, we may take $n_{C_1} \geq n_{C_2}$, so that $\beta_C \geq 1$. At the start of each $C_1/C_2$ branch, the inhibitory cells are synchronized, since near $g = g_C$, no other eigenvalues have crossed through the origin yet, thus no bifurcations involving the inhibitory cells have occurred.
+As in the previous section, it follows from Equivariant Bifurcation Theorem that there is a branch of solutions emerging at the bifurcation point $g = g_C$ for any possible division of excitatory clusters into exactly two groups of clusters. All cells are synchronized within each excitatory cluster. Each such branch may be characterized by the number $\beta_C = n_{C_1}/n_{C_2}$, which gives the ratio of the sizes of the two groups of excitatory clusters. Without loss of generality, we may take $n_{C_1} \geq n_{C_2}$, so that $\beta_C \geq 1$. At the start of each $C_1/C_2$ branch, the inhibitory cells are synchronized, since near $g = g_C$, no other eigenvalues have crossed through the origin yet, thus no bifurcations involving the inhibitory cells have  occurred. The solution on each $C_1/C_2$ branch is then given as $(x_{E_1}, x_{E_2}, x_{I})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $C_1/C_2$ branch for each $\beta_C$ with solution $(-x_{E_1}, -x_{E_2}, -x_{I})$., which we will ignore for simplicity.
+
 
 \subsection{Solutions on \texorpdfstring{$C_1/C_2$}{C1/C2} branch}
 
@@ -728,7 +729,7 @@ for $g$ close to $g_C$. For $\beta_C > 1$, we find the solution along each $C_1/
 \end{equation}
 for $g$ close to $g_C$. Following the same procedure as in the previous section, we obtain the formula
  \begin{align}\label{eq:XE1}
- x_{E_1} &= \sqrt{ \frac{ 3(g - g_C) }{ (1 - \beta_C + \beta_C^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_C,
+ x_{E_1} &= \pm \sqrt{ \frac{ 3(g - g_C) }{ (1 - \beta_C + \beta_C^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_C,
 \end{align}
 for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
 
@@ -867,14 +868,14 @@ which reduce to \cref{eq:xEhat} when $\beta_C = 1$. Since $n_C p = f N \rightarr
     \end{aligned}
 \end{equation}
 as $g, N \rightarrow \infty$. For \cref{eq:xEhat12} to be valid, the consistency conditions $\hat{x}_{E_1} > 0$ and $\hat{x}_{E_2} < 0$ must be satisfied. Since $\hat{x}_{E_2} < 0$ always holds, \cref{eq:xEhat12} is consistent as long as
-\[
+\begin{equation}\label{eq:betaCineq}
 (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1}\frac{p^2 n_C^2}{p n_C - \alpha}  > 0.
-\] 
+\end{equation}
 This reduces to the condition $\beta_C < \beta_C^*$, where
 \begin{equation}\label{eq:betaCstar}
     \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
 \end{equation}
-As $N \rightarrow \infty$, $\beta_C^* \rightarrow 2 p-1$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. It follows that if $n_C$ is held constant, $\beta_C < \beta_C^*$ will be satisfied for sufficiently large $N$, since $p = f N/n_C$.
+As $N \rightarrow \infty$, the $\alpha$ in the denominator of \cref{eq:betaCineq} becomes insignificant, and we have $\beta_C^* \rightarrow 2 p-1$. This depends on neither $p$ nor $n_C$, since these variables are involved in \cref{eq:betaCineq} only in the form $p n_C = n_E = f N$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. Since $p = f N/n_C$, it follows that if either $n_C$ is held constant or $n_C$ scales as $\sqrt{N}$, $\beta_C < \beta_C^*$ will be always satisfied for sufficiently large $N$.
 
 For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -893,12 +894,13 @@ from which it follows that
 \end{equation}
 as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
 
-We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
+We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. Since we are taking $N$ large, we can assume $\beta_C < \beta_C^*$, as discussed above. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
 \begin{align}\label{eq:gbetaC}
     g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} % + \mathcal{O}\left(\frac{1}{N^{1/2}}\right)
 \end{align}
-for $N$ large. When $\beta_C = 1$, this reduces to \cref{eq:gpitchinhbeta1}. See \cref{fig:clusterBD2} and the left panel of \cref{fig:pitcherror} for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches. 
-Numerical simulation validates this formula, and suggests that the error term in \cref{eq:gbetaC} has order $\mathcal{O}(N^{-1/2})$ (\cref{fig:pitcherror}, right panel). We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. We can see in \cref{fig:clusterBD2} and \cref{fig:pitcherror} that the location of the symmetric bifurcation points $g_{\beta_C}$ increases with $\beta_C$.
+for $N$ large. When $\beta_C = 1$, this reduces to \cref{eq:gpitchinhbeta1}. See \cref{fig:clusterBD2} and the left panel of \cref{fig:pitcherror} for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches. Numerical simulation validates this formula, and suggests that the error term in \cref{eq:gbetaC} has order $\mathcal{O}(N^{-1/2})$ (\cref{fig:pitcherror}, right panel). We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. We can see in \cref{fig:clusterBD2} and \cref{fig:pitcherror} that the location of the symmetric bifurcation points $g_{\beta_C}$ increases with $\beta_C$.
+
+For sufficiently large $N$, each $C_1/C_2$ branch will be stable immediatly preceding this symmetric pitchfork bifurcation. To see this, we evaluate the remaining eigenvalues of $D\tilde{F}(\xvec^*)$ when $g = g_I(\beta_C)$. As $N \rightarrow \infty$, $g_I(\beta_C) \rightarrow \infty$, thus $\sech(g_I(\beta_C) x_{E_j}) \rightarrow 0$ for $j = 1, 2$. It follows that for $g = g_I(\beta_C)$, $\lambda_{C_j} \rightarrow 0$, thus $\lambda_{C_j}^* \rightarrow -1$. By the same argument, taking $N \rightarrow \infty$ will zero out the first two columns of \cref{eq:H3C} when $g = g_I(\beta_C)$. Thus, in the limit $N \rightarrow \infty$, $H_3(\xvec^*)$ will have a pair of eigenvalues at 0 and an additional eigenvalue at $-(p n_C - \alpha) \sech^2 g x_I \leq 0$. The corresponding eigenvalues of $D\tilde{F}(\xvec^*)$ will be negative. In \cref{fig:clusterBD2}, for $N = 100$, the $C_1/C_2$ branches for $\beta_C = 7/3$, 4, and 9 start unstable, but regain stability before the pitchfork bifurcation point. This does not occur for small value of $N$ (see \cref{fig:clusterBD1} for $N=20$).
 
 \begin{figure}
     \centering
@@ -1171,8 +1173,19 @@ Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C 
 
 We can also choose the weights as in the unclustered case, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
-% \subsection{Restored self-coupling}
-% We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $\Kvec_{p}$ in \cref{eq:Hcluster} with the $p\times p$ matrix consisting of all 1s. The effect of this in the reduced model \cref{eq:reducedmatrixform} is to replace the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$.
+\subsection{Restored self-coupling}
+We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $\Kvec_{p}$ in \cref{eq:Hcluster} with the $p\times p$ matrix consisting of all 1s. The effect of this in the reduced model \cref{eq:reducedmatrixform} is to replace the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$. The eigenvalues of $H$ are then given by:
+\begin{itemize}
+\item $\lambda_I := \alpha \mu > 0$ with multiplicity $n_I - 1$
+\item $\lambda_E := 0$ with multiplicity $(p-1) \times n_C = n_E - n_C$.
+\item $\lambda_C := p n_C \mu > 0$, with multiplicity $n_C - 1$.
+\item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
+\begin{equation*}
+    \lambda_0 := \frac{1}{2}\mu \alpha, \quad 
+    \omega_0 := \frac{1}{2}\mu \sqrt{ \alpha( 4 n_C p - \alpha ) },
+\end{equation*}
+\end{itemize}
+The eigenvalue pattern is similar to that in the middle panel of \cref{fig:Heigpattern}, except the complex conjugate pair $\lambda_0 \pm i \omega_0$ has positive real part. As a consequence, there will be a Hopf bifurcation at the origin at $g_H = \sqrt{N}/\alpha \mu$. Parameter continuation with AUTO indicates that the resulting limit cycle has all excitatory clusters synchronized and all inhibitory cells synchronized, and is unstable for all $g > g_H$. 
 
 \section{Inhibitory clusters}\label{sec:inhibitoryclusters}
 
