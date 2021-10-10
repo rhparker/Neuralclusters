@@ -62,6 +62,29 @@ axis([3, 6, 0.4, 3.2]);
 labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_H$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
 legend(labels,'location','NorthWest');
 
+%% Hopf locations g vs N semilog (numerical results from AUTO)
+
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times');
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+% hold on;
+semilogx( g0N, log(g0g), '--', 'LineWidth',lw);
+hold on;
+semilogx( ghN, log(ghg), '-.', 'LineWidth',lw);
+indices = [3 6 8];
+for index = indices
+    semilogx( br{index}.parN, log(br{index}.parG), '-', 'LineWidth',lw);
+end
+ylabel('$\log g$');
+xlabel('$N$');
+% axis([3, 6, 0.4, 3.2]);
+
+labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_H$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
+legend(labels,'location','NorthWest');
+
 %% approx location plot
 
 beta1g = br{3}.parG;
@@ -120,6 +143,33 @@ plot(xp1,yp1, '-', xp3,yp3, '--', xp4, yp4, '-.', 'LineWidth', 3);
 labels = {'$\beta = 1$', '$\beta = 3$', '$\beta = 4$' };
 legend(labels,'location','NorthEast');
 xlabel('$\log N$');
+ylabel('log absolute error');
+
+%% relative error plot (semilog)
+
+figure('DefaultAxesFontSize',fontSize);
+set(gca,'fontname','times'); 
+set(groot,'defaultAxesTickLabelInterpreter','latex');  
+set(groot,'defaulttextinterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+
+s1 = 20;
+xp1 = beta1N(s1:end);
+yp1 = log( abs( beta1gcalc(s1:end) - beta1g(s1:end) ) );
+s3 = 50;
+xp3 = beta3N(s3:end);
+yp3 = log( abs( beta3gcalc(s3:end) - beta3g(s3:end) ) );
+s4 = 50;
+xp4 = beta4N(s4:end);
+yp4 = log( abs( beta4gcalc(s4:end)  - beta4g(s4:end)  ) );
+p1 = polyfit(xp1,yp1,1);
+p3 = polyfit(xp3,yp3,1);
+p4 = polyfit(xp4,yp4,1);
+
+semilogx(xp1,yp1, '-', xp3,yp3, '--', xp4, yp4, '-.', 'LineWidth', 3);
+labels = {'$\beta = 1$', '$\beta = 3$', '$\beta = 4$' };
+legend(labels,'location','NorthEast');
+xlabel('$N$');
 ylabel('log absolute error');
 
 %% Plot of solution branches and eigenvalues vs N
