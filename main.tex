@@ -560,93 +560,68 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
     \label{fig:periodvsg50}
 \end{figure}
 
-% \subsection{Behavior of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}}\label{sec:stab_largeg}
-% We could put something here about how there appear to be no stable fixed points for large $g$, just periodic orbits.
-% We have characterized the three-cluster fixed point solutions near their origin at the symmetric pitchfork bifurcation point at $g = g_0$.
+\subsection{Behavior of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}}\label{sec:stab_largeg}
 
-% Next, we will show that there are no stable fixed points for large $g$. We use here the simplified model from \cref{sec:simplermodel} since at any fixed point, the excitatory cells must all be synchronized. Let $\xvec^* = (x^*_E, x^*_{I_1}, \dots, x^*_{I_{n_I}})$ be such a fixed point. Then we have
-% \[
-% \text{Trace }\tilde{H}(\xvec^*) = (n_E-1) \mu_{EE} \sech^2( g x_E),
-% \]
-% which is the sum of the eigenvalues of $\tilde{H}(\xvec^*)$. Our task is facilitated by the following observations about the behavior of the $\tanh$ function. If $x \rightarrow \hat{x} \neq 0$ as $g \rightarrow \infty$, then
-% \begin{align*}
-%     \tanh(gx) &\rightarrow 
-%     \begin{cases}
-%     1 & \hat{x} > 0\\
-%     -1 & \hat{x} < 0
-%     \end{cases}
-% &&\text{ as } g \rightarrow \infty.
-% \end{align*}
-% If this is the case, we say that the nonlinearity saturates. If $\hat{x} = 0$, the limiting behavior may be more complicated. Either $\tanh(gx) \rightarrow 0$ as well, or $x \approx \frac{\hat{x}}{g}$, in which case $\tanh(g x) \rightarrow \tanh(\hat{x}) := y \neq 0$, where $0 < y < 1$. 
+We have characterized the three-cluster fixed point solutions on the $I_1/I_2$ branches near the symmetric pitchfork bifurcation point at $g = g_0$. Next, we will show that these branches are unstable for sufficiently large $g$. Fix $\beta = n_{I_1}/n_{I_2}$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. Let $\xvec^*$ be the corresponding fixed point of \cref{eq:reducedmatrixform}. We will look at the eigenvalues of $D\tilde{F}(\xvec^*)$ for large $g$. The sum of these eigenvalues is 
+\[
+\text{Trace }D\tilde{F}(\xvec^*) = \frac{g (n_E-1) \mu_{EE}}{\sqrt{N}} \sech^2( g x_E ) - (n_I+1).
+\]
+There are two possibilities for $x_E$ as $g \rightarrow 0$. If $x_E \rightarrow 0$, then $\sech^2( g x_E ) \rightarrow s$, with $0 < s < 1$. Thus for sufficiently large $g$, $\text{Trace }D\tilde{F}(\xvec^*) > 0$, which implies that $D\tilde{F}(\xvec^*)$ has an eigenvalue with positive real part. The remaining possibility is that $x_E \rightarrow \hat{x}_E \neq 0$. We will show that this cannot occur.
 
-% If $x_E \rightarrow 0$ as $g \rightarrow \infty$, then $\text{Trace }\tilde{H}(\xvec^*) > 0$ as $g \rightarrow \infty$, in which case the eigenvalues of $\tilde{H}(\xvec^*)$ sum to a positive, real number. Thus $\tilde{H}(\xvec^*)$ has at least one eigenvalue with positive real part, which implies that $\xvec^*$ is unstable for sufficiently large $g$. If $x \rightarrow \hat{x} \neq 0$ as $g \rightarrow \infty$, then $\text{Trace }\tilde{H}(\xvec^*) = 0$ as $g \rightarrow \infty$, n which case the eigenvalues of $\tilde{H}(\xvec^*)$ sum to 0. 
+Suppose $x_E \rightarrow \hat{x}_E \neq 0$ as $g \rightarrow \infty$. Without loss of generality, we can take $\hat{x}_E > 0$, since by odd symmetry of \cref{eqn:sys_Basic}, there will be a corresponding solution with $\hat{x}_E < 0$. This implies that $\tanh x_{E} \rightarrow 1$. There are four cases to consider:\\
+\begin{itemize}
+    \item Case 1: $x_{I_1} \rightarrow \hat{x}_{I_1} \neq 0$ and $x_{I_2} \rightarrow \hat{x}_{I_2} \neq 0$.
+    \item Case 2: $x_{I_1} \rightarrow \hat{x}_{I_1} \neq 0$ and $x_{I_2} \rightarrow 0$.
+    \item Case 3: $x_{I_1} \rightarrow 0$ and $x_{I_2} \rightarrow \hat{x}_{I_2} \neq 0$.
+    \item Case 4: $x_{I_1} \rightarrow 0$ and $x_{I_2} \rightarrow 0$.\\
+\end{itemize}
 
+The computations to follow were done with the assistance of Wolfram Mathematica. For Case 1, $\tanh(g x_{I_1}) \rightarrow \pm 1$ and $\tanh(g x_{I_2}) \rightarrow \pm 1$. We can then use \cref{eq:otherbranchmatrixeq} to solve for $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$. The signs of these solutions are all inconsistent, as we can see in \cref{table:signtable}. 
 
-% detailed calculations can be found in an Appendix.
+\begin{table}
+\centering
+    \begin{tabular}{llll}
+        \toprule
+        sgn $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ & $\frac{\sqrt{N}}{\mu_{EE}}\hat{x}_E$ & $\frac{\sqrt{N}}{\mu_{EE}}\hat{x}_{I_1}$ & $\frac{\sqrt{N}}{\mu_{EE}}\hat{x}_{I_2}$ \\
+        \midrule
+        $(1,1,1)$   & $-1 < 0$ & $\alpha$ & $\alpha$ \\
+        $(1,-1,-1)$ & $2 \alpha n_I - 1$ & $\alpha(2 n_I - 1) > 0 $ & $\alpha(2 n_I - 1) > 0$ \\
+        $(1,1,-1)$  & $2 \alpha n_{I_2} - 1$ & $\alpha(2 n_{I_2} + 1)$ & $\alpha(2 n_{I_2} - 1) > 0$  \\
+        $(1,-1,1)$  & $2 \alpha n_{I_1} - 1$ & $\alpha(2 n_{I_1} - 1) > 0$ & $\alpha(2 n_{I_1} + 1)0$  \\
+        \bottomrule
+    \end{tabular}
+    \label{table:signtable}
+    \vspace{0.25cm}
+    \caption{Sign table showing that all solutions for nonzero $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ are inconsistent.}
+\end{table}
 
-% Defining $y_E = \tanh(gx_E)$, etc., the equations defining a fixed point are:
+For Case 2, if $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:otherbranchmatrixeq} is inconsistent using the same argument as in Case 1. The only remaining possibility is $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:otherbranchmatrixeq} becomes
+\begin{equation*}
+ \begin{aligned}
+ \begin{bmatrix} \hat{x}_E \\ \hat{x}_{I_1} \\ 0 \end{bmatrix} 
+ &= \frac{\mu_{EE}}{\sqrt{N}} 
+ \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
+ \end{bmatrix}
+ \begin{bmatrix} 1 \\ \pm 1 \\ \hat{y}_{I_2} \end{bmatrix}.
+ \end{aligned}
+ \end{equation*}
+The consistency condition (from the third row) can only be satisfied if $\hat{y}_{I_2} = \frac{n_I}{n_I - (\beta + 1)} > 1$ (for $\hat{x}_{I_1} > 0$) or $\hat{y}_{I_2} = \frac{n_I(1 + 2 \beta)}{n_I - (\beta + 1)} > 1$ (for $\hat{x}_{I_1} < 0$), both of which are impossible. Case 3 is similar.
 
-%  \begin{align*}
-%         x_E &= \frac{\mu_E}{\sqrt{N}} \left[ (n_E - 1)y_E - \alpha n_{I_1} y_{I_1} - \alpha n_{I_2} y_{I_2} \right] \\
-%         x_{I_1} &= \frac{\mu_E}{\sqrt{N}} \left[ n_E y_E - \alpha (n_{I_1}-1) y_{I_1} - \alpha n_{I_2} y_{I_2} \right] \\
-%         x_{I_2} &= \frac{\mu_E}{\sqrt{N}} \left[ n_E y_E - \alpha n_{I_1} y_{I_1} - \alpha (n_{I_2}-1) y_{I_2} \right] 
-%     \end{align*}
-% which can be written in matrix form as
-% \begin{align}
-%  \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
-%  &= \frac{\mu_E}{\sqrt{N}} 
-%  \begin{bmatrix} (n_E - 1) & -\alpha n_{I_1} & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha (n_{I_1}-1) & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha n_{I_1} & - \alpha (n_{I_2}-1)  
-%  \end{bmatrix}
-%  \begin{bmatrix} y_E\\y_{I_1}\\y_{I_2}\end{bmatrix} 
-%  \label{eq:3cluster_solution}
-%  \end{align}
-% Using the identity $\sech^2(y) = 1-\tanh^2(y)$, the Jacobian for the reduced system \cref{eq:3cluster_solution} will be
-%  \begin{align}
-%  J &= -I + 
-%  \frac{g\mu_E}{\sqrt{N}} 
-%  \begin{bmatrix} (n_E - 1) & -\alpha n_{I_1} & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha (n_{I_1}-1) & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha n_{I_1} & - \alpha (n_{I_2}-1)  
-%  \end{bmatrix}
-%  \begin{bmatrix} 1-y_E^2 & 0 & 0 \\0 &  1-y_{I_1}^2 & 0\\0 & 0 &1-y_{I_2}^2\end{bmatrix} 
-%  \label{eq:3cluster_Jac}
-%  \end{align}
-%  Note that the diagonal matrix on the right scales each column of the non-identity portion of the Jacobian. In particular, if $y_{E/I_1/I_2}=\pm 1$, then its corresponding column will be zeroed out.  
-% %  Thus when there is a solution for which all three $y_E, y_{I_1}, y_{I_2} = \pm 1$, then $J=-I$ and the solution will be stable for large $g$.
-
-% Our task is facilitated by the following observations about the behavior of the $\tanh$ function. If $x \rightarrow \hat{x} \neq 0$ as $g \rightarrow \infty$, then
-% \begin{align*}
-%     \tanh(gx) &\rightarrow 
-%     \begin{cases}
-%     1 & \hat{x} > 0\\
-%     -1 & \hat{x} < 0
-%     \end{cases}
-% &&\text{ as } g \rightarrow \infty.
-% \end{align*}
-% If this is the case, we say that the nonlinearity saturates. We will characterize solutions for large $g$ based on the number of coordinates $(x_E, x_{I_1}, x_{I_2})$ which saturate in this way. If $x \rightarrow 0$, the limiting behavior may be more complicated. Either $\tanh(g x) \rightarrow 0$ as well, or $x \approx \frac{\hat{x}}{g}$, in which case $\tanh(g x) \rightarrow \tanh(\hat{x}) := y_E \neq 0$.  
-
-% However, we will show it is possible to solve for the limiting coordinates and thus to characterize the stability. It turns out to be most convenient to characterize solutions by the number of coordinates that have saturating nonlinearities: we itemize them as $\textbf{S0}, \textbf{S1}, \cdots$ below.
-
-% \begin{enumerate}
-%     \item[\textbf{S3}] If $(y_E,y_{I_1},y_{I_2}) = \pm 1$, then the non-identity matrix in Eqn. \eqref{eq:3cluster_Jac} is 0 and the solution will be stable. Unfortunately, this cannot happen; there is no solution for which \textit{all} nonlinearities saturate.
-%     \item[\textbf{S0}] Similarly, there is no solution for which \textit{no} nonlinearity saturates; i.e. $\tanh(g x_E) \rightarrow y_E \not= \pm 1$.
-%     \item[\textbf{S2}] However, for $n_{I_1} = n_{I_2}$ there is a solution for which $(y_E,y_{I_1},y_{I_2}) = (0,1,-1)$; this solution is unstable. 
-%     \item[\textbf{S1}] For $n_{I_1}\not=n_{I_2}$, there are solutions for which one nonlinearity saturates while the other two do not.
-% \end{enumerate}
-
-% Note that the first set of equations can be written as 
-% 
-% \begin{align*}
-% \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
-% &= \frac{\mu_E}{\sqrt{N}} 
-% \begin{bmatrix} -y_E + C  \\
-% \alpha y_{I_1} + C  \\
-% \alpha y_{I_2} + C  
-% \end{bmatrix}
-% \end{align*}
-% where $C = \frac{\mu_E}{\sqrt{N}}\left(n_E y_E -\alpha n_{I_1} %y_{I_1} - \alpha n_{I_2} y_{I_2} \right)$.
+For Case 4, if $\tanh( g \hat{x}_{I_1} ) \rightarrow 0$ or $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:otherbranchmatrixeq} is inconsistent using the same argument as in Case 1. The remaining possibility is $\tanh( g \hat{x}_{I_1} ) \rightarrow \hat{y}_{I_1}$  and $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_1}| , |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:otherbranchmatrixeq} becomes
+\begin{equation*}
+ \begin{aligned}
+ \begin{bmatrix} \hat{x}_E \\ 0 \\ 0 \end{bmatrix} 
+ &= \frac{\mu_{EE}}{\sqrt{N}} 
+ \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
+ \end{bmatrix}
+ \begin{bmatrix} 1 \\ \hat{y}_{I_1} \\ \hat{y}_{I_2} \end{bmatrix}.
+ \end{aligned}
+ \end{equation*}
+ The consistency conditions (from the second and third rows) can only be satisfied if $\hat{y}_{I_1} = \hat{y}_{I_2} = \frac{n_I}{n_I - 1} > 1$, which is impossible.
 
 \section{Excitatory clusters, weight parameters balanced}
 
@@ -1007,168 +982,6 @@ Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C 
     \label{table:validbeta}
 \end{table}
 
-
-% Let $\mathbf{I}_n$ denote the $n\times n$ identity matrix, $\mathbf{1}_{m \times n}$ the $m\times n$ matrix of ones, and $\mathbf{K}_n$ the $n\times n$ matrix with all ones off the diagonal; i.e. $\mathbf{K}_n = \mathbf{1}_{n \times 1} \left( \mathbf{1}_{n \times 1}\right)^T - \mathbf{I}_n$. 
-% \begin{itemize}
-% \item Since we only have to solve the reduced system (one variable per excitatory cluster), define the $(N_c + N_I) \times (N_c + N_I)$ block matrix \textbf{Used xtra lines in matrix to give space: arraystretch might be better?}
-% \[
-% H_1 = \frac{1}{\sqrt{N}}
-% \left[ \begin{array}{c|c}
-% \\
-% (p-1)\mu_{EE} \mathbf{I}_{N_c} & \mu_{EI}\mathbf{1}_{N_c \times N_I}\\
-% \\
-% \hline
-% \\
-% p \mu_{IE} \mathbf{1}_{N_I \times N_C} & \mu_{II} \mathbf{K}_{N_I} \\
-% \\
-% \end{array}
-% \right]
-% \]
-
-% This is the original matrix $H$ (divided by $\sqrt{N}$) if you treat all excitatory cells in a single cluster as one cell.
-% \item For each potential large-$g$ solution, define the ``sign vector'' $\mathbf{v}$ by
-% \[
-% \mathbf{v} = (\text{sign}(x_{E1}), \dots, \text{sign} (x_{EN_c}), \text{sign} (x_{I1}), \dots, \text{sign} (x_{IN_I})
-% \]
-% where the sign is $1, -1$ or 0.
-% \item If a large-$g$ solution exists with that sign vector, then $H_1 \mathbf{v}$ will have the same signs as the sign vector $\mathbf{v}$ and the solution will be $H_1 \mathbf{v}$. For now, this is a necessary (but not sufficient) condition for the large-$g$ solution to exist. Hopefully it is also sufficient.
-% \item If all we want to know is whether such a solution can exist, we can use the relationships between the coefficients to simplify the matrix. Specifically, we assume that 
-% \[\begin{pmatrix}
-% \mu_{EE} & \mu_{EI}\\
-% \mu_{IE} & \mu_{II}
-% \end{pmatrix} \rightarrow 
-% \begin{pmatrix}
-% N_c \mu & -\alpha \mu\\
-% \mu & -\alpha \mu
-% \end{pmatrix}
-%  \]
-%  where we have expressed each coefficient in terms of $\mu = \mu_{IE}$, the $E\rightarrow I$ connection weight. Then $H_1$ simplifies 
-% to
-% \[
-% H_2 =
-% \left( \begin{array}{c|c}
-% (p-1)N_C\mathbf{I}_{N_c} & -\alpha \mathbf{1}_{N_c \times N_I}\\
-% \hline
-% p \mathbf{1}_{N_I \times N_C} & -\alpha \mathbf{K}_{N_I} 
-% \end{array}
-% \right)
-% \]
-% up to a constant.
-% %\[
-% %H_2 = 
-% %\begin{pmatrix}
-% %\text{diag}( (p-1)N_c) & -\alpha \\
-% %p & \text{offdiag}(-\alpha )
-% %\end{pmatrix}
-% %\]
-
-% Then a necessary condition for the large-$g$ solution to exist is that $H_2 \mathbf{v}$ and $\mathbf{v}$ have same signs.
-
-% \item Let $n_I^+$, $n_I^-$, and $n_I^0$ be the number of inhibitory cells which are positive, negative, and 0 in the large-$g$ limit. Let $b(I)$ be the ``balance'' of these, i.e.
-% \[
-% b(I) = n_I^+ - n_I^-
-% \]
-% Let $n_E^+$, $n_E^-$, and $n_E^0$ be the same thing for the excitatory clusters, and define the ``balance'' $b(E)$ the same way.
- 
-% \end{itemize}
-
-% \subsubsection{Nonzero solutions}
-% \begin{itemize}
-% \item For now, assume there are excitatory clusters with both positive and negative $X_E$ and inhibitory neurons with both positive and negative $X_I$. (For homogeneous populations of one or the other, should be easier.) Also assume none of them are 0.  That is, we assume
-%  $n_E^+, n_E^-, n_I^+, n_I^- > 0$ and $n_E^0, = n_I^0 = 0$. Then the simplified equation 
-% \[ \text{sign}(H_2 \textbf{v}) = \text{sign}(\textbf{v}) \]
-% reduces to the conditions
-% \begin{align*}
-% &(p-1) N_c - \alpha b(I) > 0 && \text{positive excitatory} \\
-% -&(p-1) N_c - \alpha b(I) < 0 && \text{negative excitatory} \\
-% &p\:b(E) - \alpha (b(I)-1) > 0 && \text{positive inhibitory} \\
-% &p\:b(E) - \alpha (b(I)+1) < 0 && \text{negative inhibitory} 
-% \end{align*}
-
-% \item The first pair of inequalities are satisfied if and only if
-% \[
-% |b(I)| < \frac{(p-1) N_c}{\alpha}
-% \]
-% which constrains how the inhibitory cells can be split up. We can simplify the RHS using
-% \begin{align*}
-% \frac{(p-1) N_c}{\alpha}
-% &= (p-1) N_c \frac{N_I}{N_E}
-% = p N_c \frac{N_I}{N_E} - N_c \frac{N_I}{N_E} = N_I - N_c \frac{N_I}{N_E}
-% = N_I\left( 1 - \frac{N_c}{N_E} \right) \\
-% &= N_I\left( 1 - \frac{1}{p} \right)
-% \end{align*}
-% so this becomes
-% \[
-% |b(I)| < N_I\left( 1 - \frac{1}{p} \right)
-% \]
-% Since $p > 1$, this means that $|b(I)| <  N_I$, i.e. we cannot have $|b(I)| = N_I$, so there cannot be a homogeneous, nonzero population of inhibitory cells.
-
-% \item The second pair of inequalities are satisfied if and only if
-% \[
-% \frac{\alpha}{p}(b(I)-1) < b(E) < \frac{\alpha}{p}(b(I)+1)
-% \]
-% Multiply this by $N_I/N_c$ and simplify
-% \begin{align*}
-% &\frac{N_I \alpha}{N_c p}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_c p}(b(I)+1) \\
-% &\frac{N_I \alpha}{N_E}(b(I)-1) < \frac{N_I}{N_c} b(E) < \frac{N_I \alpha}{N_E}(b(I)+1) \\
-% &b(I)-1 < \frac{N_I}{N_c} b(E) < b(I)+1
-% \end{align*}
-
-% \item If $\frac{N_I}{N_c} b(E)$ is an integer, then we can say more, since
-% \[
-% \frac{N_I}{N_c} b(E) = b(I)
-% \]
-% which means that
-% \[
-% \frac{b(E)}{N_c} = \frac{b(I)}{N_I}
-% \]
-% Since $N_c = N_E^+ + N_E^-$ and $N_I = N_I^+ + N_I^-$, we can do some algebra to get
-% \[
-% \frac{N_E^+}{N_I^+} = \frac{N_E^-}{N_I^-} =
-% \frac{N_c}{N_I}
-% \]
-% from which it follows that
-% \[
-% \frac{N_E^+}{N_E^-} = \frac{N_I^+}{N_I^-},
-% \]
-% i.e. the ratio of positive to negative is the same for inhibitory cells and excitatory clusters!
-
-% \item If $\frac{N_I}{N_c} b(E)$ is not an integer, the inequalities still hold, but we no longer have the same ratio.
-
-% \end{itemize}
-
-% \subsubsection{Solutions with some zeros}
-
-% \textbf{Conjecture:} These may never happen unless the cell is 0 for all $g$.
-
-% \begin{itemize}
-% \item If $N_E^0 \neq 0$, i.e. there is at least one excitatory cluster which is 0 in the large $g$ limit, then we have the additional equation $0(p-1)N_c - \alpha b(I) = 0$, from which it follows that $b(I) = 0$. The inequality for $b(E)$ then becomes
-% \[
-% -\frac{\alpha}{p} < b(E) < \frac{\alpha}{p}
-% \]
-% Since $\alpha = N_E/N_I = N_c p/N_I$, this becomes
-% \[
-% -\frac{N_c}{N_I} < b(E) < \frac{N_c}{N_I}
-% \]
-% This means that if $N_c \leq N_I$, we must have $b(E) = 0$ as well. There are more possibilities if $N_c > N_I$.
-
-% \item If $N_I^0 \neq 0$, i.e. there is at least one inhibitory cluster which is 0 in the large $g$ limit, then we have the additional equation 
-% \[
-% p b(E) - \alpha b(I) = 0
-% \]
-% which implies
-% \[
-% b(E) = \frac{\alpha}{p} b(I) = \frac{N_c}{N_i} b(I)
-% \]
-
-% \end{itemize}
-
-% \subsubsection{Solutions with $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$}
-
-% A final possibility is that there are degrees of freedom for which $x_k \rightarrow 0$, but in such as way that $g x_k \rightarrow c$ for some real constant $c$. Then $\tanh(gx) \rightarrow r$, $0 < \vert r \vert < 1$. Deriving such solutions becomes considerably more complicated, as we have not only a linear matrix equation, but nonlinear consistency conditions relating $x_k$ and $\tanh(g x_k)$ \textbf{Actually LHS is zero for large g: still more complicated than $\pm$ 1}
-
-% Instead of proceeding along these lines, we will show that all such solutions are unstable.
-
 \subsection{Excitatory clusters with weight parameters unchanged}
 
 We can also choose the weights as in the unclustered case, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
@@ -1341,114 +1154,6 @@ which can be made negative by taking $a$ sufficiently large. Similarly, we can t
     \caption{Slope fields for \cref{eq:2dsystem}, with a small limit cycle visible in center. Slope field points inward on black box, which is the trapping region for the Poincar{\'e}-Bendixson theorem. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
     \label{fig:nullclines}
 \end{figure}
-
-% \section{Appendix}
-% \subsection{Detailed calculations for \S \ref{sec:stab_largeg}}
-
-% We are seeking solutions to 
-%  \begin{align}
-%  \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
-%  &= \frac{\mu_E}{\sqrt{N}} 
-%  \begin{bmatrix} (n_E - 1) & -\alpha n_{I_1} & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha (n_{I_1}-1) & - \alpha n_{I_2}  \\
-%  n_E  & -\alpha n_{I_1} & - \alpha (n_{I_2}-1)  
-%  \end{bmatrix}
-%  \begin{bmatrix} y_E\\y_{I_1}\\y_{I_2}\end{bmatrix} 
-%  \label{eqn:matSolgLrg}
-%  \end{align} 
-%  where $y_E = \tanh(gx_E)$, etc. First, we show that case \textbf{S3} cannot occur. If such a solution exists, then there is a vector $(y_E, y_{I_1}, y_{I_2})$ with entries $\pm 1$ whose image under \cref{eqn:matSolgLrg} lies in the same octant. Assume WLOG that $y_{I_1}>0$ and $y_{I_2}<0$. Define the inhibitory balance $b = n_{I_1}-n_{I_2}$, where $n_{I_1}, n_{I_2} > 0$ and $n_I = n_{I_1} + n_{I_2}$. Note that this implies $|b| < n_I$. Then the equations for $y_{I_1}$ and $y_{I_2}$ become
-% \begin{align*}
-% n_E y_E - \alpha(b-1) &>0\\
-% n_E y_E - \alpha(b+1) &<0.
-% \end{align*}
-% or, using the identity $n_E = \alpha n_I$,
-% \[ 
-% n_I y_E - 1 < b < n_I y_E + 1 
-% \]
-% If $y_E=1$ then $n_I-1 < b < n_I+1$, and if $y_E=-1$, then $-n_I-1 < b < -n_I+1$. Combining these two observations, either $b < -n_I + 1$ or $b > n_I - 1$. Since $b$ is an integer, this implies that $|b| = n_I$, which is a contradiction.
-
-% If $y_E = 0$, then 
-
-     
-%      However, the possible values of $b$ are limited by $n_I$: $n_{I_1}=n_I-1 \rightarrow b = n_I-1-1  = n_I-2$,  in fact
-%      \[ -n_I + 2 \leq b \leq n_I -2 \]
-%      neither option is possible. 
-
-%      The final option is that $y_E = 0$. This can only hold if $b=0$ i.e. $n_{I_1}=n_{I_2}$. The Jacobian in this case is
-%      \[ J = -I + \frac{g\mu}{\sqrt{N}}
-%      \begin{bmatrix} (n_E-1) & 0 & 0\\
-%         n_E & 0 & 0\\
-%         n_E & 0 & 0 \end{bmatrix}\]
-%         where we use $\sech^2(g x_{I_1}) = 0$, $\sech^2(gx_E)=1$.
-%         This solution is unstable for $g > \frac{\sqrt{N}}{\mu (n_E-1)}$
-
-%         THis shows that while there is no solution of the form $\textbf{S3}$, there is one solution of the form $\textbf{S2}$.
- 
-% Next, we consider the possibility that 
-%  $\tanh(gx) \rightarrow y$ but $0 < y < 1$ or $-1 < y < 0$ for each coordinate. In this case 
-% \[ x \approx \frac{\tanh^{-1}(y)}{g} \]
-
-% However, in Eqn. \eqref{eqn:matSolgLrg} the left-hand side must go to the zero vector as $g \rightarrow \infty$; thus the vector with the limiting values of $y_E$, $y_{I_1}$ and $y_{I_2}$ must be in the null space of the matrix in Eqn. \eqref{eqn:matSolgLrg}. 
-% This matrix is full rank! So there is no solution for which $x \rightarrow 0$ but $\tanh(gx) \rightarrow a$, where $0 < |a| < 1$, for all three values $x = x_E, x_{I1}, x_{I2}$. (\textbf{S0}).
-
-% Finally we show that the remaining $I_1/I_2$ branches have solutions of the form $\textbf{S1}$.
-% It turns out that what can happen is that, for example, $x_{E}, x_{I_1} \rightarrow 0$ as $g \rightarrow \infty$, but that $x_{I2}$ has a nonzero limit as $g \rightarrow \infty$ (see \cref{fig:20symm1} for an example of this exact occurrence for 1:1 and 3:1 I-cell symmetry in the $N=20$ case). Then we have $\tanh(g x_E), \tanh(g x_{I1})$ approaching a limit between 0 and 1 as $g \rightarrow \infty$ and $\tanh(g x_{I2}) \rightarrow 1$ as $g \rightarrow \infty$.
-
-% What are necessary conditions for such a solution to exist? Let us solve
-% \[ A \begin{bmatrix} y_1\\y_2\\y_3\end{bmatrix} = A \textbf{y} = \textbf{e}_k 
-% \]
-% where $\textbf{e}_k$ is the $k$th unit vector.
-
-% Then the following must be true:
-% \begin{enumerate}
-%     \item[\textbf{C1:}] $(\textbf{y})_k > 0$
-%     \item[\textbf{C2:}] $|(\textbf{y})_k| > |(\textbf{y})_j|$ for any $j\not=k$. 
-% \end{enumerate}
-% We can then obtain our desired $\begin{bmatrix} y_E\\y_{I_1}\\y_{I_2}\end{bmatrix} $ by dividing $\textbf{y}$ by its maximum.
-
-% % This is a necessary but not sufficient condition. The figure below shows the solution $y_E = 0.2222$, $y_{I_1}=-0.0556$, $y_{I_2}=1$, which we can obtain by using $\textbf{e}_3$ and normalizing the vector so that its largest entry is 1.
-
-% % However, there is a second possibility, using $\textbf{e}_2$, for which $y_E = 0.75$, $y_{I_1}=1$, $y_{I_2}=-0.1875$, which does not appear to correspond to an actual solution branch.
-
-% It turns out it is easy to invert $A$, using Cramer's rule:
-
-% \begin{align*}
-%    A^{-1} & = \frac{1}{\alpha^2 (N-1)}\begin{bmatrix}
-%     -\alpha^2 (n_I-1) & \alpha^2 n_{I_1} & \alpha^2 n_{I_2}\\
-%     -\alpha n_E & \alpha (n_E + n_{I_2}-1) & -\alpha n_{I_2}\\
-%     -\alpha n_E & -\alpha n_{I_1} & \alpha (n_E + n_{I_1}-1)\\
-%     \end{bmatrix}
-% \end{align*}
-
-% Note that $\textbf{C1}$ is met for $\evec_2$ and $\evec_3$, but is never met for $\evec_1$.
-% However, using $n_E = \alpha n_I$ and $\alpha > 1$, we can see that
-% \[ \alpha (n_E + n_{I_2}-1)> \alpha^2 n_{I_1} > \vert -\alpha n_{I_1}\vert \]
-% and
-% \[ \alpha (n_E + n_{I_1}-1)> \alpha^2 n_{I_2} > \vert -\alpha n_{I_2}\vert \]
-% i.e. \textbf{C2} is also met for both $\evec_2$ and $\evec_3$.
-
-% Therefore we have two solutions, each of which can be seen (for example) as the positive and negative parts of the 1:3 solution curve in Fig. \#\#:
-% \begin{eqnarray}
-% \begin{bmatrix} y_E\\y_{I_1}\\y_{I_2}\end{bmatrix} & = & \begin{bmatrix} \frac{\alpha n_{I_1}}{N-n_{I_1}-1}\\
-%     1 \\ -\frac{n_{I_1}}{N-n_{I_1}-1}
-% \end{bmatrix}
-% \label{eq:S1_sol1}
-% \end{eqnarray}
-% and 
-% \begin{eqnarray}
-% \begin{bmatrix} y_E\\y_{I_1}\\y_{I_2}\end{bmatrix} & = & \begin{bmatrix} \frac{\alpha n_{I_2}}{N-n_{I_2}-1}\\
-%     -\frac{n_{I_2}}{N-n_{I_2}-1}\\1
-% \end{bmatrix}.
-% \end{eqnarray}
-% For each solution, the value of the ``saturated" coordinate ($x_{I_1}$ or $x_{I_2}$) in the limit $g \rightarrow \infty$ is given by multiplying 
-% the vector above by $A$; for Eqn. \eqref{eq:S1_sol1},
-% \[ x_{I_1} = \frac{\alpha \mu_{EE}}{\sqrt{N}} \frac{N-1}{N-n_{I_1}-1}\]
-% Then for a finite $g$, recover the other coordinates using
-% \[ x_E = \frac{1}{g} \tanh^{-1}\left( \frac{\alpha n_{I_1}}{N-n_{I_1}-1}\right); \qquad  x_{I_2} = \frac{1}{g} \tanh^{-1}\left( -\frac{n_{I_1}}{N-n_{I_1}-1}\right)\]
-
-% To assess stability, return to Eqn. \eqref{eqn:Jmat_3pop}: writing $J = -I + \frac{g\mu_E}{\sqrt{N}} \tilde{J}$, we find that 
-% \[ {\rm tr} (\tilde{J})  = (1-y_E^2)(n_E-1) - (1-y_{I_1}^2)\alpha(n_{I_1}-1) \]
-
 
 \bibliographystyle{siamplain}
 \bibliography{main.bib}
