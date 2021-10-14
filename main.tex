@@ -315,28 +315,14 @@ As a consequence, there is a branch of equilibria emerging at the symmetric pitc
 
 \subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
 
-First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
-\[
--x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
-\]
-which simplifies to 
-\begin{equation}\label{eq:xIbrancheq}
-\tanh(g x_I) - g_0 x_I = 0.
-\end{equation}
-Defining $f(x_I) := \tanh(g x_I) - g_0 x_I$, $f(0) = 0$, $f'(0) = g - g_0$, and $f(x_I) \rightarrow -\infty$ as $x_I \rightarrow \infty$. When $g > g_0$, $f(x_I)$ is initially increasing, thus it follows from the continuity of $f$ and the intermediate value theorem that \cref{eq:xIbrancheq} has a solution with $x_I > 0$ for all $g > g_0$. Furthermore, $x_I \rightarrow 1/g_0$ as $g \rightarrow \infty$.
+First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. 
 
-To obtain an approximation of this solution for $g$ close to $g_0$, we expand the LHS of \cref{eq:xIbrancheq} in Taylor series about $x_I = 0$ and $g = g_0$ and simplify to get
-\begin{equation}\label{eq:tanhTaylor}
-(g-g_0) x_I - \frac{(g x_I)^3}{3} + \frac{2(g x_I)^5}{15} + \mathcal{O}\left( x_I^7 \right) = 0.
-\end{equation}
-We note that the remainder term in $(g-g_0)$ is transcendentally small in the sense of \cite{Holmes2012}. Keeping up to cubic terms in $x_I$, equation \cref{eq:tanhTaylor} simplifies to
-\[
-x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 \right) = 0.
-\]
-For $g$ close to $g_0$, the nonzero solution for $x_I$ is given, to leading order, by
+The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in Appendix) that 
+the nonzero solution for $x_I$ is given, to leading order, by
 \begin{align}\label{eq:xIapprox}
 x_I &= \sqrt{ \frac{3(g - g_0) }{g^3}} && g \geq g_0.
 \end{align}
+
 We can obtain a higher-order approximation by keeping up to fifth-order terms in \cref{eq:tanhTaylor} to get
 \begin{equation*}
 x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 + \frac{2 g^5}{15} x_I^4 \right) = 0,
@@ -357,29 +343,8 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
     \label{fig:xIapprox}
 \end{figure}
 
-For $\beta > 1$, we find the solution along each $I_1/I_2$ branch by reducing \cref{eq:reducedsystem} to the 3-dimensional system
-\begin{equation}\label{eq:otherbranchmatrixeq}
- \begin{aligned}
- \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
- &= \frac{\mu_{EE}}{\sqrt{N}} 
- \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
-    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
-    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
- \end{bmatrix}
- \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
- \end{aligned}
- \end{equation}
- where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution of the form
-\begin{equation}\label{eq:I1I2asymp}
-    x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
-    x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
-     x_E = \mathcal{O}\left( \frac{1}{N^2} \right)
-\end{equation}
-for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:otherbranchmatrixeq}, we get
-\[
- x_{I_1} - x_{I_2} = \frac{\alpha}{\mu_{EE}\sqrt{N}}\left( \tanh(g x_{I_1}) - \tanh(g x_{I_2}) \right).
- \]
-Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain an approximate formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
+For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceding as described in the Appendix (), 
+we obtain an approximate formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
  \begin{align}\label{eq:XI1}
  x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_0.
 \end{align}
@@ -399,7 +364,7 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
 
 \subsection{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
 
-Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find an leading order formula for its location.
+Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find a leading order formula for its location.
 
 \begin{figure}
     \centering
@@ -447,45 +412,12 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 \end{proof}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we start by computing the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. Substituting \cref{eq:XI1} for $x_{I_1}$, using the Taylor series expansion $\sech^2 x = 1 - x^2 + \mathcal{O}(x^4)$, and simplifying, the eigenvalue $\lambda_{I_1}^*(g)$ of $D\tilde{F}(\xvec^*)$ is located at
-\begin{align*}
-    \lambda_{I_1}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
-\end{align*}
-which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. It follows that for $g$ close to $g_0$, the fixed point on the $I_1/I_2$ branch is unstable for $\beta > 2$ (see \cref{fig:noclusterBD1}). Similarly, the eigenvalue $\lambda_{I_2}^*(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located at 
-\begin{align*}
-    \lambda_{I_2}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
-\end{align*}
-which is negative for $\beta > 1/2$ and thus does not affect stability. 
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see Appendix) that $\lambda_{I_2}$ is always negative, while $\lambda_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
+
+The eigenvalues of $H_3$ include one real eigenvalue and a complex pair; the real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation. We find that its location is
+
 % If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
 
-It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
-\begin{equation}\label{eq:lambdaansatz}
-\lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4.
-\end{equation}
-We substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). Using this method for $\lambda = \lambda_I$, $H_3(\xvec^*)$ has a real eigenvalue located at
-\[
-\lambda_I(\xvec^*) = \alpha \mu_{EE} \left(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
-\]
-Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigenvalue $\lambda_I^*(g)$ of $J_3(\xvec)$ corresponding to $\lambda_I$ is located at
-\begin{align*}
-\lambda_I^*(g) = \frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g \geq g_0,
-\end{align*}
-which is always negative and thus does not affect stability.
-
-Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda_0 \pm \omega_0$. In doing so, we will find a Hopf bifurcation on each $I_1/I_2$ branch. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
-\begin{equation}
-\lambda_0(g, \beta) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N} \right).
-\end{equation}
-We can get more accurate approximations for $\lambda(g, \beta)$ by taking higher powers of $x_{I_1}$ in our power series ansatz \cref{eq:lambdaansatz}. For example, when $\beta=1$, we can obtain the fourth-order approximation
-\[
-\lambda_0(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
-\]
-A similar fourth-order approximation can be obtained when $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is extremely complicated.
-Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda_0^*(g) \pm i \omega_0^*(g)$, where
-\begin{equation}\label{eq:lambdagbeta}
-\lambda_0^*(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1 + \mathcal{O}\left(\frac{1}{N} \right).
-\end{equation}
-To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda_0^*(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to get
 \begin{equation}\label{eq:ghopfformula}
     g_{H,\beta} = 
     \frac{\sqrt{N}}{\mu_{EE}} 
@@ -1083,6 +1015,103 @@ Finally, we consider a network in which the inhibitory cells are clustered, rath
 \end{itemize}
 
 \appendix
+
+\section{Solutions along $I_1/I_2$ branches: detailed calculations} 
+Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. 
+
+We begin with the simplest case which is when $n_I$ is even and $\beta = 1$. 
+Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
+\[
+-x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
+\]
+which simplifies to 
+\begin{equation}\label{eq:xIbrancheq}
+\tanh(g x_I) - g_0 x_I = 0.
+\end{equation}
+Defining $f(x_I) := \tanh(g x_I) - g_0 x_I$, $f(0) = 0$, $f'(0) = g - g_0$, and $f(x_I) \rightarrow -\infty$ as $x_I \rightarrow \infty$. When $g > g_0$, $f(x_I)$ is initially increasing, thus it follows from the continuity of $f$ and the intermediate value theorem that \cref{eq:xIbrancheq} has a solution with $x_I > 0$ for all $g > g_0$. Furthermore, $x_I \rightarrow 1/g_0$ as $g \rightarrow \infty$.
+
+To obtain an approximation of this solution for $g$ close to $g_0$, we expand the LHS of \cref{eq:xIbrancheq} in Taylor series about $x_I = 0$ and $g = g_0$ and simplify to get
+\begin{equation}\label{eq:tanhTaylor}
+(g-g_0) x_I - \frac{(g x_I)^3}{3} + \frac{2(g x_I)^5}{15} + \mathcal{O}\left( x_I^7 \right) = 0.
+\end{equation}
+We note that the remainder term in $(g-g_0)$ is transcendentally small in the sense of \cite{Holmes2012}. Keeping up to cubic terms in $x_I$, equation \cref{eq:tanhTaylor} simplifies to
+\[
+x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 \right) = 0.
+\]
+Solving for the non-zero solution for $x_I$ results in the expression \cref{eq:xIapprox}.
+
+We can obtain a higher-order approximation by keeping up to fifth-order terms in \cref{eq:tanhTaylor} to get
+\begin{equation*}
+x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 + \frac{2 g^5}{15} x_I^4 \right) = 0,
+\end{equation*}
+which is $x_I$ multiplied by a quadratic in $x_I^2$. To find the nonzero solution for $x_I$, we solve this quadratic for $x_I^2$ and take square roots, yielding \cref{eq:xIapprox5}.
+
+For $\beta > 1$, we find the solution along each $I_1/I_2$ branch by reducing \cref{eq:reducedsystem} to the 3-dimensional system
+\begin{equation}\label{eq:otherbranchmatrixeq}
+ \begin{aligned}
+ \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
+ &= \frac{\mu_{EE}}{\sqrt{N}} 
+ \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
+ \end{bmatrix}
+ \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
+ \end{aligned}
+ \end{equation}
+ where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution of the form
+\begin{equation}\label{eq:I1I2asymp}
+    x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
+    x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
+     x_E = \mathcal{O}\left( \frac{1}{N^2} \right)
+\end{equation}
+for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:otherbranchmatrixeq}, we get
+\[
+ x_{I_1} - x_{I_2} = \frac{\alpha}{\mu_{EE}\sqrt{N}}\left( \tanh(g x_{I_1}) - \tanh(g x_{I_2}) \right).
+ \]
+Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain the formula given in \cref{eq:XI1}.
+
+\section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}
+
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we start by computing the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. Substituting \cref{eq:XI1} for $x_{I_1}$, using the Taylor series expansion $\sech^2 x = 1 - x^2 + \mathcal{O}(x^4)$, and simplifying, the eigenvalue $\lambda_{I_1}^*(g)$ of $D\tilde{F}(\xvec^*)$ is located at
+\begin{align*}
+    \lambda_{I_1}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
+\end{align*}
+which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. Similarly, the eigenvalue $\lambda_{I_2}^*(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_2}$ is located at 
+\begin{align*}
+    \lambda_{I_2}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
+\end{align*}
+which is negative for $\beta > 1/2$ and thus does not affect stability. 
+
+
+It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
+\begin{equation}\label{eq:lambdaansatz}
+\lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4.
+\end{equation}
+We substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). Using this method for $\lambda = \lambda_I$, $H_3(\xvec^*)$ has a real eigenvalue located at
+\[
+\lambda_I(\xvec^*) = \alpha \mu_{EE} \left(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
+\]
+Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigenvalue $\lambda_I^*(g)$ of $J_3(\xvec)$ corresponding to $\lambda_I$ is located at
+\begin{align*}
+\lambda_I^*(g) = \frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g \geq g_0,
+\end{align*}
+which is always negative and thus does not affect stability.
+
+Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda_0 \pm \omega_0$. In doing so, we will find a Hopf bifurcation on each $I_1/I_2$ branch. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
+\begin{equation}
+\lambda_0(g, \beta) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha \beta g^2 (n_I-1) x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N} \right).
+\end{equation}
+We can get more accurate approximations for $\lambda(g, \beta)$ by taking higher powers of $x_{I_1}$ in our power series ansatz \cref{eq:lambdaansatz}. For example, when $\beta=1$, we can obtain the fourth-order approximation
+\[
+\lambda_0(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
+\]
+A similar fourth-order approximation can be obtained when $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is extremely complicated.
+Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda_0^*(g) \pm i \omega_0^*(g)$, where
+\begin{equation}\label{eq:lambdagbeta}
+\lambda_0^*(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1 + \mathcal{O}\left(\frac{1}{N} \right).
+\end{equation}
+To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda_0^*(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to obtain the expression in \cref{eq:ghopfformula}.
+
 
 \section{Proof of \cref{prop:limitcycle}}\label{sec:limitcycleproof}
 
