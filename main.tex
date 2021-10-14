@@ -317,7 +317,7 @@ As a consequence, there is a branch of equilibria emerging at the symmetric pitc
 
 First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. 
 
-The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in Appendix) that 
+The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in \cref{app:I1I2sol}) that 
 the nonzero solution for $x_I$ is given, to leading order, by
 \begin{align}\label{eq:xIapprox}
 x_I &= \sqrt{ \frac{3(g - g_0) }{g^3}} && g \geq g_0.
@@ -343,7 +343,7 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
     \label{fig:xIapprox}
 \end{figure}
 
-For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceding as described in the Appendix (), 
+For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceding as described in \cref{app:I1I2sol}, 
 we obtain an approximate formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
  \begin{align}\label{eq:XI1}
  x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_0.
@@ -412,7 +412,7 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 \end{proof}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see Appendix) that $\lambda_{I_2}$ is always negative, while $\lambda_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda_{I_2}$ is always negative, while $\lambda_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
 
 The eigenvalues of $H_3$ include one real eigenvalue and a complex pair; the real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation. We find that its location is
 
@@ -1016,7 +1016,8 @@ Finally, we consider a network in which the inhibitory cells are clustered, rath
 
 \appendix
 
-\section{Solutions along $I_1/I_2$ branches: detailed calculations} 
+\section{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2sol}
+
 Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. 
 
 We begin with the simplest case which is when $n_I$ is even and $\beta = 1$. 
@@ -1070,7 +1071,7 @@ for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:o
  \]
 Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain the formula given in \cref{eq:XI1}.
 
-\section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}
+\section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2stab}
 
 To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we start by computing the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. Substituting \cref{eq:XI1} for $x_{I_1}$, using the Taylor series expansion $\sech^2 x = 1 - x^2 + \mathcal{O}(x^4)$, and simplifying, the eigenvalue $\lambda_{I_1}^*(g)$ of $D\tilde{F}(\xvec^*)$ is located at
 \begin{align*}
@@ -1113,7 +1114,7 @@ Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a com
 To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda_0^*(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to obtain the expression in \cref{eq:ghopfformula}.
 
 
-\section{Proof of \cref{prop:limitcycle}}\label{sec:limitcycleproof}
+\section{Proof of \texorpdfstring{\cref{prop:limitcycle}}{Proposition}}\label{sec:limitcycleproof}
 
 The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
 \begin{equation}\label{eq:2dimsystem}
@@ -1162,7 +1163,7 @@ h'(y_1) &=
 \end{equation*}
 We have therefore shown that \cref{eq:2dimsystem} has no fixed points other than the origin.
 
-The Linearization of \cref{eq:2dsystem} about the origin is the $2 \times 2$ matrix
+The Linearization of \cref{eq:2dimsystem} about the origin is the $2 \times 2$ matrix
 \[
 J = \frac{g \mu_{EE}}{\sqrt{N}}
 \begin{bmatrix} 
@@ -1174,13 +1175,13 @@ which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 
 \[
 \dot{x} \leq -a + \frac{2 n_E}{\sqrt{N}} = -a + 2 f \sqrt{N},
 \]
-which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined \cref{eq:2dsystem} points inward at all points on the square (\cref{fig:nullclines}). Since the origin is repelling for $g > g_H$ and is the only fixed point of the system, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$. We note that although the limit cycle from \cref{prop:limitcycle} is stable in the two-dimensional system \cref{eq:2dsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}.
+which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined \cref{eq:2dimsystem} points inward at all points on the square (\cref{fig:nullclines}). Since the origin is repelling for $g > g_H$ and is the only fixed point of the system, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$. We note that although the limit cycle from \cref{prop:limitcycle} is stable in the two-dimensional system \cref{eq:2dimsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}.
 \begin{figure}
     \centering
     \begin{tabular}{c}
     \includegraphics[width=8cm]{images/trappingregion.eps}
     \end{tabular}
-    \caption{Slope fields for \cref{eq:2dsystem}, with a small limit cycle visible in center. Slope field points inward on black box, which is the trapping region for the Poincar{\'e}-Bendixson theorem. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
+    \caption{Slope fields for \cref{eq:2dimsystem}, with a small limit cycle visible in center. Slope field points inward on black box, which is the trapping region for the Poincar{\'e}-Bendixson theorem. $N = 20$, $g = 5$, $\alpha = 4$, and $\mu_{EE} = 0.7$.}
     \label{fig:nullclines}
 \end{figure}
 
