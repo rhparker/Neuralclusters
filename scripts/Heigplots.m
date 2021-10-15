@@ -70,6 +70,10 @@ l  = eig(H);
 [realvals, idx] = uniquetol(real(l));
 l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))];
+% move eigenvalues for convenience
+uniquel(1) = -4;
+uniquel(2) = uniquel(2) - 1.9;
+uniquel(5) = uniquel(5) - 1.9;
 
 figure('DefaultAxesFontSize', fontSize);
 set(gca,'fontname','times');
