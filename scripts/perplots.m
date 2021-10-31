@@ -3,7 +3,8 @@
 a = 4;
 mu = 0.7;
 N = 20;
-fontsize = 24;
+fontSize = 30;
+labelFontSize=30;
 
 % load fixed point data
 
@@ -86,7 +87,7 @@ H0end = 4252;
 plot3(g00(1:H0end), x0E(1:H0end), x0I1(1:H0end), 'LineWidth',4, 'Color', c1 );
 
 % bifurcation points
-plot3( [sqrt(N)/(mu*a)], [0], [0], '.k','MarkerSize',50);
+plot3( [sqrt(N)/(mu*a)], [0], [0], '.k','MarkerSize',60);
 plot3( [Hopfx(2)], [Hopfy(2,1)], [Hopfy(2,3)],'sk','MarkerSize',20,'MarkerFaceColor','k');
 plot3( [Hopfx(3)], [-Hopfy(3,1)], [-Hopfy(3,2)],'sk','MarkerSize',20,'MarkerFaceColor','k');
 plot3( [Hopfx(1)], [Hopfy(1,1)], [Hopfy(1,2)],'sk','MarkerSize',20,'MarkerFaceColor','k');
@@ -96,8 +97,8 @@ ylabel('$x_E$');
 zlabel('$x_{I_1}$');
 
 text(13, -.1, -.35,'$\beta = \infty$','FontSize',labelFontSize,'interpreter','latex');
-text(2.0, .4, .3,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
-text(1.90, 0, -.65,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(1.65, .4, .3,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
+text(1.55, 0, -.65,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
 
 
 pbaspect([2 1 1]);
