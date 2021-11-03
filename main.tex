@@ -311,11 +311,23 @@ Assuming that (without loss of generality) the $I_1$ neurons have the indices $n
 \end{eqnarray}
 We can check that $\rm{Fix}(\Sigma)$ is a subspace of $V$. Furthermore $\dim \rm{Fix}(\Sigma) = 1$ because it can be described as the span of a single vector. 
 
-As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$, which we will ignore for simplicity.
+As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$, where we recall from \cref{sec:simplermodel} that all excitatory cells are synchronized. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$, which we will ignore for simplicity.
 
-\subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
+\subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}\label{sec:solI1I2}
 
-First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Recall from \cref{sec:simplermodel} that we only need to solve \cref{eq:reducedsystem} since all excitatory cells are synchronized. 
+First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Fix $\beta \geq 1$. To find $(x_E, x_{I_1}, x_{I_2})$ along the $(x_E, x_{I_1}, x_{I_2})$ corresponding to $\beta$, we reduce \cref{eq:reducedsystem} to the 3-dimensional system
+\begin{equation}\label{eq:reducedsystemI1I2}
+ \begin{aligned}
+ \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
+ &= \frac{\mu_{EE}}{\sqrt{N}} 
+ \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
+    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
+ \end{bmatrix}
+ \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
+ \end{aligned}
+\end{equation}
+where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:reducedsystemI1I2}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. We note that any solution $(x_E, x_{I_1}, x_{I_2})$ is bounded for all $g$, since the matrix in \cref{eq:reducedsystemI1I2} is constant, and $|\tanh y| \leq 1$ for all $y$. 
 
 The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in \cref{app:I1I2sol}) that 
 the nonzero solution for $x_I$ is given, to leading order, by
@@ -343,12 +355,12 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
     \label{fig:xIapprox}
 \end{figure}
 
-For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceding as described in \cref{app:I1I2sol}, 
-we obtain an approximate formula for $x_{I_1}$ in terms of $g$, for $g$ close to $g_0$
- \begin{align}\label{eq:XI1}
- x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_0.
+For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceeding as described in \cref{app:I1I2sol}, we obtain approximate formulas for $x_{I_1}$ and $x_{I_2}$ in terms of $g$, for $g$ close to $g_0$
+\begin{align}\label{eq:XI1}
+ x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right), \quad
+ x_{I_2} = -\beta x_{I_1} +  \mathcal{O}\left( \frac{1}{N^2}\right) && g \geq g_0.
 \end{align}
-Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison between this approximation and the numerical solution obtained by numerical parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
+Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. In addition, we note that $x_{I_1}$ and $x_{I_2}$ have opposite signs. This is, in fact, true for all $g > g_0$, as shown in \cref{app:I1I2sol}. Comparison between this approximation and the numerical solution obtained by numerical parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
 
 \begin{figure}
     \centering
@@ -364,7 +376,7 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. Comparison betwee
 
 \subsection{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
 
-Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find a leading order formula for its location.
+Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:reducedsystemI1I2} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find a leading order formula for its location.
 
 \begin{figure}
     \centering
@@ -375,7 +387,7 @@ Now that we have obtained a leading order formula for the fixed points on the $I
     \label{fig:Hstareignocluster}
 \end{figure}
 
-To locate the eigenvalues of $\tilde{H}(\xvec^*)$, we first linearize the three-dimensional system \cref{eq:otherbranchmatrixeq} about the fixed point $\xvec = (x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
+To locate the eigenvalues of $\tilde{H}(\xvec^*)$, we first linearize the three-dimensional system \cref{eq:reducedsystemI1I2} about the fixed point $\xvec = (x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
 \[
 J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
 \]
@@ -398,7 +410,7 @@ H_3(\xvec) = \mu_{EE}
 and $I_3$ is the $3 \times 3$ identity matrix. We have the following proposition concerning the eigenvalues of $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$.
 
 \begin{proposition}\label{prop:H3eig}
-Let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution of \cref{eq:otherbranchmatrixeq} and $\xvec^*$ the corresponding fixed point of \cref{eq:reducedmatrixform}, and let $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$ be defined by \cref{eq:H3} and \cref{eq:tildeHxstar}. Then
+Let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution of \cref{eq:reducedsystemI1I2} and $\xvec^*$ the corresponding fixed point of \cref{eq:reducedmatrixform}, and let $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$ be defined by \cref{eq:H3} and \cref{eq:tildeHxstar}. Then
 \begin{compactenum}[(i)]
     \item Every eigenvalue of $H_3(\xvec)$ is an eigenvalue of $\tilde{H}(\xvec^*)$.
     \item $\tilde{H}(\xvec^*)$ has the following additional eigenvalues:
@@ -494,19 +506,23 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
 
 \subsection{Behavior of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}}\label{sec:stab_largeg}
 
-We have characterized the three-cluster fixed point solutions on the $I_1/I_2$ branches near the symmetric pitchfork bifurcation point at $g = g_0$. Next, we will show that these branches are unstable for sufficiently large $g$. Fix $\beta = n_{I_1}/n_{I_2}$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:otherbranchmatrixeq} for $g > g_0$. Let $\xvec^*$ be the corresponding fixed point of \cref{eq:reducedmatrixform}. We will look at the eigenvalues of $D\tilde{F}(\xvec^*)$ for large $g$. The sum of these eigenvalues is 
+We have characterized the three-cluster fixed point solutions on the $I_1/I_2$ branches near the symmetric pitchfork bifurcation point at $g = g_0$. Next, we will show that these branches are unstable for sufficiently large $g$. Fix $\beta = n_{I_1}/n_{I_2}$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:reducedsystemI1I2} for $g > g_0$ (which depends on $g$). Recall from \cref{sec:solI1I2} that $\xvec$ is bounded for all $g$. Let $\xvec^*$ be the corresponding fixed point of \cref{eq:reducedmatrixform}. We will look at the eigenvalues of $D\tilde{F}(\xvec^*)$ for large $g$. The sum of these eigenvalues is 
 \[
 \text{Trace }D\tilde{F}(\xvec^*) = \frac{g (n_E-1) \mu_{EE}}{\sqrt{N}} \sech^2( g x_E ) - (n_I+1).
 \]
-We analyze this by consideration the possible behavior of  $x_E$ as $g \rightarrow \infty$. 
+We analyze this by considering the behavior of $x_E$ as $g \rightarrow \infty$. First, we consider the case when $x_E \rightarrow 0$. There are three possibilities, only two of which can occur.
 \begin{itemize}
-    \item If $x_E \rightarrow 0$, and $g x_E \rightarrow 0$ (e.g. if $x \approx g^{-\beta}$, for $\beta > 1$): $\sech^2(gx_E) \rightarrow 1$ and so $g \sech^2(gx_E) \rightarrow \infty$.
-    \item If $x_E \rightarrow 0$, but $g x_E \rightarrow C$, for $C>0$ (e.g. $x \approx g^{-1}$): $g\sech^2(gx_E) \approx g\sech^2(C) \rightarrow \infty$.
-     \item If $x_E \rightarrow 0$, but $g x_E \rightarrow \infty$ (e.g. if $x \approx g^{-\beta}$, for $0 < \beta < 1$): in this case, it is possible for $g\sech^2(gx_E) \rightarrow 0$; this would result in a stable fixed point. \textbf{However we have not observed this numerically} \textcolor{red}{True? False?}
+    \item $x_E \rightarrow 0$, and $g x_E \rightarrow 0$ (e.g. $x \sim g^{-\beta}$, for $\beta > 1$): then $\sech^2(gx_E) \rightarrow 1$, and so $g \sech^2(gx_E) \rightarrow \infty$.
+    \item $x_E \rightarrow 0$, but $g x_E \rightarrow C$, for $C>0$ (e.g. $x \sim g^{-1}$): then $g\sech^2(gx_E) \sim g\sech^2(C) \rightarrow \infty$.
+    \item $x_E \rightarrow 0$, but $g x_E \rightarrow \infty$ (e.g. $x \sim g^{-\beta}$, for $0 < \beta < 1$). We will show this cannot happen. If this is true, then $g\sech^2( g x_E) \rightarrow 0$, from which it follows that $\tanh^2( g x_E) \rightarrow 1$, which implies $\tanh(g x_E) \rightarrow 1$. Since $x_{I_1}$ and $x_{I_2}$ have opposite signs for $g > g_0$ (see the end of \cref{app:I1I2sol}), it follows from \cref{eq:XE1E2asymp} that
+    \[
+    x_E \geq \frac{\mu_{EE}}{\sqrt{N}}\left[ (\alpha n_I - 1) - \alpha n_I \frac{\beta}{\beta+1} \right] = \frac{\mu_{EE}}{\sqrt{N}}\left[ \alpha(n_I - n_{I_1}) - 1 \right] \geq \frac{\mu_{EE}}{\sqrt{N}}\left( \alpha - 1 \right),
+    \]
+    since $n_{I_1} \leq n_I - 1$. At long we take $\alpha > 1$ (which is typically the case), $x_E$ is bounded away from 0 for all $g > g_0$, thus we cannot have $x_E \rightarrow 0$.
 \end{itemize} 
-Thus for sufficiently large $g$, $\text{Trace }D\tilde{F}(\xvec^*) > 0$, which implies that $D\tilde{F}(\xvec^*)$ has an eigenvalue with positive real part. 
+We have shown that if $x_E \rightarrow 0$, $\text{Trace }D\tilde{F}(\xvec^*) > 0$ for sufficiently large $g$, which implies that $D\tilde{F}(\xvec^*)$ always has an eigenvalue with positive real part. 
 
-The remaining possibility is that $x_E \rightarrow \hat{x}_E \neq 0$. In Appendix \ref{app:stab_large} , we show that this cannot occur. Therefore, all $(x_E,x_{I_1},x_{I_2})$ satisfy $x_E \rightarrow 0$ as $g\rightarrow$ and are unstable for sufficiently large $g$.
+The remaining possibility is that $x_E \rightarrow \hat{x}_E \neq 0$. In \cref{app:stab_largeg}, we show that this cannot occur. Therefore, all $(x_E,x_{I_1},x_{I_2})$ satisfy $x_E \rightarrow 0$ as $g\rightarrow$ and are unstable for sufficiently large $g$.
 
 \textcolor{red}{Put a summary here??}
 
@@ -564,7 +580,7 @@ As in the previous section, it follows from Equivariant Bifurcation Theorem that
 
 \subsection{Solutions on \texorpdfstring{$C_1/C_2$}{C1/C2} branch}
 
-First, we derive leading order expressions for the solutions along the $C_1/C_2$ branches for $g$ close to $g_C$. The simplest case occurs when $n_C$ is even and $\beta_C = 1$, in which case $n_{C_1}=n_{C_2}$. On this branch, $x_{E_2} = -x_{E_1}$, i.e. there are two equally sized groups of excitatory clusters with equal and opposite activity, and all the inhibitory cells have synchronized activity $x_I = 0$. Taking $x_{E_1} = x_E$, $x_{E_2} = -x_E$, and $x_I = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation $\tanh(g x_E) = g_C x_E$. As in \S \ref{sec:E1I1} $x_E$ is given, to leading order, by
+First, we derive leading order expressions for the solutions along the $C_1/C_2$ branches for $g$ close to $g_C$. The simplest case occurs when $n_C$ is even and $\beta_C = 1$, in which case $n_{C_1}=n_{C_2}$. On this branch, $x_{E_2} = -x_{E_1}$, i.e. there are two equally sized groups of excitatory clusters with equal and opposite activity, and all the inhibitory cells have synchronized activity $x_I = 0$. Taking $x_{E_1} = x_E$, $x_{E_2} = -x_E$, and $x_I = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation $\tanh(g x_E) = g_C x_E$. As in \cref{sec:E1I1}, $x_E$ is given, to leading order, by
 \begin{align}\label{eq:xEapprox}
 x_E &= \sqrt{ \frac{3(g - g_C) }{g^3}} && g \geq g_C,
 \end{align}
@@ -589,7 +605,7 @@ for $g$ close to $g_C$. For $\beta_C > 1$, we find the solution along each $C_1/
     x_{E_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
     x_I = \mathcal{O}\left( \frac{1}{N^2} \right)
 \end{equation}
-for $g$ close to $g_C$. Following the same procedure as in \S \ref{sec:E1I1}, we obtain the formula
+for $g$ close to $g_C$. Following the same procedure as in \cref{sec:E1I1}, we obtain the formula
  \begin{align}\label{eq:XE1}
  x_{E_1} &= \pm \sqrt{ \frac{ 3(g - g_C) }{ (1 - \beta_C + \beta_C^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right)&& g \geq g_C,
 \end{align}
@@ -683,7 +699,7 @@ for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not af
 \end{equation*}
 to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. Thus for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (see the top panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
 
-As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ crosses the origin (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). The behavior at this symmetric pitchfork bifurcation is much the same as in \S \ref{sec:E1I1}: there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
+As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ crosses the origin (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). The behavior at this symmetric pitchfork bifurcation is much the same as in \cref{sec:E1I1}: there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
 \begin{equation}\label{eq:gpitchinhbeta1}
 g_I = \frac{\sqrt{N}}{\alpha \mu}.
 \end{equation}
@@ -741,7 +757,8 @@ This reduces to the condition $\beta_C < \beta_C^*$, where
 \begin{equation}\label{eq:betaCstar}
     \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
 \end{equation}
-As $N \rightarrow \infty$, the $\alpha$ in the denominator of \cref{eq:betaCineq} becomes insignificant, and we have $\beta_C^* \rightarrow 2 p-1$. \textbf{Next statement seems to contradict what I just read} This depends on neither $p$ nor $n_C$, since these variables are involved in \cref{eq:betaCineq} only in the form $p n_C = n_E = f N$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. Since $p = f N/n_C$, it follows that if either $n_C$ is held constant or $n_C$ scales as $\sqrt{N}$, $\beta_C < \beta_C^*$ will be always satisfied for sufficiently large $N$.
+As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$ and $n_C$ scale as $\sqrt{N}$, then the only significant terms in the numerator and denominator of \cref{eq:betaCstar} are of order $N$ or larger, in which case $\beta_C^* \rightarrow 2 p-1$ as $N \rightarrow \infty$. \textbf{Next statement seems to contradict what I just read. I took that out part out. Maybe just include what I have above?} 
+% This depends on neither $p$ nor $n_C$, since these variables are involved in \cref{eq:betaCineq} only in the form $p n_C = n_E = f N$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. Since $p = f N/n_C$, it follows that if either $n_C$ is held constant or $n_C$ scales as $\sqrt{N}$, $\beta_C < \beta_C^*$ will be always satisfied for sufficiently large $N$.
 
 For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -819,7 +836,7 @@ Numerical parameter continuation suggests that as $g \rightarrow \infty$, $(x_{E
 \begin{equation}\label{eq:bccondition}
     \frac{2 \beta n_I - \beta - 1}{2 n_I + \beta + 1} < \beta_C < \frac{2 \beta n_I + \beta + 1}{2 n_I - \beta - 1}.
 \end{equation}
-where $1 < \beta < 2p-1$. 
+where $1 \leq \beta < 2p-1$. 
 
 A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. If $n_C = n_I$, it follows from \cref{eq:bccondition} that 
 \[
@@ -951,10 +968,8 @@ Finally, we consider a network in which the inhibitory cells are clustered, rath
 
 \section{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2sol}
 
-Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. 
-
-We begin with the simplest case which is when $n_I$ is even and $\beta = 1$. 
-Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystem} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
+Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. We begin with the simplest case which is when $n_I$ is even and $\beta = 1$. 
+Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystemI1I2} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
 \[
 -x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
 \]
@@ -980,29 +995,19 @@ x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 + \frac{2 g^5}{15} x_I^4 \right) = 0,
 \end{equation*}
 which is $x_I$ multiplied by a quadratic in $x_I^2$. To find the nonzero solution for $x_I$, we solve this quadratic for $x_I^2$ and take square roots, yielding \cref{eq:xIapprox5}.
 
-For $\beta > 1$, we find the solution along each $I_1/I_2$ branch by reducing \cref{eq:reducedsystem} to the 3-dimensional system
-\begin{equation}\label{eq:otherbranchmatrixeq}
- \begin{aligned}
- \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
- &= \frac{\mu_{EE}}{\sqrt{N}} 
- \begin{bmatrix} (\alpha n_I - 1) & -\alpha \frac{\beta}{\beta+1} n_I & - \alpha \frac{1}{\beta+1} n_I  \\
-    \alpha n_I  & -\alpha \left(\frac{\beta}{\beta+1} n_I-1\right) & - \alpha \frac{1}{\beta+1} n_I  \\
-    \alpha n_I & -\alpha \frac{\beta}{\beta+1} n_I & -\alpha \left(\frac{1}{\beta+1} n_I-1\right)
- \end{bmatrix}
- \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
- \end{aligned}
- \end{equation}
- where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:otherbranchmatrixeq}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:otherbranchmatrixeq} has a solution of the form
+For $\beta > 1$, as $N \rightarrow \infty$, numerical continuation with the parameter continuation software package AUTO \cite{AUTO} suggests that \cref{eq:reducedsystemI1I2} has a solution of the form
 \begin{equation}\label{eq:I1I2asymp}
     x_{I_2} = -\beta x_{I_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
     x_{I_1} = \mathcal{O}\left( \frac{1}{N} \right), \quad
      x_E = \mathcal{O}\left( \frac{1}{N^2} \right)
 \end{equation}
-for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:otherbranchmatrixeq}, we get
+for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:reducedsystemI1I2}, we get
 \[
  x_{I_1} - x_{I_2} = \frac{\alpha}{\mu_{EE}\sqrt{N}}\left( \tanh(g x_{I_1}) - \tanh(g x_{I_2}) \right).
  \]
 Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain the formula given in \cref{eq:XI1}.
+
+Finally, we show that $x_{I_1}$ and $x_{I_2}$ have opposite signs for all $g > g_0$. Since \cref{eq:reducedsystemI1I2} is smooth in $(x_E, x_{I_1}, x_{I_2})$ and $g$, the solutions $x_{I_1}$ and $x_{I_2}$ are smooth in $g$. For $g$ close to $g_0$, $x_{I_1}$ and $x_{I_2}$ have opposite signs; if this is not the case for some $g > g_0$, either $x_{I_1}$ or $x_{I_2}$ must pass through 0. We will show that this cannot happen. Suppose $x_{I_1} = 0$ for some $g^* > g_0$. Substituting this into \cref{eq:reducedsystemI1I2} and subtracting the second row from the first, we have $x_E = -\frac{\mu_{EE}}{\sqrt{N}} \tanh(g^* x_E)$, which is impossible unless $x_E = 0$. If $x_E = 0$, then $x_{I_2} = -\frac{\mu_{EE}}{\sqrt{N}} \alpha(n_{I_2} - 1) \tanh(g^* x_{I_2})$, which is again impossible unless $x_{I_2} = 0$. Thus $x_{I_1}=0$ implies $(x_E, x_{I_1}, x_{I_2}) = 0$. This would mean that the $I_1/I_2$ branch would intersect the zero solution in another bifurcation point at $g^* > g_0$, which we know does not happen. The case where $x_{I_2} = 0$ for some $g^* > g_0$ is similar.
 
 \section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2stab}
 
@@ -1118,9 +1123,9 @@ which can be made negative by taking $a$ sufficiently large. Similarly, we can t
     \label{fig:nullclines}
 \end{figure}
 
-\section{Stability of the $I_1/I_2$ branch for large $g$: detailed calculations }\label{app:stab_largeg} 
+\section{Stability of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}: detailed calculations }\label{app:stab_largeg} 
 
-Here we prove our assertion, made in \S \ref{sec:stab_largeg}, that $x_E \rightarrow 0$ as $g\rightarrow \infty$ along any $I_1/I_2$ solution branch.
+Here we prove our assertion, made in \cref{sec:stab_largeg}, that $x_E \rightarrow 0$ as $g\rightarrow \infty$ along any $I_1/I_2$ solution branch.
 
 Suppose, instead, that $x_E \rightarrow \hat{x}_E \neq 0$ as $g \rightarrow \infty$. Without loss of generality, we can take $\hat{x}_E > 0$, since by odd symmetry of \cref{eqn:sys_Basic}, there will be a corresponding solution with $\hat{x}_E < 0$. This implies that $\tanh x_{E} \rightarrow 1$. There are four cases to consider:\\
 \begin{itemize}
@@ -1130,7 +1135,7 @@ Suppose, instead, that $x_E \rightarrow \hat{x}_E \neq 0$ as $g \rightarrow \inf
     \item Case 4: $x_{I_1} \rightarrow 0$ and $x_{I_2} \rightarrow 0$.\\
 \end{itemize}
 
-The computations to follow were done with the assistance of Wolfram Mathematica. For Case 1, $\tanh(g x_{I_1}) \rightarrow \pm 1$ and $\tanh(g x_{I_2}) \rightarrow \pm 1$. We can then use \cref{eq:otherbranchmatrixeq} to solve for $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$. The signs of these solutions are all inconsistent, as we can see in \cref{table:signtable}. 
+The computations to follow were done with the assistance of Wolfram Mathematica. For Case 1, $\tanh(g x_{I_1}) \rightarrow \pm 1$ and $\tanh(g x_{I_2}) \rightarrow \pm 1$. We can then use \cref{eq:reducedsystemI1I2} to solve for $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$. The signs of these solutions are all inconsistent, as we can see in \cref{table:signtable}. 
 
 \begin{table}
 \centering
@@ -1149,7 +1154,7 @@ The computations to follow were done with the assistance of Wolfram Mathematica.
     \caption{Sign table showing that all solutions for nonzero $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ are inconsistent.}
 \end{table}
 
-For Case 2, if $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:otherbranchmatrixeq} is inconsistent using the same argument as in Case 1. The only remaining possibility is $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:otherbranchmatrixeq} becomes
+For Case 2, if $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:reducedsystemI1I2} is inconsistent using the same argument as in Case 1. The only remaining possibility is $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:reducedsystemI1I2} becomes
 \begin{equation*}
  \begin{aligned}
  \begin{bmatrix} \hat{x}_E \\ \hat{x}_{I_1} \\ 0 \end{bmatrix} 
@@ -1163,7 +1168,7 @@ For Case 2, if $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_
  \end{equation*}
 The consistency condition (from the third row) can only be satisfied if $\hat{y}_{I_2} = \frac{n_I}{n_I - (\beta + 1)} > 1$ (for $\hat{x}_{I_1} > 0$) or $\hat{y}_{I_2} = \frac{n_I(1 + 2 \beta)}{n_I - (\beta + 1)} > 1$ (for $\hat{x}_{I_1} < 0$), both of which are impossible. Case 3 is similar.
 
-For Case 4, if $\tanh( g \hat{x}_{I_1} ) \rightarrow 0$ or $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:otherbranchmatrixeq} is inconsistent using the same argument as in Case 1. The remaining possibility is $\tanh( g \hat{x}_{I_1} ) \rightarrow \hat{y}_{I_1}$  and $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_1}| , |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:otherbranchmatrixeq} becomes
+For Case 4, if $\tanh( g \hat{x}_{I_1} ) \rightarrow 0$ or $\tanh( g \hat{x}_{I_2} ) \rightarrow 0$, the solution $(\hat{x}_E, \hat{x}_{I_1}, \hat{x}_{I_2})$ from \cref{eq:reducedsystemI1I2} is inconsistent using the same argument as in Case 1. The remaining possibility is $\tanh( g \hat{x}_{I_1} ) \rightarrow \hat{y}_{I_1}$  and $\tanh( g \hat{x}_{I_2} ) \rightarrow \hat{y}_{I_2}$, where $0 < |\hat{y}_{I_1}| , |\hat{y}_{I_2}| < 1$. In the limit $g \rightarrow \infty$, \cref{eq:reducedsystemI1I2} becomes
 \begin{equation*}
  \begin{aligned}
  \begin{bmatrix} \hat{x}_E \\ 0 \\ 0 \end{bmatrix} 
@@ -1203,13 +1208,12 @@ The first pair of inequalities in \cref{eq:consistency} is satisfied if and only
 \[
     \left| \frac{\beta-1}{\beta+1} \right| < \frac{(p-1)n_C}{\alpha n_I} = 1 - \frac{1}{p},
 \]
-where we used the fact that $n_C p = n_E = \alpha n_I$. Since we are taking $\beta \geq 1$, this simplifies to the equation given in \eqref{eq:betacond}.
-
+where we used the fact that $n_C p = n_E = \alpha n_I$. Since we are taking $\beta \geq 1$, this simplifies to $1 \leq \beta < 2p$. 
 Similarly, the second pair of inequalities in \cref{eq:consistency} is satisfied if and only if 
 \[
     \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) < \frac{\beta_C-1}{\beta_C+1} p n_C < \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right),
 \]
-which simplifies to Eq. \eqref{eq:bccondition}
+which simplifies to \cref{eq:bccondition}
 
 
 \bibliographystyle{siamplain}
