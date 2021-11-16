@@ -510,15 +510,19 @@ We have characterized the three-cluster fixed point solutions on the $I_1/I_2$ b
 \[
 \text{Trace }D\tilde{F}(\xvec^*) = \frac{g (n_E-1) \mu_{EE}}{\sqrt{N}} \sech^2( g x_E ) - (n_I+1).
 \]
-We analyze this by considering the behavior of $x_E$ as $g \rightarrow \infty$. First, we consider the case when $x_E \rightarrow 0$. There are three possibilities, only two of which can occur.
+We will show that $\text{Trace }D\tilde{F}(\xvec^*) > 0$, and thus the at least one eigenvalue is has positive real part. 
+
+We analyze the behavior of $x_E$ and $\sech(gx_E)$ as $g \rightarrow \infty$. First, we consider the possibility that $x_E \rightarrow 0$. There are three possibilities for $\sech(gx_E)$, only two of which can occur.
 \begin{itemize}
     \item $x_E \rightarrow 0$, and $g x_E \rightarrow 0$ (e.g. $x \sim g^{-\beta}$, for $\beta > 1$): then $\sech^2(gx_E) \rightarrow 1$, and so $g \sech^2(gx_E) \rightarrow \infty$.
     \item $x_E \rightarrow 0$, but $g x_E \rightarrow C$, for $C>0$ (e.g. $x \sim g^{-1}$): then $g\sech^2(gx_E) \sim g\sech^2(C) \rightarrow \infty$.
-    \item $x_E \rightarrow 0$, but $g x_E \rightarrow \infty$ (e.g. $x \sim g^{-\beta}$, for $0 < \beta < 1$). We will show this cannot happen. If this is true, then $g\sech^2( g x_E) \rightarrow 0$, from which it follows that $\tanh^2( g x_E) \rightarrow 1$, which implies $\tanh(g x_E) \rightarrow 1$. Since $x_{I_1}$ and $x_{I_2}$ have opposite signs for $g > g_0$ (see the end of \cref{app:I1I2sol}), it follows from \cref{eq:reducedsystemI1I2} that
-    \[
-    x_E \geq \frac{\mu_{EE}}{\sqrt{N}}\left[ (\alpha n_I - 1) - \alpha n_I \frac{\beta}{\beta+1} \right] = \frac{\mu_{EE}}{\sqrt{N}}\left[ \alpha(n_I - n_{I_1}) - 1 \right] \geq \frac{\mu_{EE}}{\sqrt{N}}\left( \alpha - 1 \right),
-    \]
-    since $n_{I_1} \leq n_I - 1$. At long we take $\alpha > 1$ (which is typically the case), $x_E$ is bounded away from 0 for all $g > g_0$, thus we cannot have $x_E \rightarrow 0$.
+    \item $x_E \rightarrow 0$, but $g x_E \rightarrow \infty$ (e.g. $x \sim g^{-\beta}$, for $0 < \beta < 1$). If $x_E \sim g^{-\beta}$, then $g \sech^2(gx_E) \rightarrow 0$; this would seem to result in a negative trace as $g \rightarrow \infty$. However, we will show this cannot happen. Because $\sech^2(gx_E) \rightarrow 0$, it follows that $\tanh^2( g x_E) \rightarrow 1$, which implies $\tanh(g x_E) \rightarrow 1$. We use the first line from \cref{eq:reducedsystemI1I2} to obtain a lower bound for $x_E$ as follows. 
+    Since $x_{I_1}$ and $x_{I_2}$ have opposite signs for $g > g_0$ (see the end of \cref{app:I1I2sol}), we can state that $\tanh(gx_{I_1})\leq 1$ and $\tanh(gx_{I_2})\leq 0$, and therefore that
+    \begin{align*}
+    x_E & = \frac{\mu_{EE}}{\sqrt{N}} \left[ (\alpha n_1-1) \tanh(gx_E) - \alpha \frac{\beta}{\beta+1} n_I \tanh(gx_{I_1}) - \alpha \frac{1}{\beta+1} n_I \tanh(gx_{I_2})\right]\\
+    & \geq \frac{\mu_{EE}}{\sqrt{N}} \left[ (\alpha n_1-1)  - \alpha \frac{\beta}{\beta+1} n_I  \right] = \frac{\mu_{EE}}{\sqrt{N}}\left[ \alpha(n_I - n_{I_1}) - 1 \right] \geq \frac{\mu_{EE}}{\sqrt{N}}\left( \alpha - 1 \right),
+    \end{align*}
+    since $n_{I_1} \leq n_I - 1$. At long we take $\alpha > 1$ (which is typically the case), $x_E$ is bounded away from 0 for all $g > g_0$, thus contradicting our original assumption that $x_E \rightarrow 0$.
 \end{itemize} 
 We have shown that if $x_E \rightarrow 0$, $\text{Trace }D\tilde{F}(\xvec^*) > 0$ for sufficiently large $g$, which implies that $D\tilde{F}(\xvec^*)$ always has an eigenvalue with positive real part. 
 
@@ -679,25 +683,26 @@ Using \cref{eq:XE1E2asymp} and \cref{eq:XE1} and simplifying, the corresponding 
 \lambda_{I}^*(g) &= \frac{\alpha \mu g}{\sqrt{N}} - 1
 \end{aligned}
 \end{equation}
-for $g$ close to $g_C$. The cluster-associated eigenvalue $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta_C > 2$; $\lambda_{C_2}^*(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}^*(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. These imply that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
+for $g$ close to $g_C$. The cluster-associated eigenvalue $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta_C > 2$; $\lambda_{C_2}^*(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}^*(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. The behavior of $\lambda_{C_1}^*(g)$ implies that the $C_1/C_2$ branch is initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
 
-For $N = 100$ and $n_C = 10$, we note that while the $C_1/C_2$ branches corresponding to $\beta_C = 4$ and $\beta_C = 9$ in \cref{fig:clusterBD2} are initially unstable, they become stable at a value of $g > g_C$ which is indicated with a diamond on the plot. \textbf{This is explained later, sort of. Remove this statement? Or forecast the later result?}
-
-At this point, the $n_{C_1}$ eigenvalues corresponding to $\lambda_{C_1}$ cross through the origin on the real axis from positive to negative. As $g$ is further increased, these branches lose stability at a second pitchfork bifurcation point. This phenomenon is not observed for $N=20$ and $n_C=4$ (\cref{fig:clusterBD1}).
+%For $N = 100$ and $n_C = 10$, we note that while the $C_1/C_2$ branches corresponding to $\beta_C = 4$ and $\beta_C = 9$ in \cref{fig:clusterBD2} are initially unstable, they become stable at a value of $g > g_C$ which is indicated with a diamond on the plot. \textbf{This is explained later, sort of. Remove this statement? Or forecast the later result?}
+%At this point, the $n_{C_1}$ eigenvalues corresponding to $\lambda_{C_1}$ cross through the origin on the real axis from positive to negative. As $g$ is further increased, these branches lose stability at a second pitchfork bifurcation point. This phenomenon is not observed for $N=20$ and $n_C=4$ (\cref{fig:clusterBD1}).
 
 It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_C$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, where these are defined at the beginning of this section. We following the same asymptotic procedure as in the previous section. $H_3(\xvec^*)$ has a real eigenvalue corresponding to $\lambda_C$ located at
 \[
 \lambda_C(\xvec^*) = (p-1)n_C \mu  \left(1 - (1 - \beta_C+\beta_C^2)g^2 x_{E_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
-Substituting the estimate \cref{eq:XE1} for $x_{E_1}$ and simplifying, the eigenvalue $\lambda_C^*(g) $of $J_3(\xvec^*)$ corresponding to $\lambda_C$ is located, to leading order, at 
+Substituting the estimate \cref{eq:XE1} for $x_{E_1}$ and simplifying, the eigenvalue $\lambda_C^*(g)$ of $J_3(\xvec^*)$ corresponding to $\lambda_C$ is located, to leading order, at 
 \begin{align*}
-    \lambda_C^*(g) &= -2\left( \frac{g - g_C}{g_C} \right)  && g \geq g_C
+    \lambda_C^*(g) &= -2\left( \frac{g - g_C}{g_C} \right)
 \end{align*}
 for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not affect stability. Similarly, $H_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda_0 + i \omega_0$, where the real part is given by
 \begin{equation*}
 \lambda_0(g, \beta_C) = \frac{\mu}{2}\left[ (\alpha - n_C) - \beta_C g^2 n_C (p - 1) x_{E_1}^2 \right]
 \end{equation*}
-to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. Thus for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$ and initially unstable for $\beta_C > 2$ (see the top panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
+to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. Thus for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$
+%and initially unstable for $\beta_C > 2$ 
+(see the top panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
 
 As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ crosses the origin (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). The behavior at this symmetric pitchfork bifurcation is much the same as in \cref{sec:E1I1}: there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
 \begin{equation}\label{eq:gpitchinhbeta1}
@@ -711,11 +716,16 @@ First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becom
 \begin{equation}\label{eq:xEhat}
 \hat{x}_{E} = \frac{\mu}{\sqrt{N}}(p-1)n_C.
 \end{equation}
-For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$ as $g \rightarrow \infty$, but $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, where $\beta_C^*$ will be determined below. These are illustrated in \cref{fig:betacstar}.\\
+For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$ as $g \rightarrow \infty$, but $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for some critical value $\beta_C^*$. These are illustrated in \cref{fig:betacstar}.\\
 \begin{itemize}
-    \item Case 1: for $1 < \beta_C < \beta_C^*$, $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
-    \item Case 2: for $\beta_C > \beta_C^*$, $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.\\
+    \item Case 1: ($1 < \beta_C < \beta_C^*$) $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
+    \item Case 2: ($\beta_C > \beta_C^*$) $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.\\
 \end{itemize}
+In \cref{app:C1C2_largeg}, we will show that 
+\begin{equation}\label{eq:betaCstar}
+    \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
+\end{equation}
+As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$ and $n_C$ scale as $\sqrt{N}$, then the only significant terms in the numerator and denominator of \cref{eq:betaCstar} are of order $N$ or larger, in which case $\beta_C^* \rightarrow 2 p-1$ as $N \rightarrow \infty$. 
 
 \begin{figure}
     \centering
@@ -726,58 +736,8 @@ For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$
     \caption{Solutions $x_{E_1}$, $x_{E_2}$, and $x_I$ vs $g$ on $C_1/C_2$ branches for $1 < \beta_C < \beta_C^*$ (left) and $\beta_C > \beta_C^*$ (right). $N = 50$, $n_C = 10$, $p = 4$, $n_I = 10$, $\alpha =4$, $\mu = 0.7$. $\beta_C = 7/3$ (left), and $\beta_C = 9$ (right). $\beta_C^* = 5.15385$.}
     \label{fig:betacstar}
 \end{figure}
-\noindent For Case 1, since $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$, we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
-\begin{equation}\label{eq:yihat}
-    \hat{y}_I = \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha},
-\end{equation} 
-from which it follows that
-\begin{equation}\label{eq:xilimiteq}
-    x_I \rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha} \right) \text{ as } g \rightarrow \infty.
-\end{equation}
-Using \cref{eq:yihat} with rows 1 and 2 of \cref{eq:cluster3system},
-\begin{equation}\label{eq:xEhat12}
-\begin{aligned}
-    \hat{x}_{E_1} &= \frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right) \\
-    \hat{x}_{E_2} &= \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right),
-\end{aligned}
-\end{equation}
-which reduce to \cref{eq:xEhat} when $\beta_C = 1$. Since $n_C p = f N \rightarrow \infty$ as $N \rightarrow \infty$, this simplifies to
-\begin{equation}\label{eq:xEhat12IlargeN}
-    \begin{aligned}
-        x_{E_1} &\rightarrow\frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
-        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
-        x_I &\rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \right)
-    \end{aligned}
-\end{equation}
-as $g, N \rightarrow \infty$. For \cref{eq:xEhat12} to be valid, the consistency conditions $\hat{x}_{E_1} > 0$ and $\hat{x}_{E_2} < 0$ must be satisfied. Since $\hat{x}_{E_2} < 0$ always holds, \cref{eq:xEhat12} is consistent as long as
-\begin{equation}\label{eq:betaCineq}
-(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1}\frac{p^2 n_C^2}{p n_C - \alpha}  > 0.
-\end{equation}
-This reduces to the condition $\beta_C < \beta_C^*$, where
-\begin{equation}\label{eq:betaCstar}
-    \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
-\end{equation}
-As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$ and $n_C$ scale as $\sqrt{N}$, then the only significant terms in the numerator and denominator of \cref{eq:betaCstar} are of order $N$ or larger, in which case $\beta_C^* \rightarrow 2 p-1$ as $N \rightarrow \infty$. \textbf{Next statement seems to contradict what I just read. I took that out part out. Maybe just include what I have above?} 
-% This depends on neither $p$ nor $n_C$, since these variables are involved in \cref{eq:betaCineq} only in the form $p n_C = n_E = f N$. We note that the largest possible value of $\beta_C$ is $\beta_C = n_C - 1$, which occurs when $n_{C_1} = n_C - 1$ and $n_{C_2} = 1$. Since $p = f N/n_C$, it follows that if either $n_C$ is held constant or $n_C$ scales as $\sqrt{N}$, $\beta_C < \beta_C^*$ will be always satisfied for sufficiently large $N$.
 
-For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
-\begin{equation}\label{eq:ye1hatyihat}
-    \begin{aligned}
-        \hat{y}_{E_1} &= \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \\
-        \hat{y}_{I} &= \frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)},
-    \end{aligned}
-\end{equation}
-from which it follows that
-\begin{equation}
-    \begin{aligned}
-        x_{E_1} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}  \right) \\
-        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{n_C^2 p^2(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}\right) \\
-        x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left(\frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \right).
-    \end{aligned}
-\end{equation}
-as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
-
-We can use these formulas to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. Since we are taking $N$ large, we can assume $\beta_C < \beta_C^*$, as discussed above. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
+We can use formulas for $x_{E_1}$, etc. (see \cref{app:C1C2_largeg}) to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. Since we are taking $N$ large, we can assume $\beta_C < \beta_C^*$, as discussed above. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
 \begin{align}\label{eq:gbetaC}
     g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} % + \mathcal{O}\left(\frac{1}{N^{1/2}}\right)
 \end{align}
@@ -812,7 +772,7 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
     \label{fig:pitcherror}
 \end{figure}
 
-\subsection{Stable fixed points for large \texorpdfstring{$g$}{g}}  \label{sec:C1C2I1I2_largeg}
+\subsection{Stability of $C_1/C_2/I_1/I_2$ solutions for large \texorpdfstring{$g$}{g}}  \label{sec:C1C2I1I2_largeg}
 
 After the symmetric pitchfork bifurcation point on the $C_1/C_2$ branches, both the excitatory clusters and inhibitory cells have split into two populations. We are interested in stable fixed points when $g$ is large. In particular, we seek fixed point branches in which the excitatory clusters are split into two populations with ratio $\beta_C = n_{C_1}/n_{C_2}$ and the inhibitory cells are also split into two populations with ratio $\beta = n_{I_1}/n_{I_2}$. This reduces \cref{eqn:sys_Basic} to the system of equations
 \begin{equation}\label{eq:cluster4system}
@@ -866,7 +826,7 @@ Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C 
 
 \subsection{Excitatory clusters with weight parameters unchanged}
 
-We can also choose the weights as in the unclustered case, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
+We briefly consider a system with excitatory clusters, but in which we have not adjusted the excitatory weight strengths, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
 \subsection{Restored self-coupling}
 We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $\Kvec_{p}$ in \cref{eq:Hcluster} with the $p\times p$ matrix consisting of all 1s. The effect of this in the reduced model \cref{eq:reducedmatrixform} is to replace the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$. The eigenvalues of $H$ are then given by:
@@ -1052,7 +1012,7 @@ Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a com
 To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the complex pair of eigenvalues crosses the imaginary axis, we solve $\lambda_0^*(g, \beta) = 0$ for $g$, substitute $g_0 = \sqrt{N}/\alpha \mu_{EE}$, and simplify to obtain the expression in \cref{eq:ghopfformula}.
 
 
-\section{Proof of \texorpdfstring{\cref{prop:limitcycle}}{Proposition}}\label{sec:limitcycleproof}
+\section{Proof of \texorpdfstring{\cref{prop:limitcycle}}{Proposition}} \label{sec:limitcycleproof}
 
 The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
 \begin{equation}\label{eq:2dimsystem}
@@ -1182,6 +1142,60 @@ For Case 4, if $\tanh( g \hat{x}_{I_1} ) \rightarrow 0$ or $\tanh( g \hat{x}_{I_
  \end{equation*}
  The consistency conditions (from the second and third rows) can only be satisfied if $\hat{y}_{I_1} = \hat{y}_{I_2} = \frac{n_I}{n_I - 1} > 1$, which is impossible.
 
+\section{\texorpdfstring{$C_1/C_2$}{C1/C2} branches for large \texorpdfstring{$g$}{g}: Detailed calculations} \label{app:C1C2_largeg} 
+Here we provide details of the  
+behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large.  We claim there are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for some critical value $\beta_C^*$. These were illustrated in \cref{fig:betacstar}.\\
+\begin{itemize}
+    \item Case 1: ($1 < \beta_C < \beta_C^*$) $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
+    \item Case 2: ($\beta_C > \beta_C^*$) $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.
+\end{itemize}
+
+\noindent For Case 1, since $\tanh(g x_{E_1}) \rightarrow 1$ and $\tanh(g x_{E_2}) \rightarrow -1$, we can solve for $\hat{y}_I$ using row 3 of \cref{eq:cluster3system} to get
+\begin{equation}\label{eq:yihat}
+    \hat{y}_I = \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha},
+\end{equation} 
+from which it follows that
+\begin{equation}\label{eq:xilimiteq}
+    x_I \rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \frac{p n_C}{p n_C - \alpha} \right) \text{ as } g \rightarrow \infty.
+\end{equation}
+Using \cref{eq:yihat} with rows 1 and 2 of \cref{eq:cluster3system},
+\begin{equation}\label{eq:xEhat12}
+\begin{aligned}
+    \hat{x}_{E_1} &= \frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right) \\
+    \hat{x}_{E_2} &= \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} \frac{p^2 n_C^2}{p n_C - \alpha} \right),
+\end{aligned}
+\end{equation}
+which reduce to \cref{eq:xEhat} when $\beta_C = 1$. Since $n_C p = f N \rightarrow \infty$ as $N \rightarrow \infty$, this simplifies to
+\begin{equation}\label{eq:xEhat12IlargeN}
+    \begin{aligned}
+        x_{E_1} &\rightarrow\frac{\mu}{\sqrt{N}}\left( (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
+        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1} p n_C \right) \\
+        x_I &\rightarrow \frac{1}{g}\tanh^{-1}\left( \frac{\beta_C - 1}{\beta_C+1} \right)
+    \end{aligned}
+\end{equation}
+as $g, N \rightarrow \infty$. For \cref{eq:xEhat12} to be valid, the consistency conditions $\hat{x}_{E_1} > 0$ and $\hat{x}_{E_2} < 0$ must be satisfied. Since $\hat{x}_{E_2} < 0$ always holds, \cref{eq:xEhat12} is consistent as long as
+\begin{equation}\label{eq:betaCineq}
+(p-1)n_C - \frac{\beta_C - 1}{\beta_C+1}\frac{p^2 n_C^2}{p n_C - \alpha}  > 0.
+\end{equation}
+Solving for $\beta_C$, this results in the condition stated in \ref{eq:betaCstar}.
+
+For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
+\begin{equation}\label{eq:ye1hatyihat}
+    \begin{aligned}
+        \hat{y}_{E_1} &= \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \\
+        \hat{y}_{I} &= \frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)},
+    \end{aligned}
+\end{equation}
+from which it follows that
+\begin{equation}
+    \begin{aligned}
+        x_{E_1} &\rightarrow \frac{1}{g} \tanh^{-1} \left( \frac{n_C p^2 }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}  \right) \\
+        x_{E_2} &\rightarrow \frac{\mu}{\sqrt{N}}\left( -(p-1)n_C - \frac{n_C^2 p^2(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)}\right) \\
+        x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left(\frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \right).
+    \end{aligned}
+\end{equation}
+as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
+
 \section{Stable excitatory clusters for large \texorpdfstring{$g$}{g}: detailed calculations} 
 \label{app:C1C2I1I2_largeg}
 We begin with the ansatz (suggested by numerical continuation) that as $g \rightarrow \infty$, $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. 
@@ -1214,6 +1228,7 @@ Similarly, the second pair of inequalities in \cref{eq:consistency} is satisfied
     \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) < \frac{\beta_C-1}{\beta_C+1} p n_C < \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right),
 \]
 which simplifies to \cref{eq:bccondition}
+
 
 
 \bibliographystyle{siamplain}
