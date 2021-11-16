@@ -369,23 +369,23 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. In addition, we n
     \label{fig:noclusterBD1}
 \end{figure}
 
-\subsection{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}
+\subsection{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}\label{sec:I1I2stability}
 
-Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:reducedsystemI1I2} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find a leading order formula for its location.
+Now that we have obtained a leading order formula for the fixed points on the $I_1/I_2$ branches for all valid inhibitory cell ratios $\beta$, we will analyze their stability for $g$ close to the bifurcation point $g_0$. Choose any $\beta \geq 1$, so that $n_{I_1} = \frac{\beta}{\beta+1}n_I$ and $n_{I_2} = \frac{1}{\beta+1}n_I$, and let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution to \cref{eq:reducedsystemI1I2} for $g > g_0$. To examine the stability and bifurcations which occur along the $I_1/I_2$ branches, we look at the linearization $D\tilde{F}(\xvec^*)$, which is given by \cref{eq:DtildeFxstar}, where $\xvec^* = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$, and $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. As discussed above in \cref{sec:simplermodel}, stability will depend on the eigenvalues of $\tilde{H}(\xvec^*)$. A cartoon showing the location of these eigenvalues is given in \cref{fig:Hstareignocluster}. In the process of our analysis, we will show that a Hopf bifurcation occurs along each $I_1/I_2$ branch, and will find a leading order formula for its location.
 
 \begin{figure}
     \centering
     % \begin{tabular}{ccc}
     \includegraphics[width=5.7cm]{images/eigpatternxstarnocluster.eps}
     % \end{tabular}
-    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $I_1/I_2$ branch with $\beta > 1$. The notation for the eigenvalues is explained below.}
+    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $I_1/I_2$ branch with $\beta > 1$. The notation for the eigenvalues is explained in \cref{sec:I1I2stability}.}
     \label{fig:Hstareignocluster}
 \end{figure}
 
 To locate the eigenvalues of $\tilde{H}(\xvec^*)$, we first linearize the three-dimensional system \cref{eq:reducedsystemI1I2} about the fixed point $\xvec = (x_E, x_{I_1}, x_{I_2})$ to get the Jacobian
-\[
+\begin{equation}\label{eq:J3forI1I2}
 J_3(\xvec) = \frac{g}{\sqrt{N}} H_3(\xvec) - I_3
-\]
+\end{equation}
 where 
 \begin{equation}\label{eq:H3}
 H_3(\xvec) = \mu_{EE}
@@ -402,7 +402,7 @@ H_3(\xvec) = \mu_{EE}
 %  \end{bmatrix}
 %  \begin{bmatrix} \sech^2(g x_E) & 0 & 0 \\0 & \sech^2(g x_{I_1}) & 0\\0 & 0 & \sech^2(g x_{I_2}) \end{bmatrix} 
 % \]
-and $I_3$ is the $3 \times 3$ identity matrix. We have the following proposition concerning the eigenvalues of $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$.
+and $I_3$ is the $3 \times 3$ identity matrix. We have the following proposition relating the eigenvalues of $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$.
 
 \begin{proposition}\label{prop:H3eig}
 Let $\xvec = (x_E, x_{I_1}, x_{I_2})$ be a solution of \cref{eq:reducedsystemI1I2} and $\xvec^*$ the corresponding fixed point of \cref{eq:reducedmatrixform}, and let $H_3(\xvec)$ and $\tilde{H}(\xvec^*)$ be defined by \cref{eq:H3} and \cref{eq:tildeHxstar}. Then
@@ -419,12 +419,10 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 \end{proof}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda_{I_2}$ is always negative, while $\lambda_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}$ and $\lambda^*_{I_2}$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}$ is always negative, while $\lambda^*_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
 
-The eigenvalues of $H_3$ include one real eigenvalue and a complex pair; the real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation. We find that its location is
-
+The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H,\beta}$, where
 % If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
-
 \begin{equation}\label{eq:ghopfformula}
     g_{H,\beta} = 
     \frac{\sqrt{N}}{\mu_{EE}} 
@@ -460,7 +458,7 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H,
 
 \subsection{Periodic solutions}\label{sec:periodic}
 
-Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. 
+Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO \cite{AUTO} suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. 
 \begin{figure}
     \centering
     \begin{tabular}{cc}
@@ -477,7 +475,7 @@ In the following proposition, we prove that the $\beta=\infty$ limit cycle exist
 For $g > g_H$, the system \cref{eqn:sys_Basic} has a limit cycle in which all excitatory cells are synchronized, and inhibitory cells are synchronized.
 \end{proposition}
 
-In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet. For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the $n_I - 1$ Floquet multipliers $\rho_I$ pass through 1. When this happens, as $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
+In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcation on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet. For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$ passes through 1. As $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \begin{figure}
     \centering
@@ -517,7 +515,7 @@ We analyze the behavior of $x_E$ and $\sech(gx_E)$ as $g \rightarrow \infty$. Fi
     x_E & = \frac{\mu_{EE}}{\sqrt{N}} \left[ (\alpha n_1-1) \tanh(gx_E) - \alpha \frac{\beta}{\beta+1} n_I \tanh(gx_{I_1}) - \alpha \frac{1}{\beta+1} n_I \tanh(gx_{I_2})\right]\\
     & \geq \frac{\mu_{EE}}{\sqrt{N}} \left[ (\alpha n_1-1)  - \alpha \frac{\beta}{\beta+1} n_I  \right] = \frac{\mu_{EE}}{\sqrt{N}}\left[ \alpha(n_I - n_{I_1}) - 1 \right] \geq \frac{\mu_{EE}}{\sqrt{N}}\left( \alpha - 1 \right),
     \end{align*}
-    since $n_{I_1} \leq n_I - 1$. At long we take $\alpha > 1$ (which is typically the case), $x_E$ is bounded away from 0 for all $g > g_0$, thus contradicting our original assumption that $x_E \rightarrow 0$.
+    since $n_{I_1} \leq n_I - 1$. As long as we take $\alpha > 1$ (which is typically the case), $x_E$ is bounded away from 0 for all $g > g_0$, thus contradicting our original assumption that $x_E \rightarrow 0$.
 \end{itemize} 
 We have shown that if $x_E \rightarrow 0$, $\text{Trace }D\tilde{F}(\xvec^*) > 0$ for sufficiently large $g$, which implies that $D\tilde{F}(\xvec^*)$ always has an eigenvalue with positive real part. 
 
