@@ -110,7 +110,7 @@ We consider a network in which each node represents the firing rate of a single 
     \dot{\xvec} = 
     F(\xvec, g) := -\xvec  + \frac{1}{\sqrt{N}} H\tanh (g \xvec),
 \end{equation}
-for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed ). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. In particular, this implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$.
+for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. In particular, this implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$.
 
 For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
@@ -206,7 +206,7 @@ where
 \begin{equation}\label{eq:tildeHxstar}
 \tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* )).
 \end{equation}
-The original equation \cref{eqn:sys_Basic} has a corresponding fixed point $\xvec_0^*$, in which each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. The following proposition shows that to analyze the stability of the fixed point $\xvec_0^*$ in the full system \cref{eqn:sys_Basic}, it suffices to determine the eigenvalues of the reduced matrix $\tilde{H}(\xvec^*)$.
+The original equation \cref{eqn:sys_Basic} has a corresponding fixed point $\xvec_0^*$, in which each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. The following proposition shows that to analyze the stability of the fixed point $\xvec_0^*$ in the full system \cref{eqn:sys_Basic}, it suffices to determine the eigenvalues of the reduced matrix $\tilde{H}(\xvec^*)$, since the additional eigenvalues of $H(\xvec_0^*)$ are negative, and thus will not affect stability.
 
 \begin{proposition}\label{prop:tidleHeig}
 Let $\xvec^*$ be a fixed point of \cref{eq:reducedmatrixform} and $\xvec_0^*$ the corresponding fixed point of \cref{eqn:sys_Basic}, and let $H(\xvec_0^*)$ and $\tilde{H}(\xvec^*)$ be defined by \cref{eq:Hxstar} and \cref{eq:tildeHxstar}. Then
@@ -311,11 +311,11 @@ Assuming that (without loss of generality) the $I_1$ neurons have the indices $n
 \end{eqnarray}
 We can check that $\rm{Fix}(\Sigma)$ is a subspace of $V$. Furthermore $\dim \rm{Fix}(\Sigma) = 1$ because it can be described as the span of a single vector. 
 
-As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$, where we recall from \cref{sec:simplermodel} that all excitatory cells are synchronized. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$, which we will ignore for simplicity.
+As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number $\beta = n_{I_1}/n_{I_2}$, which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$, where we recall from \cref{sec:simplermodel} that all excitatory cells are synchronized. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$. We will ignore this other branch for simplicity, although we note that it is this odd symmetry which permits a pitchfork bifurcation to occur.
 
 \subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}\label{sec:solI1I2}
 
-First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. Fix $\beta \geq 1$. To find $(x_E, x_{I_1}, x_{I_2})$ along the $(x_E, x_{I_1}, x_{I_2})$ corresponding to $\beta$, we reduce \cref{eq:reducedsystem} to the 3-dimensional system
+First, we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to the bifurcation point $g_0$. Fix $\beta \geq 1$. To find $(x_E, x_{I_1}, x_{I_2})$ along the $I_1/I_2$ branch corresponding to $\beta$, we reduce \cref{eq:reducedsystem} to the 3-dimensional system
 \begin{equation}\label{eq:reducedsystemI1I2}
  \begin{aligned}
  \begin{bmatrix} x_E\\x_{I_1}\\x_{I_2}\end{bmatrix} 
@@ -327,19 +327,13 @@ First, we derive leading order expressions for the equilibria along the $I_1/I_2
  \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
  \end{aligned}
 \end{equation}
-where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:reducedsystemI1I2}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. We note that any solution $(x_E, x_{I_1}, x_{I_2})$ is bounded for all $g$, since the matrix in \cref{eq:reducedsystemI1I2} is constant, and $|\tanh y| \leq 1$ for all $y$. 
+where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:reducedsystemI1I2}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. We note that any solution $(x_E, x_{I_1}, x_{I_2})$ to \cref{eq:reducedsystemI1I2} is bounded for all $g$, since the matrix in \cref{eq:reducedsystemI1I2} is constant, and $|\tanh y| \leq 1$ for all $y$. 
 
-The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in \cref{app:I1I2sol}) that 
-the nonzero solution for $x_I$ is given, to leading order, by
+The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in \cref{app:I1I2sol}) that the nonzero solution for $x_I$ is given, to leading order, by
 \begin{align}\label{eq:xIapprox}
 x_I &= \sqrt{ \frac{3(g - g_0) }{g^3}} && g \geq g_0.
 \end{align}
-
-We can obtain a higher-order approximation by keeping up to fifth-order terms in \cref{eq:tanhTaylor} to get
-\begin{equation*}
-x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 + \frac{2 g^5}{15} x_I^4 \right) = 0,
-\end{equation*}
-which is $x_I$ multiplied by a quadratic in $x_I^2$. To find the nonzero solution for $x_I$, we solve this quadratic for $x_I^2$ and take square roots to get, to leading order,
+By keeping up to fifth-order terms in the Taylor expansion (see detailed calculations in \cref{app:I1I2sol}), we can obtain the higher order approximation
 \begin{align}\label{eq:xIapprox5}
 x_I &= \frac{1}{2} \sqrt{ \frac{5}{g^2} - \frac{\sqrt{ 5 g^5( 24 g_0 - 19 g) }}{g^5}} && g \geq g_0.
 \end{align}
@@ -355,9 +349,10 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
     \label{fig:xIapprox}
 \end{figure}
 
-For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceeding as described in \cref{app:I1I2sol}, we obtain approximate formulas for $x_{I_1}$ and $x_{I_2}$ in terms of $g$, for $g$ close to $g_0$
+For $\beta > 1$, it is no longer true that $x_{I_2} = -x_{I_1}$. However, by making an appropriate ansatz and proceeding as described in \cref{app:I1I2sol}, we obtain the following approximations for $x_E$, $x_{I_1}$, and $x_{I_2}$ in terms of $g$, for $g$ close to $g_0$
 \begin{align}\label{eq:XI1}
- x_{I_1} &= \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right), \quad
+ x_E &= \mathcal{O}\left( \frac{1}{N^2}\right), \quad
+ x_{I_1} = \sqrt{ \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g^3}} + \mathcal{O}\left( \frac{1}{N^2}\right), \quad
  x_{I_2} = -\beta x_{I_1} +  \mathcal{O}\left( \frac{1}{N^2}\right) && g \geq g_0.
 \end{align}
 Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. In addition, we note that $x_{I_1}$ and $x_{I_2}$ have opposite signs. This is, in fact, true for all $g > g_0$, as shown in \cref{app:I1I2sol}. Comparison between this approximation and the numerical solution obtained by numerical parameter continuation is shown in the right panel of \cref{fig:xIapprox}.
@@ -928,7 +923,7 @@ Finally, we consider a network in which the inhibitory cells are clustered, rath
 
 \section{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2sol}
 
-Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. We begin with the simplest case which is when $n_I$ is even and $\beta = 1$. 
+Here we derive leading order expressions for the equilibria along the $I_1/I_2$ branches for $g$ close to $g_0$. We begin with the simplest case, which is when $n_I$ is even and $\beta = 1$. 
 Taking $x_{I_1} = x_I$, $x_{I_2} = -x_I$, and $x_E = 0$ in \cref{eq:reducedsystemI1I2} and simplifying, we obtain the single equation (\cite[{Eq. 16}]{Barreiro2017})
 \[
 -x_I + \frac{\alpha \mu_{EE} }{\sqrt{N}} \tanh(g x_I) = 0, 
@@ -967,7 +962,7 @@ for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:r
  \]
 Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain the formula given in \cref{eq:XI1}.
 
-Finally, we show that $x_{I_1}$ and $x_{I_2}$ have opposite signs for all $g > g_0$. Since \cref{eq:reducedsystemI1I2} is smooth in $(x_E, x_{I_1}, x_{I_2})$ and $g$, the solutions $x_{I_1}$ and $x_{I_2}$ are smooth in $g$. For $g$ close to $g_0$, $x_{I_1}$ and $x_{I_2}$ have opposite signs; if this is not the case for some $g > g_0$, either $x_{I_1}$ or $x_{I_2}$ must pass through 0. We will show that this cannot happen. Suppose $x_{I_1} = 0$ for some $g^* > g_0$. Substituting this into \cref{eq:reducedsystemI1I2} and subtracting the second row from the first, we have $x_E = -\frac{\mu_{EE}}{\sqrt{N}} \tanh(g^* x_E)$, which is impossible unless $x_E = 0$. If $x_E = 0$, then $x_{I_2} = -\frac{\mu_{EE}}{\sqrt{N}} \alpha(n_{I_2} - 1) \tanh(g^* x_{I_2})$, which is again impossible unless $x_{I_2} = 0$. Thus $x_{I_1}=0$ implies $(x_E, x_{I_1}, x_{I_2}) = 0$. This would mean that the $I_1/I_2$ branch would intersect the zero solution in another bifurcation point at $g^* > g_0$, which we know does not happen. The case where $x_{I_2} = 0$ for some $g^* > g_0$ is similar.
+Finally, we show that $x_{I_1}$ and $x_{I_2}$ have opposite signs for all $g > g_0$. Since \cref{eq:reducedsystemI1I2} is smooth in $(x_E, x_{I_1}, x_{I_2})$ and $g$, the solutions $x_{I_1}$ and $x_{I_2}$ are smooth in $g$. For $g$ close to $g_0$, $x_{I_1}$ and $x_{I_2}$ have opposite signs; if this is not the case for some $g > g_0$, either $x_{I_1}$ or $x_{I_2}$ must pass through 0. We will show that this cannot happen. Suppose $x_{I_1} = 0$ for some $g^* > g_0$. Substituting this into \cref{eq:reducedsystemI1I2} and subtracting the second row from the first, we have $x_E = -\frac{\mu_{EE}}{\sqrt{N}} \tanh(g^* x_E)$, which is impossible unless $x_E = 0$. If $x_E = 0$, then $x_{I_2} = -\frac{\mu_{EE}}{\sqrt{N}} \alpha(n_{I_2} - 1) \tanh(g^* x_{I_2})$, which is again impossible unless $x_{I_2} = 0$. Thus $x_{I_1}=0$ implies $(x_E, x_{I_1}, x_{I_2}) = 0$. This would mean that the $I_1/I_2$ branch would intersect the zero solution in another bifurcation point at $g^* > g_0$, which we know does not occur The case where $x_{I_2} = 0$ for some $g^* > g_0$ is similar.
 
 \section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2stab}
 
@@ -980,7 +975,6 @@ which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. Similarly
     \lambda_{I_2}^*(g) &= \frac{g-g_0}{g} \left( 1 - \frac{3 \beta^2}{1-\beta+\beta^2 }\right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g > g_0,
 \end{align*}
 which is negative for $\beta > 1/2$ and thus does not affect stability. 
-
 
 It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
 \begin{equation}\label{eq:lambdaansatz}
