@@ -757,20 +757,22 @@ After the symmetric pitchfork bifurcation point on the $C_1/C_2$ branches, both 
        p n_C \frac{1}{\beta_C+1} &
        -\alpha \frac{\beta}{\beta+1}n_I & -\alpha \left(\frac{1}{\beta+1}n_I - 1 \right)
     \end{bmatrix}
-    \begin{bmatrix} \tanh(g x_{E_1}) \\ \tanh ( g x_{E_2} ) \\\tanh(g x_{I_1}) \\\tanh(g x_{I_2})  \end{bmatrix},
+    \begin{bmatrix} \tanh(g x_{E_1}) \\ \tanh ( g x_{E_2} ) \\\tanh(g x_{I_1}) \\\tanh(g x_{I_2})  \end{bmatrix}.
     \end{aligned}
 \end{equation}
-Numerical parameter continuation suggests that as $g \rightarrow \infty$, $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. We will show that such solutions exist for 
+Parameter continuation suggests that as $g \rightarrow \infty$, $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. Such solutions exist for 
 \begin{equation}\label{eq:bccondition}
     \frac{2 \beta n_I - \beta - 1}{2 n_I + \beta + 1} < \beta_C < \frac{2 \beta n_I + \beta + 1}{2 n_I - \beta - 1}.
 \end{equation}
-where $1 \leq \beta < 2p-1$. 
+for all valid $\beta$ satisfying $1 \leq \beta < 2p-1$. See \cref{app:C1C2I1I2_largeg} for detailed calculations.
 
-A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. If $n_C = n_I$, it follows from \cref{eq:bccondition} that 
+A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. (A value of $\beta$ or $\beta_C$ is valid for a particular $N$ only if the ratio of inhibitory cells or excitatory clusters is possible for that value of $N$). In the specific case where $n_C = n_I$, it follows from \cref{eq:bccondition} that 
 \[
 n_{I_1} - \frac{1}{2} < n_{C_1} < n_{I_1} + \frac{1}{2}.
 \]
-Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C = \beta$. We note that the fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian approaches $-I$, which has a single eigenvalue of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the bottom panel of \cref{fig:clusterBD1}, and the solutions corresponding to the bottom row are shown in the bottom panel of \cref{fig:clusterBD2}; we can see from the figures that the corresponding fixed points are all stable for sufficiently large $g$.
+Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C = \beta$.
+
+The fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian $DF(\xvec^*)$ approaches $-I$, which has a single eigenvalue of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the bottom panel of \cref{fig:clusterBD1}, and the solutions corresponding to the bottom row are shown in the bottom panel of \cref{fig:clusterBD2}; we can see from the figures that the corresponding fixed points are all stable for sufficiently large $g$.
 
 \begin{table}
 \centering
@@ -1135,8 +1137,7 @@ for $g$ close to $g_C$. Since this eigenvalue is always negative, it will not af
 to leading order, for $g$ close to $g_C$. Since we are taking $n_C \geq \alpha$, this is always negative for $g$ close to $g_C$. 
 
 \section{\texorpdfstring{$C_1/C_2$}{C1/C2} branches for large \texorpdfstring{$g$}{g}: Detailed calculations}\label{app:C1C2_largeg} 
-Here we provide details of the  
-behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large.  We claim there are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for some critical value $\beta_C^*$. These were illustrated in \cref{fig:betacstar}.\\
+Here we provide details of the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large.  We claim there are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for some critical value $\beta_C^*$. These were illustrated in \cref{fig:betacstar}.\\
 \begin{itemize}
     \item Case 1: ($1 < \beta_C < \beta_C^*$) $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
     \item Case 2: ($\beta_C > \beta_C^*$) $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.
@@ -1191,7 +1192,6 @@ as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot tak
 \section{Stable excitatory clusters for large \texorpdfstring{$g$}{g}: detailed calculations} 
 \label{app:C1C2I1I2_largeg}
 We begin with the ansatz (suggested by numerical continuation) that as $g \rightarrow \infty$, $(x_{E_1}, x_{E_2}, x_{I_1}, x_{I_1}) \rightarrow (\hat{x}_{E_1}, \hat{x}_{E_2}, \hat{x}_{I_1}, \hat{x}_{I_2})$, where $\hat{x}_{E_1}, \hat{x}_{I_1} > 0$ and $\hat{x}_{E_2}, \hat{x}_{I_2} < 0$. 
-
 With these assumptions, equation \cref{eq:cluster4system} reduces to 
 \begin{equation}\label{eq:xhat}
     \begin{aligned}
