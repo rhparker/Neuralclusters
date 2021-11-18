@@ -419,20 +419,20 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 \end{proof}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}$ and $\lambda^*_{I_2}$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}$ is always negative, while $\lambda^*_{I_1}$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
+To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}(g)$ and $\lambda^*_{I_2}(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}(g)$ is always negative, while $\lambda^*_{I_1}(g)$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
 
-The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H,\beta}$, where
+The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H}(\beta, N)$, where
 % If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
 \begin{equation}\label{eq:ghopfformula}
-    g_{H,\beta} = 
+    g_{H}(\beta, N) = 
     \frac{\sqrt{N}}{\mu_{EE}} 
     \frac{ 2 - 5\beta + 2 \beta^2 + 3 \beta n_I}
     { \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I }
     + \mathcal{O}\left( \frac{1}{N^{3/2}} \right).
 \end{equation}
-A plot of $g_{H,\beta}$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H,\beta} \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
+A plot of $g_{H}(\beta, N)$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H}(\beta, N) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
 \begin{equation}\label{eq:gprime}
-g_{H,\beta}' = \frac{ \sqrt{N} }{ \mu_{EE} }
+\frac{\partial}{\partial \beta} g_{H}(\beta, N) = \frac{ \sqrt{N} }{ \mu_{EE} }
     \frac{ 
     3(\alpha+1)(\beta^2-1)(n_I-1)
     }
@@ -440,7 +440,7 @@ g_{H,\beta}' = \frac{ \sqrt{N} }{ \mu_{EE} }
         \left[ \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I \right]^2
     }\:,
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H,\beta}$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$, as well as \cref{fig:noclusterBD1}). 
+which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}(\beta, N)$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$, as well as \cref{fig:noclusterBD1}). 
 
 \begin{figure}
     \centering
@@ -680,19 +680,19 @@ For $\beta_C > 1$, this bifurcation takes place at $g$ much greater than $g_C$, 
 
 \subsection{\texorpdfstring{$C_1/C_2$}{C1/C2} branches for large \texorpdfstring{$g$}{g}} 
 
-First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large. The large $g$ behavior of the $C_1/C_2$ branches will depend on the ratio $\beta_C = n_{C_1}/n_{C_2}$. When $\beta_C = 1$, $x_{E_2} = -x_{E_1} := x_E$, and $x_I = 0$ for all $g \geq g_C$. Numerical parameter continuation suggests that $x_{E} \rightarrow \hat{x}_{E} > 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E}) \rightarrow 1$. It follows from the first row of \cref{eq:cluster3system} that 
+First, we look at the behavior of solutions on the $C_1/C_2$ branch as $g$ becomes large. This will depend on the ratio $\beta_C = n_{C_1}/n_{C_2}$. When $\beta_C = 1$, $x_{E_2} = -x_{E_1} := x_E$, and $x_I = 0$ for all $g \geq g_C$. Numerical parameter continuation suggests that $x_{E} \rightarrow \hat{x}_{E} > 0$ as $g \rightarrow \infty$, which implies that $\tanh(g x_{E}) \rightarrow 1$. It follows from the first row of \cref{eq:cluster3system} that 
 \begin{equation}\label{eq:xEhat}
 \hat{x}_{E} = \frac{\mu}{\sqrt{N}}(p-1)n_C.
 \end{equation}
-For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$ as $g \rightarrow \infty$, but $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for some critical value $\beta_C^*$. These are illustrated in \cref{fig:betacstar}.\\
+For $\beta_C > 1$, numerical parameter continuation suggests $x_I \rightarrow 0$ as $g \rightarrow \infty$, but $\tanh(g x_I) \rightarrow \hat{y}_I \neq 0$. There are two patterns for the limiting behavior on the $C_1/C_2$ branches, which depend on whether $\beta_C < \beta_C^*$ or $\beta_C > \beta_C^*$, for a critical value
+\begin{equation}\label{eq:betaCstar}
+    \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
+\end{equation}
+(See \cref{app:C1C2_largeg} for a derivation of $\beta_C^*$). These are illustrated in \cref{fig:betacstar}.
 \begin{itemize}
     \item Case 1: ($1 < \beta_C < \beta_C^*$) $x_{E_1} \rightarrow \hat{x}_{E_1} > 0$ and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$. 
     \item Case 2: ($\beta_C > \beta_C^*$) $x_{E_1} \rightarrow 0$ with $\tanh(g x_{E_1}) \rightarrow \hat{y}_{E_1} \neq 0$, and $x_{E_2} \rightarrow \hat{x}_{E_2} < 0$.\\
 \end{itemize}
-In \cref{app:C1C2_largeg}, we will show that 
-\begin{equation}\label{eq:betaCstar}
-    \beta_C^* = \frac{(n_C p - \alpha )(2 p - 1) + \alpha p}{n_C p + \alpha(p-1)}.
-\end{equation}
 As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$ and $n_C$ scale as $\sqrt{N}$, then the only significant terms in the numerator and denominator of \cref{eq:betaCstar} are of order $N$ or larger, in which case $\beta_C^* \rightarrow 2 p-1$ as $N \rightarrow \infty$. 
 
 \begin{figure}
@@ -705,15 +705,15 @@ As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$
     \label{fig:betacstar}
 \end{figure}
 
-We can use formulas for $x_{E_1}$, etc. (see \cref{app:C1C2_largeg}) to find the location of the symmetric pitchfork bifurcations on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. Since we are taking $N$ large, we can assume $\beta_C < \beta_C^*$, as discussed above. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
+We can use formulas for $x_{E_1}$, etc. (see \cref{app:C1C2_largeg}) to find the location of the symmetric pitchfork bifurcation points on the $C_1/C_2$ branches when $\beta_C>1$ and $N$ is large. If we take both $p$ and $n_C$ to scale as $\sqrt{N}$, we can assume $\beta_C < \beta_C^*$, as discussed above. At this bifurcation, the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ with multiplicity $n_I-1$ crosses through 0. Using the identity $\sech^2(g x_{I}) = 1 - \tanh^2(g x_{I}) = 1 - \hat{y}_I$ as $g \rightarrow \infty$ together with \cref{eq:yihat}, the symmetric pitchfork bifurcation on the $C_1/C_2$ branch corresponding to $\beta_C > 1$ is located, to leading order, at 
 \begin{align}\label{eq:gbetaC}
     g_I(\beta_C) &= \frac{\sqrt{N}}{4 \alpha \mu} \frac{(1 + \beta_C)^2}{\beta_C} % + \mathcal{O}\left(\frac{1}{N^{1/2}}\right)
 \end{align}
 for $N$ large. When $\beta_C = 1$, this reduces to \cref{eq:gpitchinhbeta1}. See \cref{fig:clusterBD2} and the left panel of \cref{fig:pitcherror} for the location of the symmetric pitchfork branches on the $C_1/C_2$ branches. Numerical simulation validates this formula, and suggests that the error term in \cref{eq:gbetaC} has order $\mathcal{O}(N^{-1/2})$ (\cref{fig:pitcherror}, right panel). We note that for $N$ large, $g_I(\beta_C)$ is quadratic in $\beta_C$, has a local minimum at $\beta_C = 1$, and is increasing for $\beta_C > 1$. We can see in \cref{fig:clusterBD2} and \cref{fig:pitcherror} that the location of the symmetric bifurcation points $g_I({\beta_C})$ increases with $\beta_C$.
 
-For sufficiently large $N$, each $C_1/C_2$ branch will be stable immediately preceding the pitchfork bifurcation at $g_I(\beta_C)$. To see this, we evaluate the remaining eigenvalues of $D\tilde{F}(\xvec^*)$ when $g = g_I(\beta_C)$. As $N \rightarrow \infty$, $g_I(\beta_C) \rightarrow \infty$, thus $\sech(g_I(\beta_C) x_{E_j}) \rightarrow 0$ for $j = 1, 2$. It follows that for $g = g_I(\beta_C)$, $\lambda_{C_j} \rightarrow 0$, thus $\lambda_{C_j}^* \rightarrow -1$. By the same argument, taking $N \rightarrow \infty$ will zero out the first two columns of \cref{eq:H3C} when $g = g_I(\beta_C)$. Thus, in the limit $N \rightarrow \infty$, $H_3(\xvec^*)$ will have a pair of eigenvalues at 0 and an additional eigenvalue at $-(p n_C - \alpha) \sech^2 g x_I \leq 0$. The corresponding eigenvalues of $D\tilde{F}(\xvec^*)$ will be negative. 
+For sufficiently large $N$, each $C_1/C_2$ branch will be stable immediately preceding the pitchfork bifurcation at $g_I(\beta_C)$. To see this, we evaluate the remaining eigenvalues of $D\tilde{F}(\xvec^*)$ when $g = g_I(\beta_C)$. As $N \rightarrow \infty$, $g_I(\beta_C) \rightarrow \infty$, thus $\sech(g_I(\beta_C) x_{E_j}) \rightarrow 0$ for $j = 1, 2$. It follows that for $g = g_I(\beta_C)$, $\lambda_{C_j} \rightarrow 0$, thus $\lambda_{C_j}^*(g) \rightarrow -1$ for $j = 1, 2$. By the same argument, taking $N \rightarrow \infty$ will zero out the first two columns of \cref{eq:H3C} when $g = g_I(\beta_C)$. Thus, in the limit $N \rightarrow \infty$, $H_3(\xvec^*)$ will have a pair of eigenvalues at 0 and an additional eigenvalue at $-(p n_C - \alpha) \sech^2 g x_I \leq 0$. The corresponding eigenvalues of $D\tilde{F}(\xvec^*)$ will be negative. 
 
-As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C_1/C_2$ branches for $\beta_C = 7/3$, 4, and 9 start unstable, but regain stability before the pitchfork bifurcation point. This does not occur for small value of $N$ (see \cref{fig:clusterBD1} for $N=20$).
+As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C_1/C_2$ branches for $\beta_C = 7/3$, 4, and 9 start unstable, but regain stability before the symmetric pitchfork bifurcation points. This does not necessarily occur for small values of $N$ (see \cref{fig:clusterBD1} for $N=20$).
 
 \begin{figure}
     \centering
@@ -740,7 +740,7 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
     \label{fig:pitcherror}
 \end{figure}
 
-\subsection{Stability of $C_1/C_2/I_1/I_2$ solutions for large \texorpdfstring{$g$}{g}}  \label{sec:C1C2I1I2_largeg}
+\subsection{Stability of \texorpdfstring{$C_1/C_2/I_1/I_2$}{C1/C2/I1/I2} solutions for large \texorpdfstring{$g$}{g}}\label{sec:C1C2I1I2_largeg}
 
 After the symmetric pitchfork bifurcation point on the $C_1/C_2$ branches, both the excitatory clusters and inhibitory cells have split into two populations. We are interested in stable fixed points when $g$ is large. In particular, we seek fixed point branches in which the excitatory clusters are split into two populations with ratio $\beta_C = n_{C_1}/n_{C_2}$ and the inhibitory cells are also split into two populations with ratio $\beta = n_{I_1}/n_{I_2}$. This reduces \cref{eqn:sys_Basic} to the system of equations
 \begin{equation}\label{eq:cluster4system}
@@ -955,7 +955,7 @@ It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$
 \end{equation}
 We substitute this ansatz into the characteristic polynomial for $H_3(\xvec)$ and solve for $\epsilon$ by matching the coefficients of $x_{I_1}^2$. (This computation, and the remaining computations in this section, were performed with the aid of Wolfram Mathematica). Using this method for $\lambda = \lambda_I$, $H_3(\xvec^*)$ has a real eigenvalue located at
 \[
-\lambda_I(\xvec^*) = \alpha \mu_{EE} \left(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
+\lambda_I = \alpha \mu_{EE} \left(1 - (1-\beta+\beta^2)g^2 x_{I_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
 Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigenvalue $\lambda_I^*(g)$ of $J_3(\xvec)$ corresponding to $\lambda_I$ is located at
 \begin{align*}
