@@ -421,18 +421,18 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 
 To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}(g)$ and $\lambda^*_{I_2}(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}(g)$ is always negative, while $\lambda^*_{I_1}(g)$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
 
-The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H}(\beta, N)$, where
+The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H}(\beta)$, where
 % If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
 \begin{equation}\label{eq:ghopfformula}
-    g_{H}(\beta, N) = 
+    g_{H}(\beta) = 
     \frac{\sqrt{N}}{\mu_{EE}} 
     \frac{ 2 - 5\beta + 2 \beta^2 + 3 \beta n_I}
     { \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I }
     + \mathcal{O}\left( \frac{1}{N^{3/2}} \right).
 \end{equation}
-A plot of $g_{H}(\beta, N)$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H}(\beta, N) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
+A plot of $g_{H}(\beta)$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H}(\beta) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
 \begin{equation}\label{eq:gprime}
-\frac{\partial}{\partial \beta} g_{H}(\beta, N) = \frac{ \sqrt{N} }{ \mu_{EE} }
+\frac{\partial}{\partial \beta} g_{H}(\beta) = \frac{ \sqrt{N} }{ \mu_{EE} }
     \frac{ 
     3(\alpha+1)(\beta^2-1)(n_I-1)
     }
@@ -440,7 +440,7 @@ A plot of $g_{H}(\beta, N)$ versus $N$ for various $\beta$ is given in \cref{fig
         \left[ \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I \right]^2
     }\:,
 \end{equation}
-which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}(\beta, N)$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$, as well as \cref{fig:noclusterBD1}). 
+which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}(\beta)$ increases with $\beta$ for $\beta \geq 1$ (see \cref{fig:Hopfplots} for this ordering in $\beta$, as well as \cref{fig:noclusterBD1}). 
 
 \begin{figure}
     \centering
