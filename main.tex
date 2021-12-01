@@ -419,7 +419,7 @@ For part (i), if $\lambda$ is an eigenvalue of $H_3(\xvec)$ with eigenvector $\v
 \end{proof}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}(g)$ and $\lambda^*_{I_2}(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}(g)$ is always negative, while $\lambda^*_{I_1}(g)$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
+We note that the eigenvalues $\lambda_{I_1}$ and $\lambda_{I_2}$ split off from $\lambda_I$ at the pitchfork bifurcation point $g = g_0$; if $\xvec^* = 0$, then $\lambda_{I_1} = \lambda_{I_2} = \lambda_I$. To determine the stability of $\xvec^*$ for $g$ close to $g_0$, we must compute the eigenvalues $\lambda^*_{I_1}(g)$ and $\lambda^*_{I_2}(g)$ of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{I_1}$ and $\lambda_{I_2}$. We will find (see \cref{app:I1I2stab}) that $\lambda^*_{I_2}(g)$ is always negative, while $\lambda^*_{I_1}(g)$ is negative for $\beta<2$ and positive otherwise. Therefore the fixed point is unstable for $\beta \ge 2$ (see \cref{fig:noclusterBD1}). 
 
 The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3forI1I2}. These include one real eigenvalue and a complex pair (see \cref{app:I1I2stab} for computations). The real eigenvalue is always negative, and the complex pair crosses the real axis at a Hopf bifurcation when $g = g_{H}(\beta)$, where
 % If $\beta = 1$, $x_{I_2} = -x_{I_1} := x_I$, thus $\tilde{H}(\xvec^*)$ has a single additional eigenvalue $\lambda_{I} := \mu_{EE} \alpha \sech^2(g x_{I})$ with multiplicity $n_I - 2$. The corresponding eigenvalue of $D\tilde{F}(\xvec^*)$ is $\lambda_{I}^* = -2\left( \frac{g - g_0}{g_0} \right)$, which is negative for $g > g_0$.
@@ -634,7 +634,7 @@ We now analyze the stability of the $C_1/C_2$ branches for $g$ close to $g_C$. C
     % \begin{tabular}{ccc}
     \includegraphics[width=5.7cm]{images/eigpatternxstarEcluster.eps}
     % \end{tabular}
-    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $C_1/C_2$ branch with $\beta_C > 1$. The notation for the eigenvalues is explained below. \textbf{Is $\lambda_C$ an eigenvalue that has split into $\lambda_{C_1}$ and $\lambda_{C_1}$? Let's be precise. }}
+    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $C_1/C_2$ branch with $\beta_C > 1$. The notation for the eigenvalues is explained below. \textbf{Is $\lambda_C$ an eigenvalue that has split into $\lambda_{C_1}$ and $\lambda_{C_1}$? Let's be precise. Yes, explained briefly below.}}
     \label{fig:HstareigEcluster}
 \end{figure}
 
@@ -668,7 +668,7 @@ Let $\xvec = (x_{E_1}, x_{E_2}, x_{I})$ be a solution to \cref{eq:cluster3system
 \end{compactenum}
 \end{proposition}
 
-To determine the stability of $\xvec^*$ for $g$ close to $g_C$, we first compute the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_1}$, $\lambda_{C_2}$, and $\lambda_I$. We find (see \cref{app:C1C2stability}) that he cluster-associated eigenvalue $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta_C > 2$; $\lambda_{C_2}^*(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}^*(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. The behavior of $\lambda_{C_1}^*(g)$ implies that the $C_1/C_2$ branches are initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
+We note that the eigenvalues $\lambda_{C_1}$ and $\lambda_{C_2}$ split off from $\lambda_C$ at the pitchfork bifurcation point $g = g_C$; if $\xvec^* = 0$, then $\lambda_{C_1} = \lambda_{C_2} = \lambda_C$. To determine the stability of $\xvec^*$ for $g$ close to $g_C$, we first compute the eigenvalue of $D\tilde{F}(\xvec^*)$ corresponding to $\lambda_{C_1}$, $\lambda_{C_2}$, and $\lambda_I$. We find (see \cref{app:C1C2stability}) that he cluster-associated eigenvalue $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta_C > 2$; $\lambda_{C_2}^*(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}^*(g)$ is negative for all $\beta_C$ for $N$ sufficiently large. The behavior of $\lambda_{C_1}^*(g)$ implies that the $C_1/C_2$ branches are initially unstable for $\beta_C > 2$ (see \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
 
 The remaining eigenvalue of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$, given by \cref{eq:J3C}. Following the same procedure as in \cref{sec:I1I2stability} (see \cref{app:C1C2stability} for details), we find that since we are taking $n_C \geq \alpha$, the eigenvalues of $J_3(\xvec)$ all have negative real part for $g$ close to $g_C$. Thus for $g$ close to $g_C$, the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$ (see the top panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
 
@@ -864,35 +864,21 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
 % HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
 
 \section{Discussion}
-In this paper, we analyze a family of clustered excitatory-inhibitory neural networks; and in particular, the underlying bifurcation structures that arise because of permutation symmetries in the network. 
 
-For the simplest case (all-to-all connected, except for self-connections), we extend our results from [REFERENCE HERE]. We show that:
-\begin{itemize}
-    \item The origin becomes unstable in a symmetric pitchfork bifurcation at $g=g_0$, at which a new branch of solutions emerges for each possible division of the inhibitory cells into two synchronized clusters (the $I_1/I_2$ branch).
-    \item Along each such solution branch, a Hopf bifurcation creates a branch of periodic orbits.
-    \item All such periodic orbit branches rejoin at a symmetric pitchfork bifurcation of limit cycles, at some large value of the bifurcation parameter $g=g^*$; for $g>g^*$, there is a single stable limit cycle for which the excitatory population and inhibitory population are each synchronized.
-\end{itemize}
-These basic outlines were present in [REFERENCE]. We extend these results with the following:
-\begin{itemize}
-    \item An approximate formula for the solution branch $I_1/I_2$ and for the location of the corresponding Hopf bifurcation. ($g_{H,\beta}$, where $\beta = n_{I_1}/n_{I_2}$).
-    \item A proof that near $g_0$, the $I_1/I_2$ solution branch is stable for $1\leq \beta < 2$, but unstable otherwise ($\beta \ge 2$).
-    \item All $I_1/I_2$ solution branches are unstable for large $g$.
-    \item Stability of limit cycles?
-\end{itemize}
+In this paper, we analyze a family of clustered excitatory-inhibitory neural networks, and, in particular, the underlying bifurcation structures that arise because of permutation symmetries in the network. For the simplest case, an all-to-all connected network which excludes self-connections, we extend the results in \cite{Barreiro2017} to provide a more complete picture of the bifurcations in the system, as well as estimates for the locations of the bifurcation points and the corresponding branches of equilibria which emanate from these bifurcations. For $g$ close to 0, the origin is a stable equilibrium. As $g$ is increased, the origin becomes unstable in a symmetric pitchfork bifurcation at $g=g_0$, at which a new branch of equilibria emerges for each possible division of the inhibitory cells into two synchronized clusters of sizes $n_{I_1}$ and $n_{I_2}$ (the $I_1/I_2$ branches). We derive a leading order estimate for the equilibria on each $I_1/I_2$ branch for $g$ close to $g_0$ and show that, for large $N$, these branches are stable for $1\leq \beta < 2$, but unstable otherwise ($\beta \ge 2$), where $\beta = n_{I_1}/n_{I_2}$. Furthermore, we show that the equilibria on the $I_1/I_2$ branches are all unstable for sufficiently large $g$. Along each $I_1/I_2$ branch, a Hopf bifurcation creates a branch of periodic orbits, wherein the inhibitory cells maintain their division into the same two synchronized clusters; the frequency of these limit cycles increases with $N$. We use our estimates for the $I_1/I_2$ branches to locate these Hopf bifurcations, to leading order, and show that they approach $g_0$ for large $N$. All these periodic orbit branches merge at a symmetric pitchfork bifurcation of limit cycles, at some large value of the bifurcation parameter $g=g^*$; for $g>g^*$, there is a single stable limit cycle for which the excitatory population and inhibitory population are each synchronized. See the top figure in \cref{fig:bdsummary} for a cartoon for a summary.
 
-We next consider the case where the excitatory cells are broken into clusters. The E-E weights are normalized so that the network is still approximated balanced. We find that:
-\begin{itemize}
-\item The origin becomes unstable at $g=g_C$: for $g>g_C$ there is a branch of solutions corresponding to each possible division of the \emph{excitatory clusters} into synchronized groups (the $C_1/C_2$ branch): we characterize each branch by the ratio of clusters in each group: $\beta_C = n_{C_1}/n_{C_2}$.
-\item Near $g_C$, each solution branch is stable for  $1 \le \beta_C < 2$, unstable otherwise.
-\item Along each such branch there is a further bifurcation, in which the inhibitory cells split into two clusters.
-\item There are no Hopf bifurcations along these branches.
-\item For large $g$, the only branches that remain stable are those for which $\beta_C$ is close to $\beta$, in the precise sense we describe in (SAY WHERE HERE); i.e. the excitatory clusters and the inhibitory cells must break up in a similar way.
-\end{itemize}
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=10cm]{images/bdsummary.eps}
+    \end{tabular}
+    \caption{Cartoon summary of fixed points, limit cycles, and bifurcations as $g$ increases from 0 for all-to-all connected network (top) and network with excitatory clustering (right).} 
+    \label{fig:bdsummary}
+\end{figure}
 
-Finally, we consider a network in which the inhibitory cells are clustered, rather than the excitatory cells. Here we find that the origin loses stability in a Hopf bifurcation. 
-\begin{itemize}
-    \item In contrast to the all-to-all case, the frequency does not increase with $N$.
-\end{itemize}
+We next consider the case where the excitatory cells are broken into clusters. The connection weights between excitation cells in the same cluster are normalized so that the network is still approximately balanced. In this case, as $g$ is increased from 0, the origin becomes unstable in a symmetric pitchfork bifurcation point at $g=g_C$. In contrast with the previous case, this bifurcation involves the excitatory clusters. For $g>g_C$, there is a branch of solutions corresponding to each possible division of the excitatory clusters into synchronized groups of sizes of sizes $n_{C_1}$ and $n_{C_2}$ (the $C_1/C_2$ branches). We characterize each branch by the ratio $\beta_C = n_{C_1}/n_{C_2}$. Near $g = g_C$, each solution branch is stable for $1 \le \beta_C < 2$, and is otherwise unstable. Along each $C_1/C_2$ branch, there is a further symmetric pitchfork bifurcation, in which the inhibitory cells split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$, yielding equilibria in which both the excitatory clusters and the inhibitory cells are split into two groups (the $C_1/C_2/I_1/I_2$ branches). Unlike the previous case, there are no Hopf bifurcations along these branches. For large $g$, the only branches that remain stable are those for which $\beta_C$ is close to $\beta = n_{I_1}/n_{I_2}$, in the precise sense we describe in \cref{sec:C1C2I1I2_largeg}; in other words, the excitatory clusters and the inhibitory cells must break up in a similar way. See the bottom figure in \cref{fig:bdsummary} for a cartoon for a summary. We also briefly consider a network in which the inhibitory cells are clustered, rather than the excitatory cells. Here we find that, as with the network with all-to-all coupling, the origin loses stability in a Hopf bifurcation; however, in contrast to the all-to-all case, the frequency of the resulting limit cycle does not increase with $N$.
+
+Future directions include better characterizing the periodic orbits which arise from the Hopf bifurcations in the network with all-to-all coupling case. It may be possible to determine their stability pattern, as well as to locate the bifurcation point at $g=g^*$. Another direction includes exploring other network topologies, including a model incorporating hierarchical clustering [REFERENCE]. MORE STUFF HERE.
 
 \appendix
 
@@ -1219,7 +1205,7 @@ Similarly, the second pair of inequalities in \cref{eq:consistency} is satisfied
 \[
     \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) < \frac{\beta_C-1}{\beta_C+1} p n_C < \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right),
 \]
-which simplifies to \cref{eq:bccondition}
+which simplifies to \cref{eq:bccondition}.
 
 
 
