@@ -101,7 +101,20 @@ dynamical systems, bifurcation theory, equivariant bifurcations, symmetry, neura
 
 \section{Introduction}
 
-Introduction/background goes here.
+Main points to make
+\begin{itemize}
+    \item Biological neural networks show great diversity in connectivity structure. How does connectivity determine the dynamics? Which features are determinative vs. incidental.
+    \item Because neural networks are large, under-specified and heterogeneous, random matrix theory has played a prominent role. Summarize Sompolinsky study here.
+    \item Numerous authors have considered modifications such as low-rank or deterministic perturbations and block-structured matrices, and have found how Sompolinsky's conclusions must be modified accordingly.
+    \begin{itemize}
+        \item However, all of these works focus on phase space structures that occur as a result of randomness.
+        \item Another possible feature is phase space structures that exist \emph{in spite of} randomness, and that might be found in some idealized (averaged?) version of the network. These structures might not be predicted by random matrix theory, as the spectrum of the connectivity matrix will ``swamp" the spectrum of the averaged version.
+    \end{itemize}
+    \item In an earlier work, we found just such an example (explain more). However, some pieces of our analysis remained uncompleted. In particular, we were unable at that time to give a complete explanation of when the fixed points/limit cycles would be stable (i.e. for which $g$). This is important because the stable solution is what one can expect to observe in a perturbed (random) network. 
+    \item Here, we complete this analysis for all-to-all excitatory-inhibitory networks. We then extend this analysis to a biologically significant block-structured case: in which the excitatory cells are clustered but inhibition is global. We find that the dynamics are strikingly different: instead of limit cycles, we predict fixed points. In both cases, the structures can be understood by considering the symmetries of the deterministic connection matrix.  
+    
+    
+\end{itemize}
 
 \section{Mathematical model}\label{sec:model}
 
