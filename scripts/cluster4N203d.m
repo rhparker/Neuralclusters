@@ -21,8 +21,8 @@ c6 = [0.3010, 0.7450, 0.9330];
 c7 = [0.6350, 0.0780, 0.1840];
 
 % plot parameters
-fontSize = 36;
-labelFontSize = 36;
+fontSize = 38;
+labelFontSize = 38;
 markerSize = 50;
 lw = 3;
 
@@ -110,7 +110,7 @@ xlabel('$g$');
 ylabel('$x_E$');
 zlabel('$x_I$');
 
-text(0.25,1.9,0.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(0.20,1.9,0.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
 text(0.9,1.0,0.2,'$\beta_C = 3$','FontSize',labelFontSize,'interpreter','latex');
 
 % bottom

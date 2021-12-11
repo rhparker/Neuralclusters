@@ -23,6 +23,7 @@ c7 = [0.6350, 0.0780, 0.1840];
 % plot parameters
 fontSize = 24;
 labelFontSize = 24;
+textLabelFontSize = 30;
 markerSize = 50;
 lw = 3;
 
@@ -114,8 +115,8 @@ labelpoints( gpos, Elabelpos, labels,'N',0.5,1,'FontSize',labelFontSize,'interpr
 
 xlabel('$g$');
 ylabel('$x_E$');
-text(0.1,1.5,'$x_{E_1}$','FontSize',labelFontSize,'interpreter','latex');
-text(0.1,-3.5,'$x_{E_2}$','FontSize',labelFontSize,'interpreter','latex');
+text(0.1,1.5,'$x_{E_1}$','FontSize',textLabelFontSize,'interpreter','latex');
+text(0.1,-3.5,'$x_{E_2}$','FontSize',textLabelFontSize,'interpreter','latex');
 
 %% inhibitory
 

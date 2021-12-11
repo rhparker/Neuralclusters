@@ -486,9 +486,10 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=7.9cm]{images/periodvsg.eps}
-    \includegraphics[width=7.9cm]{images/floquet1.eps}
-    \includegraphics[width=16cm]{images/pitchbif.eps}
+    \includegraphics[width=8cm]{images/periodvsg.eps}
+    \includegraphics[width=8.2cm]{images/floquet1.eps}\\
+    \hspace{-1cm}
+    \includegraphics[width=17.25cm]{images/pitchbif.eps}
     % \end{tabular}
     \caption{Top left plots period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along $\beta = \infty$ branch is shown in top right. Bottom panel plots $x_{I_1}$ and $x_E$ vs. $g$ and shows pitchfork bifurcation at $g_0$ (filled circle), Hopf bifurcations for $\beta = 1$, $\beta = 3$, and $\beta = \infty$ (filled squares), and pitchfork bifurcation of limit cycles (dark band) at $g = g^*$. $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg}
@@ -496,9 +497,8 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
 
 \begin{figure}
     \centering
-    % \begin{tabular}{cc}
-    \includegraphics[width=16cm]{images/periodvsgN50.eps}
-    % \end{tabular}
+    \hspace{-1cm}
+    \includegraphics[width=17.25cm]{images/periodvsgN50.eps}
     \caption{Period of limit cycle versus $g$ and $\max \: x_{I_2}$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares. $N = 50$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg50}
 \end{figure}
@@ -618,7 +618,7 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=7.5cm]{images/bdclusters20c4E.eps}\hspace{-0.5cm}
+    \includegraphics[width=7.8cm]{images/bdclusters20c4E.eps}\hspace{-0.5cm}
     % \includegraphics[width=8cm]{images/bdclusters20c4I.eps} 
     \vspace{-0.5cm}
     \includegraphics[width=9cm]{images/bdclusters20c4E3D.eps} 
@@ -704,8 +704,8 @@ As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/clusterbeforebetacstar.eps}
-    \includegraphics[width=7.8cm]{images/clusterafterbetacstar.eps}
+    \includegraphics[width=8.25cm]{images/clusterbeforebetacstar.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/clusterafterbetacstar.eps}
     % \end{tabular}
     \caption{Solutions $x_{E_1}$, $x_{E_2}$, and $x_I$ vs $g$ on $C_1/C_2$ branches for $1 < \beta_C < \beta_C^*$ (left) and $\beta_C > \beta_C^*$ (right). $N = 50$, $n_C = 10$, $p = 4$, $n_I = 10$, $\alpha =4$, $\mu = 0.7$. $\beta_C = 7/3$ (left), and $\beta_C = 9$ (right). $\beta_C^* = 5.15385$.}
     \label{fig:betacstar}
@@ -724,13 +724,14 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/bdclusters100c10E.eps}
-    \includegraphics[width=7.8cm]{images/bdclusters100c10Izoom.eps} 
+    \includegraphics[width=8.25cm]{images/bdclusters100c10E.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/bdclusters100c10Izoom.eps} \\
     % \includegraphics[width=7.8cm]{images/bdclusters100c10I.eps} \\
     \vspace{-1cm}
     % \includegraphics[width=7.8cm]{images/bdclusters100c10Ezoom.eps} &
-    % \includegraphics[width=7.8cm]{images/bdclusters100c10Izoom.eps} 
-    \includegraphics[width=16.5cm]{images/bdclusters100c103D.eps}
+    % \includegraphics[width=7.8cm]{images/bdclusters100c10Izoom.eps}
+    \hspace{-1cm} 
+    \includegraphics[width=17.25cm]{images/bdclusters100c103D.eps}
     % \end{tabular}
     \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Top left plots $x_{E_1}$ vs $g$. Top right plots $x_I$ vs $g$, zoomed into a narrower range of $g$ to show stability of $C_1/C_2$ branches near $g = g_C$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. No branches are shown after these bifurcations to avoid clutter. Bottom panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches at the symmetric pitchfork bifurcation point. The only $I_1/I_2$ branches shown here is the ones which are eventually stable, which in this case are those with $\beta = \beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 20$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD2}
@@ -738,10 +739,8 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/clusterpitchgvsN.eps}
-    \includegraphics[width=7.8cm]{images/pitcherrorsemilog.eps}
-    \end{tabular}
+    \includegraphics[width=8.25cm]{images/clusterpitchgvsN.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/pitcherrorsemilog.eps}
     \caption{Left panel plots location in $g$ of symmetric pitchfork bifurcation point on $C_1/C_2$ branches vs $N$ for various $\beta_C$. Right panel is semi-log plot of log of the absolute error of approximation \cref{eq:gbetaC} vs $N$ for various $\beta_C$. Slope of line is approximately -0.5 for all three $\beta_C$. $n_C = 10$, $\alpha = 4$, $\mu = 0.7$.}
     \label{fig:pitcherror}
 \end{figure}
@@ -842,10 +841,8 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/limitcycleIC1.eps}
-    \includegraphics[width=7.8cm]{images/limitcycleIC2.eps}
-    \end{tabular}
+    \includegraphics[width=8.25cm]{images/limitcycleIC1.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/limitcycleIC2.eps}
     \caption{Limit cycle arising from Hopf bifurcation at origin for \cref{eqn:sys_Basic} with inhibitory cell clustering and $\mu_{II} = -\alpha \mu_{EE}$. Left panel shows activity $x_E$ of synchronized excitatory cells and activity $x_I$ of synchronized inhibitory cells vs $t$. Right panel shows $x_I$ vs $x_E$. $N=1600$, $N_{C_I} = 20$, $p_I = 20$,$\alpha = 4$, $\mu_{EE}= 0.7$, $g = 1.02 g_H$. Period of limit cycle is 1.792.} 
     \label{fig:limitcycleIC}
 \end{figure}
