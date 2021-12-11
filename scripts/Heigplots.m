@@ -7,8 +7,8 @@ a = f/(1-f);
 
 % plotting parameters
 
-fontSize = 24;
-labelFontSize = 30;
+fontSize = 30;
+labelFontSize = 40;
 markerSize = 60;
 
 
@@ -30,6 +30,9 @@ l  = eig(H);
 l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))]
 
+% adjust leftmost one lambda_E for looks
+uniquel(1) = -1.2;
+
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
 set(groot,'defaultAxesTickLabelInterpreter','latex');  
@@ -46,7 +49,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-2 6 -15 15]);
+axis([-2 7 -18 18]);
 
 lambdaE = -mee;
 lambdaI = a*mee;
@@ -72,8 +75,8 @@ l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))];
 % move eigenvalues for convenience
 uniquel(1) = -4;
-uniquel(2) = uniquel(2) - 1.9;
-uniquel(5) = uniquel(5) - 1.9;
+uniquel(2) = uniquel(2) - 2.5;
+uniquel(5) = uniquel(5) - 2.5;
 
 figure('DefaultAxesFontSize', fontSize);
 set(gca,'fontname','times');
@@ -91,7 +94,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-5 15 -12 12]);
+axis([-5 16 -15 15]);
 
 %% I clusters
 
@@ -111,7 +114,10 @@ l  = eig(H);
 [realvals, idx] = uniquetol(real(l));
 l2 = l(idx);
 uniquel = [ l2 ; conj(l2( l(idx) ~= conj(l(idx))))];
-uniquel(2) = -1.2;
+
+% adjust to make prettier
+uniquel(1) = -4;
+uniquel(2) = -2;
 
 figure('DefaultAxesFontSize', fontSize);
 set(gca,'fontname','times');
@@ -129,7 +135,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-3.5 8 -12 12]);
+axis([-4.5 10 -13 13]);
 
 %% I and E clusters
 
@@ -217,7 +223,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-2 6 -11 11]);
+axis([-2 6 -12 12]);
 
 lambdaE = -mee;
 lambdaI = a*mee;
@@ -274,7 +280,7 @@ xlabel('Re $\lambda$');
 ylabel('Im $\lambda$');
 set(gca,'xtick',[]);
 set(gca,'ytick',[]);
-axis([-10 18 -14 14]);
+axis([-11.5 18 -15 15]);
 
 
    

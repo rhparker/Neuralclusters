@@ -8,8 +8,8 @@ g0 = sqrt(N)/(alpha*mee);
 
 g = 5;
 
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 3;
 

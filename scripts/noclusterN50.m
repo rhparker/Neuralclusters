@@ -19,8 +19,9 @@ c6 = [0.3010, 0.7450, 0.9330];
 c7 = [0.6350, 0.0780, 0.1840];
 
 % plot parameters
-fontSize = 20;
-labelFontSize = 20;
+fontSize = 24;
+labelFontSize = 24;
+textLabelFontSize = 30;
 markerSize = 50;
 lw = 3;
 
@@ -118,8 +119,8 @@ text(2.95,-0.35,'$X_{I_2}$','FontSize',labelFontSize,'interpreter','latex');
 
 %% inhibitory, only xI2
 
-gpos = [ g1(70) ; g15(80); g233(80); g4(80); g9(80) ];
-I2labelpos = [ x1(70,2) ; x15(80,2)+0.01; x233(80,2)+0.01; x4(70,2)+0.0175; x9(70,2)+0.0175 ];
+gpos = [ g1(70) ; g15(80); g233(80); g4(80); g9(78) ];
+I2labelpos = [ x1(75,2) ; x15(80,2)+0.01; x233(80,2)+0.01; x4(70,2)+0.0155; x9(80,2)+0.0205 ];
 labels = {'$\beta = 1$','$\beta = 3/2$', '$\beta = 7/3$', '$\beta = 4$', '$\beta = 9$'};
 
 figure('DefaultAxesFontSize',fontSize);
@@ -156,12 +157,12 @@ labelpoints( gpos, I2labelpos, labels,'S',0.5,1,'FontSize',labelFontSize,'interp
 % labelpoints( gpos(2), I2labelpos(2), labels(2),'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 
 xlabel('$g$');
-ylabel('$X_{I_2}$');
+ylabel('$x_{I_2}$');
 
 %% Excitatory
 
 gpos = [ g1(140) ; g15(140); g233(140); g4(120); g9(100) ];
-Elabelpos = [ x1(140,1) ; x15(140,1); x233(140,1); x4(120,1); x9(100,1) ];
+Elabelpos = [ x1(140,1) ; x15(140,1); x233(136,1); x4(120,1); x9(100,1) ];
 labels = {'$\beta = 1$','$\beta = 3/2$', '$\beta = 7/3$', '$\beta = 4$', '$\beta = 9$'};
 
 figure('DefaultAxesFontSize',fontSize);
@@ -196,5 +197,5 @@ axis([2.45,3.55,-0.002,0.03]);
 labelpoints( gpos, Elabelpos, labels,'NW',0,0,'FontSize',labelFontSize,'interpreter','latex');
 
 xlabel('$g$');
-ylabel('$X_E$');
+ylabel('$x_E$');
 

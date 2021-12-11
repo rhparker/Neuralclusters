@@ -6,8 +6,8 @@ f = 0.8;
 mu = 0.7;
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 3;
 

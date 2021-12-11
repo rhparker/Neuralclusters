@@ -8,8 +8,8 @@ f = 0.8;
 mee = 0.7;
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 2;
 
@@ -82,7 +82,7 @@ ylabel('$\log g$');
 xlabel('$N$');
 % axis([3, 6, 0.4, 3.2]);
 
-labels = {'symmetric pitchfork ($g_0$)', 'Hopf at origin ($g_H$)', 'Hopf $\beta = 1$ branch', 'Hopf $\beta = 3$ branch','Hopf $\beta = 9$ branch'};
+labels = {'Pitchfork $g_0$', 'Hopf $g_H$', 'Hopf $\beta = 1$', 'Hopf $\beta = 3$','Hopf $\beta = 9$'};
 legend(labels,'location','NorthWest');
 
 %% approx location plot

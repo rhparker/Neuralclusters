@@ -21,8 +21,8 @@ c6 = [0.3010, 0.7450, 0.9330];
 c7 = [0.6350, 0.0780, 0.1840];
 
 % plot parameters
-fontSize = 24;
-labelFontSize = 24;
+fontSize = 36;
+labelFontSize = 36;
 markerSize = 50;
 lw = 3;
 
@@ -107,15 +107,17 @@ pbaspect([3 2 1]);
 axis([0 4 0 2 -1 1 ]);
 
 xlabel('$g$');
-ylabel('$X_E$');
-zlabel('$X_I$');
+ylabel('$x_E$');
+zlabel('$x_I$');
 
-text(0.55,1.9,0,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
-text(0.9,1.0,0,'$\beta_C = 3$','FontSize',labelFontSize,'interpreter','latex');
+text(0.25,1.9,0.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(0.9,1.0,0.2,'$\beta_C = 3$','FontSize',labelFontSize,'interpreter','latex');
 
-text(3,0.6,-0.75,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
-text(3.9,0.6,0.25,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+% bottom
+text(4,0.6,-0.55,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
+text(4.0,0.6,0.25,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
 
-text(3,2,0.68,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+% top
+text(2.6,2,0.95,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
 text(4.05,1.75,-.75,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
 

@@ -10,8 +10,8 @@ mee = 0.7;
 %% plot of I1=I2 branch
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 3;
 
@@ -46,8 +46,8 @@ plot(g,log(abs(y-y3)),'--','LineWidth',lw);
 %% plot of beta=3 branch
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 3;
 b = 3;
@@ -79,7 +79,7 @@ legend(labels,'location','NorthWest');
 figure;
 plot(g,log(abs(y-y3)),'--','LineWidth',lw);
 
-%% plot 
+%% plot bifurcation diagrams
 
 % default MATLAB colors
 c1 = [0 0.4470 0.7410];
@@ -88,8 +88,9 @@ c3 = [0.9290 0.6940 0.1250];
 c4 = [0.4940 0.1840 0.5560];
 
 % plot parameters
-fontSize = 20;
-labelFontSize = 20;
+fontSize = 24;
+labelFontSize = 24;
+textLabelFontSize=30;
 markerSize = 50;
 lw = 3;
 
@@ -127,7 +128,6 @@ I1labelpos = [ x1I1(2000) ; x3I1(2000 ) ];
 I2labelpos = [ x1I2(2000) ; x3I2(2000 ) ];
 labels = {'$\beta = 1$','$\beta = 3$'};
 
-
 % excitatory
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -145,9 +145,9 @@ labelpoints( gpos, Elabelpos, labels,'SE',0.5,1,'FontSize',labelFontSize,'interp
 plot( g0, 0, '.k', 'MarkerSize', 40);                   % branch points
 scatter( Hopfx, Hopfy(:,1), 175, 'sk', 'filled');       % Hopf
 xlabel('$g$');
-ylabel('$X_E$');
+ylabel('$x_E$');
 
-% inhibitory
+%% inhibitory
 
 figure('DefaultAxesFontSize',fontSize);
 set(gca,'fontname','times');
@@ -172,9 +172,9 @@ plot( g0, 0, '.k', 'MarkerSize', 40);                   % branch points
 scatter( Hopfx, Hopfy(:,2), 175, 'sk', 'filled');       % Hopf (I1)
 scatter( Hopfx, Hopfy(:,3), 175, 'sk', 'filled');       % Hopf (I2)
 xlabel('$g$');
-ylabel('$X_I$');
-text(4.5,0.35,'$X_{I_1}$','FontSize',labelFontSize,'interpreter','latex');
-text(4.5,-0.35,'$X_{I_2}$','FontSize',labelFontSize,'interpreter','latex');
+ylabel('$x_I$');
+text(4.5,0.35,'$x_{I_1}$','FontSize',textLabelFontSize,'interpreter','latex');
+text(4.5,-0.35,'$x_{I_2}$','FontSize',textLabelFontSize,'interpreter','latex');
 
 
 

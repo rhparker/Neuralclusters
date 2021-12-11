@@ -3,8 +3,8 @@
 a = 4;
 mu = 0.7;
 N = 20;
-fontSize = 30;
-labelFontSize=30;
+fontSize = 28;
+labelFontSize=28;
 
 % load fixed point data
 
@@ -96,9 +96,9 @@ xlabel('$g$');
 ylabel('$x_E$');
 zlabel('$x_{I_1}$');
 
-text(13, -.1, -.35,'$\beta = \infty$','FontSize',labelFontSize,'interpreter','latex');
-text(1.65, .4, .3,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
-text(1.55, 0, -.65,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(13, -.1, -.36,'$\beta = \infty$','FontSize',labelFontSize,'interpreter','latex');
+text(0.75, .4, .3,'$\beta = 3$','FontSize',labelFontSize,'interpreter','latex');
+text(0, 0.1, -.45,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
 
 
 pbaspect([2 1 1]);

@@ -165,15 +165,14 @@ H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))
 \end{equation}
 is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. In particular, this implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
 
-Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$ [REFERENCE], even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system [SAY MORE]. We then extend the analysis to several families of networks, which share [SAY MORE]. For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
+Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$ [REFERENCE], even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system; in particular, we derive leading order expressions for bifurcation points in the system, as well as for the equilibria near those bifurcation points. We then extend the analysis to several families of networks, in which the cell populations are split up into clusters of equal sizes. For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
 
 \begin{figure}
     \centering
     % \begin{tabular}{ccc}
-    \includegraphics[width=5.7cm]{images/eigpattern1.eps} \hspace{-0.7cm}
-    \includegraphics[width=5.7cm]{images/eigpattern2.eps} \hspace{-0.7cm}
-    \includegraphics[width=5.7cm]{images/eigpattern3.eps} 
-    % \includegraphics[width=7cm]{images/eigpattern4.eps} 
+    \includegraphics[width=5.8cm]{images/eigpattern1.eps} \hspace{-0.7cm}
+    \includegraphics[width=5.8cm]{images/eigpattern2.eps} \hspace{-0.7cm}
+    \includegraphics[width=5.8cm]{images/eigpattern3.eps} 
     % \end{tabular}
     \caption{Eigenvalue pattern of connectivity matrix $H$ for single excitatory and single inhibitory cluster (left), multiple excitatory clusters and single inhibitory cluster (middle), and single excitatory cluster and multiple inhibitory clusters (right). The notation for the eigenvalues in each network model is explained in the corresponding section below.}
     \label{fig:Heigpattern}
@@ -354,10 +353,10 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/Xiapprox.eps} &
-    \includegraphics[width=7.8cm]{images/Xiapproxbeta3.eps} 
-    \end{tabular}
+    % \begin{tabular}{cc}
+    \includegraphics[width=8.25cm]{images/Xiapprox.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/Xiapproxbeta3.eps} 
+    % \end{tabular}
     \caption{Third order approximation \cref{eq:xIapprox} and fifth order approximation \cref{eq:xIapprox5} to $x_I$ on the $I_1=I_2$ branch of fixed points (left panel). Third order approximation \cref{eq:XI1} to $X_{I_1}$ on the $\beta=3$ branch (right panel). $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:xIapprox}
 \end{figure}
@@ -389,7 +388,7 @@ Now that we have obtained a leading order formula for the fixed points on the $I
 \begin{figure}
     \centering
     % \begin{tabular}{ccc}
-    \includegraphics[width=5.7cm]{images/eigpatternxstarnocluster.eps}
+    \includegraphics[width=5.8cm]{images/eigpatternxstarnocluster.eps}
     % \end{tabular}
     \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $I_1/I_2$ branch with $\beta > 1$. The notation for the eigenvalues is explained in \cref{sec:I1I2stability}.}
     \label{fig:Hstareignocluster}
@@ -457,13 +456,9 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/Hopfapproxbeta1.eps} &
-    \includegraphics[width=7.8cm]{images/Hopfapproxerrorsemilog.eps} \\
-    \includegraphics[width=7.8cm]{images/HopfNvsg.eps} &
-    \includegraphics[width=7.8cm]{images/HopflogNvsgsemilog.eps}
-    \end{tabular}
-    \caption{Top left compares approximation \cref{eq:ghopfformula} to computed location of Hopf bifurcation for $I_1/I_2$ branch with $\beta = 1$. Top right plots is semi-log plot of log of absolute error of approximation \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4. Slope of line is approximately -1.5 for all three $\beta$. Bottom left shows location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$). Right panel is same data on a semi-log plot. $\alpha = 4$, $\mu_{EE}= 0.7$. }
+    \includegraphics[width=8.25cm]{images/Hopfapproxerrorsemilog.eps} \hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/HopflogNvsgsemilog.eps}
+    \caption{Semi-log plot of log of absolute error of approximation \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4 (left). Slope of line is approximately -1.5 for all three $\beta$. Right is location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$) on semi-log plot. $\alpha = 4$, $\mu_{EE}= 0.7$. }
     \label{fig:Hopfplots}
 \end{figure}
 
@@ -474,10 +469,8 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
 Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO \cite{AUTO} suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=7.85cm]{images/limitcycle1.eps}
-    \includegraphics[width=7.85cm]{images/limitcycle2.eps}
-    \end{tabular}
+    \includegraphics[width=8.25cm]{images/limitcycle1.eps}\hspace{-0.5cm}
+    \includegraphics[width=8.25cm]{images/limitcycle2.eps}
     \caption{$\beta = \infty$ limit cycle arising from Hopf bifurcation at $g = g_H$. Single excitatory cluster with activity $x_E(t)$, single inhibitory cluster with activity $x_I(t)$. $g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. Period of limit cycle is 1.62.} 
     \label{fig:limitcycleorigin}
 \end{figure}
@@ -493,8 +486,8 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=7.8cm]{images/periodvsg}
-    \includegraphics[width=7.8cm]{images/floquet1.eps}
+    \includegraphics[width=7.9cm]{images/periodvsg.eps}
+    \includegraphics[width=7.9cm]{images/floquet1.eps}
     \includegraphics[width=16cm]{images/pitchbif.eps}
     % \end{tabular}
     \caption{Top left plots period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along $\beta = \infty$ branch is shown in top right. Bottom panel plots $x_{I_1}$ and $x_E$ vs. $g$ and shows pitchfork bifurcation at $g_0$ (filled circle), Hopf bifurcations for $\beta = 1$, $\beta = 3$, and $\beta = \infty$ (filled squares), and pitchfork bifurcation of limit cycles (dark band) at $g = g^*$. $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
@@ -625,16 +618,16 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
 \begin{figure}
     \centering
     % \begin{tabular}{cc}
-    \includegraphics[width=8cm]{images/bdclusters20c4E.eps} 
-    \includegraphics[width=8cm]{images/bdclusters20c4I.eps} 
+    \includegraphics[width=7.5cm]{images/bdclusters20c4E.eps}\hspace{-0.5cm}
+    % \includegraphics[width=8cm]{images/bdclusters20c4I.eps} 
     \vspace{-0.5cm}
-    \includegraphics[width=16cm]{images/bdclusters20c43D.eps} 
+    \includegraphics[width=9cm]{images/bdclusters20c4E3D.eps} 
     % \includegraphics[width=8cm]{images/bdclusters20c4Ebetac1.eps} &
     % \includegraphics[width=8cm]{images/bdclusters20c4Ibetac1.eps} \\
     % \includegraphics[width=8cm]{images/bdclusters20c4Ebetac3.eps} &
     % \includegraphics[width=8cm]{images/bdclusters20c4Ibetac3.eps}
     % \end{tabular}
-    \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. (No $I_1/I_2$ branches after symmetric pitchfork bifurcation on $C_1/C_2$ branch are shown to avoid clutter). Middle panel shows $I_1/I_2$ branches bifurcating from $\beta_C = 1$ branch. Bottom panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches (only $x_{E_1}$ is shown to avoid clutter). Stable fixed points are indicated with solid lines. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Left panel shows excitatory cell activity $x_{E_1}$ and $x_{E_2}$ on $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. (No $I_1/I_2$ branches after symmetric pitchfork bifurcation on $C_1/C_2$ branch are shown to avoid clutter). Right panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches (only $x_{E_1}$ is shown to avoid clutter). Stable fixed points are indicated with solid lines. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD1}
 \end{figure}
 

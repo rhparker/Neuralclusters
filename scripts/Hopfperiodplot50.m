@@ -8,10 +8,10 @@ f = 0.8;
 mee = 0.7;
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 30;
+labelFontSize = 30;
 markerSize = 50;
-lw = 2;
+lw = 4;
 
 % default MATLAB colors
 c1 = [0 0.4470 0.7410];
@@ -98,7 +98,7 @@ hold on;
 
 % 3D
 ind = 11;
-lw = 3;
+lw = 4;
 plot3( betainfg, betainfxmax(:,ind), betainfper, ':', 'LineWidth',lw, 'Color', c1);
 plot3( betainfgs, betainfxmax(182:end,ind), betainfpers, '-', 'LineWidth',lw, 'Color', c1);
 plot3( beta1g(1:270), beta1xmax(1:270,ind), beta1per(1:270), ':', 'LineWidth',lw, 'Color', c2);
@@ -127,13 +127,15 @@ scatter3( betainfg(1), betainfxmax(1,ind), betainfper(1), 175, 'sk', 'filled');
 xlabel('$g$');
 ylabel('$\max\:x_{I_2}$');
 zlabel('period');
+xlim([0 20]);
  
-text(beta1g(1)-0.5, beta1xmax(1,ind), beta1per(1)+0.05, '$\beta = 1$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(beta15g(1)-0.5, beta15xmax(1,ind), beta15per(1)+0.05, '$\beta = 3/2$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(beta2333g(1)-1, beta2333xmax(1,ind), beta2333per(1)-0.12, '$\beta = 7/3$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(beta4g(1)-0.5, beta4xmax(1,ind), beta4per(1)-0.1, '$\beta = 4$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(beta9g(1)-0.5, beta9xmax(1,ind), beta9per(1)-0.1, '$\beta = 9$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(betainfg(1)-0.5, betainfxmax(1,ind), betainfper(1)-0.1, '$\beta = \infty$', 'Interpreter', 'latex', 'Fontsize', 18);
+textFontSize=30;
+text(beta1g(1)-0.5, beta1xmax(1,ind), beta1per(1)+0.05, '$\beta = 1$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
+text(beta15g(1)-0.5, beta15xmax(1,ind), beta15per(1)+0.10, '$\beta = 3/2$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
+text(beta2333g(1)-2.3, beta2333xmax(1,ind), beta2333per(1)-0.10, '$\beta = 7/3$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
+text(beta4g(1)-0.8, beta4xmax(1,ind), beta4per(1)-0.12, '$\beta = 4$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
+text(beta9g(1)-0.7, beta9xmax(1,ind), beta9per(1)-0.12, '$\beta = 9$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
+text(betainfg(1)-0.8, betainfxmax(1,ind), betainfper(1)-0.125, '$\beta = \infty$', 'Interpreter', 'latex', 'Fontsize', textFontSize);
 
 
 %% plot of stability for a given g

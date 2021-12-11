@@ -8,8 +8,8 @@ f = 0.8;
 mee = 0.7;
 
 % plot parameters
-fontSize = 18;
-labelFontSize = 18;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 2;
 
@@ -58,13 +58,13 @@ scatter( beta0g(1), beta0per(1), 175, 'sk', 'filled');
 scatter( beta1g(1), beta1per(1), 175, 'sk', 'filled');
 scatter( beta3g(1), beta3per(1), 175, 'sk', 'filled');
 
-text(10, 1.15, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
-text(11.7, 1.25, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
-text(13.4, 1.38, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
+text(10, 1.13, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(11.7, 1.22, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(13.4, 1.35, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
 
-text(2.3, 3.1, '$\beta = 1$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(6.25, 1.9, '$\beta = 3$', 'Interpreter', 'latex', 'Fontsize', 18);
-text(3.5, 1.25, '$\beta = \infty$', 'Interpreter', 'latex', 'Fontsize', 18);
+text(2.3, 3.1, '$\beta = 1$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(6.25, 1.9, '$\beta = 3$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(3.5, 1.25, '$\beta = \infty$', 'Interpreter', 'latex', 'Fontsize', 24);
 
 xlabel('$g$');
 ylabel('period of limit cycle');
@@ -95,9 +95,9 @@ plot( fbefore, -ones(4,1), '.b', 'MarkerSize', 50 );
 labelpoints( fbefore, -ones(4,1), beforelabels,'N',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 labelpoints( [1.25 1.25 1.25], [-1 0 1],lambdalabels, 'E',0.25,0.5,'FontSize',labelFontSize,'interpreter','latex');
 
-text(-.05, 1.2, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
-text(-.05, 0.2, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
-text(-.05, -0.8, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$', 'Interpreter', 'latex', 'Fontsize', 20);
+text(-.05, 1.2, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(-.05, 0.2, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {2}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
+text(-.05, -0.8, '$\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {3}}}$', 'Interpreter', 'latex', 'Fontsize', 24);
 
 set(gca,'visible','off')
 

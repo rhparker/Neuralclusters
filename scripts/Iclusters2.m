@@ -2,6 +2,8 @@
 f = 0.8;
 a = f/(1-f);
 
+fontSize=24;
+
 % clusters 
 N  = 1600;
 Ne = round( f*N );
@@ -60,7 +62,7 @@ set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 
 plot(t-400, x(:,1),'--b',t-400,x(:,f*N+1),'-r','LineWidth',3);
-axis([0 20 -5 5 ]);
+axis([0 20 -5.5 5.5 ]);
 labels = {'$x_E$','$x_I$'};
 legend(labels,'Location','NorthEast');
 xlabel('$t$');

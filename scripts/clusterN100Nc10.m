@@ -21,14 +21,8 @@ c6 = [0.3010, 0.7450, 0.9330];
 c7 = [0.6350, 0.0780, 0.1840];
 
 % plot parameters
-fontSize = 20;
-labelFontSize = 20;
-markerSize = 50;
-lw = 3;
-
-% plot parameters
-fontSize = 20;
-labelFontSize = 20;
+fontSize = 30;
+labelFontSize = 30;
 markerSize = 50;
 lw = 3;
 
@@ -204,7 +198,7 @@ plot( [BP4(1)], x4(BP4index2, [1]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
 plot( [BP5(1)], x5(BP5index2, [1]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
 
 xlabel('$g$');
-ylabel('$X_{E_1}$');
+ylabel('$x_{E_1}$');
 
 % version 1, zoomed out
 axis([0,12,-0.2,5.5]);
@@ -259,7 +253,7 @@ plot( [BP4(1)], x4(BP4index2, [11]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
 plot( [BP5(1)], x5(BP5index2, [11]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
 
 xlabel('$g$');
-ylabel('$X_I$');
+ylabel('$x_I$');
 
 % % version 1, zoomed out
 % axis([0,12,-0.1,0.7]);
@@ -271,8 +265,8 @@ ylabel('$X_I$');
 
 % version 2, zoomed in
 axis([0,2,-0.1,0.7]);
-gpos = [ 1 ; 1.15 ; 1.9 ; 1.1 ; 1.9 ];
-Ilabelpos = [ -0.07 ; 0.10 ; 0.25 ; 0.6 ; 0.42 ];
+gpos = [ 1 ; 1.15 ; 2.0 ; 1.1 ; 1.9 ];
+Ilabelpos = [ -0.08 ; 0.08 ; 0.25 ; 0.62 ; 0.42 ];
 labels = {'$\beta_C = 1$','$\beta_C = 3/2$', '$\beta_C = 7/3$', '$\beta_C = 4$', '$\beta_C = 9$'};
 labelpoints( gpos, Ilabelpos, labels,'NW',0,0,'FontSize',labelFontSize,'interpreter','latex');
 
@@ -476,23 +470,23 @@ plot3( [BP4(1)], x4(BP4index2(1), [1]), x4(BP4index2(1), [11]), 'dk', 'MarkerSiz
 plot3( [BP5(1)], x5(BP5index2(1), [1]), x5(BP5index2(1), [11]), 'dk', 'MarkerSize', 10, 'LineWidth',3);
 
 % beta labels
-text(11,.4,.33,'$\beta = 9$','FontSize',labelFontSize,'interpreter','latex');
-text(11,1.5,.33,'$\beta = 4$','FontSize',labelFontSize,'interpreter','latex');
-text(11,2.6,.33,'$\beta = 7/3$','FontSize',labelFontSize,'interpreter','latex');
-text(11,3.7,.33,'$\beta = 3/2$','FontSize',labelFontSize,'interpreter','latex');
-text(11,4.8,.33,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(11,.4,.35,'$\beta = 9$','FontSize',labelFontSize,'interpreter','latex');
+text(11,1.5,.35,'$\beta = 4$','FontSize',labelFontSize,'interpreter','latex');
+text(11,2.6,.35,'$\beta = 7/3$','FontSize',labelFontSize,'interpreter','latex');
+text(11,3.7,.35,'$\beta = 3/2$','FontSize',labelFontSize,'interpreter','latex');
+text(11,4.8,.35,'$\beta = 1$','FontSize',labelFontSize,'interpreter','latex');
 
 % beta_C labels
 % beta labels
 text(.4,.7,.25,'$\beta_C = 9$','FontSize',labelFontSize,'interpreter','latex');
-text(1,2,.58,'$\beta_C = 4$','FontSize',labelFontSize,'interpreter','latex');
-text(-.4,3,.56,'$\beta_C = 7/3$','FontSize',labelFontSize,'interpreter','latex');
-text(-0.3,4,.32,'$\beta_C = 3/2$','FontSize',labelFontSize,'interpreter','latex');
-text(0,4.5,-.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
+text(1,2,.60,'$\beta_C = 4$','FontSize',labelFontSize,'interpreter','latex');
+text(-.87,3,.57,'$\beta_C = 7/3$','FontSize',labelFontSize,'interpreter','latex');
+text(-0.85,4,.32,'$\beta_C = 3/2$','FontSize',labelFontSize,'interpreter','latex');
+text(-0.35,4.5,-.2,'$\beta_C = 1$','FontSize',labelFontSize,'interpreter','latex');
 
-axis([0 12 0 5 -0.3 0.7]);
+axis([-0.5 12 0 5 -0.3 0.7]);
 view(-11.5, 35);
 
 xlabel('$g$');
-ylabel('$X_{E_1}$');
-zlabel('$X_{I}$');
+ylabel('$x_{E_1}$');
+zlabel('$x_{I}$');

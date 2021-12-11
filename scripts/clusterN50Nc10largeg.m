@@ -21,8 +21,8 @@ c6 = [0.3010, 0.7450, 0.9330];
 c7 = [0.6350, 0.0780, 0.1840];
 
 % plot parameters
-fontSize = 20;
-labelFontSize = 20;
+fontSize = 24;
+labelFontSize = 24;
 markerSize = 50;
 lw = 3;
 
@@ -79,8 +79,10 @@ plot(g3(3:end),-x3(3:end,1),'-', 'LineWidth', lw, 'Color', c1 );
 plot(g3(3:end),-x3(3:end,10),'--', 'LineWidth', lw, 'Color', c2 );
 plot(g3(3:end),-x3(3:end,11),'-.', 'LineWidth', lw, 'Color', c3 );
 plot( g3(3),-x3(3,1), '.k', 'MarkerSize', 40); 
-axis([ 0 3 -5 2 ]);
+axis([ -0.2 3 -5 2 ]);
 legend({'$x_{E_1}$','$x_{E_2}$','$x_{I}$'},'Location','SouthWest');
+xlabel('$g$');
+ylabel('$x$');
 
 %%
 
@@ -98,6 +100,8 @@ plot(g5(3:end),-x5(3:end,11),'-.', 'LineWidth', lw, 'Color', c3 );
 plot( g5(3),-x5(3,1), '.k', 'MarkerSize', 40);
 axis([ 0 3 -5 1 ]);
 legend({'$x_{E_1}$','$x_{E_2}$','$x_{I}$'},'Location','SouthWest');
+xlabel('$g$');
+ylabel('$x$');
 
 
 %%
