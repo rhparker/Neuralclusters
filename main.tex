@@ -104,28 +104,37 @@ dynamical systems, bifurcation theory, equivariant bifurcations, symmetry, neura
 Main points to make
 \begin{itemize}
     \item Biological neural networks show great diversity in connectivity structure. How does connectivity determine the dynamics? Which features are determinative vs. incidental.
-    \item Because neural networks are large, under-specified and heterogeneous, random matrix theory has played a prominent role. Summarize Sompolinsky study here.
-    \item Numerous authors have considered modifications such as low-rank or deterministic perturbations and block-structured matrices, and have found how Sompolinsky's conclusions must be modified accordingly.
     \begin{itemize}
-        \item However, all of these works focus on phase space structures that occur as a result of randomness.
-        \item Another possible feature is phase space structures that exist \emph{in spite of} randomness, and that might be found in some idealized (averaged?) version of the network. These structures might not be predicted by random matrix theory, as the spectrum of the connectivity matrix will ``swamp" the spectrum of the averaged version.
+    \item In primary cortical regions, selectivity to basic features arises from an interplay between local excitation, longer-range inhibition and even longer-range excitation between neighboring columns (FIND CITE)
+    \item Look at Landau et al. 2016 for insight into heterogeneity
+    \item Morphological diversity across cell types
+    \item Projections from different brain regions
     \end{itemize}
-    \item In an earlier work, we found just such an example (explain more). However, some pieces of our analysis remained uncompleted. In particular, we were unable at that time to give a complete explanation of when the fixed points/limit cycles would be stable (i.e. for which $g$). This is important because the stable solution is what one can expect to observe in a perturbed (random) network. 
-    \item Here, we complete this analysis for all-to-all excitatory-inhibitory networks. We then extend this analysis to a biologically significant block-structured case: in which the excitatory cells are clustered but inhibition is global. We find that the dynamics are strikingly different: instead of limit cycles, we predict fixed points. In both cases, the structures can be understood by considering the symmetries of the deterministic connection matrix.  
+    \end{itemize}
     
+    Because neural networks are large, under-specified and heterogeneous, random matrix theory has played a prominent role. An early example is the work by Sompolinsky et al. \cite{SompCris88} which applies dynamic mean field theory to single-population firing-rate networks in which connections are chosen from a mean-zero Gaussian distribution: in the limit of large network size, the authors find that the network transitions from quiescence to chaos as a global coupling parameter passes a bifurcation value. This value coincides with the point at which the spectrum of the connectivity matrix exits the unit circle \cite{girko85,bai97} thus making the connection to random matrix theory very concrete. Later authors have sought to extend these results to correlated or block-structured matrices \cite{kadmon_HS_2015,Aljadeff_2015}, and many others have studied the spectral characteristics of partially structured connection matrices \cite{Wei12, Ahmadian_etal_2015, muir_MF_2015} with neural networks as a primary motivation.
     
-\end{itemize}
+    However, the results of spectral theory and nonlinear dynamics have not always neatly aligned. One network setting that has caused persistent difficulty is excitatory-inhibitory networks with strong average connections \cite{RA06}. The predictions of random matrix theory suggest chaotic, asynchronous fluctuations, whereas large-scale coherent fluctuations have been observed instead. Why? The answer may be found in the nature of the deterministic perturbation. Several authors have examined how low-rank, asymmetric perturbations create an effectively feed-forward structure that allows coherent dynamics to co-exist with random fluctuations in an orthogonal subspace \cite{delMolino_etal_PRE_2013, Darshan_etal_PRX_2018, Landau_HS_PCB_2018,Landau_HS_PRR_2021}.
+    
+    In an earlier work, we found an alternative possibility \cite{Barreiro2017}.  In examining balanced E-I networks without self-coupling, we persistently observed periodic solutions which could not be explained by random matrix theory. Instead, they arose as a consequence of underlying symmetries in the connection matrix and could be predicted through the machinery of equivariant bifurcation theory. However, some pieces of our analysis remained uncompleted: we were unable at that time to give a complete stability analysis. This is important because the stable solution is what one can expect to observe in a perturbed (random) network.
+    
+    Here, we complete this analysis for all-to-all excitatory-inhibitory networks. We then extend this analysis to a biologically significant block-structured case: in which the excitatory cells are clustered, but inhibition is global. We find that the dynamics are strikingly different: instead of limit cycles, we predict fixed points. In both cases, the structures can be understood by considering the symmetries of the deterministic connection matrix.
+    
 
 \section{Mathematical model}\label{sec:model}
 
-We consider a network in which each node represents the firing rate of a single neuron. The individual neurons are connected by sigmoidal activation functions through a connectivity matrix, which specifies both the network of neuronal connections and the weight of each connection, including whether a given neuron is excitatory (E) or inhibitory (I). With noise in the connectivity matrix, this is an idealized model in neuroscience [REFERENCE]. Here, we will consider the system without noise, but where the connection weights have important symmetries. Specifically, we study:
+We consider a network in which each node represents the firing rate of a single neuron. The individual neurons are connected by sigmoidal activation functions through a connectivity matrix, which specifies both the network of neuronal connections and the weight of each connection, including whether a given neuron is excitatory (E) or inhibitory (I). With noise in the connectivity matrix, this is an idealized model in neuroscience \cite{Ginzburg_HS_1994,RA06,kadmon_HS_2015}. Here, we will consider the system without noise, but where the connection weights have important symmetries. Specifically, we study:
 \begin{equation}\label{eqn:sys_Basic}
     \dot{\xvec} = 
     F(\xvec, g) := -\xvec  + \frac{1}{\sqrt{N}} H\tanh (g \xvec),
 \end{equation}
-for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. In particular, this implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$.
+for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory:  for the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks \cite{Buxh_Brain_2002}. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. This implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$, and that $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic} for all $g$.
 
-For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. The resulting dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{CI}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
+%For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. 
+
+%The dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. 
+%For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. 
+We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{C_I}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
 H = 
 \left[ 
@@ -147,7 +156,7 @@ H =
 \end{blockarray}
 \right],
 \end{equation}
-where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ is the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$.
+where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ is the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$: this reflects the neurobiological heuristic of \emph{Dale's Law}, which states that each neuron makes excitatory \emph{or} inhibitory connections onto its postsynaptic targets.
 
 The linearization of \cref{eqn:sys_Basic} about $\xvec = 0$ is the matrix
 \begin{equation}\label{eq:DF0}
@@ -163,9 +172,9 @@ where
 \begin{equation}\label{eq:Hxstar}
 H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))
 \end{equation}
-is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. In particular, this implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
+is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. This implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
 
-Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$ [REFERENCE], even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system; in particular, we derive leading order expressions for bifurcation points in the system, as well as for the equilibria near those bifurcation points. We then extend the analysis to several families of networks, in which the cell populations are split up into clusters of equal sizes. For the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks [REFERENCE].
+Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$, even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system: we derive leading order expressions for bifurcation points in the system, for the equilibria near those bifurcation points, and for the Hopf bifurcations that spawn the clustered limit cycles we observed in \cite{Barreiro2017} (\cref{sec:E1I1}). We then extend the analysis to networks in which the excitatory populations is split up into clusters ($n_C > 1, n_{C_I}=1$; \cref{sec:Eclusters}). We briefly compare with networks in which the inhibitory neurons are clustered instead ($n_C=1, n_{C_I}>1$; \cref{sec:inhibitoryclusters}). 
 
 \begin{figure}
     \centering
@@ -174,13 +183,13 @@ Features of the system such as fixed points and periodic orbits remain when the 
     \includegraphics[width=5.8cm]{images/eigpattern2.eps} \hspace{-0.7cm}
     \includegraphics[width=5.8cm]{images/eigpattern3.eps} 
     % \end{tabular}
-    \caption{Eigenvalue pattern of connectivity matrix $H$ for single excitatory and single inhibitory cluster (left), multiple excitatory clusters and single inhibitory cluster (middle), and single excitatory cluster and multiple inhibitory clusters (right). The notation for the eigenvalues in each network model is explained in the corresponding section below.}
+    \caption{Eigenvalue pattern of the connectivity matrix $H$ for different configurations studied in this paper. Left: single excitatory and single inhibitory cluster \cref{sec:E1I1}. Middle:  multiple excitatory clusters and single inhibitory cluster \cref{sec:Eclusters}. Right: single excitatory cluster and multiple inhibitory clusters \cref{sec:inhibitoryclusters}. The notation for the eigenvalues in each network model is explained in the corresponding section below.}
     \label{fig:Heigpattern}
 \end{figure}
 
 \section{Model simplification}\label{sec:simplermodel}
 
-Since our main interest is locating fixed points and periodic orbits, we can simplify the model using the fact that all excitatory cells within each excitatory cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster ($n_C = 1$), if $x_1$ and $x_2$ are the activities of two excitatory cells, then it follows from \cite{Barreiro2017} that
+Since our main interest is locating fixed points and periodic orbits, we can simplify the model using the fact that all excitatory cells within each excitatory cluster must be synchronized at a fixed point or periodic orbit. In the case where there is a single excitatory cluster ($n_C = 1$), if $x_1$ and $x_2$ are the activities of two excitatory cells, then a straightforward calculation (see Lemma 3 from \cite{Barreiro2017}) shows that
 \begin{align}\label{eq:dt_x1t2diff}
 \frac{d}{dt}|x_1 - x_2|^2 \leq -2 |x_1 - x_2 |^2.
 \end{align}
@@ -357,7 +366,7 @@ Comparison between the third-order approximation \cref{eq:xIapprox}, the fifth-o
     \includegraphics[width=8.25cm]{images/Xiapprox.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/Xiapproxbeta3.eps} 
     % \end{tabular}
-    \caption{Third order approximation \cref{eq:xIapprox} and fifth order approximation \cref{eq:xIapprox5} to $x_I$ on the $I_1=I_2$ branch of fixed points (left panel). Third order approximation \cref{eq:XI1} to $X_{I_1}$ on the $\beta=3$ branch (right panel). $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Approximations to the location of $x_I$ on $I_1/I_2$ fixed point branches. Left: Third order \cref{eq:xIapprox} and fifth order  \cref{eq:xIapprox5} approximations to $x_I=x_{I_1}$ on the $\beta = 1$ (i.e. $n_{I_1}=n_{I_2}$) branch. Right: Third order approximation \cref{eq:XI1} to $x_{I_1}$ on the $\beta=3$ branch. Other parameters are: $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:xIapprox}
 \end{figure}
 
@@ -377,7 +386,7 @@ Note that this reduces to \cref{eq:xIapprox} when $\beta = 1$. In addition, we n
     \includegraphics[width=7.8cm]{images/bdnoclusters50E.eps} &
     \includegraphics[width=7.8cm]{images/bdnoclusters50I.eps}
     \end{tabular}
-    \caption{Bifurcation diagram showing $I_1/I_2$ branches of equilibria of \cref{eqn:sys_Basic} for all valid values of $\beta$. Top panels show $N=20$, with top left plotting $X_E$ vs $g$, and top right plotting $X_{I_1}$ (above horizontal axis) and $X_{I_2}$ (below horizontal axis) vs $g$. Bottom panels show $N=50$, with bottom left plotting $X_E$ vs $g$, and bottom right plotting $X_{I_2}$ only vs $g$. Solid lines indicate stable fixed points, dashed lines indicate unstable fixed points. Symmetric pitchfork bifurcation at $g = g_0$ indicated with filled circle. Hopf bifurcations indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Bifurcation diagram of all possible $I_1/I_2$ branches of equilibria for small $N$ networks. Top row: $N=20$. Top left: $x_E$ vs $g$. Top right: $x_{I_1}$ (above horizontal axis) and $x_{I_2}$ (below horizontal axis) vs $g$. Bottom row: $N=50$. Bottom left: $x_E$ vs $g$. Bottom right: $x_{I_2}$ \emph{only} vs $g$. Line format indicates stable (solid) vs. unstable (dashed) fixed points. The symmetric pitchfork bifurcation at $g = g_0$ is indicated with a filled circle. Hopf bifurcations are indicated with filled squares. Further bifurcations along branches are not shown to avoid clutter. Other parameters are $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:noclusterBD1}
 \end{figure}
 
@@ -390,7 +399,7 @@ Now that we have obtained a leading order formula for the fixed points on the $I
     % \begin{tabular}{ccc}
     \includegraphics[width=5.8cm]{images/eigpatternxstarnocluster.eps}
     % \end{tabular}
-    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $I_1/I_2$ branch with $\beta > 1$. The notation for the eigenvalues is explained in \cref{sec:I1I2stability}.}
+    \caption{Eigenvalue pattern of the connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $I_1/I_2$ branch with $\beta > 1$. The notation for the eigenvalues is explained in \cref{sec:I1I2stability}.}
     \label{fig:Hstareignocluster}
 \end{figure}
 
@@ -458,7 +467,7 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
     \centering
     \includegraphics[width=8.25cm]{images/Hopfapproxerrorsemilog.eps} \hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/HopflogNvsgsemilog.eps}
-    \caption{Semi-log plot of log of absolute error of approximation \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4 (left). Slope of line is approximately -1.5 for all three $\beta$. Right is location in $(N, g)$ space of symmetric pitchfork bifurcation at $g_0$ (dashed line), Hopf bifurcation at origin at $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches for select $\beta$ (solid lines, arranged from bottom to top in increasing $\beta$) on semi-log plot. $\alpha = 4$, $\mu_{EE}= 0.7$. }
+    \caption{Locations of important bifurcations as a function of $N$. Left: Log-log plot of the absolute error of  \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4. The slope of each line is approximately -1.5 (validating the error term $\mathcal{O}\left( N^{-3/2} \right)$). Right: location of the symmetric pitchfork bifurcation $g_0$ (dashed line), Hopf bifurcation at the origin $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches \cref{eq:ghopfformula} for select $\beta$ (solid lines, arranged from bottom to top in order of increasing $\beta$) as a function of $N$. Other parameters are: $\alpha = 4$, $\mu_{EE}= 0.7$. }
     \label{fig:Hopfplots}
 \end{figure}
 
@@ -471,7 +480,7 @@ Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bif
     \centering
     \includegraphics[width=8.25cm]{images/limitcycle1.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/limitcycle2.eps}
-    \caption{$\beta = \infty$ limit cycle arising from Hopf bifurcation at $g = g_H$. Single excitatory cluster with activity $x_E(t)$, single inhibitory cluster with activity $x_I(t)$. $g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. Period of limit cycle is 1.62.} 
+    \caption{The $\beta = \infty$ limit cycle arising from a Hopf bifurcation at $g = g_H$. There is a single excitatory cluster with activity $x_E(t)$ and a single inhibitory cluster with activity $x_I(t)$. Parameters are: $N=\#\#, g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. The period of the limit cycle is 1.62.} 
     \label{fig:limitcycleorigin}
 \end{figure}
 
@@ -491,7 +500,7 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
     \hspace{-1cm}
     \includegraphics[width=17.25cm]{images/pitchbif.eps}
     % \end{tabular}
-    \caption{Top left plots period of limit cycle versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares, which correspond to Hopf bifurcation points in \cref{fig:noclusterBD1}. Corresponding Floquet eigenvalue pattern along $\beta = \infty$ branch is shown in top right. Bottom panel plots $x_{I_1}$ and $x_E$ vs. $g$ and shows pitchfork bifurcation at $g_0$ (filled circle), Hopf bifurcations for $\beta = 1$, $\beta = 3$, and $\beta = \infty$ (filled squares), and pitchfork bifurcation of limit cycles (dark band) at $g = g^*$. $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Each $I_1/I_2$ Hopf bifurcation spawns a branch of limit cycles which connects to the $\beta=\infty$ cycle at $g=g^*$. Top left: period of the limit cycle versus $g$. Stable limit cycles are indicated with solid lines. The symmetric pitchfork of limit cycles is indicated with a filled circle. Hopf bifurcations are indicated with filled squares, which correspond to the Hopf bifurcation points in \cref{fig:noclusterBD1}. Top right: Schematic of the Floquet eigenvalue pattern along the $\beta = \infty$ branch. The numbers 1,2, and 3 identify three representative points along the $\beta=\infty$ curve in the top left panel. Bottom: ($x_E$, $x_{I_1}$) vs. $g$ for three branches of fixed points (thick lines) and limit cycles (thin lines): $\beta = 1$ (gray), $\beta=3$ (red), and $\beta=\infty$ (blue). Other symbols are: pitchfork bifurcation at $g_0$ (filled circle), Hopf bifurcations for $\beta = 1$, $\beta = 3$, and $\beta = \infty$ (filled squares), and pitchfork bifurcation of limit cycles (dark band) at $g = g^*$. Parameters are: $N = 20$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg}
 \end{figure}
 
@@ -499,7 +508,7 @@ In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Ho
     \centering
     \hspace{-1cm}
     \includegraphics[width=17.25cm]{images/periodvsgN50.eps}
-    \caption{Period of limit cycle versus $g$ and $\max \: x_{I_2}$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles indicated with solid lines. Symmetric pitchfork of limit cycles is indicated with filled circle. Hopf bifurcations indicated with filled squares. $N = 50$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Period of limit cycle and $\max \: x_{I_2}$ versus $g$ for periodic solutions arising from Hopf bifurcations. Stable limit cycles are indicated with solid lines. The symmetric pitchfork of limit cycles is indicated with a filled circle. Hopf bifurcations are indicated with filled squares. Parameters are: $N = 50$,  $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:periodvsg50}
 \end{figure}
 
@@ -627,7 +636,7 @@ for $g$ close to $g_C$, which reduces to \cref{eq:xEapprox} when $\beta = 1$.
     % \includegraphics[width=8cm]{images/bdclusters20c4Ebetac3.eps} &
     % \includegraphics[width=8cm]{images/bdclusters20c4Ibetac3.eps}
     % \end{tabular}
-    \caption{Left panel shows excitatory cell activity $x_{E_1}$ and $x_{E_2}$ on $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$, i.e. $\beta_C =1$ and $\beta_C=3$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. (No $I_1/I_2$ branches after symmetric pitchfork bifurcation on $C_1/C_2$ branch are shown to avoid clutter). Right panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches (only $x_{E_1}$ is shown to avoid clutter). Stable fixed points are indicated with solid lines. $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{When the excitatory cells are clustered ($n_C>1$), the first nontrivial fixed points are those for which the excitatory cells, rather than inhibitory cells, separate into two groups. Left: excitatory cell activity $x_{E_1}$ and $x_{E_2}$ on $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all possible values of $\beta_C$. The symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches are indicated with filled circle. (To avoid clutter, the $I_1/I_2$ branches after the symmetric pitchfork bifurcation on the $C_1/C_2$ branch are not shown). Right: $I_1/I_2$ branches bifurcate from the $C_1/C_2$ branches ( to avoid clutter only $x_{E_1}$ is shown). Stable fixed points are indicated with solid lines. Parameters are: $N = 20$, $n_C = 4$, $p = 4$, $n_I = 4$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD1}
 \end{figure}
 
@@ -640,7 +649,7 @@ We now analyze the stability of the $C_1/C_2$ branches for $g$ close to $g_C$. C
     % \begin{tabular}{ccc}
     \includegraphics[width=5.7cm]{images/eigpatternxstarEcluster.eps}
     % \end{tabular}
-    \caption{Eigenvalue pattern of connectivity matrix $H(\xvec^*)$ for fixed point $\xvec^*$ on $C_1/C_2$ branch with $\beta_C > 1$. The notation for the eigenvalues is explained below. \textbf{Is $\lambda_C$ an eigenvalue that has split into $\lambda_{C_1}$ and $\lambda_{C_1}$? Let's be precise. Yes, explained briefly below.}}
+    \caption{The eigenvalue pattern of the connectivity matrix $H(\xvec^*)$ for fixed points $\xvec^*$ on a $C_1/C_2$ branch with $\beta_C > 1$. The notation for the eigenvalues is explained below \cref{prop:H3Ceig}.}
     \label{fig:HstareigEcluster}
 \end{figure}
 
@@ -707,7 +716,7 @@ As $N \rightarrow \infty$, $n_C p = f N \rightarrow \infty$ as well. If both $p$
     \includegraphics[width=8.25cm]{images/clusterbeforebetacstar.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/clusterafterbetacstar.eps}
     % \end{tabular}
-    \caption{Solutions $x_{E_1}$, $x_{E_2}$, and $x_I$ vs $g$ on $C_1/C_2$ branches for $1 < \beta_C < \beta_C^*$ (left) and $\beta_C > \beta_C^*$ (right). $N = 50$, $n_C = 10$, $p = 4$, $n_I = 10$, $\alpha =4$, $\mu = 0.7$. $\beta_C = 7/3$ (left), and $\beta_C = 9$ (right). $\beta_C^* = 5.15385$.}
+    \caption{The saturation ($g \gg 1$) behavior of fixed points on a $C_1/C_2$ branch depends on the clustering parameter $\beta_C$. Left: $x_{E_1}$, $x_{E_2}$, and $x_I$ vs $g$ on $C_1/C_2$ branches for $1 < \beta_C < \beta_C^*$. Right: $\beta_C > \beta_C^*$. Parameters are: $N = 50$, $n_C = 10$, $p = 4$, $n_I = 10$, $\alpha =4$, $\mu = 0.7$. Given these parameters $\beta_C^* = 5.15385$: here we illustrate $\beta_C = 7/3$ (left) and $\beta_C = 9$ (right).}
     \label{fig:betacstar}
 \end{figure}
 
@@ -733,7 +742,7 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
     \hspace{-1cm} 
     \includegraphics[width=17.25cm]{images/bdclusters100c103D.eps}
     % \end{tabular}
-    \caption{Top panel shows $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all valid values of $\beta_C$. Top left plots $x_{E_1}$ vs $g$. Top right plots $x_I$ vs $g$, zoomed into a narrower range of $g$ to show stability of $C_1/C_2$ branches near $g = g_C$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches indicated with filled circle. No branches are shown after these bifurcations to avoid clutter. Bottom panel shows $I_1/I_2$ branches bifurcating from $C_1/C_2$ branches at the symmetric pitchfork bifurcation point. The only $I_1/I_2$ branches shown here is the ones which are eventually stable, which in this case are those with $\beta = \beta_C$. Stable fixed points indicated with solid line, unstable fixed points indicated with dashed line. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. $N = 100$, $n_C = 10$, $p = 8$, $n_I = 20$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \caption{Bifurcation diagram of all possible $C_1/C_2$ branches, and selected $C_1/C_2/I_1/I_2$ branches, for a moderate value of $N$. Top: $C_1/C_2$ branches of equilibria of \cref{eqn:sys_Basic} with excitatory clustering for all possible values of $\beta_C$. Top left: $x_{E_1}$ vs $g$. Top right: $x_I$ vs $g$, zoomed into a narrower range of $g$ to show stability of $C_1/C_2$ branches near $g = g_C$. Symmetric pitchfork bifurcations at $g = g_C$ and along the $C_1/C_2$ branches are indicated with filled circle. To avoid clutter, the $C_1/C_2/I_1/I_2$ branches are not shown. Bottom: $x_I$ and $x_{E_1}$ vs. $g$, for $C_1/C_2/I_1/I_2$ branches bifurcating from the $C_1/C_2$ branches. The only $I_1/I_2$ branches shown here are the ones which are eventually stable, which in this case are those with $\beta = \beta_C$ (see \cref{table:validbeta}). Stable fixed points are indicated with solid lines, unstable fixed points with dashed line. Unstable $C_1/C_2$ branches for $\beta_C = 4$ and $\beta_C = 9$ become stable at the points indicated with the diamond. Parameters are: $N = 100$, $n_C = 10$, $p = 8$, $n_I = 20$, $\alpha = 4$, $\mu_{EE} = 0.7$.}
     \label{fig:clusterBD2}
 \end{figure}
 
@@ -741,7 +750,7 @@ As a example, consider the $N=100$ system shown in \cref{fig:clusterBD2}. The $C
     \centering
     \includegraphics[width=8.25cm]{images/clusterpitchgvsN.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/pitcherrorsemilog.eps}
-    \caption{Left panel plots location in $g$ of symmetric pitchfork bifurcation point on $C_1/C_2$ branches vs $N$ for various $\beta_C$. Right panel is semi-log plot of log of the absolute error of approximation \cref{eq:gbetaC} vs $N$ for various $\beta_C$. Slope of line is approximately -0.5 for all three $\beta_C$. $n_C = 10$, $\alpha = 4$, $\mu = 0.7$.}
+    \caption{Location of the symmetric pitchfork bifurcation points on $C_1/C_2$ branches. Left:  $g_I(\beta_C)$ vs. $N$ for various $\beta_C$. Right: semi-log plot of the absolute error of approximation \cref{eq:gbetaC} vs $N$ for various $\beta_C$. The slope of each line is approximately -0.5 (validating the error term $\mathcal{O}(N^{-1/2})$). Parameters are: $n_C = 10$, $\alpha = 4$, $\mu = 0.7$.}
     \label{fig:pitcherror}
 \end{figure}
 
@@ -771,7 +780,7 @@ Parameter continuation suggests that as $g \rightarrow \infty$, $(x_{E_1}, x_{E_
 \end{equation}
 for all valid $\beta$ satisfying $1 \leq \beta < 2p-1$. See \cref{app:C1C2I1I2_largeg} for detailed calculations.
 
-A list of all valid pairs of $(\beta, \beta_C)$ for some small values of $N$ is given in \cref{table:validbeta}. (A value of $\beta$ or $\beta_C$ is valid for a particular $N$ only if the ratio of inhibitory cells or excitatory clusters is possible for that value of $N$). In the specific case where $n_C = n_I$, it follows from \cref{eq:bccondition} that 
+For some small values of $N$, a list of all valid pairs of $(\beta, \beta_C)$ which satisfy \cref{eq:bccondition} is given in \cref{table:validbeta}. (A value of $\beta$ or $\beta_C$ is valid for a particular $N$ only if the ratio of inhibitory cells or excitatory clusters is possible for that value of $N$). In the specific case where $n_C = n_I$, it follows from \cref{eq:bccondition} that 
 \[
 n_{I_1} - \frac{1}{2} < n_{C_1} < n_{I_1} + \frac{1}{2}.
 \]
@@ -795,7 +804,7 @@ The fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is e
         \bottomrule
     \end{tabular}
     \vspace{0.25cm}
-    \caption{Valid pairs $(\beta, \beta_C)$ for selected small values of $N$. $\alpha = 4$ in all cases.}
+    \caption{Valid pairs $(\beta, \beta_C)$ which satisfy \cref{eq:bccondition}, for selected values of $N$, $n_C$ and $n_I$. (Note that $\alpha = 4$ in all cases, which determines $n_I$ and $p n_C$).}
     \label{table:validbeta}
 \end{table}
 
@@ -843,7 +852,7 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
     \centering
     \includegraphics[width=8.25cm]{images/limitcycleIC1.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/limitcycleIC2.eps}
-    \caption{Limit cycle arising from Hopf bifurcation at origin for \cref{eqn:sys_Basic} with inhibitory cell clustering and $\mu_{II} = -\alpha \mu_{EE}$. Left panel shows activity $x_E$ of synchronized excitatory cells and activity $x_I$ of synchronized inhibitory cells vs $t$. Right panel shows $x_I$ vs $x_E$. $N=1600$, $N_{C_I} = 20$, $p_I = 20$,$\alpha = 4$, $\mu_{EE}= 0.7$, $g = 1.02 g_H$. Period of limit cycle is 1.792.} 
+    \caption{Limit cycle arising from the Hopf bifurcation at origin for \cref{eqn:sys_Basic} with inhibitory cell clustering and $\mu_{II} = -\alpha \mu_{EE}$. Both the excitatory cell activity $x_E$ and inhibitory cell activity $x_I$ are synchronized. Notably, the period does not increase with $N$. Left: $x_E$ and $x_I$ vs $t$. Right: $x_I$ vs $x_E$. Parameters are: $N=1600$, $N_{C_I} = 20$, $p_I = 20$, $\alpha = 4$, $\mu_{EE}= 0.7$, $g = 1.02 g_H$. The period of the limit cycle is 1.792.} 
     \label{fig:limitcycleIC}
 \end{figure}
 
@@ -868,7 +877,7 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
 
 \section{Discussion}
 
-In this paper, we analyze a family of clustered excitatory-inhibitory neural networks, and, in particular, the underlying bifurcation structures that arise because of permutation symmetries in the network. For the simplest case, an all-to-all connected network which excludes self-connections, we extend the results in \cite{Barreiro2017} to provide a more complete picture of the bifurcations in the system, as well as estimates for the locations of the bifurcation points and the corresponding branches of equilibria which emanate from these bifurcations. For $g$ close to 0, the origin is a stable equilibrium. As $g$ is increased, the origin becomes unstable in a symmetric pitchfork bifurcation at $g=g_0$, at which a new branch of equilibria emerges for each possible division of the inhibitory cells into two synchronized clusters of sizes $n_{I_1}$ and $n_{I_2}$ (the $I_1/I_2$ branches). We characterize each $I_1/I_2$ branch by the ratio $\beta = n_{I_1}/n_{I_2}$. We then derive a leading order estimate for the equilibria on each $I_1/I_2$ branch for $g$ close to $g_0$ and show that, for large $N$, these branches are stable for $1\leq \beta < 2$, but unstable otherwise ($\beta \ge 2$). Furthermore, we show that the equilibria on the $I_1/I_2$ branches are all unstable for sufficiently large $g$. Along each $I_1/I_2$ branch, a Hopf bifurcation creates a branch of periodic orbits, wherein the inhibitory cells maintain their division into the same two synchronized clusters; the frequency of these limit cycles increases with $N$. We use our estimates for the $I_1/I_2$ branches to locate these Hopf bifurcations, to leading order, and show that they approach $g_0$ for large $N$. All these periodic orbit branches merge at a symmetric pitchfork bifurcation of limit cycles, at some large value of the bifurcation parameter $g=g^*$; for $g>g^*$, there is a single stable limit cycle for which the excitatory population and inhibitory population are each synchronized. See the top figure in \cref{fig:bdsummary} for a cartoon for a summary.
+In this paper, we analyze a family of clustered excitatory-inhibitory neural networks, and, in particular, the underlying bifurcation structures that arise because of permutation symmetries in the network. For the simplest case, an all-to-all connected network which excludes self-connections, we extend the results in \cite{Barreiro2017} to provide a more complete picture of the bifurcations in the system, as well as estimates for the locations of the bifurcation points and the corresponding branches of equilibria which emanate from these bifurcations. For $g$ close to 0, the origin is a stable equilibrium. As $g$ is increased, the origin becomes unstable in a symmetric pitchfork bifurcation at $g=g_0$, at which a new branch of equilibria emerges for each possible division of the inhibitory cells into two synchronized clusters of sizes $n_{I_1}$ and $n_{I_2}$ (the $I_1/I_2$ branches). We characterize each $I_1/I_2$ branch by the ratio $\beta = n_{I_1}/n_{I_2}$. We then derive a leading order estimate for the equilibria on each $I_1/I_2$ branch for $g$ close to $g_0$ and show that, for large $N$, these branches are stable for $1\leq \beta < 2$, but unstable otherwise ($\beta \ge 2$). Furthermore, we show that the equilibria on the $I_1/I_2$ branches are all unstable for sufficiently large $g$. Along each $I_1/I_2$ branch, a Hopf bifurcation creates a branch of periodic orbits, wherein the inhibitory cells maintain their division into the same two synchronized clusters; the frequency of these limit cycles increases with $N$. We use our estimates for the $I_1/I_2$ branches to locate these Hopf bifurcations, to leading order, and show that they approach $g_0$ for large $N$. All these periodic orbit branches merge at a symmetric pitchfork bifurcation of limit cycles, at some large value of the bifurcation parameter $g=g^*$; for $g>g^*$, there is a single stable limit cycle for which the excitatory population and inhibitory population are each synchronized. See the top figure in \cref{fig:bdsummary} for a cartoon summary.
 
 \begin{figure}
     \centering
@@ -881,7 +890,7 @@ In this paper, we analyze a family of clustered excitatory-inhibitory neural net
 
 We next consider the case where the excitatory cells are broken into clusters of equal size. The connection weights between excitation cells in the same cluster are normalized so that the network is still approximately balanced. In this case, as $g$ is increased from 0, the origin becomes unstable in a symmetric pitchfork bifurcation point at $g=g_C$. In contrast with the previous case, this bifurcation involves the excitatory clusters instead of the inhibitory cells. For $g>g_C$, there is a branch of solutions corresponding to each possible division of the excitatory clusters into synchronized groups of sizes of sizes $n_{C_1}$ and $n_{C_2}$ (the $C_1/C_2$ branches). We characterize each branch by the ratio $\beta_C = n_{C_1}/n_{C_2}$. Near $g = g_C$, each solution branch is stable for $1 \le \beta_C < 2$, and is otherwise unstable. Along each $C_1/C_2$ branch, there is a further symmetric pitchfork bifurcation, in which the inhibitory cells split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$ (with ratio $\beta = n_{I_1}/n_{I_2}$), yielding equilibria in which both the excitatory clusters and the inhibitory cells are split into two groups (the $C_1/C_2/I_1/I_2$ branches). Unlike the previous case, there are no Hopf bifurcations along these branches. For large $g$, the only branches that remain stable are those for which $\beta_C$ is close to $\beta$, in the precise sense we describe in \cref{sec:C1C2I1I2_largeg}; in other words, the excitatory clusters and the inhibitory cells must break up in a similar way. See the bottom figure in \cref{fig:bdsummary} for a cartoon for a summary. Finally, we briefly consider a network in which the inhibitory cells are clustered, rather than the excitatory cells. Here we find that, as in the case with all-to-all coupling, the origin loses stability in a Hopf bifurcation; however, in contrast to the all-to-all case, the frequency of the resulting limit cycle does not increase with $N$.
 
-Future directions include better characterizing the periodic orbits which arise from the Hopf bifurcations in the network with all-to-all coupling case. It may be possible to determine their stability pattern, as well as to locate the bifurcation point at $g=g^*$. Some assumptions about our network can be relaxed; for example the use of the $\tanh$ function is not essential to any calculations that don't explicitly invoke odd symmetry, and could be replaced by another saturating nonlinearity. Another direction includes exploring other network topologies, including a model incorporating hierarchical clustering [REFERENCE]. 
+Future directions include better characterizing the periodic orbits which arise from the Hopf bifurcations in the network with all-to-all coupling case. It may be possible to determine their stability pattern, as well as to locate the bifurcation point at $g=g^*$. Some assumptions about our network can be relaxed; for example the use of the $\tanh$ function is not essential to any calculations that don't explicitly invoke odd symmetry, and could be replaced by another saturating nonlinearity. Another direction includes exploring other network topologies, such as spatial connectivity or hierarchical clustering \cite{rosenbaum17,Ebsch_RR_PlosCB_2018}. 
 
 Finally, the ultimate goal of these investigations must be to apply these insights to real networks, which will not be perfectly symmetric and which may be modeled by allowing a random perturbation to the connection matrix (i.e. $H \rightarrow H + \epsilon A$). We conjecture that the perturbed system will continue to exhibit fixed points and periodic orbits that are found in the unperturbed system, even when the perturbations are large enough that the spectrum of the connectivity matrix ``masks" the underlying symmetry. In our previous study, we found that stable trajectories in the unperturbed all-to-all clustered system accurately predicted which solutions would be observed in the perturbed system. This highlights the importance of determining not only existence but \emph{stability} in the unperturbed system. [CONCLUDING STATEMENT HERE?]
 
