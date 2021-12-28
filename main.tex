@@ -259,7 +259,7 @@ H =
 \end{array}
 \right].
 \]
-We choose the connection weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel [CITE Rajan and Abbott]. To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of $H$ is now easy to compute \cite{Barreiro2017}. The eigenvalues of $H$ (left panel of \cref{fig:Heigpattern}) are
+We choose the connection weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel \cite{RA06}. To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of $H$ is now easy to compute \cite{Barreiro2017}. The eigenvalues of $H$ (left panel of \cref{fig:Heigpattern}) are
 \begin{itemize}
     \item $\lambda_I := \alpha \mu_{EE} > 0$ with multiplicity $n_I - 1$.
     \item $\lambda_E := -\mu_{EE} < 0$ with multiplicity $n_E - 1$.
@@ -268,7 +268,9 @@ We choose the connection weights so that the network is \emph{balanced}; that is
     \lambda_0 := \mu_{EE}\frac{\alpha - 1}{2}, \quad \omega_0 := \mu_{EE}\sqrt{\alpha+1}\sqrt{n_E - \frac{\alpha+1}{4}}. 
     \]
 \end{itemize}
-It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. As discussed above, all bifurcations of $\xvec = 0$ involve only $\lambda_0 \pm i \omega_0$ and $\lambda_I$, which are the eigenvalues of $H$ with positive real part.
+It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. As discussed above, all bifurcations of $\xvec = 0$ involve only $\lambda_0 \pm i \omega_0$ and $\lambda_I$, which are the eigenvalues of $H$ with positive real part. 
+
+In the following sections, we will determine the bifurcations which occur as $g$ is increased, together with the structures which emerge at these bifurcation points. First, the origin loses stability in a symmetric pitchfork bifurcation, after which point there is a branch of equilibria for every possible division of the inhibitory cells into two groups. We will derive leading order formulas for these branches, as well as show which of these branches are initially stable. As $g$ is further increased, there is a Hopf bifurcation on each of these branches, which gives rise to a limit cycle with the same grouping pattern as the corresponding branch. Finally, these limit cycles coalesce in a symmetric pitchfork bifurcation of limit cycles. After this point, there is a single stable limit cycle in which there is single group of inhibitory cells and a single group of excitatory cells.
 
 \subsection{Bifurcations of the origin}\label{sec:biforigin}
 
@@ -577,6 +579,10 @@ where we used the fact that $\alpha n_I = n_E = p n_C$.
 \end{itemize}
 Since $\lambda_E < 0$ and $\lambda_0 \leq 0$ (as a consequence of taking $n_C \geq \alpha$), the corresponding eigenvalues of $DF(0)$ will always be negative, and thus will not affect stability of the fixed point at 0. The eigenvalues which determine stability of the origin are $\lambda_I$ and $\lambda_C$. We note that since $p > 1$, $0 < \lambda_I < \lambda_C$.
 
+As in the previous section, we will determine the bifurcations which occur as $g$ is increased, together with the structures which emerge at these bifurcation points. First, the origin loses stability in a symmetric pitchfork bifurcation, after which point there is a branch of equilibria for every possible division of the excitatory clusters into two groups. This is similar to what occurs in the unclustered case, except the bifurcation involves the excitatory clusters instead of the inhibitory cells. As before, we derive leading order formulas for these branches, and show which of them are initially stable. As $g$ is further increased, instead of a Hopf bifurcation, there is another symmetric pitchfork bifurcation on each of these branches, in which the inhibitory cells split into two groups. For large $g$, there is a collection of stable fixed points, which we can locate using the limiting behavior of the system.
+
+\subsection{Bifurcations of the origin}\label{sec:Eclusterbiforigin}
+
 As the bifurcation parameter $g$ increases from 0, the set of eigenvalues $\lambda_C^*(g)$ of $DF(0)$ corresponding to $\lambda_C$ cross the imaginary axis first at 
 \begin{equation}
     g = g_C := \frac{\sqrt{N}}{(p-1) n_C \mu}.
@@ -584,7 +590,6 @@ As the bifurcation parameter $g$ increases from 0, the set of eigenvalues $\lamb
 When this occurs, the origin loses stability in a symmetric pitchfork bifurcation, similar to what occurs with the inhibitory cells in the previous section. As $g$ is further increased, the eigenvalue $\lambda_I^*(g)$ crosses the imaginary axis at $g = g_0$, where $g_0$ is defined by \cref{eq:pitchlocation}. Another symmetric pitchfork bifurcation occurs at this point, this time involving the inhibitory cells. An important distinction from the previous section is that there will be no Hopf bifurcation at the origin, since the complex conjugate pair of eigenvalues cannot cross the imaginary axis.
 
 As in the previous section, it follows from Equivariant Bifurcation Theorem that there is a branch of solutions emerging at the bifurcation point $g = g_C$ for any possible division of excitatory clusters into exactly two groups of clusters. All cells are synchronized within each excitatory cluster. Each such branch may be characterized by the number $\beta_C = n_{C_1}/n_{C_2}$, which gives the ratio of the sizes of the two groups of excitatory clusters. Without loss of generality, we may take $n_{C_1} \geq n_{C_2}$, so that $\beta_C \geq 1$. At the start of each $C_1/C_2$ branch, the inhibitory cells are synchronized. This is the case since near $g = g_C$, no other eigenvalues have crossed through the origin yet, thus no bifurcations involving the inhibitory cells have occurred. The solution on each $C_1/C_2$ branch is then given as $(x_{E_1}, x_{E_2}, x_{I})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $C_1/C_2$ branch for each $\beta_C$ with solution $(-x_{E_1}, -x_{E_2}, -x_{I})$, which we will ignore for simplicity.
-
 
 \subsection{Solutions on \texorpdfstring{$C_1/C_2$}{C1/C2} branch}
 
@@ -1221,8 +1226,6 @@ Similarly, the second pair of inequalities in \cref{eq:consistency} is satisfied
     \alpha \left( \frac{\beta-1}{\beta+1}n_I - 1 \right) < \frac{\beta_C-1}{\beta_C+1} p n_C < \alpha \left( \frac{\beta-1}{\beta+1}n_I + 1 \right),
 \]
 which simplifies to \cref{eq:bccondition}.
-
-
 
 \bibliographystyle{siamplain}
 \bibliography{main.bib}
