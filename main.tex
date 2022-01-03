@@ -112,7 +112,7 @@ Neural networks also show great diversity in structure at every level, from the 
     
     In an earlier work, we found an alternative possibility \cite{Barreiro2017}.  In examining balanced E-I networks without self-coupling, we persistently observed periodic solutions which could not be explained by random matrix theory. Instead, they arose as a consequence of underlying symmetries in the connection matrix and could be predicted through the machinery of equivariant bifurcation theory. However, some pieces of our analysis remained uncompleted: we were unable at that time to give a complete stability analysis. This is important because the stable solution is what one can expect to observe in a perturbed (random) network.
     
-    Here, we complete this analysis for all-to-all excitatory-inhibitory networks. We then extend this analysis to a biologically significant block-structured case: in which the excitatory cells are clustered, but inhibition is global. We find that the dynamics are strikingly different: instead of limit cycles, we predict fixed points. In both cases, the structures can be understood by considering the symmetries of the deterministic connection matrix.
+    Here, we complete this analysis for all-to-all excitatory-inhibitory networks. We then extend this analysis to a biologically significant block-structured case, in which the excitatory cells are clustered, but inhibition is global. We find that the dynamics are strikingly different: instead of limit cycles, we predict fixed points. In both cases, the structures can be understood by considering the symmetries of the deterministic connection matrix.
     
 
 \section{Mathematical model}\label{sec:model}
@@ -301,7 +301,6 @@ A bifurcation will occur when the Jacobian ceases to be invertible, i.e. when $(
 
 %What complicates this situation for $\Gamma$-equivariant mappings --- i.e. $F(\xvec,g)$ is $\Gamma$-equivariant for any value of the parameter $g$ --- is that because of symmetries, \textit{multiple} eigenvalues will go through zero at once; however, the structural changes that occur are qualitatively the same as those that occur in a non-symmetric system, with a single zero eigenvalue. What changes is that we now have \textit{multiple} such solution branches, each corresponding to a subgroup of the original symmetries.  The following Lemma formalizes this fact:\\
 
-
 \begin{theorem}[Equivariant Branching Lemma: paraphrased from \cite{GSS88Vol2}, pg. 82, see also pg. 67-69] Let $F: \mathbb{R}^N \times \mathbb{R} \rightarrow \mathbb{R}^N$ be a one-parameter family of $\Gamma$-equivariant mappings with $F(\xvec_0, g_0) = \Zerovec$. Suppose that $(\xvec_0, g_0)$ is a bifurcation point and that, defining $V = \ker(dF)_{\xvec_0, g_0}$, $\Gamma$ acts absolutely irreducibly on $V$. Let $\Sigma$ be an isotropy subgroup of $\Gamma$ satisfying 
 \begin{eqnarray}
 \rm{dim}\; \rm{Fix} (\Sigma) = 1,
@@ -447,7 +446,7 @@ The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\
     { \alpha(1 - 4 \beta + \beta^2) - (1 - \beta + \beta^2) + 3 \alpha \beta n_I }
     + \mathcal{O}\left( \frac{1}{N^{3/2}} \right).
 \end{equation}
-A plot of $g_{H}(\beta)$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agreef with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H}(\beta) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
+A plot of $g_{H}(\beta)$ versus $N$ for various $\beta$ is given in \cref{fig:Hopfplots}. We note that a Hopf bifurcation for a particular value of $\beta$ will only occur in a real network if the ratio of inhibitory cells is valid for that particular value of $N$ (e.g. for $\beta = 3$, the total number of inhibitory cells must be a multiple of 4). The leading order term of \cref{eq:ghopfformula}, as well as the order of the remainder term, agrees with results from numerical parameter continuation (\cref{fig:Hopfplots}). As $N \rightarrow \infty$, which implies $n_I = f N \rightarrow \infty$, the first terms in the numerator and denominator of \cref{eq:ghopfformula} dominate, thus $g_{H}(\beta) \rightarrow g_0$ as $N \rightarrow \infty$ for all $\beta$ (see \cref{fig:Hopfplots}). Differentiating the leading order term in \cref{eq:ghopfformula} with respect to $\beta$ and simplifying,
 \begin{equation}\label{eq:gprime}
 \frac{\partial}{\partial \beta} g_{H}(\beta) = \frac{ \sqrt{N} }{ \mu_{EE} }
     \frac{ 
@@ -471,7 +470,15 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
 
 \subsection{Periodic solutions}\label{sec:periodic}
 
-Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO \cite{AUTO} suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. 
+Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. Numerical computation with AUTO \cite{AUTO} suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
+\begin{equation}\label{eq:2dimsystem}
+\begin{aligned}
+\dot{x_1} &= f_1(x_1, x_2) := -x_1 + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) \tanh(g x_1) - \alpha n_I \tanh(g x_2) \right) \\
+\dot{x_2} &= f_2(x_1, x_2) := -x_2 + \frac{\mu_{EE}}{\sqrt{N}}\left( n_E \tanh(g x_1) - \alpha (n_I - 1) \tanh(g x_2) \right), 
+\end{aligned}
+\end{equation}
+where $x_1$ represents the synchronized excitatory cell activity and $x_2$ represents the synchronized inhibitory cell activity. In this two-dimensional system, the origin loses stability in a Hopf bifurcation at $g = g_H$ (see \cref{sec:limitcycleproof} for details). We note that equation \cref{eq:2dimsystem} is qualitatively similar to the Wilson-Cowan model for an excitatory-inhibitory pair (see section 11.3.3 of \cite{et10}); both equations exhibit Hopf bifurcations and limit cycle solutions. Key differences between the two include the form of the saturating nonlinearity, and the use of input currents as bifurcation parameters in the Wilson-Cowan model as opposed to global coupling strength.
+
 \begin{figure}
     \centering
     \includegraphics[width=8.25cm]{images/limitcycle1.eps}\hspace{-0.5cm}
@@ -890,7 +897,7 @@ In this paper, we analyze a family of clustered excitatory-inhibitory neural net
 We next consider the case where the excitatory cells are broken into clusters of equal size. The connection weights between excitation cells in the same cluster are normalized so that the network is still approximately balanced. In this case, as $g$ is increased from 0, the origin becomes unstable in a symmetric pitchfork bifurcation point at $g=g_C$. In contrast with the previous case, this bifurcation involves the excitatory clusters instead of the inhibitory cells. For $g>g_C$, there is a branch of solutions corresponding to each possible division of the excitatory clusters into synchronized groups of sizes of sizes $n_{C_1}$ and $n_{C_2}$ (the $C_1/C_2$ branches). We characterize each branch by the ratio $\beta_C = n_{C_1}/n_{C_2}$. Near $g = g_C$, each solution branch is stable for $1 \le \beta_C < 2$, and is otherwise unstable. Along each $C_1/C_2$ branch, there is a further symmetric pitchfork bifurcation, in which the inhibitory cells split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$ (with ratio $\beta = n_{I_1}/n_{I_2}$), yielding equilibria in which both the excitatory clusters and the inhibitory cells are split into two groups (the $C_1/C_2/I_1/I_2$ branches). Unlike the previous case, there are no Hopf bifurcations along these branches. For large $g$, the only branches that remain stable are those for which $\beta_C$ is close to $\beta$, in the precise sense we describe in \cref{sec:C1C2I1I2_largeg}; in other words, the excitatory clusters and the inhibitory cells must break up in a similar way. See the bottom figure in \cref{fig:bdsummary} for a cartoon for a summary. Finally, we briefly consider a network in which the inhibitory cells are clustered, rather than the excitatory cells. Here we find that, as in the case with all-to-all coupling, the origin loses stability in a Hopf bifurcation; however, in contrast to the all-to-all case, the frequency of the resulting limit cycle does not increase with $N$.
 
 \subsection{Relationship to other work}
-The population-clustered systems we consider in Sec 4.3-4.6 are similar to a simple version of the Wilson–Cowan equations (reviewed in \cite{et10,Chow_Y_JNeurophys_2020}), which can likewise be interpreted in terms of coupled neural populations. Other authors have derived and analyzed similar systems for balanced networks as a mean-field limit from large networks: however, recent examples differ from the current work because of the scaling of the deterministic part of the connectivity matrix. We retain "strong“ coupling as a function of system size ($1/sqrt{N}$) as in \cite{RA06}, vs. “weak” scaling ($1/N$) \cite{hermann_etal_2012,kadmon_HS_2015,Schuessler_etal_PRR_2020}. In \cite{hermann_etal_2012}, for example, connectivity matrices are chosen with entries $J_{ij} \sim N(J/N, \sigma^2/N)$.  As $N \rightarrow \infty$, the mean connectivity ($1/N$) goes to zero faster than the typical random deviation from the mean ($1/\sqrt{N})$; thus  outgoing synaptic weights will no longer be single-signed, in violation of Dale’s Law. One consequence of weak scaling seems to be that oscillations are observed at the population but not necessary cell level \cite{Ginzburg_HS_1994,Brunel_Hakim_1999}; in contrast, the limit cycles we describe in \cref{sec:periodic} are observed at both the cell and the population level.
+The population-clustered systems we consider in Sec 4.3-4.6 are similar to a simple version of the Wilson–Cowan equations (reviewed in \cite{et10,Chow_Y_JNeurophys_2020}), which can likewise be interpreted in terms of coupled neural populations. Other authors have derived and analyzed similar systems for balanced networks as a mean-field limit from large networks: however, recent examples differ from the current work because of the scaling of the deterministic part of the connectivity matrix. We retain "strong“ coupling as a function of system size ($1/\sqrt{N}$) as in \cite{RA06}, vs. “weak” scaling ($1/N$) \cite{hermann_etal_2012,kadmon_HS_2015,Schuessler_etal_PRR_2020}. In \cite{hermann_etal_2012}, for example, connectivity matrices are chosen with entries $J_{ij} \sim N(J/N, \sigma^2/N)$.  As $N \rightarrow \infty$, the mean connectivity ($1/N$) goes to zero faster than the typical random deviation from the mean ($1/\sqrt{N})$; thus  outgoing synaptic weights will no longer be single-signed, in violation of Dale’s Law. One consequence of weak scaling seems to be that oscillations are observed at the population but not necessary cell level \cite{Ginzburg_HS_1994,Brunel_Hakim_1999}; in contrast, the limit cycles we describe in \cref{sec:periodic} are observed at both the cell and the population level.
 	
 In works that do use strong scaling, the coherent fluctuations that are observed require a perfect orthogonality condition \cite{delMolino_etal_PRE_2013,Landau_HS_PCB_2018} or an external forcing \cite{Landau_HS_PRR_2021} to balance. Furthermore, the nonrandom part of the connectivity matrix is low rank; this is not the case in the current work, in which some examples are low rank but most are not. Contrasting the excitatory clustering with and without self-coupling (\cref{sec:Eclusters} and \cref{sec:restore_selfCoup_Eclusters}), for example, we observe the same pattern of stable fixed points although one is low rank and the other is not.
 
@@ -926,7 +933,6 @@ We note that the remainder term in $(g-g_0)$ is transcendentally small in the se
 x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 \right) = 0.
 \]
 Solving for the non-zero solution for $x_I$ results in the expression \cref{eq:xIapprox}.
-
 We can obtain a higher-order approximation by keeping up to fifth-order terms in \cref{eq:tanhTaylor} to get
 \begin{equation*}
 x_I \left( (g - g_0) - \frac{g^3}{3} x_I^2 + \frac{2 g^5}{15} x_I^4 \right) = 0,
@@ -945,7 +951,7 @@ for $g$ close to $g_0$. Subtracting the second and third equations in \cref{eq:r
  \]
 Substituting \cref{eq:I1I2asymp} as an ansatz, expanding the $\tanh$ terms in a Taylor series about $x_{I_1} = 0$ to cubic order, and simplifying, we obtain the formula given in \cref{eq:XI1}.
 
-Finally, we show that $x_{I_1}$ and $x_{I_2}$ have opposite signs for all $g > g_0$. Since \cref{eq:reducedsystemI1I2} is smooth in $(x_E, x_{I_1}, x_{I_2})$ and $g$, the solutions $x_{I_1}$ and $x_{I_2}$ are smooth in $g$. For $g$ close to $g_0$, $x_{I_1}$ and $x_{I_2}$ have opposite signs; if this is not the case for some $g > g_0$, either $x_{I_1}$ or $x_{I_2}$ must pass through 0. We will show that this cannot happen. Suppose $x_{I_1} = 0$ for some $g^* > g_0$. Substituting this into \cref{eq:reducedsystemI1I2} and subtracting the second row from the first, we have $x_E = -\frac{\mu_{EE}}{\sqrt{N}} \tanh(g^* x_E)$, which is impossible unless $x_E = 0$. If $x_E = 0$, then $x_{I_2} = -\frac{\mu_{EE}}{\sqrt{N}} \alpha(n_{I_2} - 1) \tanh(g^* x_{I_2})$, which is again impossible unless $x_{I_2} = 0$. Thus $x_{I_1}=0$ implies $(x_E, x_{I_1}, x_{I_2}) = 0$. This would mean that the $I_1/I_2$ branch would intersect the zero solution in another bifurcation point at $g^* > g_0$, which we know does not occur The case where $x_{I_2} = 0$ for some $g^* > g_0$ is similar.
+Finally, we show that $x_{I_1}$ and $x_{I_2}$ have opposite signs for all $g > g_0$. Since \cref{eq:reducedsystemI1I2} is smooth in $(x_E, x_{I_1}, x_{I_2})$ and $g$, the solutions $x_{I_1}$ and $x_{I_2}$ are smooth in $g$. For $g$ close to $g_0$, $x_{I_1}$ and $x_{I_2}$ have opposite signs; if this is not the case for some $g > g_0$, either $x_{I_1}$ or $x_{I_2}$ must pass through 0. We will show that this cannot happen. Suppose $x_{I_1} = 0$ for some $g^* > g_0$. Substituting this into \cref{eq:reducedsystemI1I2} and subtracting the second row from the first, we have $x_E = -\frac{\mu_{EE}}{\sqrt{N}} \tanh(g^* x_E)$, which is impossible unless $x_E = 0$. If $x_E = 0$, then $x_{I_2} = -\frac{\mu_{EE}}{\sqrt{N}} \alpha(n_{I_2} - 1) \tanh(g^* x_{I_2})$, which is again impossible unless $x_{I_2} = 0$. Thus $x_{I_1}=0$ implies $(x_E, x_{I_1}, x_{I_2}) = 0$. This would mean that the $I_1/I_2$ branch would intersect the zero solution in another bifurcation point at $g^* > g_0$, which we know does not occur, since we have found all bifurcation points of the origin. The case where $x_{I_2} = 0$ for some $g^* > g_0$ is similar.
 
 \section{Stability and bifurcations along \texorpdfstring{$I_1/I_2$}{I1/I2} branches: detailed calculations}\label{app:I1I2stab}
 
@@ -959,7 +965,7 @@ which is negative for $1 \leq \beta < 2$ and positive for $\beta > 2$. Similarly
 \end{align*}
 which is negative for $\beta > 1/2$ and thus does not affect stability. 
 
-It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of this section. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$ so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
+It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_I$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm \omega_0$, where these are defined at the beginning of \cref{sec:E1I1}. These do not depend on $\beta$. For $\xvec$ small but nonzero, we use a perturbation method to approximate the eigenvalues of $H_3(\xvec)$. We substitute the expressions \cref{eq:I1I2asymp} into characteristic polynomial for $H_3(\xvec)$, keeping only terms of up to order $1/N$, so that the leading order expression only involves $x_{I_1}$. We then use the Taylor expansion $\sech^2(g x_{I_1}) = 1 - (g x_{I_1})^2 + \mathcal{O}( x_{I_1}^4 )$, keeping only terms up to quadratic order. For each eigenvalue $\lambda$ of $H_3(\xvec)$, we use a power series ansatz 
 \begin{equation}\label{eq:lambdaansatz}
 \lambda + \epsilon x_{I_1}^2 + \mathcal{O}(x_{I_1})^4.
 \end{equation}
@@ -971,7 +977,7 @@ Substituting the estimate \cref{eq:XI1} for $x_{I_1}$ and simplifying, the eigen
 \begin{align*}
 \lambda_I^*(g) = \frac{\alpha \mu_{EE} g}{\sqrt{N}} \left( 1 - \frac{3(g-g_0)}{g}\right) - 1 &= -2\left( \frac{g - g_0}{g_0} \right) + \mathcal{O}\left(\frac{1}{N^2} \right) && g \geq g_0,
 \end{align*}
-which is always negative and thus does not affect stability.
+which is always negative, and thus does not affect stability.
 
 Finally, we use this method to locate the eigenvalue of $H_3(\xvec)$ corresponding to $\lambda_0 \pm \omega_0$. In doing so, we will find a Hopf bifurcation on each $I_1/I_2$ branch. $H_3(\xvec)$ has a complex conjugate pair of eigenvalues, where the real part is given by
 \begin{equation}
@@ -981,7 +987,7 @@ We can get more accurate approximations for $\lambda(g, \beta)$ by taking higher
 \[
 \lambda_0(g, 1) = \frac{\mu_{EE}}{2}\left( \alpha - 1 + \alpha g^2 (n_I-1) x_{I_1}^2 - \frac{2}{3}\alpha g^4 (n_I-1) x_{I_1}^4 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
-A similar fourth-order approximation can be obtained when $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is extremely complicated.
+Similar fourth-order approximations can be obtained when $\beta>1$, but the resulting coefficient of $x_{I_1}^4$ is significantly more complicated.
 Substituting \cref{eq:XI1} for $x_{I_1}$ and simplifying, $J_3(\xvec)$ has a complex conjugate pair of eigenvalues $\lambda_0^*(g) \pm i \omega_0^*(g)$, where
 \begin{equation}\label{eq:lambdagbeta}
 \lambda_0^*(g, \beta) = \frac{\mu_{EE} g}{2 \sqrt{N}}\left[ \alpha - 1 + \alpha \beta (n_I-1) \frac{ 3(g - g_0) }{ (1 - \beta + \beta^2 )g} \right] - 1 + \mathcal{O}\left(\frac{1}{N} \right).
@@ -990,14 +996,7 @@ To locate the Hopf bifurcation on each $I_1/I_2$ branch, which occurs when the c
 
 \section{Proof of \texorpdfstring{\cref{prop:limitcycle}}{Proposition}} \label{sec:limitcycleproof}
 
-The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
-\begin{equation}\label{eq:2dimsystem}
-\begin{aligned}
-\dot{x_1} &= f_1(x_1, x_2) := -x_1 + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) \tanh(g x_1) - \alpha n_I \tanh(g x_2) \right) \\
-\dot{x_2} &= f_2(x_1, x_2) := -x_2 + \frac{\mu_{EE}}{\sqrt{N}}\left( n_E \tanh(g x_1) - \alpha (n_I - 1) \tanh(g x_2) \right), 
-\end{aligned}
-\end{equation}
-where $x_1$ represents the synchronized excitatory cell activity and $x_2$ represents the synchronized inhibitory cell activity. First, we show that that \cref{eq:2dimsystem} has no fixed points other than the origin. To do this, we make the change of variables $(y_1, y_2) = (\tanh(g x_1),\tanh(g x_2))$, and note that it is equivalent to show that the system of equations
+First, we show that that \cref{eq:2dimsystem} has no fixed points other than the origin. To do this, we make the change of variables $(y_1, y_2) = (\tanh(g x_1),\tanh(g x_2))$, and note that it is equivalent to show that the system of equations
 \begin{equation}\label{eq:2dimsystemy}
 \begin{aligned}
 g_1(y_1, y_2) := -\frac{1}{g}\tanh^{-1}(y_1) + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) y_1 - \alpha n_I y_2 \right) = 0 \\
@@ -1045,11 +1044,11 @@ n_E - 1 & -\alpha n_I \\
 n_E & -\alpha(n_I - 1)
 \end{bmatrix} - I_2,
 \]
-which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 \pm i \omega_0) - 1$, where $\lambda_0$ and $\omega_0$ are defined in \cref{sec:E1I1}. It follows that the origin is repelling for $g > g_H$, which is the Hopf bifurcation point \cref{eq:0hopflocation}. To show there is a limit cycle for $g > g_H$, we use the Poincar{\'e}-Bendixson theorem \cite[Chapter 16]{Coddington1955}. For a trapping region, we draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large,
+which has a complex conjugate pair of eigenvalues $\frac{g}{\sqrt{N}}(\lambda_0 \pm i \omega_0) - 1$, where $\lambda_0$ and $\omega_0$ are defined in \cref{sec:E1I1}. This pair crosses through the imaginary axis at $g = g_H$, where $g_H$ is defined by \cref{eq:0hopflocation}, leading to a Hopf bifurcation in the reduced system \cref{eq:2dimsystem}, and the origin is repelling for $g > g_H$. To show there is a limit cycle for all $g > g_H$, we use the Poincar{\'e}-Bendixson theorem \cite[Chapter 16]{Coddington1955}. For a trapping region, we draw a square around the origin with corners $(-a, -a)$ and $(a, a)$. On the line $x = a$, for $a$ large,
 \[
 \dot{x} \leq -a + \frac{2 n_E}{\sqrt{N}} = -a + 2 f \sqrt{N},
 \]
-which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined \cref{eq:2dimsystem} points inward at all points on the square (\cref{fig:nullclines}). Since the origin is repelling for $g > g_H$ and is the only fixed point of the system, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$. We note that although the limit cycle from \cref{prop:limitcycle} is stable in the two-dimensional system \cref{eq:2dimsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}.
+which can be made negative by taking $a$ sufficiently large. Similarly, we can take $a$ sufficiently large so that the vector field defined by \cref{eq:2dimsystem} points inward at all points on the square (\cref{fig:nullclines}). Since the origin is repelling for $g > g_H$ and is the only fixed point of the system, it follows from the Poincar{\'e}-Bendixson theorem that there is a limit cycle surrounding the origin for $g > g_H$. We note that although the limit cycle from \cref{prop:limitcycle} is stable in the two-dimensional system \cref{eq:2dimsystem}, the theorem says nothing about its stability in the full system \cref{eqn:sys_Basic}.
 \begin{figure}
     \centering
     \begin{tabular}{c}
@@ -1062,7 +1061,6 @@ which can be made negative by taking $a$ sufficiently large. Similarly, we can t
 \section{Stability of the \texorpdfstring{$I_1/I_2$}{I1/I2} branch for large \texorpdfstring{$g$}{g}: detailed calculations }\label{app:stab_largeg} 
 
 Here we prove our assertion, made in \cref{sec:stab_largeg}, that $x_E \rightarrow 0$ as $g\rightarrow \infty$ along any $I_1/I_2$ solution branch.
-
 Suppose, instead, that $x_E \rightarrow \hat{x}_E \neq 0$ as $g \rightarrow \infty$. Without loss of generality, we can take $\hat{x}_E > 0$, since by odd symmetry of \cref{eqn:sys_Basic}, there will be a corresponding solution with $\hat{x}_E < 0$. This implies that $\tanh x_{E} \rightarrow 1$. There are four cases to consider:\\
 \begin{itemize}
     \item Case 1: $x_{I_1} \rightarrow \hat{x}_{I_1} \neq 0$ and $x_{I_2} \rightarrow \hat{x}_{I_2} \neq 0$.
@@ -1130,7 +1128,7 @@ Following the procedure in \cref{sec:I1I2stability} and \cref{app:I1I2stab}, we 
 \end{equation}
 $\lambda_{C_1}^*(g)$ is negative for $1 \leq \beta_C < 2$ and positive for $\beta_C > 2$; $\lambda_{C_2}^*(g)$ is negative for $\beta_C  > 1/2$; and $\lambda_{I}^*(g)$ is negative for all $\beta_C$ for $N$ sufficiently large.
 
-It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$, given by \cref{eq:H3C}. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_C$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, where these are defined at the beginning \cref{sec:Eclusters}. Using the same asymptotic procedure as in \cref{sec:I1I2stability} and \cref{app:I1I2stab}. $H_3(\xvec^*)$ has a real eigenvalue corresponding to $\lambda_C$ located at
+It remains to find leading order expressions for the eigenvalues of $H_3(\xvec)$, given by \cref{eq:H3C}. When $\xvec = 0$, the matrix $H_3(0)$ has a single eigenvalue at $\lambda_C$ and a complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, where these are defined at the beginning of \cref{sec:Eclusters}. Using the same asymptotic procedure as in \cref{sec:I1I2stability} and \cref{app:I1I2stab}, $H_3(\xvec^*)$ has a real eigenvalue corresponding to $\lambda_C$ located at
 \[
 \lambda_C(\xvec^*) = (p-1)n_C \mu  \left(1 - (1 - \beta_C+\beta_C^2)g^2 x_{E_1}^2 \right) + \mathcal{O}\left(\frac{1}{N^2} \right).
 \]
@@ -1178,7 +1176,7 @@ as $g, N \rightarrow \infty$. For \cref{eq:xEhat12} to be valid, the consistency
 \begin{equation}\label{eq:betaCineq}
 (p-1)n_C - \frac{\beta_C - 1}{\beta_C+1}\frac{p^2 n_C^2}{p n_C - \alpha}  > 0.
 \end{equation}
-Solving for $\beta_C$, this results in the condition stated in \ref{eq:betaCstar}.
+Solving for $\beta_C$, this results in the condition $\beta_C < \beta_C^*$, where $\beta_C^*$ is defined in \ref{eq:betaCstar}.
 
 For Case 2, we can solve for $\hat{y}_{E_1}$ and $\hat{y}_I$ using rows 2 and 3 of \cref{eq:cluster3system} to get
 \begin{equation}\label{eq:ye1hatyihat}
@@ -1195,7 +1193,7 @@ from which it follows that
         x_{I} &\rightarrow \frac{1}{g} \tanh^{-1} \left(\frac{n_C p(p-1) }{ \alpha(1+\beta_C)(p-1) + n_C p(1 + \beta_C - p)} \right).
     \end{aligned}
 \end{equation}
-as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
+as $g \rightarrow \infty$. We note that for $\beta_C > \beta_C^*$, we cannot take $N \rightarrow \infty$ with $n_C$ held fixed, since for sufficiently large $N$ we will always have $\beta_C < \beta_C^*$. 
 
 \section{Stable excitatory clusters for large \texorpdfstring{$g$}{g}: detailed calculations} 
 \label{app:C1C2I1I2_largeg}
