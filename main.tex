@@ -462,7 +462,7 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
     \centering
     \includegraphics[width=8.25cm]{images/Hopfapproxerrorsemilog.eps} \hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/HopflogNvsgsemilog.eps}
-    \caption{Locations of important bifurcations as a function of $N$. Left: Log-log plot of the absolute error of  \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4. The slope of each line is approximately -1.5 (validating the error term $\mathcal{O}\left( N^{-3/2} \right)$). Right: location of the symmetric pitchfork bifurcation $g_0$ (dashed line), Hopf bifurcation at the origin $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches \cref{eq:ghopfformula} for select $\beta$ (solid lines, arranged from bottom to top in order of increasing $\beta$) as a function of $N$. Other parameters are: $\alpha = 4$, $\mu_{EE}= 0.7$. }
+    \caption{Locations of important bifurcations as a function of $N$. Left: Log-log plot of the absolute error of  \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4. The slope of each line is approximately -1.5, validating the error term $\mathcal{O}\left( N^{-3/2} \right)$. Right: location of the symmetric pitchfork bifurcation $g_0$ (dashed line), Hopf bifurcation at the origin $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches \cref{eq:ghopfformula} for select $\beta$ (solid lines, arranged from bottom to top in order of increasing $\beta$) as a function of $N$. Other parameters are: $\alpha = 4$, $\mu_{EE}= 0.7$. }
     \label{fig:Hopfplots}
 \end{figure}
 
@@ -483,7 +483,7 @@ where $x_1$ represents the synchronized excitatory cell activity and $x_2$ repre
     \centering
     \includegraphics[width=8.25cm]{images/limitcycle1.eps}\hspace{-0.5cm}
     \includegraphics[width=8.25cm]{images/limitcycle2.eps}
-    \caption{The $\beta = \infty$ limit cycle arising from a Hopf bifurcation at $g = g_H$. There is a single excitatory cluster with activity $x_E(t)$ and a single inhibitory cluster with activity $x_I(t)$. Parameters are: $N=\#\#, g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. The period of the limit cycle is 1.62.} 
+    \caption{The $\beta = \infty$ limit cycle arising from a Hopf bifurcation at $g = g_H$. There is a single excitatory cluster with activity $x_E(t)$ and a single inhibitory cluster with activity $x_I(t)$. Parameters are: $N=20, g = 15$, $\alpha = 4$, $\mu_{EE}= 0.7$. The period of the limit cycle is 1.62.} 
     \label{fig:limitcycleorigin}
 \end{figure}
 
@@ -491,7 +491,7 @@ In the following proposition, we prove that the $\beta=\infty$ limit cycle exist
 
 \begin{proposition}\label{prop:limitcycle}
 For $g > g_H$, the system \cref{eqn:sys_Basic} has a limit cycle in which all excitatory cells are synchronized, and inhibitory cells are synchronized.
-\end{proposition}
+m, m,knm/\end{proposition}
 
 In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcations on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet (see dark band in bottom panel of \cref{fig:periodvsg}). For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO, and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$ passes through 1. As $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
@@ -890,7 +890,7 @@ In this paper, we analyze a family of clustered excitatory-inhibitory neural net
     \begin{tabular}{cc}
     \includegraphics[width=10cm]{images/bdsummary.eps}
     \end{tabular}
-    \caption{Cartoon summary of fixed points, limit cycles, and bifurcations as $g$ increases from 0 for all-to-all connected network (top) and network with excitatory clustering (right).} 
+    \caption{Cartoon summary of fixed points, limit cycles, and bifurcations as $g$ increases from 0 for all-to-all connected network (top) and network with excitatory clustering (bottom).} 
     \label{fig:bdsummary}
 \end{figure}
 
