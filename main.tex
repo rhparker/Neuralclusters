@@ -128,10 +128,6 @@ We consider a network in which each node represents the firing rate of a single 
 \end{equation}
 for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory:  for the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks \cite{Buxh_Brain_2002}. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. This implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$, and that $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic} for all $g$.
 
-%For all $g$, $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic}. For sufficiently small $g$, this is a stable fixed point. As $g$ increases, the fixed point at $\xvec = \Zerovec$ will lose stability. 
-
-%The dynamics of \cref{eqn:sys_Basic} depend on the connectivity matrix $H$. 
-%For many choices of $H$ that can be motivated by neural networks, the block structure of $H$ leads to very stereotyped patterns of fixed points and limit cycles [REFERENCE]. 
 We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{C_I}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
 H = 
@@ -245,30 +241,33 @@ For part (ii), it can be verified directly that for $j=1, \dots, n_C$, $H(\xvec_
  
 \section{Single excitatory and inhibitory cluster}\label{sec:E1I1}
 
-The simplest case (considered in \cite{Barreiro2017}) involves a single excitatory cluster ($n_C = 1$) and a single inhibitory cluster ($n_{CI}=1$), in which case the matrix $H$ in \cref{eqn:sys_Basic} reduces to
+The simplest case (considered in \cite{Barreiro2017}) involves a single excitatory cluster ($n_C = 1$ and $p = n_E$) and a single inhibitory cluster, in which case the matrix \revised{$\tilde{H}$ in \cref{eq:reducedmatrixform} reduces to the $(1+n_I)\times(1+n_I)$ matrix}
+\revised{
 \[
-H = 
+\tilde{H} = 
 \left[ \begin{array}{c|c}
 \\
-\mu_{EE} \Kvec_{n_E} & \mu_{EI} \Onevec_{n_E \times n_I}\\
+(n_E - 1)\mu_{EE} & \mu_{EI} \Onevec_{1 \times n_I}\\
 \\
 \hline
 \\
-\mu_{IE} \Onevec_{n_I \times n_E} & \mu_{II} \mathbf{K}_{n_I} \\
+n_E \mu_{IE} \Onevec_{n_I \times 1} & \mu_{II} \mathbf{K}_{n_I} \\
 \\
 \end{array}
 \right].
 \]
-We choose the connection weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel \cite{RA06}. To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of $H$ is now easy to compute \cite{Barreiro2017}. The eigenvalues of $H$ (left panel of \cref{fig:Heigpattern}) are
+}
+We choose the connection weights so that the network is \emph{balanced}; that is, the excitatory and inhibitory currents coming into each cell should approximately cancel \cite{RA06}. To achieve this balance, we set $\mu_{EI} = -\alpha \mu_{EE}$ and $\mu_{II} = -\alpha \mu_{IE}$, where $\alpha = \frac{f}{1-f}$. For simplicity, we also take $\mu_{IE} = \mu_{EE}$. The spectrum of \revised{$\tilde{H}$} is now easy to compute 
+\revised{(see \cite{Barreiro2017}, noting that the full matrix $H$ is considered in that work)}.
+The eigenvalues of \revised{$\tilde{H}$} (left panel of \cref{fig:Heigpattern}) are
 \begin{itemize}
     \item $\lambda_I := \alpha \mu_{EE} > 0$ with multiplicity $n_I - 1$.
-    \item $\lambda_E := -\mu_{EE} < 0$ with multiplicity $n_E - 1$.
     \item One complex pair of eigenvalues $\lambda_0 \pm i \omega_0$, with
     \[
     \lambda_0 := \mu_{EE}\frac{\alpha - 1}{2}, \quad \omega_0 := \mu_{EE}\sqrt{\alpha+1}\sqrt{n_E - \frac{\alpha+1}{4}}. 
     \]
 \end{itemize}
-It is straightforward to check that $\lambda_E < 0 < \lambda_0 < \lambda_I$. As discussed above, all bifurcations of $\xvec = 0$ involve only $\lambda_0 \pm i \omega_0$ and $\lambda_I$, which are the eigenvalues of $H$ with positive real part. 
+\revised{It is straightforward to check that $0 < \lambda_0 < \lambda_I$. Since both of these are positive, there will be a bifurcation of $\xvec = 0$ involving each of these eigenvalues.} 
 
 In the following sections, we will determine the bifurcations which occur as $g$ is increased, together with the structures which emerge at these bifurcation points. First, the origin loses stability in a symmetric pitchfork bifurcation, after which point there is a branch of equilibria for every possible division of the inhibitory cells into two groups. We will derive leading order formulas for these branches, as well as show which of them are initially stable. As $g$ is further increased, there is a Hopf bifurcation on each of these branches, which gives rise to a limit cycle with the same grouping pattern as the corresponding branch. Finally, at a critical values of $g$, these limit cycles coalesce in a symmetric pitchfork bifurcation of limit cycles. After this point, there is a single stable limit cycle in which there is one group of inhibitory cells and one group of excitatory cells.
 
@@ -550,37 +549,20 @@ The remaining possibility is that $x_E \rightarrow \hat{x}_E \neq 0$. In \cref{a
 
 \section{Excitatory clusters, weight parameters balanced}\label{sec:Eclusters}
 
-We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. We will take $p > 1$ to ensure that each excitatory cluster contains more than one cell, and we will also assume $n_C \geq \alpha$ (e.g. $n_C \geq 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $n_C$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. The matrix $H$ is now
-\begin{equation}\label{eq:Hcluster}
-H = \frac{1}{\sqrt{N}}
-\left[ 
-\begin{blockarray}{ccccc}
-\begin{block}{cccc|c}
-\mu_{EE}\Kvec_{p} & 0 & \hdots & 0 & \BAmulticolumn{4}{c}{\multirow{4}{*}{$\mu_{EI}\Onevec_{n_E \times n_I}$}}\\
-0 & \mu_{EE} \Kvec_{p} & \hdots & 0 &&&&\\
-\vdots & \vdots & \ddots & 0 &&&&\\
-0 & 0 & \hdots & \mu_{EE} \Kvec_{p} &&&&\\
-\end{block} 
-\cline{1-8}
-\begin{block}{cccc|c}
-&&&&\\
-\BAmulticolumn{4}{c|}{\mu_{IE}\Onevec_{n_I \times n_E}} & \mu_{II} \Kvec_{n_I}\\
-\end{blockarray}
-\right]
-\end{equation}
-which is associated with the symmetry group
+We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. We will take $p > 1$ to ensure that each excitatory cluster contains more than one cell, and we will also assume $n_C \geq \alpha$ (e.g. $n_C \geq 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $n_C$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. The matrix \revised{$\tilde{H}$}, which is given by \cref{eq:tildeH}, is associated with the symmetry group
+\revised{
 \begin{align*}
-\Gamma &= \underbrace{S_{p} \oplus \cdots  \oplus S_{p}}_{n_C} \oplus \, S_{n_I} && p = fN/n_C.
+\Gamma &= S_{n_C} \oplus \, S_{n_I}.
 \end{align*}
+}
 As in the previous section, we choose the weights so that the network is balanced. 
 \begin{align*}
 \mu_{EE} &= n_C \mu && \mu_{IE} = \mu \\
 \mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha.
 \end{align*}
-The expression for $\mu_{EE}$ compensates for the fact that each excitatory cell has fewer excitatory connections. The eigenvalues of $H$ (middle panel of \cref{fig:Heigpattern}) are:
+The expression for $\mu_{EE}$ compensates for the fact that each excitatory cell has fewer excitatory connections. The eigenvalues of \revised{$\tilde{H}$} (middle panel of \cref{fig:Heigpattern}) are:
 \begin{itemize}
-\item $\lambda_I := \alpha \mu > 0$ with multiplicity $n_I - 1$
-\item $\lambda_E := -n_C \mu < 0$ with multiplicity $(p-1) \times n_C = n_E - n_C$.
+\item $\lambda_I := \alpha \mu > 0$ with multiplicity $n_I - 1$.
 \item $\lambda_C := (p-1) n_C \mu > 0$, with multiplicity $n_C - 1$.
 \item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
 \begin{equation*}
@@ -831,13 +813,12 @@ The fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is e
 
 \subsection{Excitatory clusters with weight parameters unchanged}
 
-We briefly consider a system with excitatory clusters, but in which we have not adjusted the excitatory weight strengths, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of $H$ with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
+We briefly consider a system with excitatory clusters, but in which we have not adjusted the excitatory weight strengths, i.e. $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$. In this case, the two eigenvalues of \revised{$\tilde{H}$} with positive real part are $\lambda_I = \alpha \mu_{EE}$ and $\lambda_C = (p-1)\mu_{EE}$. If $\lambda_C > \lambda_I$, which occurs when $n_C < \frac{f N}{\alpha+1}$, the behavior is qualitatively the same as for the case balanced weight parameters discussed above. If  $\lambda_C < \lambda_I$, which occurs when $n_C > \frac{f N}{\alpha+1}$, the order of the two symmetric pitchfork bifurcations is reversed. As $g$ is increased, the inhibitory cells bifurcate from the origin first, followed by the excitatory clusters.
 
 \subsection{Restored self-coupling} \label{sec:restore_selfCoup_Eclusters}
-We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $\Kvec_{p}$ in \cref{eq:Hcluster} with the $p\times p$ matrix consisting of all 1s. The effect of this in the reduced model \cref{eq:reducedmatrixform} is to replace the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$. The eigenvalues of $H$ are then given by:
+We can restore self-coupling of neurons with each excitatory cluster by replacing the matrix $(p-1) \mu_{EE} I_{n_C}$ in the upper left block of \cref{eq:tildeH} with $p \mu_{EE} I_{n_C}$. The eigenvalues of \revised{$\tilde{H}$} are then given by:
 \begin{itemize}
 \item $\lambda_I := \alpha \mu > 0$ with multiplicity $n_I - 1$
-\item $\lambda_E := 0$ with multiplicity $(p-1) \times n_C = n_E - n_C$.
 \item $\lambda_C := p n_C \mu > 0$, with multiplicity $n_C - 1$.
 \item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
 \begin{equation*}
