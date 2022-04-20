@@ -1,0 +1,9 @@
+Hi Ross: can you draft a statement, and then pass it to me? Main points I would make:
+- Builds on Barreiro et al. 2017, JMN
+   - Includes stability results that we did not have in that paper
+   - looks at network configurations we did not have in that paper
+- The use of symmetries in balanced E-I networks is novel.
+
+What is the novel scientific contribution of this work? (If the work builds considerably on one or more previously published papers, please briefly state how the present work extends the previous ones.)
+
+In this work, we explore a model of a clustered excitatory-inhibitory neural network, and the underlying bifurcations that arise because of permutation symmetries in the network. We extend the work of Barreiro et al. (2017), which considers all-to-all connected, balanced excitatory-inhibitory networks, in two important directions. First, we present a more complete picture of the bifurcation structure of that model, including leading order expressions for the locations of each bifurcation as well as stability results. We then generalize the model to one in which the excitatory cells are divided into clusters of equal size, and the connection weights are adjusted to balance the excitatory and inhibitory inputs into each cell. Most notably, we find that the bifurcation structure of this model, which we determine using permutation symmetries of the excitatory clusters, is qualitatively different than that of the all-to-all connected model.

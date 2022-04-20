@@ -1,0 +1,94 @@
+\documentclass[11pt]{letter}
+
+\usepackage{amsmath}
+
+\usepackage[hmargin={1.0in,1.0in},%
+            vmargin={1.0in,1.0in},%
+            nohead,%
+            nofoot,%
+            ]{geometry}                                 % the page layout without fancyhdr
+\pagestyle{empty}
+
+\begin{document}
+\address{Ross Parker \\
+Department of Mathematics \\
+Southern Methodist University \\
+Dallas, TX 75275 \\
+\texttt{rhparker@smu.edu}}%
+\signature{Ross Parker}
+\begin{letter}{Editor, SIADS}
+
+\opening{Dear Editor,}
+
+On behalf of my co-author, Andrea K. Barreiro, I would like to submit our revision of the article ``Bifurcations of a neural network model with symmetry'' for consideration of publication in the SIAM Journal on Applied Dynamical Systems. 
+
+We are grateful to the referees for their careful reading of the original manuscript, and their many comments and suggestions regarding how we could improve it. All the suggestions for improvement from the two reviewers have been systematically taken into careful consideration and incorporated into the revision, as noted below. The portions of the manuscript which have been revised or added are indicated using red text. The major changes to the manuscripts include the following:
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+Given the improvements made in accordance with the requests of the referees, we hope that you will now find the manuscript to be suitable for publication in SIADS. We will be sincerely looking forward to your editorial decision.
+
+Reviewer 1: 
+\begin{enumerate}
+\item \emph{My central point of confusion is this: The authors claim that as a consequence of the Equivariant Branching Lemma, there are solution branches where (for example) the inhibitory cells split into two groups, synchronized within each. Focusing on the first model (no excitatory clusters): what about branches where the inhibitory cells split into three or more groups? Aren't the corresponding wtithin-group permutations also subgroups of $\Gamma$ with fixed point subspaces of dimension 1? I can't find any discussion of this point in the paper. Either I'm missing something (very possible!) or there are also many more solution branches than those characterized here. If that is the case, it would seem at face value to be a major obstacle to the interpretability of these results: why should the bifurcations corresponding to two cell-groups explain the networks' behavior, without considering those other branches? If those other solutions branches do in principle exist, do they appear in the authors' simulations? If not, can the authors provide some explanation? If these other solution branches do not exist as a consequence of the Equivariant Branching Lemma, I think that should be explained in the paper. } 
+\vspace{4mm}
+
+\item \emph{The definition of $\beta$ on p. 7 could be a displayed equation, since that parameter is referred to many times in figure captions and other equations. }
+The definition of the ratio $\beta$ is now a displayed equation. Similarly, $\beta_c$ in Section 5 is also now a displayed equation.
+\vspace{4mm} 
+
+\item \emph{Proposition 4.3 (p. 11): It seems there are some extra characters "m, m,knm" after the statement of the proposition. }
+These have been removed.
+\vspace{4mm} 
+
+\item \emph{p. 14 The symmetry group $\Gamma$ is written as the direct sum of the groups $S_p, \ldots, S_p$ and of $S_{n_I}$, while previously we had the product of the different groups. Does this reflect the exchangeability of excitatory neurons between clusters? If so, should it be a product with $S_{n_I}$? }
+\vspace{4mm} 
+
+\item \emph{The authors motivate their study by the observation that large rate networks with random connectivity can exhibit coherent fluctuations, but then study a different model: rate networks with non-random, perfectly symmetric connectivity. There is a rather large gap between those two models, and it might be helpful to the reader to highlight those as ends of a spectrum. To that end, it might be worth discussing the relation of this work to studies examining the role of self-coupling in randomly connected rate networks (Stern et al., PRE 2014) as a model of excitatory clusters, and studies of the role of symmetric connectivity motifs in shaping activity in randomly connected networks (e.g., Hu et al., PRE 2014, Marti, Brunel and Ostojic PRE 2018, Recanatesi et al., PLoS Comp. Bio. 2019, Dahmen et al., bioRxiv 2020) which can emerge through Hebbian plasticity (Ocker and Doiron, Cereb. Ctx. 2018). }
+\vspace{4mm} 
+
+\end{enumerate}
+
+
+Reviewer 2:
+\begin{enumerate}
+\item \emph{My negative opinion is based at the way the several symmetric configurations of excitatory - inhibitory neural networks are presented and addressed, in terms of symmetry. I believe that every configuration being studied corresponds to a symmetric system under a symmetry group $G$ and then the application of the Equivariant Branching Lemma (EBL) justifies a pitchfork symmetric steady-state bifurcation to steady-state solutions with symmetry $S$ (a subgroup of $G$) as the action of $G$ at the corresponding bifurcation kernel and $S$ satisfy the EBL conditions. I think the paper needs a rewritten making explicit calculations/equations/symmetry/critical space justifying clearly each bifurcation in terms of the symmetry and where the symmetry acts to provide the bifurcations.}
+\vspace{4mm} 
+
+\item \emph{One suggestion is that already at the introduction section and with more detail at section 3, the authors should explain that each model that they are being studied corresponds taking the system (2.1) which is $S_{N_E} \times S_{N_I}$-symmetric restricting to a fixed-point space of certain subgroup of $S_{N_E} \times S_{N_I}$ leading to equations (3.2). Each section corresponds to a certain situation in terms of symmetry and so in my opinion that should be resumed in a systematic way. Stating clearly right from the beginning the connection of each model in terms of clusters and the symmetry of the underlying ODEs system. Note that for example the symmetry of the linearization at an equilibrium justifies the eigenvalue structure and so the bifurcation analysis follows from the space where eigenvectors associated with the critical eigenvalue are chosen.}
+\vspace{4mm} 
+
+\item \emph{Explain briefly the sentence on page 3 "Features of the system such as fixed points and periodic orbits remain when the connectivity is perturbed by a random matrix..."}
+\vspace{4mm} 
+
+\item \emph{Table in Figure 2.1 should be at other place or if at the place, it should be clear which three models correspond each column.}
+\vspace{4mm} 
+
+\item \emph{Explain why there is always a fixed-point of equations (3.3) in Proposition 3.1 (for general $n_C$ excitatory clusters and $n_I$ inhibitory cells). Note that EBL guarantees the existence of bifurcation to a branch of symmetric solutions just under certain conditions. Also its proof should refer the fact that equations (3.3) are restriction of equations (2.1) and so part (i) follows trivially from that. Similar comments can be done to Propositions 4.2 and 5.1.}
+The existence of fixed points of equations (3.3) is discussed in Section 4 and Section 5. This is now stated in the text before proposition 3.1. Proposition 3.1 says that, assuming we have a fixed point of (3.3) (which yields a corresponding fixed point of the full system (2.1)), no stability information is lost by considering only the reduced system, since the extra eigenvalues are always negative. The proof of part (i) of propositions 3.1 and 4.2 has been rewritten as suggested. We note that the proof of proposition 5.1 is omitted, as it is similar to that of proposition 4.2.
+\vspace{4mm} 
+\item \emph{On page 7, in equation (4.5) it should be $\textrm{Fix}_V(\Sigma)$ ... and the sentence "We can check that $\textrm{Fix}(\Sigma)$ is a subspace of $V$." should be removed in my opinion. }
+This is now written as $\textrm{Fix}_V(\Sigma)$, and that sentence has been removed.
+\vspace{4mm} 
+
+\item \emph{Equations (4.6) are restriction of equations (2.1) to a fixed-point subspace. In my opinion that should be written clearly.}
+\vspace{4mm} 
+
+\item \emph{
+Beginning of page 12: "... the associated periodic orbit has the same symmetry as that branch..." Why the authors can infer that from equations (4.6)? }
+\vspace{4mm} 
+
+\item \emph{In Section 5, the excitatory cells are divided into clusters of equal size. For simplification matters? Does that have interest in terms of neuronal applications? }
+\vspace{4mm} 
+
+\item \emph{Page 15, section 5.1: explain how the pitchfork bifurcation occurs in this situation where there are $n_C$ clusters of size $p$. It is written on page 15 that "... from the EBL that there is a branch of solutions emerging at the bifurcation point $g = g_C$ for any possible division of excitatory clusters into exactly two groups of clusters." }
+\vspace{4mm} 
+
+\end{enumerate}
+
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
