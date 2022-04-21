@@ -20,9 +20,9 @@
 
 % Per SIAM Style Manual, "section" should be lowercase
 \crefname{section}{section}{sections}
-\crefname{subsection}{subsection}{subsections}
+\crefname{subsection}{section}{sections}
 \Crefname{section}{Section}{Sections}
-\Crefname{subsection}{Subsection}{Subsections}
+\Crefname{subsection}{section}{sections}
 
 % Per SIAM Style Manual, "Figure" should be spelled out in references
 \Crefname{figure}{Figure}{Figures}
@@ -128,7 +128,9 @@ We consider a network in which each node represents the firing rate of a single 
 \end{equation}
 for $\xvec \in \R^N$, where the global coupling strength, $g$, is used a bifurcation parameter. The network comprises a total of $N$ neurons, of which $n_E$ are excitatory and $n_I$ are inhibitory. $H$ is the $N \times N$ connectivity matrix; the diagonal entries of $H$ are all 0 to exclude self-interactions of neurons (see \cite[Sec. 2.1]{Barreiro2017} for a discussion on why self-coupling of neurons is removed). We will use the parameter $f = n_E / N$ to identify the fraction of neurons that are excitatory:  for the remainder of this paper we will use $f = 0.8$ for a 4-to-1 excitatory-to-inhibitory ratio, which is typical for cortical networks \cite{Buxh_Brain_2002}. We note that $F$ is an odd function of $\xvec$, i.e. $F(-\xvec) = -F(\xvec)$. This implies that if $\xvec(t)$ is a solution to \cref{eqn:sys_Basic}, so is $-\xvec(t)$, and that $\xvec = \Zerovec$ is a fixed point of \cref{eqn:sys_Basic} for all $g$.
 
-We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{C_I}$ clusters, each containing $p_I$ neurons. In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
+We consider here networks in which the excitatory neurons are grouped into $n_C$ clusters, each containing $p$ neurons, and the inhibitory neurons are grouped into $n_{C_I}$ clusters, each containing $p_I$ neurons. 
+\revised{For simplicity, we only consider the case where the excitatory clusters are the same size, and the inhibitory clusters are the same size. In addition, this restriction introduces additional symmetries into the model, which are explained below.}
+In addition, all connections of any given type (e.g. $E \rightarrow E$ or $E \rightarrow I$) will have the same strength. The matrix $H$ then takes the general form
 \begin{equation}
 H = 
 \left[ 
@@ -152,6 +154,16 @@ H =
 \end{equation}
 where $\Onevec_{m \times n}$ is the $m\times n$ matrix of ones, and $\Kvec_n$ is the $n\times n$ matrix with all ones off the diagonal, i.e. $\Kvec_n = \Onevec_{n \times 1} \left( \Onevec_{n \times 1}\right)^T - \Ivec_n$, with $\Ivec_n$ the $n \times n$ identity matrix. The connection weights $\mu$ are defined ``matrix-style'', e.g. $\mu_{EI}$ will denote the connection from I to E, while $\mu_{IE}$ will denote the connection from E to I. The weights are also signed, so that $\mu_{EE}, \mu_{IE} > 0$ and $\mu_{EI}, \mu_{II} < 0$: this reflects the neurobiological heuristic of \emph{Dale's Law}, which states that each neuron makes excitatory \emph{or} inhibitory connections onto its postsynaptic targets.
 
+\revised{
+The model \cref{eqn:sys_Basic} is equivariant under the subgroup $\Gamma_H$ of $S_N$, defined by 
+\[
+\Gamma_H = \underbrace{S_{p} \oplus \cdots  \oplus S_{p}}_{n_C} \oplus \, 
+\underbrace{S_{p_I} \oplus \cdots  \oplus S_{p_I}}_{n_{C_I}},
+\]
+where $S_n$ is the group of permutations on $n$ objects (see \cref{sec:EBL} for the definition of equivariance). 
+Essentially, this says that labels of the neurons within each cluster can be freely permuted. Since the clusters are of equal sizes, there are two additional symmetries in the model. The labels of the excitatory clusters and the labels of the inhibitory clusters can be freely permuted, yielding symmetry groups isomorphic to $S_{n_C}$ and $S_{n_{C_I}}$, respectively.
+}
+
 The linearization of \cref{eqn:sys_Basic} about $\xvec = 0$ is the matrix
 \begin{equation}\label{eq:DF0}
 DF(0) = \frac{g}{\sqrt{N}}H - I_N,
@@ -172,12 +184,15 @@ Features of the system such as fixed points and periodic orbits remain when the 
 
 \begin{figure}
     \centering
-    % \begin{tabular}{ccc}
-    \includegraphics[width=5.8cm]{eigpattern1.eps} \hspace{-0.7cm}
-    \includegraphics[width=5.8cm]{eigpattern2.eps} \hspace{-0.7cm}
-    \includegraphics[width=5.8cm]{eigpattern3.eps} 
-    % \end{tabular}
-    \caption{Eigenvalue pattern of the connectivity matrix $H$ for different configurations studied in this paper. Left: single excitatory and single inhibitory cluster \cref{sec:E1I1}. Middle:  multiple excitatory clusters and single inhibitory cluster \cref{sec:Eclusters}. Right: single excitatory cluster and multiple inhibitory clusters \cref{sec:inhibitoryclusters}. The notation for the eigenvalues in each network model is explained in the corresponding section below.}
+    \begin{tabular}{ccc}
+    No clusters &
+    Excitatory clusters &
+    Inhibitory clusters \\
+    \includegraphics[width=5.05cm]{eigpattern1.eps} &
+    \includegraphics[width=5.05cm]{eigpattern2.eps} &
+    \includegraphics[width=5.05cm]{eigpattern3.eps} 
+    \end{tabular}
+    \caption{Eigenvalue pattern of the connectivity matrix $H$ for different configurations studied in this paper. Left: single excitatory and single inhibitory cluster (\cref{sec:E1I1}). Middle:  multiple excitatory clusters and single inhibitory cluster (\cref{sec:Eclusters}). Right: single excitatory cluster and multiple inhibitory clusters (\cref{sec:inhibitoryclusters}). The notation for the eigenvalues in each network model is explained in the corresponding section below.}
     \label{fig:Heigpattern}
 \end{figure}
 
@@ -189,7 +204,7 @@ Since our main interest is locating fixed points and periodic orbits, we can sim
 \end{align}
 The only way this can be true for a fixed point (for which $\frac{d}{dt} |x_1 - x_2|^2 =0$) or for a periodic orbit (for which $x_1(t)-x_2(t) = x_1(t+T)-x_2(t+T)$ for some period $T$) is if $x_1(t) = x_2(t)$ for all $t$. If $n_C > 1$, and $x_1$ and $x_2$ are the activities of two cells in the same excitatory cluster, equation \cref{eq:dt_x1t2diff} holds by the same argument as in \cite{Barreiro2017}, since both neurons receive the same incoming connections with the same weights. 
 
-We are primarily interested in the case where there is a single cluster of inhibitory cells ($n_{CI} = 1$). We will briefly consider the case of multiple excitatory inhibitory ($n_{CI} > 1$) in \cref{sec:inhibitoryclusters}. If there are $n_C$ excitatory clusters containing $p$ cells each, and $n_I$ inhibitory cells (for $N = p n_C + n_I$ total cells), equation \cref{eqn:sys_Basic} reduces to the system of $n_C + n_I$ equations
+We are primarily interested in the case where there is a single cluster of inhibitory cells, i.e. $n_{C_I} = 1$. (We will briefly consider the case of multiple inhibitory clusters in \cref{sec:inhibitoryclusters}). If there are $n_C$ excitatory clusters containing $p$ cells each, and $n_I$ inhibitory cells (for $N = p n_C + n_I$ total cells), equation \cref{eqn:sys_Basic} reduces to the system of $n_C + n_I$ equations
 \begin{equation}\label{eq:reducedsystem}
 \begin{aligned}
 \dot{x}_{E_j} &= -x_{E_j} + \frac{(p-1)}{\sqrt{N}}\mu_{EE} \tanh(g x_{E_j}) + \frac{1}{\sqrt{N}} \mu_{EI} \sum_k \tanh(g x_{I_k}) && j = 1, \dots, n_C \\
@@ -213,9 +228,22 @@ where $\xvec = (x_{E_1}, \dots, x_{E_{n_C}}, x_{I_1}, \dots, x_{I_{n_I}})^T$, an
     \end{array}
     \right].
 \end{equation}
-\revised{For the remainder of this work (with the exception of \cref{sec:inhibitoryclusters}) we will therefore only consider the reduced system \cref{eq:reducedmatrixform}.}
+\revised{
+We note that the system of equations \cref{eq:reducedmatrixform} is the restriction of the original system \cref{eqn:sys_Basic} with $n_{C_I}=1$ to the fixed point subspace $\rm{Fix}(\Gamma_C)$ corresponding to the subgroup
+\[
+\Gamma_C = \underbrace{S_{p} \oplus \cdots  \oplus S_{p}}_{n_C} \oplus \, 
+E_{n_I}
+\]
+of $\Gamma_H$, where $E_{n_I}$ is the trivial subgroup of $S_{n_I}$ consisting of only the identity permutation. The reduced model \cref{eq:reducedmatrixform} is then equivariant under the subgroup 
+\begin{equation}\label{eq:Gamma}
+\Gamma = S_{n_C} \oplus S_{n_I}
+\end{equation}
+of $S_N$. The special case of $n_C = 1$ (a single excitatory cluster) is considered in \cref{sec:E1I1}. We note that in this case, one of the symmetries is effectively lost, since the activity of the lone excitatory cluster is represented by a single variable.
+The general case ($n_C > 1$) is considered in \cref{sec:Eclusters}.
+For the remainder of this work (with the exception of \cref{sec:inhibitoryclusters}) we will therefore only consider the reduced system \cref{eq:reducedmatrixform}.
+}
 
-\revised{Suppose} $\xvec^* = (x_{E_1}^*, \dots, x_{E_{n_C}}^*, x_{I_1}^*, \dots, x_{I_{n_I}}^*)^T$ is a fixed point of \cref{eq:reducedmatrixform}. \revised{(We will discuss the existence of such fixed points in \cref{sec:E1I1} and \cref{sec:Eclusters}). We will now show that no stability information is lost by only studying the reduced system \cref{eq:reducedmatrixform}}.
+\revised{To conclude this section, we show that no stability information is lost by only studying the reduced system \cref{eq:reducedmatrixform}. Suppose} $\xvec^* = (x_{E_1}^*, \dots, x_{E_{n_C}}^*, x_{I_1}^*, \dots, x_{I_{n_I}}^*)^T$ is a fixed point of \cref{eq:reducedmatrixform}. \revised{(We will discuss the existence of such fixed points in \cref{sec:E1I1} and \cref{sec:Eclusters}).}.
 The linearization of \cref{eq:reducedmatrixform} about $\xvec^*$ is the matrix
 \begin{equation}\label{eq:DtildeFxstar}
     D\tilde{F}(\xvec^*) = \frac{g}{\sqrt{N}}\tilde{H}(\xvec^*) - I_{n_C+n_I},
@@ -224,7 +252,6 @@ where
 \begin{equation}\label{eq:tildeHxstar}
 \tilde{H}(\xvec^*) := \tilde{H} \text{diag}(\sech^2(g \xvec^* )).
 \end{equation}
-
 The original equation \cref{eqn:sys_Basic} has a corresponding fixed point $\xvec_0^*$, in which each $x_{E_j}^*$ in $\xvec^*$ is repeated $p$ times. The following proposition shows that to analyze the stability of the fixed point $\xvec_0^*$ in the full system \cref{eqn:sys_Basic}, it suffices to determine the eigenvalues of the reduced matrix $\tilde{H}(\xvec^*)$, since the additional eigenvalues of $H(\xvec_0^*)$ are negative, and thus will not affect stability.
 
 \begin{proposition}\label{prop:tidleHeig}
@@ -287,9 +314,9 @@ at which point a Hopf bifurcation occurs, giving rise to a limit cycle (see \cre
 \end{equation}
 where we used $n_E = f N$. We note that since $\omega^*_0(g_H) = \mathcal{O}(\sqrt{N})$, $\omega^*_0(g_H) \rightarrow \infty$ as $N \rightarrow \infty$. 
 
-\subsection{Solutions after symmetric pitchfork bifurcation}\label{sec:symmpitch}
+\subsection{Equivariant Branching Lemma}\label{sec:EBL}
 
-Our main tool for analyzing the solutions to \cref{eqn:sys_Basic} which arise at bifurcation points when symmetries are present is the \emph{Equivariant Branching Lemma} \cite{MR631456,GSS88Vol2,HoyleRebeccaB2006Pf:a}. Before stating this result, we introduce some terminology. Let $\Gamma$ be a finite group acting on $\mathbb{R}^N$; then we say that a mapping $F: \mathbb{R}^N  \rightarrow \mathbb{R}^N$ is \emph{$\Gamma$-equivariant} if $F(\gamma \xvec) = \gamma F(\xvec)$, for all $\xvec \in \mathbb{R}^N$ and $\gamma \in \Gamma$.  A one-parameter family of mappings $F: \mathbb{R}^N \times \mathbb{R}  \rightarrow \mathbb{R}^N$ is \emph{$\Gamma$-equivariant}, if it is $\Gamma$-equivariant for each value of its second argument. We say that $V$, a subspace of $\mathbb{R}^N$, is \emph{$\Gamma$-invariant} if $\gamma \vvec \in V$, for any $\vvec$ and $\gamma \in \Gamma$. We furthermore say that the action of $\Gamma$ on $V$ is \emph{irreducible} if $V$ has no proper invariant subspaces, i.e. the only $\Gamma$-invariant subspaces of $V$ are $\{0\}$ and $V$ itself. 
+Our main tool for analyzing the solutions to \cref{eqn:sys_Basic} which arise at bifurcation points when symmetries are present is the \emph{Equivariant Branching Lemma} \cite{Golubitsky2002,MR631456,GSS88Vol2,HoyleRebeccaB2006Pf:a}. Before stating this result, we introduce some terminology. Let $\Gamma$ be a finite group acting on $\mathbb{R}^N$; then we say that a mapping $F: \mathbb{R}^N  \rightarrow \mathbb{R}^N$ is \emph{$\Gamma$-equivariant} if $F(\gamma \xvec) = \gamma F(\xvec)$, for all $\xvec \in \mathbb{R}^N$ and $\gamma \in \Gamma$.  A one-parameter family of mappings $F: \mathbb{R}^N \times \mathbb{R}  \rightarrow \mathbb{R}^N$ is \emph{$\Gamma$-equivariant}, if it is $\Gamma$-equivariant for each value of its second argument. We say that $V$, a subspace of $\mathbb{R}^N$, is \emph{$\Gamma$-invariant} if $\gamma \vvec \in V$, for any $\vvec$ and $\gamma \in \Gamma$. We furthermore say that the action of $\Gamma$ on $V$ is \emph{irreducible} if $V$ has no proper invariant subspaces, i.e. the only $\Gamma$-invariant subspaces of $V$ are $\{0\}$ and $V$ itself. 
 
 For a group $\Gamma$ and a vector space $V$, we define the \emph{fixed-point subspace} for $\Gamma$, denoted $\rm{Fix} (\Gamma)$, to be all points in $V$ that are unchanged under any of the members of $\Gamma$, i.e. $\rm{Fix} (\Gamma) = \{ \xvec \in V : \gamma \xvec = \xvec, \forall \gamma \in \Gamma \}$. 
 %\Acomment{Note that isotropy subgroup has two meanings: check that I am correct about this} 
@@ -313,30 +340,70 @@ A bifurcation will occur when the Jacobian ceases to be invertible, i.e. when $(
 where $\rm{Fix (\Sigma)}$ is the \emph{fixed-point subspace} of $\Sigma$: that is, $\rm{Fix} (\Sigma) \equiv \{ x \in V \mid \sigma x = x, \;  \forall \sigma \in \Sigma \}$. Then there exists a unique smooth solution branch to $F = 0$ such that the isotropy subgroup of each solution is $\Sigma$.
 \end{theorem}
 
-The reader can readily check that the right-hand side of \cref{eqn:sys_Basic} is $\Gamma$-equivariant, for $\Gamma = S_{n_E} \times S_{n_I}$, where $S_n$ is the group of permutations on $n$ objects. That is, we can permute the labels on the excitatory cells, and/or the labels on the inhibitory cells, without changing the equations.
+\subsection{Solutions after symmetric pitchfork bifurcation}\label{sec:symmpitch}
 
-At $g=g_0$, $n_I -1$ eigenvalues pass through zero: the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only; i.e. 
-\[ V \equiv  \ker(dF)_{\Zerovec,g^{\ast}}  = {\rm span} \, \left\{ \left[  
-\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{E}} \;
-\vvec_{n_{I}} \right] \right\}, \qquad \vvec_{n_{I}} \perp \Onevec_{n_{I}}.
+The reader can readily check that the right-hand side of \cref{eq:reducedmatrixform} is $\Gamma$-equivariant, for $\Gamma = S_1 \times S_{n_I}$. That is, we can permute the labels on inhibitory cells without changing the equations. (The activity of the excitatory cells have been collapsed into a single variable). At $g=g_0$, $n_I-1$ eigenvalues pass through zero: the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only, i.e. 
+\[ V \equiv  \ker(dF)_{\Zerovec,g^*}  = {\rm span} \, \left\{ \left[ 0 \;
+\vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}}.
 \]
-To check that $\Gamma$ acts irreducibly on $V$ it is sufficient to show that the subspace spanned by the \textit{orbit} of a single vector $\vvec$ (defined as the set of all values  $\gamma \vvec$, for $\gamma \in \Gamma$) is full rank; this can be readily confirmed for $\vvec_{n_{I}} = \left[ \begin{array}{ccccc} 1 & -1 & 0 & ... & 0 \end{array} \right]$, for example.   
+To check that $\Gamma$ acts irreducibly on $V$, it is sufficient to show that the subspace spanned by the \textit{orbit} of a single vector $\vvec$ (defined as the set of all values  $\gamma \vvec$, for $\gamma \in \Gamma$) is full rank; this can be readily confirmed for $\vvec_I = \left[ \begin{array}{ccccc} 1 & -1 & 0 & ... & 0 \end{array} \right]$, for example. 
 
-To find the appropriate subgroup of symmetries, we break the inhibitory cells up into precisely two clusters and retain only permutations within each cluster. This describes a subgroup of $\Gamma$, $\Sigma = S_{n_E} \times S_{n_{I_1}} \times S_{n_{I_2}}$, $n_{I_1} + n_{I_2} = n_I$.
-Assuming that (without loss of generality) the $I_1$ neurons have the indices $n_E+1,...,n_E+n_{I_1}$, and so forth, $\Sigma$ has the fixed point subspace 
+\revised{
+To determine what occurs at this pitchfork bifurcation point, we will find subgroups $\Sigma$ of $\Gamma$ which satisfy the hypothesis of the Equivariant Branching Lemma. To do this, 
+we break the inhibitory cells up into precisely two clusters \revised{$I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$}, and retain only permutations within each cluster. For each such decomposition, this describes a subgroup 
+\begin{equation}
+\Sigma_I = S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}
+\end{equation}
+of $\Gamma$.
+}
+Assuming that (without loss of generality) the $I_1$ neurons have the indices $2,...,n_{I_1}+1$, $\Sigma_I$ has the fixed point subspace 
 \begin{eqnarray}
-\rm{Fix}_V(\Sigma) & = & {\rm span} \, \left\{ \left[  
-\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_E} \;
+\rm{Fix}_V(\Sigma_I) & = & {\rm span} \, \left\{ \left[ 0 \;
 \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
 \underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \right\}.
 \end{eqnarray}
-Furthermore $\dim \rm{Fix}_V(\Sigma) = 1$ because it can be described as the span of a single vector. 
+Furthermore $\dim \rm{Fix}_V(\Sigma_I) = 1$, because it can be described as the span of a single vector. 
 
-As a consequence, there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number 
+\revised{
+It follows from the Equivariant Branching Lemma
+}
+that there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for 
+\revised{
+all such subgroups $\Sigma_I$, i.e. for
+}
+every possible division of the inhibitory cells into exactly two clusters of size $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$. We refer to these as $I_1/I_2$ branches.  Each such branch may be characterized by the number 
 \begin{equation}\label{eq:beta}
 \beta = \frac{n_{I_1}}{n_{I_2}},
 \end{equation} 
 which gives the ratio of the cluster sizes. Without loss of generality, we may take $n_{I_1} \geq n_{I_2}$, so that $\beta \geq 1$. The inhibitory cells within each of the two clusters are synchronized. The solution on each $I_1/I_2$ branch is then given as $(x_E, x_{I_1}, x_{I_2})$, where we recall from \cref{sec:simplermodel} that all excitatory cells are synchronized. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $I_1/I_2$ branch for each $\beta$ with solution $(-x_E, -x_{I_1}, -x_{I_2})$. We will ignore this other branch for simplicity, although we note that it is this odd symmetry which permits a pitchfork bifurcation to occur.
+
+\revised{
+We briefly comment on divisions of the inhibitory cells into more than two clusters. As a specific example, suppose the inhibitory cells are divided into three clusters of size $n_{I_1}$, $n_{I_2}$, and $n_{I_3}$, where $n_{I_1} + n_{I_2} + n_{I_3} = n_I$. This decomposition describes a subgroup $\Sigma_3 = S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$. The fixed point subspace of $\Sigma_3$ is given by 
+% \begin{align*}
+% \rm{Fix}_V(\Sigma_I) &= {\rm span} \, \left\{ \left[ 0 \;
+% \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+% \underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \;
+% \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_3}}\right] \right. \\
+% &\qquad\qquad\qquad\left. 
+% \left[ 0 \;
+% \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+% \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_2}} \;
+% \underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_3}} & \cdots & -\frac{n_{I_1}}{n_{I_3}} \end{matrix}}_{n_{I_3}} \right] \right\}
+% \end{align*}
+\begin{align*}
+% &\rm{Fix}_V(\Sigma_I) = \\ 
+&{\rm span} \, \left\{ \left[ 0 \;
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \;
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_3}}\right],
+\left[ 0 \;
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_2}} \;
+\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_3}} & \cdots & -\frac{n_{I_1}}{n_{I_3}} \end{matrix}}_{n_{I_3}} \right] \right\},
+\end{align*}
+which has dimension 2. Since $\dim \rm{Fix}_V(\Sigma_3) > 1$, the Equivariant Branching Lemma does not guarantee the existence of a branch of fixed points with symmetry. The same is true if the inhibitory cells are divided into $m > 1$ clusters, in which case the fixed point space of the the corresponding symmetry group will have dimension $m$.
+It is important to note, however, that the Equivariant Branching Lemma does not preclude the existence of such fixed points (see \cite[Section 4]{Barreiro2017}). Numerical experiments, however, suggest that all fixed points which are not on the primary $I_1/I_2$ branches are unstable (see \cref{sec:otherbranches}).
+}
 
 \subsection{Solutions along \texorpdfstring{$I_1/I_2$}{I1/I2} branches}\label{sec:solI1I2}
 
@@ -352,7 +419,11 @@ First, we derive leading order expressions for the equilibria along the $I_1/I_2
  \begin{bmatrix} \tanh(g x_E) \\\tanh ( g x_{I_1} ) \\\tanh(g x_{I_2})\end{bmatrix},
  \end{aligned}
 \end{equation}
-where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:reducedsystemI1I2}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. We note that any solution $(x_E, x_{I_1}, x_{I_2})$ to \cref{eq:reducedsystemI1I2} is bounded for all $g$, since the matrix in \cref{eq:reducedsystemI1I2} is constant, and $|\tanh y| \leq 1$ for all $y$. 
+where $x_E$ is the activity of the synchronized excitatory cells, $x_{I_1}$ and $x_{I_2}$ are the activities of the two synchronized inhibitory clusters, and we used $n_E = \alpha n_I$. 
+\revised{
+The system \cref{eq:reducedsystemI1I2} is the restriction of \cref{eq:reducedmatrixform} to the fixed point subspace corresponding to the subgroup $S_1 \oplus \, S_{n_{I_1}} \oplus \, S_{n_{I_2}}$ of $\Gamma$.
+}
+For any solution $(x_E, x_{I_1}, x_{I_2})^T$ to \cref{eq:reducedsystemI1I2}, $\xvec = (x_E, x_{I_1}, \dots, x_{I_1}, x_{I_2}, \dots, x_{I_2})^T$ is an equilibrium solution to \cref{eq:reducedsystem}, where $x_{I_1}$ and $x_{I_2}$ are repeated $n_{I_1}$ and $n_{I_2}$ times, respectively. We note that any solution $(x_E, x_{I_1}, x_{I_2})$ to \cref{eq:reducedsystemI1I2} is bounded for all $g$, since the matrix in \cref{eq:reducedsystemI1I2} is constant, and $|\tanh y| \leq 1$ for all $y$. 
 
 The simplest case occurs when $n_I$ is even and $\beta = 1$, in which case $n_{I_1}=n_{I_2}$. On this branch, $x_E = 0$, and $x_{I_2} = -x_{I_1}$, i.e. there are two equally sized inhibitory populations with equal and opposite activities, and there is no excitatory cell activity. Beginning with the single remaining equation for $x_{I_1}$, and utilizing the Taylor expansion for the $\tanh$ function, we show (see detailed calculations in \cref{app:I1I2sol}) that the nonzero solution for $x_I$ is given, to leading order, by
 \begin{align}\label{eq:xIapprox}
@@ -475,8 +546,23 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
     \caption{Locations of important bifurcations as a function of $N$. Left: Log-log plot of the absolute error of  \cref{eq:ghopfformula} vs $N$ for $\beta = 1$, 3, and 4. The slope of each line is approximately -1.5, validating the error term $\mathcal{O}\left( N^{-3/2} \right)$. Right: location of the symmetric pitchfork bifurcation $g_0$ (dashed line), Hopf bifurcation at the origin $g_H$ (dash-dotted line), and Hopf bifurcations on $I_1/I_2$ branches \cref{eq:ghopfformula} for select $\beta$ (solid lines, arranged from bottom to top in order of increasing $\beta$) as a function of $N$. Other parameters are: $\alpha = 4$, $\mu_{EE}= 0.7$. }
     \label{fig:Hopfplots}
 \end{figure}
-
 % At the Hopf bifurcation, the imaginary part of eigenvalue scales as $\sqrt{N}$, which is the frequency of oscillation of the limit cycle.
+
+\subsection{Other branches of equilibria}\label{sec:otherbranches}
+
+\revised{
+The equilibria on the $I_1/I_2$ branches, whose existence is guaranteed by the Equivariant Bifurcation Theorem and which were characterized in \cref{sec:solI1I2}, are not the only branches of equilibria. As one example, take the $\beta=1$ branch for $N=20$ (see top panel of \cref{fig:noclusterBD1}). As $g$ is increased past the Hopf bifurcation, the complex pair of eigenvalues $\lambda_0 \pm i \omega_0$ collides on the positive real axis and becomes a real pair of eigenvalues $\{ \lambda_0^L, \lambda_0^R \}$, with $\lambda_0^L < \lambda_0^R$. As $g$ is further increased, $\lambda_0^L$ moves to the left, and $\lambda_0^R$ moves to the right. When $\lambda_0^L$ passes through the origin (from right to left), a symmetry-breaking bifurcation occurs (left branch point in \cref{fig:noclusterbeta1branches}). On the secondary branch, which we will call the asymmetric 2-2 branch, $x_E \neq 0$, and the pair $x_{I_1}$ and $x_{I_2}$ no longer have equal and opposite activities. As $g$ increases along this secondary branch, there is another bifurcation (right branch point in \cref{fig:noclusterbeta1branches}), which produces a branch of equilibria in which the inhibitory cells are clustered in a 2-2-1 pattern. As $N$ is increased, more complicated secondary branching patters occur, and it is unlikely that these can be systematically located and classified. That being said, numerical experiments performed on networks of varying $N$ strongly suggest that none of these secondary branches contain stable fixed points. Specifically, the only stable fixed points which have been found by numerical spectral computation on the primary $I_1/I_2$ branches; all other branches consist entirely of unstable equilibria. In addition, all numerical timestepping experiments starting from random initial conditions have converged to either fixed points on the primary $I_1/I_2$ branches or to periodic orbits (see \cref{sec:periodic} below).
+}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7.8cm]{N20beta1branchesE.eps} &
+    \includegraphics[width=7.8cm]{N20beta1branchesI.eps}
+    \end{tabular}
+    \caption{Further branches of equilibria from $I_1/I_2$ branch with $\beta=1$ for $N=20$, showing excitatory cell (left) and inhibitory cell (right) activity. Line format indicates stable (solid) vs. unstable (dashed or dotted) fixed points. Branch points are indicated with a filled circle. Hopf bifurcations are indicated with filled squares. Other parameters are $\alpha = 4$, $\mu_{EE} = 0.7$.}
+    \label{fig:noclusterbeta1branches}
+\end{figure}
 
 \subsection{Periodic solutions}\label{sec:periodic}
 
@@ -549,11 +635,9 @@ The remaining possibility is that $x_E \rightarrow \hat{x}_E \neq 0$. In \cref{a
 
 \section{Excitatory clusters, weight parameters balanced}\label{sec:Eclusters}
 
-We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. We will take $p > 1$ to ensure that each excitatory cluster contains more than one cell, and we will also assume $n_C \geq \alpha$ (e.g. $n_C \geq 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $n_C$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. The matrix \revised{$\tilde{H}$}, which is given by \cref{eq:tildeH}, is associated with the symmetry group
+We now allow the excitatory cells to be grouped into $n_C$ clusters of size $p$, where $p = \lfloor N f/n_C \rfloor$. We will take $p > 1$ to ensure that each excitatory cluster contains more than one cell, and we will also assume $n_C \geq \alpha$ (e.g. $n_C \geq 4$ for the standard value of $\alpha = 4$). Since we are interested in the behavior of the system for large $N$ and for a large number of clusters (e.g. $n_C$ scales with $\sqrt{N}$), this is not a significant restriction. Cells will be connected within, but not between, clusters. 
 \revised{
-\begin{align*}
-\Gamma &= S_{n_C} \oplus \, S_{n_I}.
-\end{align*}
+The right-hand side of \cref{eq:reducedmatrixform} is $\Gamma$-equivariant for $\Gamma = S_{n_C} \oplus \, S_{n_I}$, where $n_C > 1$. That is, we can permute the labels of the excitatory clusters and the labels of the inhibitory cells without changing the equation.
 }
 As in the previous section, we choose the weights so that the network is balanced. 
 \begin{align*}
@@ -577,17 +661,53 @@ As in the previous section, we will determine the bifurcations which occur as $g
 
 \subsection{Bifurcations of the origin}\label{sec:Eclusterbiforigin}
 
-As the bifurcation parameter $g$ increases from 0, the set of eigenvalues $\lambda_C^*(g)$ of $DF(0)$ corresponding to $\lambda_C$ cross the imaginary axis first at 
+\revised{
+As the bifurcation parameter $g$ increases from 0, the first bifurcation occurs when 
+the set of $n_C - 1$ eigenvalues $\lambda_C^*(g)$ of $DF(0)$ corresponding to $\lambda_C$ crosses the imaginary axis at
 \begin{equation}
     g = g_C := \frac{\sqrt{N}}{(p-1) n_C \mu}.
 \end{equation}
-When this occurs, the origin loses stability in a symmetric pitchfork bifurcation, similar to what occurs with the inhibitory cells in the previous section. As $g$ is further increased, the eigenvalue $\lambda_I^*(g)$ crosses the imaginary axis at $g = g_0$, where $g_0$ is defined by \cref{eq:pitchlocation}. Another symmetric pitchfork bifurcation occurs at this point, this time involving the inhibitory cells. An important distinction from the previous section is that there will be no Hopf bifurcation at the origin, since the complex conjugate pair of eigenvalues cannot cross the imaginary axis.
-
-As in the previous section, it follows from Equivariant Bifurcation Theorem that there is a branch of solutions emerging at the bifurcation point $g = g_C$ for any possible division of excitatory clusters into exactly two groups of clusters. All cells are synchronized within each excitatory cluster. Each such branch may be characterized by the number 
+The corresponding eigenspace is the set of all zero-sum vectors with support in the excitatory clusters only, i.e. 
+\[ 
+V \equiv \ker(dF)_{\Zerovec,g_C} = {\rm span} \, \left\{ \left[ 
+\vvec_C \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_I} \right] \right\}, \qquad \vvec_C \perp \Onevec_{n_{C}}.
+\]
+We can check that $\Gamma$ acts irreducibly on $V$, similarly to \cref{sec:symmpitch}. We then find subgroups $\Sigma$ of $\Gamma$ which satisfy the hypothesis of the Equivariant Branching Lemma by breaking the excitatory clusters up into two clusters $C_1$ and $C_2$ of sizes $n_{C_1}$ and $n_{C_2}$, where $n_{C_1} + n_{C_2} = n_C$. For each such decomposition, this describes a subgroup 
+\begin{equation}
+\Sigma_C = S_{n_{C_1}} \times S_{n_{C_2}} \times S_{n_I}
+\end{equation}
+of $\Gamma$. The subgroup $\Sigma_C$ has the fixed point subspace 
+\begin{eqnarray}
+\rm{Fix}_V(\Sigma_C) & = & {\rm span} \, \left\{ \left[
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{C_1}} \;
+\underbrace{\begin{matrix}-\frac{n_{C_1}}{n_{C_2}} & \cdots & -\frac{n_{C_1}}{n_{C_2}} \end{matrix}}_{n_{C_2}}  \;
+\underbrace{\begin{matrix}0 & \cdots & 0 \end{matrix}}_{n_I} 
+ \right] \right\},
+\end{eqnarray}
+which has dimension 1.
+It follows from the Equivariant Branching Lemma that there is a branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_C$ for 
+all such subgroups $\Sigma_C$, i.e. for every possible division of the excitatory clusters into exactly two groups of size $n_{C_1}$ and $n_{C_2}$. All cells are synchronized within each excitatory cluster. Each such branch may be characterized by the number 
 \begin{equation}\label{eq:betac}
 \beta_C = \frac{n_{C_1}}{n_{C_2}},
 \end{equation}
-which gives the ratio of the sizes of the two groups of excitatory clusters. Without loss of generality, we may take $n_{C_1} \geq n_{C_2}$, so that $\beta_C \geq 1$. At the start of each $C_1/C_2$ branch, the inhibitory cells are synchronized. This is the case since, near $g = g_C$, no other eigenvalues have crossed through the origin, thus no bifurcations involving the inhibitory cells have occurred. The solution on each $C_1/C_2$ branch is then given as $(x_{E_1}, x_{E_2}, x_{I})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $C_1/C_2$ branch for each $\beta_C$ with solution $(-x_{E_1}, -x_{E_2}, -x_{I})$, which we will ignore for simplicity.
+which gives the ratio of the sizes of the two groups of excitatory clusters. Without loss of generality, we may take $n_{C_1} \geq n_{C_2}$, so that $\beta_C \geq 1$. At the start of each $C_1/C_2$ branch, the inhibitory cells are synchronized. This is the case since, near $g = g_C$, no other eigenvalues have crossed through the origin, thus no bifurcations involving the inhibitory cells have occurred. The solution on each $C_1/C_2$ branch is then given as $(x_{E_1}, x_{E_2}, x_{I})$. Due to the odd symmetry of \cref{eqn:sys_Basic}, there is a corresponding $C_1/C_2$ branch for each $\beta_C$ with solution $(-x_{E_1}, -x_{E_2}, -x_{I})$, which we will ignore for simplicity. As discussed in \cref{sec:symmpitch}, a division of the excitatory clusters into more than two groups will lead to a fixed point subspace of dimension 2 or greater, thus a branch with this symmetry is not guaranteed to exist by the Equivariant Branching Lemma. Such branches may, in fact, occur, but, as with the unclustered case, numerical evidence strongly suggests that all are unstable.
+}
+
+As $g$ is further increased, the eigenvalue $\lambda_I^*(g)$ with multiplicity $n_I-1$ crosses the imaginary axis at $g = g_0$, where $g_0$ is defined by \cref{eq:pitchlocation}. 
+\revised{Another symmetric pitchfork bifurcation occurs at this point, this time involving the inhibitory cells. This is almost identical to what occurs in the unclustered case (\cref{sec:symmpitch}). Briefly, the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only, i.e. 
+\[ 
+V \equiv \ker(dF)_{\Zerovec,g^*} = {\rm span} \, \left\{ \left[ 
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_C} \; \vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}}.
+\]
+We then break the inhibitory cells up into two groups $I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$, which describes a subgroup $\Sigma_I = S_{n_C} \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$. The fixed point subspace of $\Sigma_I$ is then given by
+\begin{eqnarray}
+\rm{Fix}_V(\Sigma_I) & = & {\rm span} \, \left\{ \left[ \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_C} \;
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \right\},
+\end{eqnarray}
+which has dimension 1. As in \cref{eq:pitchlocation}, it follows from Equivariant Bifurcation Lemma that there is an $I_1/I_2$ branch of equilibria emerging at the symmetric pitchfork bifurcation point $g=g_0$ for every possible division of the inhibitory cells into exactly two groups of size $n_{I_1}$ and $n_{I_2}$.
+}
+An important distinction from the previous section is that there will be no Hopf bifurcation of the origin, since the complex conjugate pair of eigenvalues cannot cross the imaginary axis.
 
 \subsection{Solutions on \texorpdfstring{$C_1/C_2$}{C1/C2} branch}
 
@@ -611,6 +731,9 @@ for $g$ close to $g_C$. For $\beta_C > 1$, we find the solution along each $C_1/
  \end{aligned}
  \end{equation}
  where we used $\alpha n_I = n_E = p n_C$. The variables $x_{E_1}$ and $x_{E_2}$ are the activities of the two groups of excitatory clusters, and $x_I$ is the activity of the inhibitory cells, which are synchronized since $g$ is close to $g_C$. 
+\revised{
+The system \cref{eq:cluster3system} is the restriction of \cref{eq:reducedmatrixform} to the fixed point subspace corresponding to the subgroup $S_{n_{C_1}} \oplus \, S_{n_{C_2}} \oplus \, S_{n_I}$ of $\Gamma$.
+}
 %  As $N \rightarrow \infty$, numerical continuation with AUTO suggests that \cref{eq:cluster3system} has a solution of the form
 % \begin{equation}\label{eq:XE1E2asymp}
 %     x_{E_2} = -\beta_C x_{E_1} + \mathcal{O}\left( \frac{1}{N^2} \right), \quad 
@@ -690,11 +813,15 @@ We note that the eigenvalues $\lambda_{C_1}$ and $\lambda_{C_2}$ split off from 
 
 The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\xvec)$. Following the same procedure as in \cref{sec:I1I2stability} (see \cref{app:C1C2stability} for details), we find that, since we are taking $n_C \geq \alpha$, the eigenvalues of $J_3(\xvec)$ all have negative real part for $g$ close to $g_C$. Thus the $C_1/C_2$ branches are initially stable for $1 \leq \beta_C \leq 2$ (see the top panel of \cref{fig:clusterBD1} as well as \cref{fig:clusterBD2}).
 
-As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ crosses the origin (see bifurcation diagram in \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). The behavior at this symmetric pitchfork bifurcation is much the same as in \cref{sec:E1I1}: there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
+As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ \revised{with multiplicity $n_I-1$} crosses through the origin (see bifurcation diagram in \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
+\revised{
+The behavior at this bifurcation is exactly the same as in the second symmetric pitchfork bifurcation at the origin, since the symmetry group and fixed point subspace are identical to that case (see \cref{sec:E1I1}). It follows from the Equivariant Bifurcation Theorem that, on every $C_1/C_2$ branch, there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. 
+}
+We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
 \begin{equation}\label{eq:gpitchinhbeta1}
 g_I = \frac{\sqrt{N}}{\alpha \mu}.
 \end{equation}
-For $\beta_C > 1$, this bifurcation takes place at $g$ much greater than $g_C$, thus the approximation \cref{eq:XE1} no longer holds. To locate these bifurcations, we will examine the behavior of the system as $g$ becomes large. We note here that evidence from numerical parameter continuation suggests that there are no Hopf bifurcations along the $C_1/C_2$ branches; furthermore, numerical timestepping experiments suggest that there are no stable periodic orbits for any value of $g$.
+For $\beta_C > 1$, this bifurcation takes place at $g$ much greater than $g_C$, thus the approximation \cref{eq:XE1} no longer holds. To locate these bifurcations, we will examine the behavior of the system as $g$ becomes large. We note here that evidence from numerical parameter continuation suggests that there are no Hopf bifurcations along the $C_1/C_2$ branches; furthermore, numerical timestepping experiments suggest that there are no stable periodic orbits for any value of $g$. \revised{In addition, numerical experiments strongly suggest that there are no stable equilibria on any other secondary branches}.
 
 \subsection{\texorpdfstring{$C_1/C_2$}{C1/C2} branches for large \texorpdfstring{$g$}{g}} 
 
@@ -789,7 +916,7 @@ n_{I_1} - \frac{1}{2} < n_{C_1} < n_{I_1} + \frac{1}{2}.
 \]
 Since $n_{C_1}$ must be an integer, $n_{C_1} = n_{I_1}$, which implies $\beta_C = \beta$.
 
-The fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian $DF(\xvec^*)$ approaches $-I$, which has a single eigenvalue of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the bottom panel of \cref{fig:clusterBD1}, and the solutions corresponding to the bottom row are shown in the bottom panel of \cref{fig:clusterBD2}; we can see from the figures that the corresponding fixed points are all stable for sufficiently large $g$.
+The fixed point $\xvec^*$ corresponding to each of these $(\beta, \beta_C)$ is eventually stable for sufficiently large $g$, since as $g\rightarrow \infty$, $H(\xvec^*)$ approaches the $\Zerovec$ matrix, thus the Jacobian $DF(\xvec^*)$ approaches $-I$, which has a single eigenvalue of $-1$ with multiplicity $N$. The solutions corresponding to the top row of \cref{table:validbeta} are shown in the bottom panel of \cref{fig:clusterBD1}, and the solutions corresponding to the bottom row are shown in the bottom panel of \cref{fig:clusterBD2}; we can see from the figures that the corresponding fixed points are all stable for sufficiently large $g$. \revised{Numerical experiments strongly suggest that there are no stable equilibria for large $g$ other than these}.
 
 \begin{table}
 \centering
