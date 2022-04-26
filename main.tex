@@ -73,7 +73,8 @@
 
 \graphicspath{ {images/} }
 
-\newcommand{\revised}[1]{ \textcolor{red}{#1} }
+% \newcommand{\revised}[1]{ \textcolor{red}{#1} }
+\newcommand{\revised}[1]{ \textbf{#1} }
 
 \newtheorem{thm}{Theorem}
 
@@ -613,7 +614,7 @@ V \equiv  \ker(dF)_{\Zerovec,g_H}  = {\rm span} \,
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_2}}\right]
  \right\},
 \]
-for some constants $a_1$ and $a_2$, which is fixed by the subgroup $\Sigma S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$ (see \cite[Section 3.3]{Barreiro2017}). Since $\dim \rm{Fix}_V(\Sigma) = \dim V = 2$, it follows from the Equivariant Hopf theorem \cite[Theorem 4.1]{GSS88Vol2} that there is a branch of small-amplitude, periodic solutions emanating from this Hopf bifurcation point for which the isotropy subgroup is $\Sigma$, i.e. the inhibitory cells are split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$. This is the exact same symmetry as the $I_1/I_2$ branch from which these limit cycles bifurcate. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. Results from numerical parameter continuation (\cref{fig:periodvsg} and \cref{fig:periodvsg50}) indicate that this Hopf bifurcation is supercritical, and the limit cycles exist for $g > g_H(\beta)$. 
+for some constants $a_1$ and $a_2$, which is fixed by the subgroup $\Sigma = S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$ (see \cite[Section 3.3]{Barreiro2017}). Since $\dim \rm{Fix}_V(\Sigma) = \dim V = 2$, it follows from the Equivariant Hopf theorem \cite[Theorem 4.1]{GSS88Vol2} that there is a branch of small-amplitude, periodic solutions emanating from this Hopf bifurcation point for which the isotropy subgroup is $\Sigma$, i.e. the inhibitory cells are split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$. This is the exact same symmetry as the $I_1/I_2$ branch from which these limit cycles bifurcate. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. Results from numerical parameter continuation (\cref{fig:periodvsg} and \cref{fig:periodvsg50}) indicate that this Hopf bifurcation is supercritical, and the limit cycles exist for $g > g_H(\beta)$. 
 }
 
 A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet (see dark band in bottom panel of \cref{fig:periodvsg}). For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO, and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$ passes through 1. As $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
