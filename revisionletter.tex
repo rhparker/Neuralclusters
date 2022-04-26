@@ -32,6 +32,7 @@ Given the improvements made in accordance with the requests of the referees, we 
 Reviewer 1: 
 \begin{enumerate}
 \item \emph{My central point of confusion is this: The authors claim that as a consequence of the Equivariant Branching Lemma, there are solution branches where (for example) the inhibitory cells split into two groups, synchronized within each. Focusing on the first model (no excitatory clusters): what about branches where the inhibitory cells split into three or more groups? Aren't the corresponding within-group permutations also subgroups of $\Gamma$ with fixed point subspaces of dimension 1? I can't find any discussion of this point in the paper. Either I'm missing something (very possible!) or there are also many more solution branches than those characterized here. If that is the case, it would seem at face value to be a major obstacle to the interpretability of these results: why should the bifurcations corresponding to two cell-groups explain the networks' behavior, without considering those other branches? If those other solutions branches do in principle exist, do they appear in the authors' simulations? If not, can the authors provide some explanation? If these other solution branches do not exist as a consequence of the Equivariant Branching Lemma, I think that should be explained in the paper.}
+Branches where the inhibitory cells are split into more than 2 groups would correspond to an isotropy subgroup with fixed point subspace of dimension greater than 1, therefore the EBL does not guarantee the existence of these branches. It does not, however, preclude their existence. We have indeed found fixed point branches with such groupings, which in general result from secondary bifurcations on the $I_1/I_2$ branches (see the added section 4.6 and corresponding figure 4.5). Numerical evidence suggests that none of these other branches are stable, which is discussed in section 4.6.
 
 \vspace{4mm}
 
@@ -74,11 +75,11 @@ The existence of fixed points of equations (3.3) is discussed in Section 4 and S
 This is now written as $\textrm{Fix}_V(\Sigma)$, and that sentence has been removed.
 \vspace{4mm} 
 
-\item \emph{Equations (4.6) are restriction of equations (2.1) to a fixed-point subspace. In my opinion that should be written clearly.}  This is now clearly indicated for the restrictions in sections 4.4, 5.2, and 5.5.
+\item \emph{Equations (4.6) are restriction of equations (2.1) to a fixed-point subspace. In my opinion that should be written clearly.} This is now clearly indicated for the restrictions in sections 4.4, 5.2, and 5.5.
 \vspace{4mm} 
 
 \item \emph{
-Beginning of page 12: "... the associated periodic orbit has the same symmetry as that branch..." Why the authors can infer that from equations (4.6)? }
+Beginning of page 12: "... the associated periodic orbit has the same symmetry as that branch..." Why the authors can infer that from equations (4.6)?} This is now explained in Section 4.7, where we relate the Hopf bifurcations to the appropriate subgroups of $\Gamma$.
 \vspace{4mm} 
 
 \item \emph{In Section 5, the excitatory cells are divided into clusters of equal size. For simplification matters? Does that have interest in terms of neuronal applications? } In Section 2, we comment that we only consider the case where the excitatory clusters are the same size, both simplicity and because this restriction introduces additional symmetries into the model, which are exploited in Section 5. We mention unequal cluster sizes as an avenue for future exploration in the concluding section.

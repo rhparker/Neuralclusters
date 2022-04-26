@@ -337,11 +337,11 @@ A bifurcation will occur when the Jacobian ceases to be invertible, i.e. when $(
 
 %What complicates this situation for $\Gamma$-equivariant mappings --- i.e. $F(\xvec,g)$ is $\Gamma$-equivariant for any value of the parameter $g$ --- is that because of symmetries, \textit{multiple} eigenvalues will go through zero at once; however, the structural changes that occur are qualitatively the same as those that occur in a non-symmetric system, with a single zero eigenvalue. What changes is that we now have \textit{multiple} such solution branches, each corresponding to a subgroup of the original symmetries.  The following Lemma formalizes this fact:\\
 
-\begin{theorem}[Equivariant Branching Lemma: paraphrased from \cite{GSS88Vol2}, pg. 82, see also pg. 67-69] Let $F: \mathbb{R}^N \times \mathbb{R} \rightarrow \mathbb{R}^N$ be a one-parameter family of $\Gamma$-equivariant mappings with $F(\xvec_0, g_0) = \Zerovec$. Suppose that $(\xvec_0, g_0)$ is a bifurcation point and that, defining $V = \ker(dF)_{\xvec_0, g_0}$, $\Gamma$ acts absolutely irreducibly on $V$. Let $\Sigma$ be an isotropy subgroup of $\Gamma$ satisfying 
+\begin{theorem}[Equivariant Branching Lemma: paraphrased from \cite{GSS88Vol2}, Theorem 3.3 on p. 82, see also pp. 67-69] Let $F: \mathbb{R}^N \times \mathbb{R} \rightarrow \mathbb{R}^N$ be a one-parameter family of $\Gamma$-equivariant mappings with $F(\xvec_0, g_0) = \Zerovec$. Suppose that $(\xvec_0, g_0)$ is a bifurcation point and that, defining $V = \ker(dF)_{\xvec_0, g_0}$, $\Gamma$ acts absolutely irreducibly on $V$. Let $\Sigma$ be an isotropy subgroup of $\Gamma$ satisfying 
 \begin{eqnarray}
 \rm{dim}\; \rm{Fix}_V(\Sigma) = 1,
 \end{eqnarray}
-where $\rm{Fix_V(\Sigma)}$ is the \emph{fixed-point subspace} of $\Sigma$: that is, $\rm{Fix} (\Sigma) \equiv \{ x \in V \mid \sigma x = x, \;  \forall \sigma \in \Sigma \}$. Then there exists a unique smooth solution branch to $F = 0$ such that the isotropy subgroup of each solution is $\Sigma$.
+where $\rm{Fix_V(\Sigma)}$ is the \emph{fixed-point subspace} of $\Sigma$ with respect to $V$: that is, $\rm{Fix}_V(\Sigma) \equiv \{ x \in V \mid \sigma x = x \textrm{ for all }\sigma \in \Sigma \}$. Then there exists a unique smooth solution branch to $F = 0$ such that the isotropy subgroup of each solution is $\Sigma$.
 \end{theorem}
 
 \subsection{Solutions after symmetric pitchfork bifurcation}\label{sec:symmpitch}
@@ -354,7 +354,7 @@ To check that $\Gamma$ acts irreducibly on $V$, it is sufficient to show that th
 
 \revised{
 To determine what occurs at this pitchfork bifurcation point, we will find subgroups $\Sigma$ of $\Gamma$ which satisfy the hypothesis of the Equivariant Branching Lemma. To do this, 
-we break the inhibitory cells up into precisely two clusters \revised{$I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$}, and retain only permutations within each cluster. For each such decomposition, this describes a subgroup 
+we break the inhibitory cells up into precisely two clusters $I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$, and retain only permutations within each cluster. For each such decomposition, this describes a subgroup 
 \begin{equation}
 \Sigma_I = S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}
 \end{equation}
@@ -569,7 +569,18 @@ The equilibria on the $I_1/I_2$ branches, whose existence is guaranteed by the E
 \subsection{Periodic solutions}\label{sec:periodic}
 
 Limit cycles arise as the bifurcation parameter $g$ passes through each Hopf bifurcation point. First, we discuss the limit cycle which bifurcates from the origin at $g = g_H$. 
-Numerical computation with AUTO \cite{AUTO} suggests that this limit cycle exists for all $g > g_H$, and that all excitatory cells are synchronized and all inhibitory cells are synchronized within this limit cycle. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
+\revised{
+At $g = g_H$, the complex pair of eigenvalues corresponding to $\lambda_0 \pm i \omega_0$ crosses the imaginary axis. The corresponding two-dimensional eigenspace is given by
+\[ 
+V \equiv  \ker(dF)_{\Zerovec,g_H}  = {\rm span} \, 
+\left\{ \left[ 1 \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_I} \right],
+\left[ 0 \; \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_I} \right]
+ \right\},
+\]
+which is fixed by $\Gamma = S_1 \times S_{n_I}$ itself. Since $\dim \rm{Fix}_V(\Gamma) = \dim V = 2$, it follows from the Equivariant Hopf theorem \cite[Theorem 4.1]{GSS88Vol2} that there is a branch of small-amplitude, periodic solutions emanating from this Hopf bifurcation point for which the isotropy subgroup is $\Gamma$, i.e. the inhibitory neurons are all synchronized (see also \cite[Section 3.2]{Barreiro2017}). We recall that the excitatory neurons are always synchronized in the reduced model \cref{eq:reducedmatrixform} with $n_C = 1$.
+}
+
+Numerical computation with AUTO \cite{AUTO} validates this result, and shows that this limit cycle exists for all $g > g_H$, suggesting that the Hopf bifurcation is supercritical. Within this limit cycle, all inhibitory cells are synchronized. Since $n_{I_1} = n_I$ and $n_{I_2} = 0$, we will call this the $\beta=\infty$ limit cycle. The $\beta = \infty$ limit cycle is a periodic solution to the two-dimensional system
 \begin{equation}\label{eq:2dimsystem}
 \begin{aligned}
 \dot{x_1} &= f_1(x_1, x_2) := -x_1 + \frac{\mu_{EE}}{\sqrt{N}}\left((n_E - 1) \tanh(g x_1) - \alpha n_I \tanh(g x_2) \right) \\
@@ -586,13 +597,26 @@ where $x_1$ represents the synchronized excitatory cell activity and $x_2$ repre
     \label{fig:limitcycleorigin}
 \end{figure}
 
-In the following proposition, we prove that the $\beta=\infty$ limit cycle exists for $g > g_H$. The proof uses the Poincar\'e-Bendixson theorem, and is deferred to \cref{sec:limitcycleproof}. We note that the proposition does not address stability of the limit cycle.
+In the following proposition, we prove that the $\beta=\infty$ limit cycle exists for $g > g_H$, which also proves that the Hopf bifurcation is supercritical. The proof uses the Poincar\'e-Bendixson theorem, and is deferred to \cref{sec:limitcycleproof}. We note that the proposition does not address stability of the limit cycle.
 
 \begin{proposition}\label{prop:limitcycle}
 For $g > g_H$, the system \cref{eqn:sys_Basic} has a limit cycle in which all excitatory cells are synchronized, and inhibitory cells are synchronized.
 \end{proposition}
 
-In addition to the $\beta = \infty$ limit cycle, periodic orbits arise at the Hopf bifurcations on each $I_1/I_2$ branch as $g$ increases through the bifurcation point. For a given $I_1/I_2$ branch, the associated periodic orbit has the same symmetry as that branch, i.e. all excitatory cells are synchronized, and the inhibitory cells are divided into two clusters of size $n_{I_1}$ and $n_{I_2}$. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet (see dark band in bottom panel of \cref{fig:periodvsg}). For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO, and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$ passes through 1. As $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
+\revised{
+In addition to the $\beta = \infty$ limit cycle, periodic orbits arise on each $I_1/I_2$ branch as $g$ increases through the Hopf bifurcation point $g_H(\beta)$, which is given by \cref{eq:ghopfformula}. One again, a complex pair of eigenvalues crosses the imaginary axis, and the corresponding two-dimensional eigenspace is given by
+\[ 
+V \equiv  \ker(dF)_{\Zerovec,g_H}  = {\rm span} \, 
+\left\{ \left[ a_1 \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_1}} \,
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_2}} \right],
+\left[ a_2 \; \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \,
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{I_2}}\right]
+ \right\},
+\]
+for some constants $a_1$ and $a_2$, which is fixed by the subgroup $\Sigma S_1 \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$ (see \cite[Section 3.3]{Barreiro2017}). Since $\dim \rm{Fix}_V(\Sigma) = \dim V = 2$, it follows from the Equivariant Hopf theorem \cite[Theorem 4.1]{GSS88Vol2} that there is a branch of small-amplitude, periodic solutions emanating from this Hopf bifurcation point for which the isotropy subgroup is $\Sigma$, i.e. the inhibitory cells are split into two clusters of sizes $n_{I_1}$ and $n_{I_2}$. This is the exact same symmetry as the $I_1/I_2$ branch from which these limit cycles bifurcate. For that reason, we can classify these periodic orbits in terms of the ratio $\beta = n_{I_1}/n_{I_2}$. Results from numerical parameter continuation (\cref{fig:periodvsg} and \cref{fig:periodvsg50}) indicate that this Hopf bifurcation is supercritical, and the limit cycles exist for $g > g_H(\beta)$. 
+}
+
+A plot of the period of these limit cycles with increasing $g$ is shown in \cref{fig:periodvsg} for $N=20$ (see also \cite[Fig. 2]{Barreiro2017}) and \cref{fig:periodvsg50} for $N=50$. There is a critical value $g = g^*$ where all of the limit cycle branches meet (see dark band in bottom panel of \cref{fig:periodvsg}). For $g > g^*$, the only remaining limit cycle is the $\beta = \infty$ limit cycle, which has become stable. The point $g = g^*$ is a symmetric pitchfork bifurcation of limit cycles, which we can see by examining the Floquet multipliers of the linearization about the $\beta = \infty$ limit cycle branch (see right panel of \cref{fig:periodvsg}). These Floquet multipliers are computed using AUTO, and are all real. In addition to a single Floquet multiplier at 1 which is always present, there is a Floquet multiplier $\rho_E$ with multiplicity $n_E - 1$, a Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$, and Floquet multiplier $\rho_1$ with multiplicity 1. At $g = g^*$, the Floquet multiplier $\rho_I$ with multiplicity $n_I - 1$ passes through 1. As $g$ decreases though $g^*$, the $\beta = \infty$ limit cycle loses stability and gives rise to limit cycles with symmetry corresponding to each $I_1/I_2$ branch. This is analogous to the pitchfork bifurcation of the fixed point $\xvec = 0$ at $g = g_0$, which loses stability when the eigenvalue $\lambda_I$ with multiplicity $n_I - 1$ passes through the origin.
 
 \begin{figure}
     \centering
