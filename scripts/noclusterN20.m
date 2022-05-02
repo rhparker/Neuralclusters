@@ -137,8 +137,8 @@ set(groot,'defaultLegendInterpreter','latex');
 
 hold on;
 plot(g00(1:1586),x0E(1:1586),'-', 'LineWidth', lw, 'Color', c1 );
-plot(g1,x1E,'--','LineWidth',lw, 'Color', c2 );
-plot(g3,x3E,'--','LineWidth',lw, 'Color', c3 );
+plot(g1(1:10:end),x1E(1:10:end),'--','LineWidth',lw, 'Color', c2 );
+plot(g3(1:10:end),x3E(1:10:end),'--','LineWidth',lw, 'Color', c3 );
 plot(g1s,g1x(:,1),'-','LineWidth',lw, 'Color', c2 );
 % plot(g3s,g3x(:,1),'-','LineWidth',lw, 'Color', c3 );
 labelpoints( gpos, Elabelpos, labels,'SE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
@@ -159,11 +159,11 @@ hold on;
 plot(g00,x0I1,'--', 'LineWidth', lw, 'Color', c1 );
 plot(g0s,g0x(:,1),'-','LineWidth',lw, 'Color', c1 );
 
-plot(g1,x1I1,'--','LineWidth',lw, 'Color', c2);
-plot(g1,x1I2,'--','LineWidth',lw, 'Color', c2);
-plot(g3,x3I1,'--','LineWidth',lw, 'Color', c3);
-plot(g3,x3I2,'--','LineWidth',lw, 'Color', c3);
-plot(g1s,g1x(:,2:3),'-','LineWidth',lw, 'Color', c2);
+plot(g1(1:10:end),x1I1(1:10:end),'--','LineWidth',lw, 'Color', c2);
+plot(g1(1:10:end),x1I2(1:10:end),'--','LineWidth',lw, 'Color', c2);
+plot(g3(1:10:end),x3I1(1:10:end),'--','LineWidth',lw, 'Color', c3);
+plot(g3(1:10:end),x3I2(1:10:end),'--','LineWidth',lw, 'Color', c3);
+plot(g1s(1:end),g1x(1:end,2:3),'-','LineWidth',lw, 'Color', c2);
 % plot(g3s,g3x(:,2:3),'-','LineWidth',lw, 'Color', c3);
 labelpoints( gpos, I1labelpos, labels,'NE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
 labelpoints( gpos(1), I2labelpos(1), labels(1),'NE',0.5,1,'FontSize',labelFontSize,'interpreter','latex');
