@@ -368,8 +368,9 @@ where we used $n_E = f N$. We note that since $\omega^*_0(g_H) = \mathcal{O}(\sq
 
 The reader can readily check that the right-hand side of \cref{eq:reducedmatrixform}, \cref{eq:tildeH_1d} is $\Gamma$-equivariant, for $\Gamma = S_1 \times S_{n_I}$. That is, we can permute the labels on inhibitory cells without changing the equations. (The activity of the excitatory cells have been collapsed into a single variable). At $g=g_0$, $n_I-1$ eigenvalues pass through zero: the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only, i.e. 
 \[ V \equiv  \ker(dF)_{\Zerovec,g^*}  = {\rm span} \, \left\{ \left[ 0 \;
-\vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}}.
+\vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}},
 \]
+which has dimension $n_I-1$.
 To check that $\Gamma$ acts irreducibly on $V$, it is sufficient to show that the subspace spanned by the \textit{orbit} of a single vector $\vvec$ (defined as the set of all values  $\gamma \vvec$, for $\gamma \in \Gamma$) is full rank; this can be readily confirmed for $\vvec_I = \left[ \begin{array}{ccccc} 1 & -1 & 0 & ... & 0 \end{array} \right]$, for example. 
 
 \revised{
@@ -724,8 +725,9 @@ the set of $n_C - 1$ eigenvalues $\lambda_C^*(g)$ of $D\tilde{F}(0)$ correspondi
 The corresponding eigenspace is the set of all zero-sum vectors with support in the excitatory clusters only, i.e. 
 \[ 
 V \equiv \ker(D\tilde{F})_{\Zerovec,g_C} = {\rm span} \, \left\{ \left[ 
-\vvec_C \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_I} \right] \right\}, \qquad \vvec_C \perp \Onevec_{n_{C}}.
+\vvec_C \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_I} \right] \right\}, \qquad \vvec_C \perp \Onevec_{n_{C}},
 \]
+which has dimension $n_C - 1$.
 We can check that $\Gamma$ acts irreducibly on $V$, similarly to \cref{sec:symmpitch}. We then find subgroups $\Sigma$ of $\Gamma$ which satisfy the hypothesis of the Equivariant Branching Lemma by breaking the excitatory clusters up into two clusters $C_1$ and $C_2$ of sizes $n_{C_1}$ and $n_{C_2}$, where $n_{C_1} + n_{C_2} = n_C$. For each such decomposition, this describes a subgroup 
 \begin{equation}
 \Sigma_C = S_{n_{C_1}} \times S_{n_{C_2}} \times S_{n_I}
@@ -751,8 +753,9 @@ As $g$ is further increased, the eigenvalue $\lambda_I^*(g)$ with multiplicity $
 \revised{A second symmetric pitchfork bifurcation occurs at this point, this time involving the inhibitory cells. This is almost identical to what occurs in the unclustered case (\cref{sec:symmpitch}). Briefly, the corresponding eigenspace is the set of all zero-sum vectors with support in the inhibitory cells only, i.e. 
 \[ 
 V \equiv \ker(D\tilde{F})_{\Zerovec,g^*} = {\rm span} \, \left\{ \left[ 
-\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_C} \; \vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}}.
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_C} \; \vvec_I \right] \right\}, \qquad \vvec_I \perp \Onevec_{n_{I}},
 \]
+which has dimension $n_I-1$.
 We then break the inhibitory cells up into two groups $I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$, which describes a subgroup $\Sigma_I = S_{n_C} \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$. The fixed-point subspace of $\Sigma_I$ is then given by
 \begin{eqnarray}
 \Fix_V(\Sigma_I) & = & {\rm span} \, \left\{ \left[ \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_C} \;
@@ -868,9 +871,18 @@ The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\
 As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ \revised{with multiplicity $n_I-1$} crosses through the origin (see bifurcation diagram in \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
 
 
-\noteAKB{Need to check what follows. Symmetry group is different because it includes now $S_{n_{C_1}}\times S_{n_{C_2}}$.  Also check that $V$ is as in 6.1; probably true but double-check.}
+\noteAKB{Need to check what follows. Symmetry group is different because it includes now $S_{n_{C_1}}\times S_{n_{C_2}}$.  Also check that $V$ is as in 6.1; probably true but double-check. I added more details.}
 \revised{
-The behavior at this bifurcation is exactly the same as for the second symmetric pitchfork bifurcation at the origin, since the symmetry group and fixed-point subspace are identical to that case (see \cref{sec:Eclusterbiforigin}). It follows from the Equivariant Branching Lemma that, on every $C_1/C_2$ branch, there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters. 
+The behavior at this bifurcation is exactly the same as for the second symmetric pitchfork bifurcation at the origin. The corresponding eigenspace $V$ is the set of all zero-sum vectors with support in the inhibitory cells only, which has dimension $n_I-1$. As above, we break the inhibitory cells up into two groups $I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$.
+This describes a subgroup $\Sigma_I = S_{n_{C_1}} \times S_{n_{C_2}} \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$, where we recall that $n_{C_1}$ and $n_{C_2}$ are fixed on this $C_1/C_2$ branch. The fixed-point subspace of $\Sigma_I$ is then given by
+\begin{eqnarray}
+\Fix_V(\Sigma_I) & = & {\rm span} \, \left\{ \left[ 
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{C_1}} \;
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{C_1}} \;
+\underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
+\underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \right\},
+\end{eqnarray}
+which has dimension 1. It follows from the Equivariant Branching Lemma that, on every $C_1/C_2$ branch, there is an $I_1/I_2$ branch of solutions for every possible division of the inhibitory cells into exactly two clusters.
 }
 
 We can characterize these branches using the parameter $\beta = n_{I_1}/n_{I_2}$, as we did in the previous section. When $\beta_C = 1$, $x_I = 0$, and this bifurcation takes place at 
