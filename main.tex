@@ -185,7 +185,9 @@ H(\xvec^*) := H \text{diag}(\sech^2(g \xvec^* ))
 \end{equation}
 is obtained from the matrix $H$ by multiplying column $j$ of $H$ by $\sech^2(g x_j^*)$. We note that the diagonal entries of $H(\xvec^*)$ are 0, thus $\text{Trace } H(\xvec^*) = 0$. This implies that the eigenvalues of $H(\xvec^*)$ sum to 0.
 
-Features of the system such as fixed points and periodic orbits remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$, even when the spectrum of $G$ bears no obvious resemblance to the original spectrum of $H$. We first reported on this phenomenon in \cite{Barreiro2017}, where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system: we derive leading order expressions for bifurcation points in the system, for the equilibria near those bifurcation points, and for the Hopf bifurcations that spawn the clustered limit cycles we observed in \cite{Barreiro2017} (\cref{sec:E1I1}). We then extend the analysis to networks in which the excitatory population is split up into clusters ($n_C > 1$ and $n_{C_I}=1$; \cref{sec:Eclusters}). We briefly compare with networks in which the inhibitory neurons are clustered instead ($n_C=1, n_{C_I}>1$; \cref{sec:inhibitoryclusters}). 
+
+\revised{We first studied this system in \cite{Barreiro2017},}
+where we analyzed all-to-all connected, balanced excitatory-inhibitory networks ($n_C = 1$ and $n_{C_I} = 1$). In this paper, we first flesh out some details about that system: we derive leading order expressions for bifurcation points in the system, for the equilibria near those bifurcation points, and for the Hopf bifurcations that spawn the clustered limit cycles we observed in \cite{Barreiro2017} (\cref{sec:E1I1}). We then extend the analysis to networks in which the excitatory population is split up into clusters ($n_C > 1$ and $n_{C_I}=1$; \cref{sec:Eclusters}). We briefly compare with networks in which the inhibitory neurons are clustered instead ($n_C=1, n_{C_I}>1$; \cref{sec:inhibitoryclusters}). 
 
 \section{The role of symmetries and the Equivariant Bifurcation Lemma} \label{sec:EBL}
 \revised{In this section we outline the tools of equivariant bifurcation theory, and explain how they apply to the model in question.} Our main tool for analyzing the solutions to \cref{eqn:sys_Basic}, \cref{eqn:H} which arise at bifurcation points when symmetries are present is the \emph{Equivariant Branching Lemma} \cite{Golubitsky2002,MR631456,GSS88Vol2,HoyleRebeccaB2006Pf:a}. Before stating the result, we introduce some terminology. 
@@ -567,7 +569,7 @@ which is 0 at $\beta = 1$ and positive for $\beta > 1$. As a consequence, $g_{H}
 % At the Hopf bifurcation, the imaginary part of eigenvalue scales as $\sqrt{N}$, which is the frequency of oscillation of the limit cycle.
 
 \subsection{Other branches of equilibria}\label{sec:otherbranches}
-\noteAKB{Are these supposed to be 2-1-1 below, rather than 2-2-1? Yes. Fixed.}
+
 \revised{
 The equilibria on the $I_1/I_2$ branches, whose existence is guaranteed by the Equivariant Bifurcation Theorem and which were characterized in \cref{sec:solI1I2}, are not the only branches of equilibria. As one example, take the $\beta=1$ branch for $N=20$ (see top panel of \cref{fig:noclusterBD1}). As $g$ is increased past the Hopf bifurcation, the complex pair of eigenvalues $\lambda_0 \pm i \omega_0$ collides on the positive real axis and becomes a real pair of eigenvalues $\{ \lambda_0^L, \lambda_0^R \}$, with $\lambda_0^L < \lambda_0^R$. As $g$ is further increased, $\lambda_0^L$ moves to the left, and $\lambda_0^R$ moves to the right. When $\lambda_0^L$ passes through the origin (from right to left), a symmetry-breaking bifurcation occurs (left branch point in \cref{fig:noclusterbeta1branches}). On the secondary branch, which we will call the asymmetric 2-2 branch, $x_E \neq 0$, and the pair $x_{I_1}$ and $x_{I_2}$ no longer have equal and opposite activities. As $g$ increases along this secondary branch, there is another bifurcation (right branch point in \cref{fig:noclusterbeta1branches}), which produces a branch of equilibria in which the inhibitory cells are clustered in a 2-1-1 pattern. As $N$ is increased, more complicated secondary branching patters occur, and it is unlikely that these can be systematically located and classified. That being said, numerical experiments performed on networks of varying $N$ strongly suggest that none of these secondary branches contain stable fixed points. Specifically, the only stable fixed points which have been found by numerical spectral computation on the primary $I_1/I_2$ branches; all other branches consist entirely of unstable equilibria. In addition, all numerical timestepping experiments starting from random initial conditions have converged to either fixed points on the primary $I_1/I_2$ branches or to periodic orbits (see \cref{sec:periodic} below).
 }
@@ -871,14 +873,13 @@ The remaining eigenvalues of $D\tilde{F}(\xvec^*)$ are the eigenvalues of $J_3(\
 As $g$ is further increased from $g_C$, there is a second symmetric pitchfork bifurcation on each $C_1/C_2$ branch as the eigenvalue $\lambda_I^*(g)$ of $D\tilde{F}(\xvec^*)$ \revised{with multiplicity $n_I-1$} crosses through the origin (see bifurcation diagram in \cref{fig:clusterBD1} and \cref{fig:clusterBD2}). 
 
 
-\noteAKB{Need to check what follows. Symmetry group is different because it includes now $S_{n_{C_1}}\times S_{n_{C_2}}$.  Also check that $V$ is as in 6.1; probably true but double-check. I added more details.}
 \revised{
 The behavior at this bifurcation is exactly the same as for the second symmetric pitchfork bifurcation at the origin. The corresponding eigenspace $V$ is the set of all zero-sum vectors with support in the inhibitory cells only, which has dimension $n_I-1$. As above, we break the inhibitory cells up into two groups $I_1$ and $I_2$ of sizes $n_{I_1}$ and $n_{I_2}$, where $n_{I_1} + n_{I_2} = n_I$.
 This describes a subgroup $\Sigma_I = S_{n_{C_1}} \times S_{n_{C_2}} \times S_{n_{I_1}} \times S_{n_{I_2}}$ of $\Gamma$, where we recall that $n_{C_1}$ and $n_{C_2}$ are fixed on this $C_1/C_2$ branch. The fixed-point subspace of $\Sigma_I$ is then given by
 \begin{eqnarray}
 \Fix_V(\Sigma_I) & = & {\rm span} \, \left\{ \left[ 
 \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{C_1}} \;
-\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{C_1}} \;
+\underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_{C_2}} \;
 \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_{I_1}} \;
 \underbrace{\begin{matrix}-\frac{n_{I_1}}{n_{I_2}} & \cdots & -\frac{n_{I_1}}{n_{I_2}} \end{matrix}}_{n_{I_2}} \right] \right\},
 \end{eqnarray}
@@ -1052,6 +1053,8 @@ where we used the fact that $n_E = \alpha n_{C_I} p_I$.
     \label{fig:HeigpatternIcluster}
 \end{figure}
 
+\noteAKB{Add symmetry stuff here: what is $V$? What is $\Sigma$? i.e. to justify the symmetry of the periodic orbit.}
+
 \noindent This eigenvalue pattern is shown in \cref{fig:HeigpatternIcluster}.
 The two eigenvalues with positive real part are $\lambda_I$ and $\lambda_0 + i \omega_0$, so these are the only eigenvalues which will cause bifurcations as $g$ is varied. We note that $\lambda_0 > \lambda_I$, thus the first bifurcation which will occur at the origin is a Hopf bifurcation at 
 \[
@@ -1111,7 +1114,9 @@ In works that do use strong scaling, the coherent fluctuations that are observed
 
 Future directions include better characterizing the periodic orbits which arise from the Hopf bifurcations in the network with all-to-all coupling case. It may be possible to determine their stability pattern, as well as to locate the bifurcation point at $g=g^*$. Some assumptions about our network can be relaxed; for example the use of the $\tanh$ function is not essential to any calculations that don't explicitly invoke odd symmetry, and could be replaced by another saturating nonlinearity. Another direction includes exploring other network topologies, such as \revised{unequal cluster sizes}, spatial connectivity, or hierarchical clustering \cite{rosenbaum17,Ebsch_RR_PlosCB_2018}. 
 
-Finally, the ultimate goal of these investigations must be to apply these insights to real networks, which will not be perfectly symmetric and which may be modeled by allowing a random perturbation to the connection matrix (i.e. $H \rightarrow H + \epsilon A$). We conjecture that the perturbed system will continue to exhibit fixed points and periodic orbits that are found in the unperturbed system, even when the perturbations are large enough that the spectrum of the connectivity matrix ``masks" the underlying symmetry. In our previous study, we found that stable trajectories in the unperturbed all-to-all clustered system accurately predicted which solutions would be observed in the perturbed system \cite{Barreiro2017}. This highlights the importance of determining not only existence but \emph{stability} in the unperturbed system. We look forward to exploring this question in future work.
+Finally, the ultimate goal of these investigations must be to apply these insights to real networks, which will not be perfectly symmetric and which may be modeled by allowing a random perturbation to the connection matrix (i.e. $H \rightarrow H + \epsilon A$). 
+The right-hand side of \cref{eqn:sys_Basic} is locally Lipschitz continuous in $\R^N$; therefore hyperbolic fixed points and periodic orbits will remain when the connectivity matrix is perturbed by a random matrix, i.e. $G=H + \epsilon A$ for small $\epsilon$. However, the range of $\epsilon$ for which a hyperbolic structure persists is not known \textit{a priori}. 
+We conjecture that the perturbed system will continue to exhibit fixed points and periodic orbits that are found in the unperturbed system, even when the perturbations are large enough that the spectrum of the connectivity matrix ``masks" the underlying symmetry. In our previous study, we found that stable trajectories in the unperturbed all-to-all clustered system accurately predicted which solutions would be observed in the perturbed system \cite{Barreiro2017}. This highlights the importance of determining not only existence but \emph{stability} in the unperturbed system. We look forward to exploring this question in future work.
 
 
 \appendix
