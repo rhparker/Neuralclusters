@@ -1029,7 +1029,9 @@ The eigenvalue pattern is similar to that in the right panel of \cref{fig:Heigpa
 
 \section{Inhibitory clusters}\label{sec:inhibitoryclusters}
 
-We will briefly consider the case where the inhibitory cells are clustered, while the excitatory cells remain unclustered. Suppose the inhibitory cells are grouped into $n_{C_I}$ inhibitory clusters of size $p_I$. We perform the same reduction as in \cref{sec:simplermodel} to obtain the matrix $\tilde{H}$. For the choice of weights $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$, the eigenvalues of $\tilde{H}$ are:
+We will briefly consider the case where the inhibitory cells are clustered, while the excitatory cells remain unclustered. Suppose the inhibitory cells are grouped into $n_{C_I}$ inhibitory clusters of size $p_I$, so that $n_I = n_{C_I} p_I$. We perform the same reduction as in \cref{sec:simplermodel} to obtain the matrix $\tilde{H}$.
+\revised{Since there is a single cluster of excitatory cells, they will always be synchronized.} 
+For the choice of weights $\mu_{EI} = -\alpha \mu_{EE}$, $\mu_{II} = -\alpha \mu_{EE}$, and $\mu_{IE} = \mu_{EE}$, the eigenvalues of $\tilde{H}$ are:
 \begin{itemize}
 \item $\lambda_I := \alpha \mu_{EE} > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
 \item $\lambda_{C_I} := -(p_I-1)\alpha \mu_{EE} < 0$, with multiplicity $n_{C_I}-1$.
@@ -1053,14 +1055,29 @@ where we used the fact that $n_E = \alpha n_{C_I} p_I$.
     \label{fig:HeigpatternIcluster}
 \end{figure}
 
-\noteAKB{Add symmetry stuff here: what is $V$? What is $\Sigma$? i.e. to justify the symmetry of the periodic orbit.}
+\noteAKB{Add symmetry stuff here: what is $V$? What is $\Sigma$? i.e. to justify the symmetry of the periodic orbit. Done.}
 
 \noindent This eigenvalue pattern is shown in \cref{fig:HeigpatternIcluster}.
 The two eigenvalues with positive real part are $\lambda_I$ and $\lambda_0 + i \omega_0$, so these are the only eigenvalues which will cause bifurcations as $g$ is varied. We note that $\lambda_0 > \lambda_I$, thus the first bifurcation which will occur at the origin is a Hopf bifurcation at 
 \[
-g_H = \frac{2 \sqrt{N}}{\mu_{EE} \left[ \alpha( 1 + p_I(n_{C_I}-1)) -1 \right] }.
+g_H = \frac{2 \sqrt{N}}{\mu_{EE} \left[ \alpha( 1 + p_I(n_{C_I}-1)) -1 \right] }
 \]
+when the complex pair $\lambda_0 + i \omega_0$ crosses the real axis.
+\revised{
+The behavior at this bifurcation is identical to that at the Hopf bifurcation at the origin in the unclustered case (\cref{sec:periodic}). Briefly, the corresponding eigenspace to $\lambda_0 + i \omega_0$ is
+\[ 
+V \equiv  \ker(DF)_{\Zerovec,g_H}  = {\rm span} \, 
+\left\{ \left[ 1 \; \underbrace{\begin{matrix}0 & \cdots & 0\end{matrix}}_{n_I} \right],
+\left[ 0 \; \underbrace{\begin{matrix}1 & \cdots & 1\end{matrix}}_{n_I} \right]
+ \right\},
+\]
+which is fixed by $\Gamma = S_1 \times S_{n_I}$. Since $\dim \Fix_V(\Gamma) = \dim V = 2$, it follows from the Equivariant Hopf theorem \cite[Theorem 4.1]{GSS88Vol2} that there is a branch of limit cycles emanating from this Hopf bifurcation point for which the isotropy subgroup is $\Gamma$, which implies that the inhibitory neurons are all synchronized (we recall that the excitatory neurons are always synchronized).
+}
+
 We are interested in what occurs for large $N$ and large $n_{C_I}$. As an example, let $n_{C_I}$ scale with $\sqrt{N}$ by taking $n_{C_I} = p_I = \sqrt{n_I} = \sqrt{(1-f)N}$. For this scaling, as $N$ increases, the Hopf bifurcation takes place at $g_H \approx \frac{2}{f \mu_{EE} \sqrt{N}}$, and we also have $\omega_0 \approx \frac{\sqrt{3}}{2}f N \mu_{EE}$. This implies that at $g = g_H$, $DF(0)$ has a complex conjugate pair of eigenvalues with real part of 0 and imaginary part of approximately $\sqrt{3}$. See \cref{fig:limitcycleIC} for an illustration of this limit cycle when $N=1600$, $n_{C_I}=20$, and $g$ is slightly larger than $g_H$. The frequency of the limit cycle is 1.792, which is less than $5\%$ away from $\sqrt{3}$. Thus, for large $N$, the frequency of the limit cycle emerging at the Hopf bifurcation of the origin is asymptotically constant as $N$ increases. This contrasts to the case where the inhibitory and excitatory cells are unclustered, where the frequency of the limit cycle scales as $\sqrt{N}$.
+\revised{
+Numerical timestepping experiments suggest that this limit cycle is stable for $g > g_H$.
+}
 
 \begin{figure}
     \centering
@@ -1069,25 +1086,6 @@ We are interested in what occurs for large $N$ and large $n_{C_I}$. As an exampl
     \caption{Limit cycle arising from the Hopf bifurcation at origin for \cref{eqn:sys_Basic} with inhibitory cell clustering and $\mu_{II} = -\alpha \mu_{EE}$. Both the excitatory cell activity $x_E$ and inhibitory cell activity $x_I$ are synchronized. Notably, the period does not increase with $N$. Left: $x_E$ and $x_I$ vs $t$. Right: $x_I$ vs $x_E$. Parameters are: $N=1600$, $N_{C_I} = 20$, $p_I = 20$, $\alpha = 4$, $\mu_{EE}= 0.7$, $g = 1.02 g_H$. The period of the limit cycle is 1.792.} 
     \label{fig:limitcycleIC}
 \end{figure}
-
-% We can also choose the weights so that the network is balanced, as in the previous section.
-% \begin{align*}
-% \mu_{EE} &= \mu && \mu_{IE} = \mu \\
-% \mu_{EI} &= -\alpha \mu && \mu_{II} = -\alpha n_{C_I} \mu
-% \end{align*}
-% In that case, the eigenvalues of $\Hvec$ are
-% \begin{itemize}
-% \item $\lambda_I := \alpha n_{C_I} \mu > 0$ with multiplicity $(p_I-1) \times n_{C_I} = n_I - n_{C_I}$.
-% \item $\lambda_E = -\mu < 0$ with multiplicity $n_E - 1$
-% \item $\lambda_{C_I} = -(p_I-1) \alpha n_{C_I} \mu < 0$, with multiplicity $n_{C_I} -1$.
-% \item A complex conjugate pair of eigenvalues $\lambda_0 \pm i \omega_0$, with 
-% \begin{align*}
-%     \lambda_0 &:= \frac{1}{2}\mu(\alpha n_{C_I} - 1)
-%       \\
-%     \omega_0 &:= \frac{1}{2}\mu \sqrt{ \alpha n_{C_I}+1} \sqrt{\alpha n_{C_I}(4p_I - 1) - 1}
-% \end{align*}
-% \end{itemize}
-% HERE, $\lambda_I$ WILL CROSS BEFORE $\lambda_0$ SO MIGHT GET MORE INTERESTING BEHAVIOR.
 
 \section{Discussion}
 
